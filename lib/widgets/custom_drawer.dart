@@ -5,6 +5,23 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      width: 300,
+      color: Theme.of(context).backgroundColor,
+      child: Column(
+        children: [
+          const SizedBox(height: 50),
+          ListTile(
+            title: const Text('Home'),
+          ),
+          ListTile(
+            title: const Text(
+              'Home',
+              style: TextStyle(fontSize: 14),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
