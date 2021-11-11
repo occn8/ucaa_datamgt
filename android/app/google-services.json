@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "665206152810",
+    "project_id": "ucaadatamgt",
+    "storage_bucket": "ucaadatamgt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665206152810:android:444beba5724d83637c7413",
+        "android_client_info": {
+          "package_name": "com.example.ucaa_datamgt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665206152810-5v0e99csa5snutismu3v05a933ejnrqr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqDNZqMtiPQDE0uEJYCVQmyyMfmulWwqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665206152810-5v0e99csa5snutismu3v05a933ejnrqr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
