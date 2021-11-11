@@ -1,38 +1,38 @@
 class CaR {
   int id;
-  String group_name;
-  String sub_county;
+  String groupName;
+  String subCounty;
   String parish;
-  late String gd_formed;
-  int num_members;
-  String seg_male_female;
-  int times_shared_out;
-  double share_value;
-  int num_children;
-  double amnt_highest_saver;
-  double amnt_saved;
-  double amnt_social_fund;
-  double amnt_loans_taken;
-  int num_loans_accessed;
-  num loan_repayment;
-  double amnt_loans_writtenoff;
+  late String gdFormed;
+  int numMembers;
+  String segMaleFemale;
+  int timesSharedOut;
+  double shareValue;
+  int numChildren;
+  double amntHighestSaver;
+  double amntSaved;
+  double amntSocialFund;
+  double amntLoansTaken;
+  int numLoansAccessed;
+  num loanRepayment;
+  double amntLoansWrittenoff;
 
   CaR(
     this.id,
-    this.group_name,
-    this.sub_county,
+    this.groupName,
+    this.subCounty,
     this.parish,
-    this.num_members,
-    this.seg_male_female,
-    this.times_shared_out,
-    this.share_value,
-    this.num_children,
-    this.amnt_highest_saver,
-    this.amnt_saved,
-    this.amnt_social_fund,
-    this.amnt_loans_taken,
-    this.num_loans_accessed,
-    this.loan_repayment,
-    this.amnt_loans_writtenoff,
+    this.numMembers,
+    this.segMaleFemale,
+    this.timesSharedOut,
+    this.shareValue,
+    this.numChildren,
+    this.amntHighestSaver,
+    this.amntSaved,
+    this.amntSocialFund,
+    this.amntLoansTaken,
+    this.numLoansAccessed,
+    this.loanRepayment,
+    this.amntLoansWrittenoff,
   );
 }

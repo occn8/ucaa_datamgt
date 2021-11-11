@@ -1,29 +1,29 @@
 class REACH {
   int id;
-  String vsla_name;
-  String per_attendence;
+  String vslaName;
+  String perAttendence;
   String location;
-  String num_members;
-  double total_savings;
-  double vsla_capital;
-  double loan_taken;
-  double total_welfare;
-  double welfare_loaned_out;
-  int members_accessed_loans;
-  double loan_repayment;
+  String numMembers;
+  double totalSavings;
+  double vslaCapital;
+  double loanTaken;
+  double totalWelfare;
+  double welfareLoanedOut;
+  int membersAccessedLoans;
+  double loanRepayment;
 
   REACH(
     this.id,
-    this.vsla_name,
-    this.per_attendence,
+    this.vslaName,
+    this.perAttendence,
     this.location,
-    this.num_members,
-    this.total_savings,
-    this.vsla_capital,
-    this.loan_taken,
-    this.total_welfare,
-    this.welfare_loaned_out,
-    this.members_accessed_loans,
-    this.loan_repayment,
+    this.numMembers,
+    this.totalSavings,
+    this.vslaCapital,
+    this.loanTaken,
+    this.totalWelfare,
+    this.welfareLoanedOut,
+    this.membersAccessedLoans,
+    this.loanRepayment,
   );
 }
