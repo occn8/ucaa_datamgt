@@ -47,7 +47,7 @@ class Home extends StatelessWidget {
                 ),
               ),
             ),
-            const DataTableView(),
+            const DataTableView(tableHeader: 'CaR Data'),
           ],
         ),
       ),

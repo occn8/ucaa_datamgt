@@ -1,7 +1,8 @@
 import 'package:ucaa_datamgt/index.dart';
 
 class DataTableView extends StatefulWidget {
-  const DataTableView({Key? key}) : super(key: key);
+  const DataTableView({Key? key, required this.tableHeader}) : super(key: key);
+  final String tableHeader;
 
   @override
   _DataTableViewState createState() => _DataTableViewState();
@@ -13,7 +14,7 @@ class _DataTableViewState extends State<DataTableView> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: PaginatedDataTable(
-        header: const Text('Nutrition'),
+        header: Text(widget.tableHeader),
         rowsPerPage: _rowsPerPage,
         availableRowsPerPage: const <int>[5, 10, 20],
         onRowsPerPageChanged: (int? value) {

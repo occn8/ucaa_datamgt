@@ -1,4 +1,4 @@
-class SHG {
+class SHGdataModel {
   String shgName;
   String location;
   String shgFormed;
@@ -15,7 +15,7 @@ class SHG {
   String loanSavingRatio;
   bool selected = false;
 
-  SHG(
+  SHGdataModel(
     this.shgName,
     this.location,
     this.shgFormed,

@@ -1,4 +1,4 @@
-class WID {
+class WIDdataModel {
   String groupName;
   String subCounty;
   String parish;
@@ -16,7 +16,7 @@ class WID {
   double amntLoansWrittenoff;
   bool selected = false;
 
-  WID(
+  WIDdataModel(
     this.groupName,
     this.subCounty,
     this.parish,

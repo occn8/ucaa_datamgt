@@ -1,4 +1,4 @@
-class REACH {
+class REACHdataModel {
   String vslaName;
   String perAttendence;
   String location;
@@ -12,7 +12,7 @@ class REACH {
   double loanRepayment;
   bool selected = false;
 
-  REACH(
+  REACHdataModel(
     this.vslaName,
     this.perAttendence,
     this.location,
