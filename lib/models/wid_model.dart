@@ -2,7 +2,7 @@ class WIDdataModel {
   String groupName;
   String subCounty;
   String parish;
-  late String gdFormed;
+  String gdFormed;
   int numMembers;
   int timesSharedOut;
   double shareValue;
@@ -20,6 +20,7 @@ class WIDdataModel {
     this.groupName,
     this.subCounty,
     this.parish,
+    this.gdFormed,
     this.numMembers,
     this.timesSharedOut,
     this.shareValue,

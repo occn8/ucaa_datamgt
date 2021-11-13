@@ -1,74 +1,64 @@
 import 'package:ucaa_datamgt/index.dart';
 
-const kCaRDataColumns = <DataColumn>[
-  DataColumn(label: Text('Group-Name')),
-  DataColumn(label: Text('SubCounty')),
-  DataColumn(label: Text('Parish')),
-  DataColumn(label: Text('Formed')),
+const kREACHDataColumns = <DataColumn>[
+  DataColumn(label: Text('VSLA-Name')),
+  DataColumn(label: Text('Attendance')),
+  DataColumn(label: Text('location')),
   DataColumn(label: Text('Members')),
-  DataColumn(label: Text('Male')),
-  DataColumn(label: Text('Female')),
-  DataColumn(label: Text('Times-shared')),
-  DataColumn(label: Text('shareValue')),
-  DataColumn(label: Text('Children')),
-  DataColumn(label: Text('Highest-saver')),
-  DataColumn(label: Text('Savings')),
-  DataColumn(label: Text('Social-fund')),
-  DataColumn(label: Text('Loans-taken')),
-  DataColumn(label: Text('Loans-accessed')),
+  DataColumn(label: Text('Total-savings')),
+  DataColumn(label: Text('VSLA-Capital')),
+  DataColumn(label: Text('Loan-taken')),
+  DataColumn(label: Text('Total-welfare')),
+  DataColumn(label: Text('Welfare-Loaned')),
+  DataColumn(label: Text('Members-loaned')),
   DataColumn(label: Text('loan-repay')),
-  DataColumn(label: Text('loans-off')),
 ];
 
-final List<CaRDataModel> _carDataRows = <CaRDataModel>[
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
+final List<REACHdataModel> _reachDataRows = <REACHdataModel>[
+  REACHdataModel('vslaName', 'perAttendence', 'location', 19, 1000, 8000, 2990,
+      1000, 200, 5, 200),
+  REACHdataModel('vslaName', 'perAttendence', 'location', 19, 1000, 8000, 2990,
+      1000, 200, 5, 200),
+  REACHdataModel('vslaName', 'perAttendence', 'location', 19, 1000, 8000, 2990,
+      1000, 200, 5, 200),
+  REACHdataModel('vslaName', 'perAttendence', 'location', 19, 1000, 8000, 2990,
+      1000, 200, 5, 200),
+  REACHdataModel('vslaName', 'perAttendence', 'location', 19, 1000, 8000, 2990,
+      1000, 200, 5, 200),
 ];
 
-class CaRDataScr extends DataTableSource {
+class REACHDataScr extends DataTableSource {
   int _selectedCount = 0;
 
   @override
   DataRow? getRow(int index) {
     assert(index >= 0);
-    if (index >= _carDataRows.length) return null;
-    final CaRDataModel cardata = _carDataRows[index];
+    if (index >= _reachDataRows.length) return null;
+    final REACHdataModel reachdata = _reachDataRows[index];
     return DataRow.byIndex(
       index: index,
-      selected: cardata.selected,
+      selected: reachdata.selected,
       onSelectChanged: (bool? val) {
         if (val == null) return;
-        if (cardata.selected != val) {
+        if (reachdata.selected != val) {
           _selectedCount += val ? 1 : -1;
           assert(_selectedCount >= 0);
-          cardata.selected = val;
+          reachdata.selected = val;
           notifyListeners();
         }
       },
       cells: <DataCell>[
-        DataCell(Text(cardata.groupName)),
-        DataCell(Text(cardata.subCounty)),
-        DataCell(Text(cardata.parish)),
-        DataCell(Text(cardata.gdFormed)),
-        DataCell(Text(cardata.numMembers.toString())),
-        DataCell(Text(cardata.segMale.toString())),
-        DataCell(Text(cardata.segFemale.toString())),
-        DataCell(Text(cardata.timesSharedOut.toString())),
-        DataCell(Text(cardata.shareValue.toString())),
-        DataCell(Text(cardata.numChildren.toString())),
-        DataCell(Text(cardata.amntHighestSaver.toString())),
-        DataCell(Text(cardata.amntSaved.toString())),
-        DataCell(Text(cardata.amntSocialFund.toString())),
-        DataCell(Text(cardata.amntLoansTaken.toString())),
-        DataCell(Text(cardata.numLoansAccessed.toString())),
-        DataCell(Text(cardata.loanRepayment.toString())),
-        DataCell(Text(cardata.amntLoansWrittenoff.toString())),
+        DataCell(Text(reachdata.vslaName)),
+        DataCell(Text(reachdata.perAttendence)),
+        DataCell(Text(reachdata.location)),
+        DataCell(Text(reachdata.numMembers.toString())),
+        DataCell(Text(reachdata.totalSavings.toString())),
+        DataCell(Text(reachdata.vslaCapital.toString())),
+        DataCell(Text(reachdata.loanTaken.toString())),
+        DataCell(Text(reachdata.totalWelfare.toString())),
+        DataCell(Text(reachdata.welfareLoanedOut.toString())),
+        DataCell(Text(reachdata.membersAccessedLoans.toString())),
+        DataCell(Text(reachdata.loanRepayment.toString())),
       ],
     );
   }
@@ -77,7 +67,7 @@ class CaRDataScr extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => _carDataRows.length;
+  int get rowCount => _reachDataRows.length;
 
   @override
   int get selectedRowCount => _selectedCount;

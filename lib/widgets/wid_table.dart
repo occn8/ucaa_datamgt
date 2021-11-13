@@ -1,13 +1,11 @@
 import 'package:ucaa_datamgt/index.dart';
 
-const kCaRDataColumns = <DataColumn>[
+const kWIDDataColumns = <DataColumn>[
   DataColumn(label: Text('Group-Name')),
   DataColumn(label: Text('SubCounty')),
   DataColumn(label: Text('Parish')),
   DataColumn(label: Text('Formed')),
   DataColumn(label: Text('Members')),
-  DataColumn(label: Text('Male')),
-  DataColumn(label: Text('Female')),
   DataColumn(label: Text('Times-shared')),
   DataColumn(label: Text('shareValue')),
   DataColumn(label: Text('Children')),
@@ -20,55 +18,57 @@ const kCaRDataColumns = <DataColumn>[
   DataColumn(label: Text('loans-off')),
 ];
 
-final List<CaRDataModel> _carDataRows = <CaRDataModel>[
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
+final List<WIDdataModel> _widDataRows = <WIDdataModel>[
+  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
+      3000, 20000, 1000, 1000, 4, 9, 2000),
+  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
+      3000, 20000, 1000, 1000, 4, 9, 2000),
+  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
+      3000, 20000, 1000, 1000, 4, 9, 2000),
+  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
+      3000, 20000, 1000, 1000, 4, 9, 2000),
+  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
+      3000, 20000, 1000, 1000, 4, 9, 2000),
+  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
+      3000, 20000, 1000, 1000, 4, 9, 2000),
 ];
 
-class CaRDataScr extends DataTableSource {
+class WIDDataScr extends DataTableSource {
   int _selectedCount = 0;
 
   @override
   DataRow? getRow(int index) {
     assert(index >= 0);
-    if (index >= _carDataRows.length) return null;
-    final CaRDataModel cardata = _carDataRows[index];
+    if (index >= _widDataRows.length) return null;
+    final WIDdataModel widdata = _widDataRows[index];
     return DataRow.byIndex(
       index: index,
-      selected: cardata.selected,
+      selected: widdata.selected,
       onSelectChanged: (bool? val) {
         if (val == null) return;
-        if (cardata.selected != val) {
+        if (widdata.selected != val) {
           _selectedCount += val ? 1 : -1;
           assert(_selectedCount >= 0);
-          cardata.selected = val;
+          widdata.selected = val;
           notifyListeners();
         }
       },
       cells: <DataCell>[
-        DataCell(Text(cardata.groupName)),
-        DataCell(Text(cardata.subCounty)),
-        DataCell(Text(cardata.parish)),
-        DataCell(Text(cardata.gdFormed)),
-        DataCell(Text(cardata.numMembers.toString())),
-        DataCell(Text(cardata.segMale.toString())),
-        DataCell(Text(cardata.segFemale.toString())),
-        DataCell(Text(cardata.timesSharedOut.toString())),
-        DataCell(Text(cardata.shareValue.toString())),
-        DataCell(Text(cardata.numChildren.toString())),
-        DataCell(Text(cardata.amntHighestSaver.toString())),
-        DataCell(Text(cardata.amntSaved.toString())),
-        DataCell(Text(cardata.amntSocialFund.toString())),
-        DataCell(Text(cardata.amntLoansTaken.toString())),
-        DataCell(Text(cardata.numLoansAccessed.toString())),
-        DataCell(Text(cardata.loanRepayment.toString())),
-        DataCell(Text(cardata.amntLoansWrittenoff.toString())),
+        DataCell(Text(widdata.groupName)),
+        DataCell(Text(widdata.subCounty)),
+        DataCell(Text(widdata.parish)),
+        DataCell(Text(widdata.gdFormed)),
+        DataCell(Text(widdata.numMembers.toString())),
+        DataCell(Text(widdata.timesSharedOut.toString())),
+        DataCell(Text(widdata.shareValue.toString())),
+        DataCell(Text(widdata.numChildren.toString())),
+        DataCell(Text(widdata.amntHighestSaver.toString())),
+        DataCell(Text(widdata.amntSaved.toString())),
+        DataCell(Text(widdata.amntSocialFund.toString())),
+        DataCell(Text(widdata.amntLoansTaken.toString())),
+        DataCell(Text(widdata.numLoansAccessed.toString())),
+        DataCell(Text(widdata.loanRepayment.toString())),
+        DataCell(Text(widdata.amntLoansWrittenoff.toString())),
       ],
     );
   }
@@ -77,7 +77,7 @@ class CaRDataScr extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => _carDataRows.length;
+  int get rowCount => _widDataRows.length;
 
   @override
   int get selectedRowCount => _selectedCount;

@@ -10,3 +10,6 @@ export 'package:ucaa_datamgt/models/wid_model.dart';
 export 'package:ucaa_datamgt/widgets/custom_drawer.dart';
 export 'package:ucaa_datamgt/widgets/data_tables.dart';
 export 'package:ucaa_datamgt/widgets/car_table.dart';
+export 'package:ucaa_datamgt/widgets/reach_table.dart';
+export 'package:ucaa_datamgt/widgets/shg_table.dart';
+export 'package:ucaa_datamgt/widgets/wid_table.dart';

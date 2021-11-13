@@ -2,7 +2,7 @@ class REACHdataModel {
   String vslaName;
   String perAttendence;
   String location;
-  String numMembers;
+  int numMembers;
   double totalSavings;
   double vslaCapital;
   double loanTaken;
