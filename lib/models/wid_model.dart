@@ -1,5 +1,4 @@
 class WID {
-  int id;
   String groupName;
   String subCounty;
   String parish;
@@ -15,9 +14,9 @@ class WID {
   int numLoansAccessed;
   num loanRepayment;
   double amntLoansWrittenoff;
+  bool selected = false;
 
   WID(
-    this.id,
     this.groupName,
     this.subCounty,
     this.parish,

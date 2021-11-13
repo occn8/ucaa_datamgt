@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ucaa_datamgt/index.dart';
 import 'package:ucaa_datamgt/widgets/custom_drawer.dart';
+import 'package:ucaa_datamgt/widgets/data_tables.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -45,7 +46,8 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
+            const DataTableView(),
           ],
         ),
       ),

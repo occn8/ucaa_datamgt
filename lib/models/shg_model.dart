@@ -1,5 +1,4 @@
 class SHG {
-  int id;
   String shgName;
   String location;
   String shgFormed;
@@ -14,9 +13,9 @@ class SHG {
   int numLoansAccessed;
   num loanRepayment;
   String loanSavingRatio;
+  bool selected = false;
 
   SHG(
-    this.id,
     this.shgName,
     this.location,
     this.shgFormed,

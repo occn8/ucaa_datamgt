@@ -1,5 +1,4 @@
 class REACH {
-  int id;
   String vslaName;
   String perAttendence;
   String location;
@@ -11,9 +10,9 @@ class REACH {
   double welfareLoanedOut;
   int membersAccessedLoans;
   double loanRepayment;
+  bool selected = false;
 
   REACH(
-    this.id,
     this.vslaName,
     this.perAttendence,
     this.location,
