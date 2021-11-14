@@ -78,7 +78,14 @@ class Home extends StatelessWidget {
           ),
         ),
       ),
-      drawer: const CustomDrawer(),
+      // drawer: const CustomDrawer(),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Get.to(() => const AddData());
+        },
+        icon: const Icon(Icons.add),
+        label: const Text('Add data'),
+      ),
     );
   }
 

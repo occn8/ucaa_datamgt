@@ -21,7 +21,12 @@ class _DataTableViewState extends State<DataTableView> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: PaginatedDataTable(
-        header: Text(widget.tableHeader),
+        header: Text(
+          widget.tableHeader,
+          style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.w800),
+        ),
         rowsPerPage: _rowsPerPage,
         availableRowsPerPage: const <int>[5, 10, 20],
         onRowsPerPageChanged: (int? value) {
