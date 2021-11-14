@@ -44,11 +44,6 @@ class Home extends StatelessWidget {
                 ),
               ),
             ),
-            DataTableView(
-              tableHeader: 'll Data',
-              datasrc: WIDDataScr(),
-              datacolumns: kWIDDataColumns,
-            ),
           ],
         ),
       ),
