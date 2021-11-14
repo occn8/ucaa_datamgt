@@ -1,4 +1,5 @@
 import 'package:ucaa_datamgt/index.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,29 +11,42 @@ class Home extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
-              Row(
-                children: [
-                  Builder(
-                    builder: (context) => InkWell(
-                      splashColor: Theme.of(context).colorScheme.secondary,
-                      borderRadius: BorderRadius.circular(10),
-                      onTap: () => Scaffold.of(context).openDrawer(),
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 5),
-                        padding: const EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Icon(Icons.menu,
-                            size: 25,
-                            color: Theme.of(context).primaryColorDark),
-                      ),
-                    ),
-                  ),
-                ],
+              // Row(
+              //   children: [
+              //     Builder(
+              //       builder: (context) => InkWell(
+              //         splashColor: Theme.of(context).colorScheme.secondary,
+              //         borderRadius: BorderRadius.circular(10),
+              //         onTap: () => Scaffold.of(context).openDrawer(),
+              //         child: Container(
+              //           margin: const EdgeInsets.symmetric(horizontal: 5),
+              //           padding: const EdgeInsets.all(15),
+              //           decoration: BoxDecoration(
+              //               borderRadius: BorderRadius.circular(10)),
+              //           child: Icon(Icons.menu,
+              //               size: 25,
+              //               color: Theme.of(context).primaryColorDark),
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                child: const Text('UCAA',
+                    style:
+                        TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 20, right: 100, bottom: 20),
+                color: Colors.green,
+                height: 1,
+                width: 150,
               ),
               Container(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
                 child: const Text.rich(
                   TextSpan(
                     text: 'Hello,\n',
@@ -79,13 +93,37 @@ class Home extends StatelessWidget {
         ),
       ),
       // drawer: const CustomDrawer(),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Get.to(() => const AddData());
-        },
-        icon: const Icon(Icons.add),
-        label: const Text('Add data'),
-      ),
+      floatingActionButton: SpeedDial(
+          animatedIcon: AnimatedIcons.list_view,
+          overlayColor: Colors.white,
+          overlayOpacity: 0.7,
+          spacing: 15,
+          children: [
+            SpeedDialChild(
+              child: const Icon(Icons.people),
+              label: 'Add Users',
+              onTap: () {
+                Get.to(() => const AddUser());
+              },
+              backgroundColor: Theme.of(context).primaryColorLight,
+            ),
+            SpeedDialChild(
+              child: const Icon(Icons.add),
+              label: 'Add data',
+              onTap: () {
+                Get.to(() => const AddData());
+              },
+              backgroundColor: Theme.of(context).primaryColorLight,
+            ),
+          ]),
+
+      // FloatingActionButton.extended(
+      //   onPressed: () {
+      //     Get.to(() => const AddData());
+      //   },
+      //   icon: const Icon(Icons.add),
+      //   label: const Text('Add data'),
+      // ),
     );
   }
 
