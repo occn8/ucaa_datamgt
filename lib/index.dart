@@ -1,4 +1,5 @@
 export 'package:flutter/material.dart';
+export 'package:get/get.dart';
 
 export 'package:ucaa_datamgt/screens/home.dart';
 
