@@ -1,5 +1,4 @@
 import 'package:ucaa_datamgt/index.dart';
-import 'package:ucaa_datamgt/screens/data_view.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

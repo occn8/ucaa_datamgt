@@ -2,6 +2,10 @@ export 'package:flutter/material.dart';
 export 'package:get/get.dart';
 
 export 'package:ucaa_datamgt/screens/home.dart';
+export 'package:ucaa_datamgt/screens/sign_in.dart';
+export 'package:ucaa_datamgt/screens/add_data.dart';
+export 'package:ucaa_datamgt/screens/users.dart';
+export 'package:ucaa_datamgt/screens/data_view.dart';
 
 export 'package:ucaa_datamgt/models/car_model.dart';
 export 'package:ucaa_datamgt/models/reach_model.dart';
