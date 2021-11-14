@@ -5,6 +5,18 @@ class DataView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: SafeArea(
+        child: ListView(
+          children: [
+            DataTableView(
+              tableHeader: 'WID Data',
+              datasrc: WIDDataScr(),
+              datacolumns: kWIDDataColumns,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
