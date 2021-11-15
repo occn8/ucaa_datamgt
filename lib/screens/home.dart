@@ -111,7 +111,9 @@ class Home extends StatelessWidget {
               child: const Icon(Icons.add),
               label: 'Add data',
               onTap: () {
-                Get.to(() => const AddData());
+                Get.to(() => const AddData(
+                      dataId: '',
+                    ));
               },
               backgroundColor: Theme.of(context).primaryColorLight,
             ),
