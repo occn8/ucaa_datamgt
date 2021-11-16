@@ -79,36 +79,37 @@ class _AddUserState extends State<AddUser> {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 5),
                           child: Row(
-                            children: [
-                              Builder(
-                                builder: (context) => InkWell(
-                                  splashColor: Theme.of(context).accentColor,
-                                  borderRadius: BorderRadius.circular(10),
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Container(
-                                    padding: new EdgeInsets.all(15),
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Row(
-                                      children: [
-                                        Icon(Icons.arrow_back,
-                                            size: 25,
-                                            color: Theme.of(context)
-                                                .primaryColorDark),
-                                        const Text(
-                                          ' Back',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 16),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
+                            children: const [
+                              // Builder(
+                              //   builder: (context) => InkWell(
+                              //     splashColor:
+                              //         Theme.of(context).colorScheme.secondary,
+                              //     borderRadius: BorderRadius.circular(10),
+                              //     onTap: () {
+                              //       Navigator.pop(context);
+                              //     },
+                              //     child: Container(
+                              //       padding: const EdgeInsets.all(15),
+                              //       decoration: BoxDecoration(
+                              //           borderRadius:
+                              //               BorderRadius.circular(10)),
+                              //       child: Row(
+                              //         children: [
+                              //           Icon(Icons.arrow_back,
+                              //               size: 25,
+                              //               color: Theme.of(context)
+                              //                   .primaryColorDark),
+                              //           const Text(
+                              //             ' Back',
+                              //             style: TextStyle(
+                              //                 fontWeight: FontWeight.w500,
+                              //                 fontSize: 16),
+                              //           ),
+                              //         ],
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         )),
@@ -128,7 +129,7 @@ class _AddUserState extends State<AddUser> {
                               // ),
                               // SizedBox(height: 5),
                               const Text(
-                                'Create Your Account',
+                                'Create User Account',
                                 style: TextStyle(
                                     fontSize: 25, fontWeight: FontWeight.w800),
                               ),

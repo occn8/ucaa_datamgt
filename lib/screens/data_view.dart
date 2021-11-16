@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ucaa_datamgt/index.dart';
 
-class DataView extends StatelessWidget {
+class DataView extends StatefulWidget {
   const DataView(
       {Key? key,
       required this.tableHeader,
@@ -11,6 +12,11 @@ class DataView extends StatelessWidget {
   final List<DataColumn> datacolumns;
   final DataTableSource datasrc;
 
+  @override
+  State<DataView> createState() => _DataViewState();
+}
+
+class _DataViewState extends State<DataView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,12 +54,45 @@ class DataView extends StatelessWidget {
         preferredSize: const Size.fromHeight(50),
       ),
       body: SafeArea(
-        child: ListView(
+        child: Column(
           children: [
-            DataTableView(
-              tableHeader: tableHeader,
-              datasrc: datasrc,
-              datacolumns: datacolumns,
+            Expanded(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection('tables')
+                        .snapshots(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.hasError) {
+                        return const Text('Something went wrong');
+                      }
+
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const LinearProgressIndicator();
+                      }
+                      if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                        return Container(
+                            height: MediaQuery.of(context).size.height,
+                            color: Theme.of(context).backgroundColor,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: const [
+                                SizedBox(height: 10),
+                                Text(
+                                  'No Products here!',
+                                  style: TextStyle(fontSize: 18),
+                                )
+                              ],
+                            ));
+                      }
+
+                      return const Text('data');
+                    },
+                  )),
             ),
           ],
         ),
