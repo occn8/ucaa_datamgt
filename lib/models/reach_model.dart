@@ -1,15 +1,17 @@
 class REACHdataModel {
   String vslaName;
-  String perAttendence;
+  int perAttendence;
   String location;
   int numMembers;
-  double totalSavings;
-  double vslaCapital;
-  double loanTaken;
-  double totalWelfare;
-  double welfareLoanedOut;
+  int totalSavings;
+  int vslaCapital;
+  int loanTaken;
+  int totalWelfare;
+  int welfareLoanedOut;
   int membersAccessedLoans;
-  double loanRepayment;
+  int loanRepayment;
+  final String created;
+  final String modified;
   bool selected = false;
 
   REACHdataModel(
@@ -24,5 +26,7 @@ class REACHdataModel {
     this.welfareLoanedOut,
     this.membersAccessedLoans,
     this.loanRepayment,
+    this.created,
+    this.modified,
   );
 }

@@ -19,15 +19,15 @@ const kSHGDataColumns = <DataColumn>[
 
 final List<SHGdataModel> _shgDataRows = <SHGdataModel>[
   SHGdataModel('shgName', 'location', '1/2/222', 18, 92, 9, 1000, 1000, 1000,
-      1000, 100, 6, 200, '1:1'),
+      1000, 100, 6, 200, '1:1', '1/3/2021', '4/6/2020'),
   SHGdataModel('shgName', 'location', '1/2/222', 18, 92, 9, 1000, 1000, 1000,
-      1000, 100, 6, 200, '1:1'),
+      1000, 100, 6, 200, '1:1', '1/3/2021', '4/6/2020'),
   SHGdataModel('shgName', 'location', '1/2/222', 18, 92, 9, 1000, 1000, 1000,
-      1000, 100, 6, 200, '1:1'),
+      1000, 100, 6, 200, '1:1', '1/3/2021', '4/6/2020'),
   SHGdataModel('shgName', 'location', '1/2/222', 18, 92, 9, 1000, 1000, 1000,
-      1000, 100, 6, 200, '1:1'),
+      1000, 100, 6, 200, '1:1', '1/3/2021', '4/6/2020'),
   SHGdataModel('shgName', 'location', '1/2/222', 18, 92, 9, 1000, 1000, 1000,
-      1000, 100, 6, 200, '1:1'),
+      1000, 100, 6, 200, '1:1', '1/3/2021', '4/6/2020'),
 ];
 
 class SHGDataScr extends DataTableSource {

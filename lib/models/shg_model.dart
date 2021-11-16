@@ -13,6 +13,8 @@ class SHGdataModel {
   int numLoansAccessed;
   int loanRepayment;
   String loanSavingRatio;
+  final String created;
+  final String modified;
   bool selected = false;
 
   SHGdataModel(
@@ -30,5 +32,7 @@ class SHGdataModel {
     this.numLoansAccessed,
     this.loanRepayment,
     this.loanSavingRatio,
+    this.created,
+    this.modified,
   );
 }

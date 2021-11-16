@@ -14,6 +14,8 @@ class WIDdataModel {
   int numLoansAccessed;
   int loanRepayment;
   int amntLoansWrittenoff;
+  final String created;
+  final String modified;
   bool selected = false;
 
   WIDdataModel(
@@ -32,5 +34,7 @@ class WIDdataModel {
     this.numLoansAccessed,
     this.loanRepayment,
     this.amntLoansWrittenoff,
+    this.created,
+    this.modified,
   );
 }

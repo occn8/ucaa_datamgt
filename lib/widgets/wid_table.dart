@@ -20,17 +20,17 @@ const kWIDDataColumns = <DataColumn>[
 
 final List<WIDdataModel> _widDataRows = <WIDdataModel>[
   WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000),
+      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
   WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000),
+      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
   WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000),
+      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
   WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000),
+      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
   WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000),
+      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
   WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000),
+      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
 ];
 
 class WIDDataScr extends DataTableSource {

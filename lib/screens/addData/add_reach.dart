@@ -90,44 +90,79 @@ class _AddReachState extends State<AddReach> {
                                     buildTextFormField(
                                       context,
                                       _vslaNameController,
-                                      'Product Name',
-                                      "Oral tooth brush",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _totalSavingsController,
-                                      'Brand',
-                                      "Gucci",
+                                      'VLSA Name',
+                                      "vlsa_name",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
                                       _perAttendenceController,
-                                      'Product Price',
-                                      "5,000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _numMembersController,
-                                      'Product Quantity',
-                                      "15",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _vslaCapitalController,
-                                      'Product Description',
-                                      "This is an Oral tooth brush",
+                                      'Attendance',
+                                      "20",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
                                       _locationController,
-                                      'Image Name',
-                                      "oralimage",
+                                      'Location',
+                                      "kampala",
                                       TextInputType.text,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _numMembersController,
+                                      'Number of Members',
+                                      "25",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _totalSavingsController,
+                                      'Total Savings',
+                                      "20000",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _vslaCapitalController,
+                                      'VLSA Capital',
+                                      "2000",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _loanTakenController,
+                                      'Loan taken',
+                                      "10000",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _totalWelfareController,
+                                      'Total welfare',
+                                      "20000",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _welfareLoanedOutController,
+                                      'Welfare Loaned out',
+                                      "400",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _membersAccessedLoansController,
+                                      'Member accessed Loans',
+                                      "6",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _loanRepaymentController,
+                                      'Loan Repayment',
+                                      "2000",
+                                      TextInputType.number,
                                     ),
                                     const SizedBox(height: 20),
                                     ElevatedButton(
@@ -138,23 +173,37 @@ class _AddReachState extends State<AddReach> {
                                             isUploading = true;
                                           });
                                           Map<String, dynamic> data = {
-                                            'price': int.parse(
+                                            'vslaName':
+                                                _vslaNameController.value.text,
+                                            'perAttendence': int.parse(
                                                 _perAttendenceController
                                                     .value.text),
-                                            'pdtName':
-                                                _vslaNameController.value.text,
-                                            'brand': _totalSavingsController
-                                                .value.text,
-                                            'pdtQuantity': int.parse(
+                                            'location':
+                                                _locationController.value.text,
+                                            'numMembers': int.parse(
                                                 _numMembersController
                                                     .value.text),
-                                            'description':
+                                            'totalSavings':
+                                                _totalSavingsController
+                                                    .value.text,
+                                            'vslaCapital':
                                                 _vslaCapitalController
                                                     .value.text,
-                                            "likes": FieldValue.arrayUnion([]),
-                                            "viewed": FieldValue.arrayUnion([]),
-                                            "comments":
-                                                FieldValue.arrayUnion([]),
+                                            'loanTaken': int.parse(
+                                                _loanTakenController
+                                                    .value.text),
+                                            'totalWelfare': int.parse(
+                                                _totalWelfareController
+                                                    .value.text),
+                                            'welfareLoanedOut': int.parse(
+                                                _welfareLoanedOutController
+                                                    .value.text),
+                                            'membersAccessedLoans': int.parse(
+                                                _membersAccessedLoansController
+                                                    .value.text),
+                                            'loanRepayment': int.parse(
+                                                _loanRepaymentController
+                                                    .value.text),
                                             'created':
                                                 DateTime.now().toString(),
                                             'modified':
@@ -224,13 +273,26 @@ class _AddReachState extends State<AddReach> {
                             if (snapshot.hasData && !snapshot.data!.exists) {}
                             Map<String, dynamic> data =
                                 snapshot.data!.data() as Map<String, dynamic>;
-                            _vslaNameController.text = data['pdtName'];
-                            _totalSavingsController.text = data['brand'];
+                            _vslaNameController.text = data['vslaName'];
                             _perAttendenceController.text =
-                                data['price'].toString();
+                                data['perAttendence'].toString();
+                            _locationController.text = data['location'];
                             _numMembersController.text =
-                                data['pdtQuantity'].toString();
-                            _vslaCapitalController.text = data['description'];
+                                data['numMembers'].toString();
+                            _totalSavingsController.text =
+                                data['totalSavings'].toString();
+                            _vslaCapitalController.text =
+                                data['vslaCapital'].toString();
+                            _loanTakenController.text =
+                                data['loanTaken'].toString();
+                            _totalWelfareController.text =
+                                data['totalWelfare'].toString();
+                            _welfareLoanedOutController.text =
+                                data['welfareLoanedOut'].toString();
+                            _membersAccessedLoansController.text =
+                                data['membersAccessedLoans'].toString();
+                            _loanRepaymentController.text =
+                                data['loanRepayment'].toString();
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
@@ -253,37 +315,79 @@ class _AddReachState extends State<AddReach> {
                                         buildTextFormField(
                                           context,
                                           _vslaNameController,
-                                          'Product Name',
-                                          "Oral tooth brush",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _totalSavingsController,
-                                          'Brand',
-                                          "Gucci",
+                                          'VLSA Name',
+                                          "vlsa_name",
                                           TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
                                           _perAttendenceController,
-                                          'Product Price',
-                                          "5,000",
-                                          TextInputType.number,
+                                          'Attendance',
+                                          "20",
+                                          TextInputType.text,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _locationController,
+                                          'Location',
+                                          "kampala",
+                                          TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
                                           _numMembersController,
-                                          'Product Quantity',
-                                          "15",
+                                          'Number of Members',
+                                          "25",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _totalSavingsController,
+                                          'Total Savings',
+                                          "20000",
                                           TextInputType.number,
                                         ),
                                         buildTextFormField(
                                           context,
                                           _vslaCapitalController,
-                                          'Product Description',
-                                          "This is an Oral tooth brush",
-                                          TextInputType.text,
+                                          'VLSA Capital',
+                                          "2000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _loanTakenController,
+                                          'Loan taken',
+                                          "10000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _totalWelfareController,
+                                          'Total welfare',
+                                          "20000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _welfareLoanedOutController,
+                                          'Welfare Loaned out',
+                                          "400",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _membersAccessedLoansController,
+                                          'Member accessed Loans',
+                                          "6",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _loanRepaymentController,
+                                          'Loan Repayment',
+                                          "2000",
+                                          TextInputType.number,
                                         ),
                                         const SizedBox(height: 40),
                                         ElevatedButton(
@@ -296,19 +400,37 @@ class _AddReachState extends State<AddReach> {
                                               FocusScope.of(context).unfocus();
 
                                               Map<String, dynamic> data = {
-                                                'price': int.parse(
+                                                'vslaName': _vslaNameController
+                                                    .value.text,
+                                                'perAttendence': int.parse(
                                                     _perAttendenceController
                                                         .value.text),
-                                                'pdtName': _vslaNameController
+                                                'location': _locationController
                                                     .value.text,
-                                                'brand': _totalSavingsController
-                                                    .value.text,
-                                                'pdtQuantity': int.parse(
+                                                'numMembers': int.parse(
                                                     _numMembersController
                                                         .value.text),
-                                                'description':
+                                                'totalSavings':
+                                                    _totalSavingsController
+                                                        .value.text,
+                                                'vslaCapital':
                                                     _vslaCapitalController
                                                         .value.text,
+                                                'loanTaken': int.parse(
+                                                    _loanTakenController
+                                                        .value.text),
+                                                'totalWelfare': int.parse(
+                                                    _totalWelfareController
+                                                        .value.text),
+                                                'welfareLoanedOut': int.parse(
+                                                    _welfareLoanedOutController
+                                                        .value.text),
+                                                'membersAccessedLoans': int.parse(
+                                                    _membersAccessedLoansController
+                                                        .value.text),
+                                                'loanRepayment': int.parse(
+                                                    _loanRepaymentController
+                                                        .value.text),
                                                 'modified':
                                                     DateTime.now().toString(),
                                               };
@@ -324,7 +446,7 @@ class _AddReachState extends State<AddReach> {
                                                   Navigator.pop(context);
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(buildSnackBar(
-                                                          "Product Updated successfully"));
+                                                          "Data Updated successfully"));
                                                 } else {
                                                   setState(() {
                                                     isUploading = false;
@@ -347,7 +469,7 @@ class _AddReachState extends State<AddReach> {
                                                     BorderRadius.circular(15)),
                                           ),
                                           child: const Text(
-                                            'Update Product',
+                                            'Update Data',
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w800,
@@ -375,7 +497,7 @@ class _AddReachState extends State<AddReach> {
                                                     BorderRadius.circular(15)),
                                           ),
                                           child: const Text(
-                                            'Delete Product',
+                                            'Delete Data',
                                             style: TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500,

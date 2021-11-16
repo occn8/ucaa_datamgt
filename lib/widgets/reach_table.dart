@@ -15,16 +15,16 @@ const kREACHDataColumns = <DataColumn>[
 ];
 
 final List<REACHdataModel> _reachDataRows = <REACHdataModel>[
-  REACHdataModel('vslaName', 'perAttendence', 'location', 19, 1000, 8000, 2990,
-      1000, 200, 5, 200),
-  REACHdataModel('vslaName', 'perAttendence', 'location', 19, 1000, 8000, 2990,
-      1000, 200, 5, 200),
-  REACHdataModel('vslaName', 'perAttendence', 'location', 19, 1000, 8000, 2990,
-      1000, 200, 5, 200),
-  REACHdataModel('vslaName', 'perAttendence', 'location', 19, 1000, 8000, 2990,
-      1000, 200, 5, 200),
-  REACHdataModel('vslaName', 'perAttendence', 'location', 19, 1000, 8000, 2990,
-      1000, 200, 5, 200),
+  REACHdataModel('vslaName', 23, 'location', 19, 1000, 8000, 2990, 1000, 200, 5,
+      200, '1/3/2021', '4/6/2020'),
+  REACHdataModel('vslaName', 23, 'location', 19, 1000, 8000, 2990, 1000, 200, 5,
+      200, '1/3/2021', '4/6/2020'),
+  REACHdataModel('vslaName', 23, 'location', 19, 1000, 8000, 2990, 1000, 200, 5,
+      200, '1/3/2021', '4/6/2020'),
+  REACHdataModel('vslaName', 23, 'location', 19, 1000, 8000, 2990, 1000, 200, 5,
+      200, '1/3/2021', '4/6/2020'),
+  REACHdataModel('vslaName', 23, 'location', 19, 1000, 8000, 2990, 1000, 200, 5,
+      200, '1/3/2021', '4/6/2020'),
 ];
 
 class REACHDataScr extends DataTableSource {
@@ -49,7 +49,7 @@ class REACHDataScr extends DataTableSource {
       },
       cells: <DataCell>[
         DataCell(Text(reachdata.vslaName)),
-        DataCell(Text(reachdata.perAttendence)),
+        DataCell(Text(reachdata.perAttendence.toString())),
         DataCell(Text(reachdata.location)),
         DataCell(Text(reachdata.numMembers.toString())),
         DataCell(Text(reachdata.totalSavings.toString())),
