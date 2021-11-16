@@ -1,42 +1,61 @@
+import 'package:ucaa_datamgt/auth_status.dart';
 import 'package:ucaa_datamgt/index.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    const TextStyle dialstyle =
+        TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
-              // Row(
-              //   children: [
-              //     Builder(
-              //       builder: (context) => InkWell(
-              //         splashColor: Theme.of(context).colorScheme.secondary,
-              //         borderRadius: BorderRadius.circular(10),
-              //         onTap: () => Scaffold.of(context).openDrawer(),
-              //         child: Container(
-              //           margin: const EdgeInsets.symmetric(horizontal: 5),
-              //           padding: const EdgeInsets.all(15),
-              //           decoration: BoxDecoration(
-              //               borderRadius: BorderRadius.circular(10)),
-              //           child: Icon(Icons.menu,
-              //               size: 25,
-              //               color: Theme.of(context).primaryColorDark),
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                child: const Text('UCAA',
-                    style:
-                        TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 10),
+                    child: const Text('UCAA',
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold)),
+                  ),
+                  PopupMenuButton(
+                    itemBuilder: (BuildContext context) {
+                      return [
+                        PopupMenuItem(
+                          child: Row(
+                            children: const [
+                              Icon(Icons.brightness_4),
+                              SizedBox(width: 4),
+                              Text('Dark Theme'),
+                            ],
+                          ),
+                          padding: const EdgeInsets.all(15),
+                        ),
+                        PopupMenuItem(
+                          child: Row(
+                            children: const [
+                              Icon(Icons.logout),
+                              SizedBox(width: 4),
+                              Text('LogOut'),
+                            ],
+                          ),
+                          onTap: () async {
+                            Get.off(() => const AuthStatus());
+                            await AuthenticationHelper().signOut();
+                          },
+                          padding: const EdgeInsets.all(15),
+                        )
+                      ];
+                    },
+                  )
+                ],
               ),
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 100, bottom: 20),
@@ -96,12 +115,13 @@ class Home extends StatelessWidget {
       floatingActionButton: SpeedDial(
           animatedIcon: AnimatedIcons.list_view,
           overlayColor: Colors.white,
-          overlayOpacity: 0.7,
+          overlayOpacity: 0.8,
           spacing: 15,
           children: [
             SpeedDialChild(
               child: const Icon(Icons.people),
               label: 'Add Users',
+              labelStyle: dialstyle,
               onTap: () {
                 Get.to(() => const AddUser());
               },
@@ -109,11 +129,37 @@ class Home extends StatelessWidget {
             ),
             SpeedDialChild(
               child: const Icon(Icons.add),
-              label: 'Add data',
+              label: 'Add CaR data',
+              labelStyle: dialstyle,
               onTap: () {
-                Get.to(() => const AddCaR(
-                      dataId: '',
-                    ));
+                Get.to(() => const AddCaR(dataId: ''));
+              },
+              backgroundColor: Theme.of(context).primaryColorLight,
+            ),
+            SpeedDialChild(
+              child: const Icon(Icons.add),
+              label: 'Add Reach data',
+              labelStyle: dialstyle,
+              onTap: () {
+                Get.to(() => const AddReach(dataId: ''));
+              },
+              backgroundColor: Theme.of(context).primaryColorLight,
+            ),
+            SpeedDialChild(
+              child: const Icon(Icons.add),
+              label: 'Add SHG data',
+              labelStyle: dialstyle,
+              onTap: () {
+                Get.to(() => const AddShg(dataId: ''));
+              },
+              backgroundColor: Theme.of(context).primaryColorLight,
+            ),
+            SpeedDialChild(
+              child: const Icon(Icons.add),
+              label: 'Add WID data',
+              labelStyle: dialstyle,
+              onTap: () {
+                Get.to(() => const AddWid(dataId: ''));
               },
               backgroundColor: Theme.of(context).primaryColorLight,
             ),

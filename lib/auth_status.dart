@@ -26,13 +26,8 @@ class _AuthStatusState extends State<AuthStatus> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
           final user = snapshot.data;
-          // auser = _auth.currentUser;
           if (user != null) {
-            // if (auser!.emailVerified) {
             return const Home();
-            // } else {
-            //   return VerifyEmail();
-            // }
           }
           return const SignIn();
         } else {
