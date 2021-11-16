@@ -79,7 +79,7 @@ class _AddShgState extends State<AddShg> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 15),
                               child: const Text(
-                                'Add Product to Store',
+                                'Add SHG Data',
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
@@ -161,13 +161,13 @@ class _AddShgState extends State<AddShg> {
                                             'modified':
                                                 DateTime.now().toString(),
                                           };
-                                          CloudDatabase.addData(data: data)
+                                          CloudDatabase.addshgData(data: data)
                                               .then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(buildSnackBar(
-                                                      "Product Added to Database"));
+                                                      "Data Added to Database"));
                                               // Navigator.pushReplacement(
                                               //     context,
                                               //     MaterialPageRoute(
@@ -192,7 +192,7 @@ class _AddShgState extends State<AddShg> {
                                                 BorderRadius.circular(15)),
                                       ),
                                       child: const Text(
-                                        'Add Product',
+                                        'Add Data',
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w800,
@@ -208,7 +208,7 @@ class _AddShgState extends State<AddShg> {
                         )
                       : FutureBuilder<DocumentSnapshot>(
                           future: _firestore
-                              .collection('products')
+                              .collection('shgtable')
                               .doc(widget.dataId)
                               .get(),
                           builder: (BuildContext context,
@@ -237,7 +237,7 @@ class _AddShgState extends State<AddShg> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 15),
                                   child: const Text(
-                                    'Update Product In Store',
+                                    'Update SHG Data',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),

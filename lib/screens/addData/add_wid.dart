@@ -80,7 +80,7 @@ class _AddWidState extends State<AddWid> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 15),
                               child: const Text(
-                                'Add Product to Store',
+                                'Add WID Data',
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
@@ -163,13 +163,13 @@ class _AddWidState extends State<AddWid> {
                                             'modified':
                                                 DateTime.now().toString(),
                                           };
-                                          CloudDatabase.addData(data: data)
+                                          CloudDatabase.addwidData(data: data)
                                               .then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(buildSnackBar(
-                                                      "Product Added to Database"));
+                                                      "Data Added to Database"));
                                               // Navigator.pushReplacement(
                                               //     context,
                                               //     MaterialPageRoute(
@@ -194,7 +194,7 @@ class _AddWidState extends State<AddWid> {
                                                 BorderRadius.circular(15)),
                                       ),
                                       child: const Text(
-                                        'Add Product',
+                                        'Add Data',
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w800,
@@ -210,7 +210,7 @@ class _AddWidState extends State<AddWid> {
                         )
                       : FutureBuilder<DocumentSnapshot>(
                           future: _firestore
-                              .collection('products')
+                              .collection('widtable')
                               .doc(widget.dataId)
                               .get(),
                           builder: (BuildContext context,
@@ -241,7 +241,7 @@ class _AddWidState extends State<AddWid> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 15),
                                   child: const Text(
-                                    'Update Product In Store',
+                                    'Update WID Data',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),

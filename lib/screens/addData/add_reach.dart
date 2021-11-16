@@ -76,7 +76,7 @@ class _AddReachState extends State<AddReach> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 15),
                               child: const Text(
-                                'Add Product to Store',
+                                'Add Reach Data',
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
@@ -160,13 +160,13 @@ class _AddReachState extends State<AddReach> {
                                             'modified':
                                                 DateTime.now().toString(),
                                           };
-                                          CloudDatabase.addData(data: data)
+                                          CloudDatabase.addreachData(data: data)
                                               .then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(buildSnackBar(
-                                                      "Product Added to Database"));
+                                                      "Data Added to Database"));
                                               // Navigator.pushReplacement(
                                               //     context,
                                               //     MaterialPageRoute(
@@ -191,7 +191,7 @@ class _AddReachState extends State<AddReach> {
                                                 BorderRadius.circular(15)),
                                       ),
                                       child: const Text(
-                                        'Add Product',
+                                        'Add Data',
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w800,
@@ -207,7 +207,7 @@ class _AddReachState extends State<AddReach> {
                         )
                       : FutureBuilder<DocumentSnapshot>(
                           future: _firestore
-                              .collection('products')
+                              .collection('reachtable')
                               .doc(widget.dataId)
                               .get(),
                           builder: (BuildContext context,
@@ -237,7 +237,7 @@ class _AddReachState extends State<AddReach> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 15),
                                   child: const Text(
-                                    'Update Product In Store',
+                                    'Update Reach Data',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
