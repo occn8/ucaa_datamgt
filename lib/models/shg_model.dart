@@ -5,13 +5,13 @@ class SHGdataModel {
   int numMember;
   int perAttendanceWk;
   int numChildren;
-  double wkSavings;
-  double wkSavingPerMember;
-  double totalSaving;
-  double shgFunds;
-  double amountLoanTaken;
+  int wkSavings;
+  int wkSavingPerMember;
+  int totalSaving;
+  int shgFunds;
+  int amountLoanTaken;
   int numLoansAccessed;
-  num loanRepayment;
+  int loanRepayment;
   String loanSavingRatio;
   bool selected = false;
 

@@ -93,44 +93,100 @@ class _AddShgState extends State<AddShg> {
                                     buildTextFormField(
                                       context,
                                       _shgNameController,
-                                      'Product Name',
-                                      "Oral tooth brush",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _numMemberController,
-                                      'Brand',
-                                      "Gucci",
+                                      'SHG Name',
+                                      "shg_name",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
                                       _locationController,
-                                      'Product Price',
-                                      "5,000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _perAttendanceWkController,
-                                      'Product Quantity',
-                                      "15",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _wkSavingsController,
-                                      'Product Description',
-                                      "This is an Oral tooth brush",
+                                      'Location',
+                                      "kampala",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
                                       _shgFormedController,
-                                      'Image Name',
-                                      "oralimage",
+                                      'Formed',
+                                      "1/3/2019",
                                       TextInputType.text,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _numMemberController,
+                                      'No Members',
+                                      "19",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _perAttendanceWkController,
+                                      '%Attendance per Week',
+                                      "15",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _numChildrenController,
+                                      'No Children',
+                                      "3",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _wkSavingsController,
+                                      'Week Savings',
+                                      "1500",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _wkSavingPerMemberController,
+                                      'Weekly savings per member',
+                                      "150",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _totalSavingController,
+                                      'Total Savings',
+                                      "10500",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _shgFundsController,
+                                      'SHG Funds',
+                                      "5000",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _amountLoanTakenController,
+                                      'Amount of Loan taken',
+                                      "500",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _numLoansAccessedController,
+                                      'No Loans accessed',
+                                      "4",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _loanRepaymentController,
+                                      'Loans Repayment',
+                                      "400",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _loanSavingRatioController,
+                                      'Loan/Savings ratio',
+                                      "1:3",
+                                      TextInputType.number,
                                     ),
                                     const SizedBox(height: 20),
                                     ElevatedButton(
@@ -141,21 +197,44 @@ class _AddShgState extends State<AddShg> {
                                             isUploading = true;
                                           });
                                           Map<String, dynamic> data = {
-                                            'price': int.parse(
-                                                _locationController.value.text),
-                                            'pdtName':
+                                            'shgName':
                                                 _shgNameController.value.text,
-                                            'brand':
-                                                _numMemberController.value.text,
-                                            'pdtQuantity': int.parse(
+                                            'location':
+                                                _locationController.value.text,
+                                            'shgFormed':
+                                                _shgFormedController.value.text,
+                                            'numMember': int.parse(
+                                                _numMemberController
+                                                    .value.text),
+                                            'perAttendanceWk': int.parse(
                                                 _perAttendanceWkController
                                                     .value.text),
-                                            'description':
-                                                _wkSavingsController.value.text,
-                                            "likes": FieldValue.arrayUnion([]),
-                                            "viewed": FieldValue.arrayUnion([]),
-                                            "comments":
-                                                FieldValue.arrayUnion([]),
+                                            'numChildren': int.parse(
+                                                _numChildrenController
+                                                    .value.text),
+                                            'wkSavings': int.parse(
+                                                _wkSavingsController
+                                                    .value.text),
+                                            'wkSavingPerMember': int.parse(
+                                                _wkSavingPerMemberController
+                                                    .value.text),
+                                            'totalSaving': int.parse(
+                                                _totalSavingController
+                                                    .value.text),
+                                            'shgFunds': int.parse(
+                                                _shgFundsController.value.text),
+                                            'amountLoanTaken': int.parse(
+                                                _amountLoanTakenController
+                                                    .value.text),
+                                            'numLoansAccessed': int.parse(
+                                                _numLoansAccessedController
+                                                    .value.text),
+                                            'loanRepayment': int.parse(
+                                                _loanRepaymentController
+                                                    .value.text),
+                                            'loanSavingRatio':
+                                                _loanSavingRatioController
+                                                    .value.text,
                                             'created':
                                                 DateTime.now().toString(),
                                             'modified':
@@ -225,12 +304,31 @@ class _AddShgState extends State<AddShg> {
                             if (snapshot.hasData && !snapshot.data!.exists) {}
                             Map<String, dynamic> data =
                                 snapshot.data!.data() as Map<String, dynamic>;
-                            _shgNameController.text = data['pdtName'];
-                            _numMemberController.text = data['brand'];
-                            _locationController.text = data['price'].toString();
+                            _shgNameController.text = data['shgName'];
+                            _locationController.text = data['location'];
+                            _shgFormedController.text = data['shgFormed'];
+                            _numMemberController.text =
+                                data['numMember'].toString();
                             _perAttendanceWkController.text =
-                                data['pdtQuantity'].toString();
-                            _wkSavingsController.text = data['description'];
+                                data['perAttendanceWk'].toString();
+                            _numChildrenController.text =
+                                data['numChildren'].toString();
+                            _wkSavingsController.text =
+                                data['wkSavings'].toString();
+                            _wkSavingPerMemberController.text =
+                                data['wkSavingPerMember'].toString();
+                            _totalSavingController.text =
+                                data['totalSaving'].toString();
+                            _shgFundsController.text =
+                                data['shgFunds'].toString();
+                            _amountLoanTakenController.text =
+                                data['amountLoanTaken'].toString();
+                            _numLoansAccessedController.text =
+                                data['numLoansAccessed'].toString();
+                            _loanRepaymentController.text =
+                                data['loanRepayment'].toString();
+                            _loanSavingRatioController.text =
+                                data['loanSavingRatio'];
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
@@ -253,37 +351,100 @@ class _AddShgState extends State<AddShg> {
                                         buildTextFormField(
                                           context,
                                           _shgNameController,
-                                          'Product Name',
-                                          "Oral tooth brush",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _numMemberController,
-                                          'Brand',
-                                          "Gucci",
+                                          'SHG Name',
+                                          "shg_name",
                                           TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
                                           _locationController,
-                                          'Product Price',
-                                          "5,000",
+                                          'Location',
+                                          "kampala",
+                                          TextInputType.text,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _shgFormedController,
+                                          'Formed',
+                                          "1/3/2019",
+                                          TextInputType.text,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _numMemberController,
+                                          'No Members',
+                                          "19",
                                           TextInputType.number,
                                         ),
                                         buildTextFormField(
                                           context,
                                           _perAttendanceWkController,
-                                          'Product Quantity',
+                                          '%Attendance per Week',
                                           "15",
                                           TextInputType.number,
                                         ),
                                         buildTextFormField(
                                           context,
+                                          _numChildrenController,
+                                          'No Children',
+                                          "3",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
                                           _wkSavingsController,
-                                          'Product Description',
-                                          "This is an Oral tooth brush",
-                                          TextInputType.text,
+                                          'Week Savings',
+                                          "1500",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _wkSavingPerMemberController,
+                                          'Weekly savings per member',
+                                          "150",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _totalSavingController,
+                                          'Total Savings',
+                                          "10500",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _shgFundsController,
+                                          'SHG Funds',
+                                          "5000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _amountLoanTakenController,
+                                          'Amount of Loan taken',
+                                          "500",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _numLoansAccessedController,
+                                          'No Loans accessed',
+                                          "4",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _loanRepaymentController,
+                                          'Loans Repayment',
+                                          "400",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _loanSavingRatioController,
+                                          'Loan/Savings ratio',
+                                          "1:3",
+                                          TextInputType.number,
                                         ),
                                         const SizedBox(height: 40),
                                         ElevatedButton(
@@ -296,18 +457,45 @@ class _AddShgState extends State<AddShg> {
                                               FocusScope.of(context).unfocus();
 
                                               Map<String, dynamic> data = {
-                                                'price': int.parse(
-                                                    _locationController
+                                                'shgName': _shgNameController
+                                                    .value.text,
+                                                'location': _locationController
+                                                    .value.text,
+                                                'shgFormed':
+                                                    _shgFormedController
+                                                        .value.text,
+                                                'numMember': int.parse(
+                                                    _numMemberController
                                                         .value.text),
-                                                'pdtName': _shgNameController
-                                                    .value.text,
-                                                'brand': _numMemberController
-                                                    .value.text,
-                                                'pdtQuantity': int.parse(
+                                                'perAttendanceWk': int.parse(
                                                     _perAttendanceWkController
                                                         .value.text),
-                                                'description':
+                                                'numChildren': int.parse(
+                                                    _numChildrenController
+                                                        .value.text),
+                                                'wkSavings': int.parse(
                                                     _wkSavingsController
+                                                        .value.text),
+                                                'wkSavingPerMember': int.parse(
+                                                    _wkSavingPerMemberController
+                                                        .value.text),
+                                                'totalSaving': int.parse(
+                                                    _totalSavingController
+                                                        .value.text),
+                                                'shgFunds': int.parse(
+                                                    _shgFundsController
+                                                        .value.text),
+                                                'amountLoanTaken': int.parse(
+                                                    _amountLoanTakenController
+                                                        .value.text),
+                                                'numLoansAccessed': int.parse(
+                                                    _numLoansAccessedController
+                                                        .value.text),
+                                                'loanRepayment': int.parse(
+                                                    _loanRepaymentController
+                                                        .value.text),
+                                                'loanSavingRatio':
+                                                    _loanSavingRatioController
                                                         .value.text,
                                                 'modified':
                                                     DateTime.now().toString(),
@@ -347,7 +535,7 @@ class _AddShgState extends State<AddShg> {
                                                     BorderRadius.circular(15)),
                                           ),
                                           child: const Text(
-                                            'Update Product',
+                                            'Update Data',
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w800,
@@ -375,7 +563,7 @@ class _AddShgState extends State<AddShg> {
                                                     BorderRadius.circular(15)),
                                           ),
                                           child: const Text(
-                                            'Delete Product',
+                                            'Delete Data',
                                             style: TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500,
