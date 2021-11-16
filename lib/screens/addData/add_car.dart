@@ -3,22 +3,33 @@ import 'package:ucaa_datamgt/index.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-class AddData extends StatefulWidget {
-  const AddData({Key? key, required this.dataId}) : super(key: key);
+class AddCaR extends StatefulWidget {
+  const AddCaR({Key? key, required this.dataId}) : super(key: key);
 
   final String dataId;
   @override
-  _AddDataState createState() => _AddDataState();
+  _AddCaRState createState() => _AddCaRState();
 }
 
-class _AddDataState extends State<AddData> {
+class _AddCaRState extends State<AddCaR> {
   final _formkey = GlobalKey<FormState>();
-  final _pdtNameController = TextEditingController();
-  final _priceController = TextEditingController();
-  final _imageUrlController = TextEditingController();
-  final _brandController = TextEditingController();
-  final _quantityController = TextEditingController();
-  final _descriptionController = TextEditingController();
+  final _groupNameController = TextEditingController();
+  final _subCountyController = TextEditingController();
+  final _parishController = TextEditingController();
+  final _gdFormedController = TextEditingController();
+  final _numMembersController = TextEditingController();
+  final _segMaleController = TextEditingController();
+  final _segFemaleController = TextEditingController();
+  final _timesSharedOutController = TextEditingController();
+  final _shareValueController = TextEditingController();
+  final _numChildrenController = TextEditingController();
+  final _amntHighestSaverController = TextEditingController();
+  final _amntSavedController = TextEditingController();
+  final _amntSocialFundController = TextEditingController();
+  final _amntLoansTakenController = TextEditingController();
+  final _numLoansAccessedController = TextEditingController();
+  final _loanRepaymentController = TextEditingController();
+  final _amntLoansWrittenoffController = TextEditingController();
   bool isUploading = false;
 
   @override
@@ -84,42 +95,42 @@ class _AddDataState extends State<AddData> {
                                   children: [
                                     buildTextFormField(
                                       context,
-                                      _pdtNameController,
+                                      _groupNameController,
                                       'Product Name',
                                       "Oral tooth brush",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _brandController,
+                                      _gdFormedController,
                                       'Brand',
                                       "Gucci",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _priceController,
+                                      _subCountyController,
                                       'Product Price',
                                       "5,000",
                                       TextInputType.number,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _quantityController,
+                                      _numMembersController,
                                       'Product Quantity',
                                       "15",
                                       TextInputType.number,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _descriptionController,
+                                      _segMaleController,
                                       'Product Description',
                                       "This is an Oral tooth brush",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _imageUrlController,
+                                      _parishController,
                                       'Image Name',
                                       "oralimage",
                                       TextInputType.text,
@@ -134,16 +145,17 @@ class _AddDataState extends State<AddData> {
                                           });
                                           Map<String, dynamic> data = {
                                             'price': int.parse(
-                                                _priceController.value.text),
+                                                _subCountyController
+                                                    .value.text),
                                             'pdtName':
-                                                _pdtNameController.value.text,
+                                                _groupNameController.value.text,
                                             'brand':
-                                                _brandController.value.text,
+                                                _gdFormedController.value.text,
                                             'pdtQuantity': int.parse(
-                                                _quantityController.value.text),
+                                                _numMembersController
+                                                    .value.text),
                                             'description':
-                                                _descriptionController
-                                                    .value.text,
+                                                _segMaleController.value.text,
                                             "likes": FieldValue.arrayUnion([]),
                                             "viewed": FieldValue.arrayUnion([]),
                                             "comments":
@@ -216,12 +228,13 @@ class _AddDataState extends State<AddData> {
                             if (snapshot.hasData && !snapshot.data!.exists) {}
                             Map<String, dynamic> data =
                                 snapshot.data!.data() as Map<String, dynamic>;
-                            _pdtNameController.text = data['pdtName'];
-                            _brandController.text = data['brand'];
-                            _priceController.text = data['price'].toString();
-                            _quantityController.text =
+                            _groupNameController.text = data['pdtName'];
+                            _gdFormedController.text = data['brand'];
+                            _subCountyController.text =
+                                data['price'].toString();
+                            _numMembersController.text =
                                 data['pdtQuantity'].toString();
-                            _descriptionController.text = data['description'];
+                            _segMaleController.text = data['description'];
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
@@ -243,35 +256,35 @@ class _AddDataState extends State<AddData> {
                                       children: [
                                         buildTextFormField(
                                           context,
-                                          _pdtNameController,
+                                          _groupNameController,
                                           'Product Name',
                                           "Oral tooth brush",
                                           TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _brandController,
+                                          _gdFormedController,
                                           'Brand',
                                           "Gucci",
                                           TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _priceController,
+                                          _subCountyController,
                                           'Product Price',
                                           "5,000",
                                           TextInputType.number,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _quantityController,
+                                          _numMembersController,
                                           'Product Quantity',
                                           "15",
                                           TextInputType.number,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _descriptionController,
+                                          _segMaleController,
                                           'Product Description',
                                           "This is an Oral tooth brush",
                                           TextInputType.text,
@@ -288,17 +301,17 @@ class _AddDataState extends State<AddData> {
 
                                               Map<String, dynamic> data = {
                                                 'price': int.parse(
-                                                    _priceController
+                                                    _subCountyController
                                                         .value.text),
-                                                'pdtName': _pdtNameController
+                                                'pdtName': _groupNameController
                                                     .value.text,
-                                                'brand':
-                                                    _brandController.value.text,
+                                                'brand': _gdFormedController
+                                                    .value.text,
                                                 'pdtQuantity': int.parse(
-                                                    _quantityController
+                                                    _numMembersController
                                                         .value.text),
                                                 'description':
-                                                    _descriptionController
+                                                    _segMaleController
                                                         .value.text,
                                                 'modified':
                                                     DateTime.now().toString(),
@@ -423,12 +436,12 @@ class _AddDataState extends State<AddData> {
 
   @override
   void dispose() {
-    _pdtNameController.dispose();
-    _brandController.dispose();
-    _descriptionController.dispose();
-    _imageUrlController.dispose();
-    _priceController.dispose();
-    _quantityController.dispose();
+    _groupNameController.dispose();
+    _gdFormedController.dispose();
+    _segMaleController.dispose();
+    _parishController.dispose();
+    _subCountyController.dispose();
+    _numMembersController.dispose();
     super.dispose();
   }
 }
