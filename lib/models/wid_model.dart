@@ -5,15 +5,15 @@ class WIDdataModel {
   String gdFormed;
   int numMembers;
   int timesSharedOut;
-  double shareValue;
+  int shareValue;
   int numChildren;
-  double amntHighestSaver;
-  double amntSaved;
-  double amntSocialFund;
-  double amntLoansTaken;
+  int amntHighestSaver;
+  int amntSaved;
+  int amntSocialFund;
+  int amntLoansTaken;
   int numLoansAccessed;
-  num loanRepayment;
-  double amntLoansWrittenoff;
+  int loanRepayment;
+  int amntLoansWrittenoff;
   bool selected = false;
 
   WIDdataModel(

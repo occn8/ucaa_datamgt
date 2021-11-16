@@ -216,34 +216,36 @@ class _AddWidState extends State<AddWid> {
                                             'numMembers': int.parse(
                                                 _numMembersController
                                                     .value.text),
-                                            'timesSharedOut':
+                                            'timesSharedOut': int.parse(
                                                 _timesSharedOutController
-                                                    .value.text,
-                                            'shareValue': _shareValueController
-                                                .value.text,
-                                            'numChildren':
+                                                    .value.text),
+                                            'shareValue': int.parse(
+                                                _shareValueController
+                                                    .value.text),
+                                            'numChildren': int.parse(
                                                 _numChildrenController
-                                                    .value.text,
-                                            'amntHighestSaver':
+                                                    .value.text),
+                                            'amntHighestSaver': int.parse(
                                                 _amntHighestSaverController
-                                                    .value.text,
-                                            'amntSaved':
-                                                _amntSavedController.value.text,
-                                            'amntSocialFund':
+                                                    .value.text),
+                                            'amntSaved': int.parse(
+                                                _amntSavedController
+                                                    .value.text),
+                                            'amntSocialFund': int.parse(
                                                 _amntSocialFundController
-                                                    .value.text,
-                                            'amntLoansTaken':
+                                                    .value.text),
+                                            'amntLoansTaken': int.parse(
                                                 _amntLoansTakenController
-                                                    .value.text,
-                                            'numLoansAccessed':
+                                                    .value.text),
+                                            'numLoansAccessed': int.parse(
                                                 _numLoansAccessedController
-                                                    .value.text,
-                                            'loanRepayment':
+                                                    .value.text),
+                                            'loanRepayment': int.parse(
                                                 _loanRepaymentController
-                                                    .value.text,
-                                            'amntLoansWrittenoff':
+                                                    .value.text),
+                                            'amntLoansWrittenoff': int.parse(
                                                 _amntLoansWrittenoffController
-                                                    .value.text,
+                                                    .value.text),
                                             'created':
                                                 DateTime.now().toString(),
                                             'modified':
@@ -313,14 +315,32 @@ class _AddWidState extends State<AddWid> {
                             if (snapshot.hasData && !snapshot.data!.exists) {}
                             Map<String, dynamic> data =
                                 snapshot.data!.data() as Map<String, dynamic>;
-                            _groupNameController.text = data['pdtName'];
-                            _gdFormedController.text = data['brand'];
-                            _subCountyController.text =
-                                data['price'].toString();
+                            _groupNameController.text = data['groupName'];
+                            _subCountyController.text = data['subCounty'];
+                            _parishController.text = data['parish'];
+                            _gdFormedController.text = data['gdFormed'];
                             _numMembersController.text =
-                                data['pdtQuantity'].toString();
+                                data['numMembers'].toString();
                             _timesSharedOutController.text =
-                                data['description'];
+                                data['timesSharedOut'].toString();
+                            _shareValueController.text =
+                                data['shareValue'].toString();
+                            _numChildrenController.text =
+                                data['numChildren'].toString();
+                            _amntHighestSaverController.text =
+                                data['amntHighestSaver'].toString();
+                            _amntSavedController.text =
+                                data['amntSaved'].toString();
+                            _amntSocialFundController.text =
+                                data['amntSocialFund'].toString();
+                            _amntLoansTakenController.text =
+                                data['amntLoansTaken'].toString();
+                            _numLoansAccessedController.text =
+                                data['numLoansAccessed'].toString();
+                            _loanRepaymentController.text =
+                                data['loanRepayment'].toString();
+                            _amntLoansWrittenoffController.text =
+                                data['amntLoansWrittenoff'].toString();
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
@@ -343,37 +363,107 @@ class _AddWidState extends State<AddWid> {
                                         buildTextFormField(
                                           context,
                                           _groupNameController,
-                                          'Product Name',
-                                          "Oral tooth brush",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _gdFormedController,
-                                          'Brand',
-                                          "Gucci",
+                                          'Group Name',
+                                          "grp_name",
                                           TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
                                           _subCountyController,
-                                          'Product Price',
+                                          'Sub-county',
                                           "5,000",
-                                          TextInputType.number,
+                                          TextInputType.text,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _parishController,
+                                          'Image Name',
+                                          "oralimage",
+                                          TextInputType.text,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _gdFormedController,
+                                          'Formed(date)',
+                                          "1/1/2008",
+                                          TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
                                           _numMembersController,
-                                          'Product Quantity',
+                                          'No Members',
                                           "15",
                                           TextInputType.number,
                                         ),
                                         buildTextFormField(
                                           context,
                                           _timesSharedOutController,
-                                          'Product Description',
-                                          "This is an Oral tooth brush",
-                                          TextInputType.text,
+                                          'Times Shared Out',
+                                          "7",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _shareValueController,
+                                          'Share Value',
+                                          "5,000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _numChildrenController,
+                                          'Number of Children',
+                                          "2",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _amntHighestSaverController,
+                                          'Amount of Highest Saver',
+                                          "5,000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _amntSavedController,
+                                          'Amount Saved',
+                                          "40000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _amntSocialFundController,
+                                          'Amount of Social fund',
+                                          "5,000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _amntLoansTakenController,
+                                          'Amount of Loans taken',
+                                          "4000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _numLoansAccessedController,
+                                          'No Loans Accessed',
+                                          "3",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _loanRepaymentController,
+                                          'Loans Repayment',
+                                          "3",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _amntLoansWrittenoffController,
+                                          'Amount of Loans Written Off',
+                                          "3",
+                                          TextInputType.number,
                                         ),
                                         const SizedBox(height: 40),
                                         ElevatedButton(
@@ -386,19 +476,49 @@ class _AddWidState extends State<AddWid> {
                                               FocusScope.of(context).unfocus();
 
                                               Map<String, dynamic> data = {
-                                                'price': int.parse(
+                                                'groupName':
+                                                    _groupNameController
+                                                        .value.text,
+                                                'subCounty':
                                                     _subCountyController
-                                                        .value.text),
-                                                'pdtName': _groupNameController
+                                                        .value.text,
+                                                'parish': _parishController
                                                     .value.text,
-                                                'brand': _gdFormedController
+                                                'gdFormed': _gdFormedController
                                                     .value.text,
-                                                'pdtQuantity': int.parse(
+                                                'numMembers': int.parse(
                                                     _numMembersController
                                                         .value.text),
-                                                'description':
+                                                'timesSharedOut': int.parse(
                                                     _timesSharedOutController
-                                                        .value.text,
+                                                        .value.text),
+                                                'shareValue': int.parse(
+                                                    _shareValueController
+                                                        .value.text),
+                                                'numChildren': int.parse(
+                                                    _numChildrenController
+                                                        .value.text),
+                                                'amntHighestSaver': int.parse(
+                                                    _amntHighestSaverController
+                                                        .value.text),
+                                                'amntSaved': int.parse(
+                                                    _amntSavedController
+                                                        .value.text),
+                                                'amntSocialFund': int.parse(
+                                                    _amntSocialFundController
+                                                        .value.text),
+                                                'amntLoansTaken': int.parse(
+                                                    _amntLoansTakenController
+                                                        .value.text),
+                                                'numLoansAccessed': int.parse(
+                                                    _numLoansAccessedController
+                                                        .value.text),
+                                                'loanRepayment': int.parse(
+                                                    _loanRepaymentController
+                                                        .value.text),
+                                                'amntLoansWrittenoff': int.parse(
+                                                    _amntLoansWrittenoffController
+                                                        .value.text),
                                                 'modified':
                                                     DateTime.now().toString(),
                                               };
@@ -465,7 +585,7 @@ class _AddWidState extends State<AddWid> {
                                                     BorderRadius.circular(15)),
                                           ),
                                           child: const Text(
-                                            'Delete Product',
+                                            'Delete Data',
                                             style: TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500,

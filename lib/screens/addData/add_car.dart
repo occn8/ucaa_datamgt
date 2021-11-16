@@ -231,38 +231,41 @@ class _AddCaRState extends State<AddCaR> {
                                             'numMembers': int.parse(
                                                 _numMembersController
                                                     .value.text),
-                                            'segMale':
-                                                _segMaleController.value.text,
-                                            'segFemale':
-                                                _segFemaleController.value.text,
-                                            'timesSharedOut':
+                                            'segMale': int.parse(
+                                                _segMaleController.value.text),
+                                            'segFemale': int.parse(
+                                                _segFemaleController
+                                                    .value.text),
+                                            'timesSharedOut': int.parse(
                                                 _timesSharedOutController
-                                                    .value.text,
-                                            'shareValue': _shareValueController
-                                                .value.text,
-                                            'numChildren':
+                                                    .value.text),
+                                            'shareValue': int.parse(
+                                                _shareValueController
+                                                    .value.text),
+                                            'numChildren': int.parse(
                                                 _numChildrenController
-                                                    .value.text,
-                                            'amntHighestSaver':
+                                                    .value.text),
+                                            'amntHighestSaver': int.parse(
                                                 _amntHighestSaverController
-                                                    .value.text,
-                                            'amntSaved':
-                                                _amntSavedController.value.text,
-                                            'amntSocialFund':
+                                                    .value.text),
+                                            'amntSaved': int.parse(
+                                                _amntSavedController
+                                                    .value.text),
+                                            'amntSocialFund': int.parse(
                                                 _amntSocialFundController
-                                                    .value.text,
-                                            'amntLoansTaken':
+                                                    .value.text),
+                                            'amntLoansTaken': int.parse(
                                                 _amntLoansTakenController
-                                                    .value.text,
-                                            'numLoansAccessed':
+                                                    .value.text),
+                                            'numLoansAccessed': int.parse(
                                                 _numLoansAccessedController
-                                                    .value.text,
-                                            'loanRepayment':
+                                                    .value.text),
+                                            'loanRepayment': int.parse(
                                                 _loanRepaymentController
-                                                    .value.text,
-                                            'amntLoansWrittenoff':
+                                                    .value.text),
+                                            'amntLoansWrittenoff': int.parse(
                                                 _amntLoansWrittenoffController
-                                                    .value.text,
+                                                    .value.text),
                                             'created':
                                                 DateTime.now().toString(),
                                             'modified':
@@ -333,26 +336,31 @@ class _AddCaRState extends State<AddCaR> {
                             _parishController.text = data['parish'];
                             _gdFormedController.text = data['gdFormed'];
                             _numMembersController.text =
-                                data['pdtQuantity'].toString();
-                            _segMaleController.text = data['segMale'];
-                            _segFemaleController.text = data['segFemale'];
+                                data['numMembers'].toString();
+                            _segMaleController.text =
+                                data['segMale'].toString();
+                            _segFemaleController.text =
+                                data['segFemale'].toString();
                             _timesSharedOutController.text =
-                                data['timesSharedOut'];
-                            _shareValueController.text = data['shareValue'];
-                            _numChildrenController.text = data['numChildren'];
+                                data['timesSharedOut'].toString();
+                            _shareValueController.text =
+                                data['shareValue'].toString();
+                            _numChildrenController.text =
+                                data['numChildren'].toString();
                             _amntHighestSaverController.text =
-                                data['amntHighestSaver'];
-                            _amntSavedController.text = data['amntSaved'];
+                                data['amntHighestSaver'].toString();
+                            _amntSavedController.text =
+                                data['amntSaved'].toString();
                             _amntSocialFundController.text =
-                                data['amntSocialFund'];
+                                data['amntSocialFund'].toString();
                             _amntLoansTakenController.text =
-                                data['amntLoansTaken'];
+                                data['amntLoansTaken'].toString();
                             _numLoansAccessedController.text =
-                                data['numLoansAccessed'];
+                                data['numLoansAccessed'].toString();
                             _loanRepaymentController.text =
-                                data['loanRepayment'];
+                                data['loanRepayment'].toString();
                             _amntLoansWrittenoffController.text =
-                                data['amntLoansWrittenoff'];
+                                data['amntLoansWrittenoff'].toString();
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
@@ -515,41 +523,42 @@ class _AddCaRState extends State<AddCaR> {
                                                 'numMembers': int.parse(
                                                     _numMembersController
                                                         .value.text),
-                                                'segMale': _segMaleController
-                                                    .value.text,
-                                                'segFemale':
+                                                'segMale': int.parse(
+                                                    _segMaleController
+                                                        .value.text),
+                                                'segFemale': int.parse(
                                                     _segFemaleController
-                                                        .value.text,
-                                                'timesSharedOut':
+                                                        .value.text),
+                                                'timesSharedOut': int.parse(
                                                     _timesSharedOutController
-                                                        .value.text,
-                                                'shareValue':
+                                                        .value.text),
+                                                'shareValue': int.parse(
                                                     _shareValueController
-                                                        .value.text,
-                                                'numChildren':
+                                                        .value.text),
+                                                'numChildren': int.parse(
                                                     _numChildrenController
-                                                        .value.text,
-                                                'amntHighestSaver':
+                                                        .value.text),
+                                                'amntHighestSaver': int.parse(
                                                     _amntHighestSaverController
-                                                        .value.text,
-                                                'amntSaved':
+                                                        .value.text),
+                                                'amntSaved': int.parse(
                                                     _amntSavedController
-                                                        .value.text,
-                                                'amntSocialFund':
+                                                        .value.text),
+                                                'amntSocialFund': int.parse(
                                                     _amntSocialFundController
-                                                        .value.text,
-                                                'amntLoansTaken':
+                                                        .value.text),
+                                                'amntLoansTaken': int.parse(
                                                     _amntLoansTakenController
-                                                        .value.text,
-                                                'numLoansAccessed':
+                                                        .value.text),
+                                                'numLoansAccessed': int.parse(
                                                     _numLoansAccessedController
-                                                        .value.text,
-                                                'loanRepayment':
+                                                        .value.text),
+                                                'loanRepayment': int.parse(
                                                     _loanRepaymentController
-                                                        .value.text,
-                                                'amntLoansWrittenoff':
+                                                        .value.text),
+                                                'amntLoansWrittenoff': int.parse(
                                                     _amntLoansWrittenoffController
-                                                        .value.text,
+                                                        .value.text),
                                                 'modified':
                                                     DateTime.now().toString(),
                                               };
