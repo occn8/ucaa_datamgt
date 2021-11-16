@@ -117,6 +117,7 @@ class Home extends StatelessWidget {
           overlayColor: Colors.white,
           overlayOpacity: 0.8,
           spacing: 15,
+          childrenButtonSize: 60,
           children: [
             SpeedDialChild(
               child: const Icon(Icons.people),
