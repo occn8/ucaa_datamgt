@@ -16,6 +16,8 @@ class CaRDataModel {
   final int numLoansAccessed;
   final num loanRepayment;
   final double amntLoansWrittenoff;
+  final String created;
+  final String modified;
   bool selected = false;
 
   CaRDataModel(
@@ -36,5 +38,7 @@ class CaRDataModel {
     this.numLoansAccessed,
     this.loanRepayment,
     this.amntLoansWrittenoff,
+    this.created,
+    this.modified,
   );
 }

@@ -71,7 +71,6 @@ class _AddCaRState extends State<AddCaR> {
       ),
       body: SafeArea(
         child: GestureDetector(
-          // onTap: () => FocusScope.of(context).unfocus(),
           child: isUploading == false
               ? SafeArea(
                   child: widget.dataId == ''
@@ -82,7 +81,7 @@ class _AddCaRState extends State<AddCaR> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 15),
                               child: const Text(
-                                'Add Product to Store',
+                                'Add CaR Data',
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
@@ -96,37 +95,16 @@ class _AddCaRState extends State<AddCaR> {
                                     buildTextFormField(
                                       context,
                                       _groupNameController,
-                                      'Product Name',
-                                      "Oral tooth brush",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _gdFormedController,
-                                      'Brand',
-                                      "Gucci",
+                                      'Group Name',
+                                      "grp_name",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
                                       _subCountyController,
-                                      'Product Price',
+                                      'Sub-county',
                                       "5,000",
                                       TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _numMembersController,
-                                      'Product Quantity',
-                                      "15",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _segMaleController,
-                                      'Product Description',
-                                      "This is an Oral tooth brush",
-                                      TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
@@ -134,6 +112,27 @@ class _AddCaRState extends State<AddCaR> {
                                       'Image Name',
                                       "oralimage",
                                       TextInputType.text,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _gdFormedController,
+                                      'Formed(date)',
+                                      "1/1/2008",
+                                      TextInputType.text,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _numMembersController,
+                                      'No Members',
+                                      "15",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _segMaleController,
+                                      'No Males',
+                                      "5",
+                                      TextInputType.number,
                                     ),
                                     const SizedBox(height: 20),
                                     ElevatedButton(
@@ -144,38 +143,61 @@ class _AddCaRState extends State<AddCaR> {
                                             isUploading = true;
                                           });
                                           Map<String, dynamic> data = {
-                                            'price': int.parse(
-                                                _subCountyController
-                                                    .value.text),
-                                            'pdtName':
+                                            'groupName':
                                                 _groupNameController.value.text,
-                                            'brand':
+                                            'subCounty':
+                                                _subCountyController.value.text,
+                                            'parish':
+                                                _parishController.value.text,
+                                            'gdFormed':
                                                 _gdFormedController.value.text,
-                                            'pdtQuantity': int.parse(
+                                            'numMembers': int.parse(
                                                 _numMembersController
                                                     .value.text),
-                                            'description':
+                                            'segMale':
                                                 _segMaleController.value.text,
-                                            "likes": FieldValue.arrayUnion([]),
-                                            "viewed": FieldValue.arrayUnion([]),
-                                            "comments":
-                                                FieldValue.arrayUnion([]),
+                                            'segFemale':
+                                                _segFemaleController.value.text,
+                                            'timesSharedOut':
+                                                _timesSharedOutController
+                                                    .value.text,
+                                            'shareValue': _shareValueController
+                                                .value.text,
+                                            'numChildren':
+                                                _numChildrenController
+                                                    .value.text,
+                                            'amntHighestSaver':
+                                                _amntHighestSaverController
+                                                    .value.text,
+                                            'amntSaved':
+                                                _amntSavedController.value.text,
+                                            'amntSocialFund':
+                                                _amntSocialFundController
+                                                    .value.text,
+                                            'amntLoansTaken':
+                                                _amntLoansTakenController
+                                                    .value.text,
+                                            'numLoansAccessed':
+                                                _numLoansAccessedController
+                                                    .value.text,
+                                            'loanRepayment':
+                                                _loanRepaymentController
+                                                    .value.text,
+                                            'amntLoansWrittenoff':
+                                                _amntLoansWrittenoffController
+                                                    .value.text,
                                             'created':
                                                 DateTime.now().toString(),
                                             'modified':
                                                 DateTime.now().toString(),
                                           };
-                                          CloudDatabase.addData(data: data)
+                                          CloudDatabase.addcarData(data: data)
                                               .then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(buildSnackBar(
-                                                      "Product Added to Database"));
-                                              // Navigator.pushReplacement(
-                                              //     context,
-                                              //     MaterialPageRoute(
-                                              //         builder: (context) => ()));
+                                                      "Data Added to Database"));
                                             } else {
                                               setState(() {
                                                 isUploading = false;
@@ -196,7 +218,7 @@ class _AddCaRState extends State<AddCaR> {
                                                 BorderRadius.circular(15)),
                                       ),
                                       child: const Text(
-                                        'Add Product',
+                                        'Add Data',
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w800,
@@ -212,7 +234,7 @@ class _AddCaRState extends State<AddCaR> {
                         )
                       : FutureBuilder<DocumentSnapshot>(
                           future: _firestore
-                              .collection('products')
+                              .collection('cartable')
                               .doc(widget.dataId)
                               .get(),
                           builder: (BuildContext context,
@@ -228,13 +250,31 @@ class _AddCaRState extends State<AddCaR> {
                             if (snapshot.hasData && !snapshot.data!.exists) {}
                             Map<String, dynamic> data =
                                 snapshot.data!.data() as Map<String, dynamic>;
-                            _groupNameController.text = data['pdtName'];
-                            _gdFormedController.text = data['brand'];
-                            _subCountyController.text =
-                                data['price'].toString();
+                            _groupNameController.text = data['groupName'];
+                            _subCountyController.text = data['subCounty'];
+                            _parishController.text = data['parish'];
+                            _gdFormedController.text = data['gdFormed'];
                             _numMembersController.text =
                                 data['pdtQuantity'].toString();
-                            _segMaleController.text = data['description'];
+                            _segMaleController.text = data['segMale'];
+                            _segFemaleController.text = data['segFemale'];
+                            _timesSharedOutController.text =
+                                data['timesSharedOut'];
+                            _shareValueController.text = data['shareValue'];
+                            _numChildrenController.text = data['numChildren'];
+                            _amntHighestSaverController.text =
+                                data['amntHighestSaver'];
+                            _amntSavedController.text = data['amntSaved'];
+                            _amntSocialFundController.text =
+                                data['amntSocialFund'];
+                            _amntLoansTakenController.text =
+                                data['amntLoansTaken'];
+                            _numLoansAccessedController.text =
+                                data['numLoansAccessed'];
+                            _loanRepaymentController.text =
+                                data['loanRepayment'];
+                            _amntLoansWrittenoffController.text =
+                                data['amntLoansWrittenoff'];
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
@@ -242,7 +282,7 @@ class _AddCaRState extends State<AddCaR> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 15),
                                   child: const Text(
-                                    'Update Product In Store',
+                                    'Update CaR Data',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),

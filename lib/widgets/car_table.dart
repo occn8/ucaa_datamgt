@@ -22,13 +22,13 @@ const kCaRDataColumns = <DataColumn>[
 
 final List<CaRDataModel> _carDataRows = <CaRDataModel>[
   CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
+      0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
   CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
+      0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
   CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
+      0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
   CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000),
+      0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
 ];
 
 class CaRDataScr extends DataTableSource {
