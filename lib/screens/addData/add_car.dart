@@ -104,7 +104,7 @@ class _AddCaRState extends State<AddCaR> {
                                       _subCountyController,
                                       'Sub-county',
                                       "5,000",
-                                      TextInputType.number,
+                                      TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
@@ -132,6 +132,83 @@ class _AddCaRState extends State<AddCaR> {
                                       _segMaleController,
                                       'No Males',
                                       "5",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _segFemaleController,
+                                      'No Females',
+                                      "10",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _timesSharedOutController,
+                                      'Times Shared Out',
+                                      "7",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _shareValueController,
+                                      'Share Value',
+                                      "5,000",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _numChildrenController,
+                                      'Number of Children',
+                                      "2",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _amntHighestSaverController,
+                                      'Amount of Highest Saver',
+                                      "5,000",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _amntSavedController,
+                                      'Amount Saved',
+                                      "40000",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _amntSocialFundController,
+                                      'Amount of Social fund',
+                                      "5,000",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _amntLoansTakenController,
+                                      'Amount of Loans taken',
+                                      "4000",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _numLoansAccessedController,
+                                      'No Loans Accessed',
+                                      "3",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _loanRepaymentController,
+                                      'Loans Repayment',
+                                      "3",
+                                      TextInputType.number,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _amntLoansWrittenoffController,
+                                      'Amount of Loans Written Off',
+                                      "3",
                                       TextInputType.number,
                                     ),
                                     const SizedBox(height: 20),
@@ -191,7 +268,8 @@ class _AddCaRState extends State<AddCaR> {
                                             'modified':
                                                 DateTime.now().toString(),
                                           };
-                                          CloudDatabase.addcarData(data: data)
+                                          CloudDatabase.addData(
+                                                  data: data, col: 'cartable')
                                               .then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);
@@ -297,37 +375,121 @@ class _AddCaRState extends State<AddCaR> {
                                         buildTextFormField(
                                           context,
                                           _groupNameController,
-                                          'Product Name',
-                                          "Oral tooth brush",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _gdFormedController,
-                                          'Brand',
-                                          "Gucci",
+                                          'Group Name',
+                                          "grp_name",
                                           TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
                                           _subCountyController,
-                                          'Product Price',
+                                          'Sub-county',
                                           "5,000",
-                                          TextInputType.number,
+                                          TextInputType.text,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _parishController,
+                                          'Image Name',
+                                          "oralimage",
+                                          TextInputType.text,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _gdFormedController,
+                                          'Formed(date)',
+                                          "1/1/2008",
+                                          TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
                                           _numMembersController,
-                                          'Product Quantity',
+                                          'No Members',
                                           "15",
                                           TextInputType.number,
                                         ),
                                         buildTextFormField(
                                           context,
                                           _segMaleController,
-                                          'Product Description',
-                                          "This is an Oral tooth brush",
-                                          TextInputType.text,
+                                          'No Males',
+                                          "5",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _segFemaleController,
+                                          'No Females',
+                                          "10",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _timesSharedOutController,
+                                          'Times Shared Out',
+                                          "7",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _shareValueController,
+                                          'Share Value',
+                                          "5,000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _numChildrenController,
+                                          'Number of Children',
+                                          "2",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _amntHighestSaverController,
+                                          'Amount of Highest Saver',
+                                          "5,000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _amntSavedController,
+                                          'Amount Saved',
+                                          "40000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _amntSocialFundController,
+                                          'Amount of Social fund',
+                                          "5,000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _amntLoansTakenController,
+                                          'Amount of Loans taken',
+                                          "4000",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _numLoansAccessedController,
+                                          'No Loans Accessed',
+                                          "3",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _loanRepaymentController,
+                                          'Loans Repayment',
+                                          "3",
+                                          TextInputType.number,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _amntLoansWrittenoffController,
+                                          'Amount of Loans Written Off',
+                                          "3",
+                                          TextInputType.number,
                                         ),
                                         const SizedBox(height: 40),
                                         ElevatedButton(
@@ -340,25 +502,61 @@ class _AddCaRState extends State<AddCaR> {
                                               FocusScope.of(context).unfocus();
 
                                               Map<String, dynamic> data = {
-                                                'price': int.parse(
+                                                'groupName':
+                                                    _groupNameController
+                                                        .value.text,
+                                                'subCounty':
                                                     _subCountyController
-                                                        .value.text),
-                                                'pdtName': _groupNameController
+                                                        .value.text,
+                                                'parish': _parishController
                                                     .value.text,
-                                                'brand': _gdFormedController
+                                                'gdFormed': _gdFormedController
                                                     .value.text,
-                                                'pdtQuantity': int.parse(
+                                                'numMembers': int.parse(
                                                     _numMembersController
                                                         .value.text),
-                                                'description':
-                                                    _segMaleController
+                                                'segMale': _segMaleController
+                                                    .value.text,
+                                                'segFemale':
+                                                    _segFemaleController
+                                                        .value.text,
+                                                'timesSharedOut':
+                                                    _timesSharedOutController
+                                                        .value.text,
+                                                'shareValue':
+                                                    _shareValueController
+                                                        .value.text,
+                                                'numChildren':
+                                                    _numChildrenController
+                                                        .value.text,
+                                                'amntHighestSaver':
+                                                    _amntHighestSaverController
+                                                        .value.text,
+                                                'amntSaved':
+                                                    _amntSavedController
+                                                        .value.text,
+                                                'amntSocialFund':
+                                                    _amntSocialFundController
+                                                        .value.text,
+                                                'amntLoansTaken':
+                                                    _amntLoansTakenController
+                                                        .value.text,
+                                                'numLoansAccessed':
+                                                    _numLoansAccessedController
+                                                        .value.text,
+                                                'loanRepayment':
+                                                    _loanRepaymentController
+                                                        .value.text,
+                                                'amntLoansWrittenoff':
+                                                    _amntLoansWrittenoffController
                                                         .value.text,
                                                 'modified':
                                                     DateTime.now().toString(),
                                               };
                                               CloudDatabase.updateData(
                                                       data: data,
-                                                      docId: widget.dataId)
+                                                      docId: widget.dataId,
+                                                      col: 'cartable')
                                                   .then((result) {
                                                 if (result == null) {
                                                   setState(() {
@@ -390,7 +588,7 @@ class _AddCaRState extends State<AddCaR> {
                                                     BorderRadius.circular(15)),
                                           ),
                                           child: const Text(
-                                            'Update Product',
+                                            'Update Data',
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w800,
@@ -418,7 +616,7 @@ class _AddCaRState extends State<AddCaR> {
                                                     BorderRadius.circular(15)),
                                           ),
                                           child: const Text(
-                                            'Delete Product',
+                                            'Delete Data',
                                             style: TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500,

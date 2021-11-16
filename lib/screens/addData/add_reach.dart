@@ -160,7 +160,8 @@ class _AddReachState extends State<AddReach> {
                                             'modified':
                                                 DateTime.now().toString(),
                                           };
-                                          CloudDatabase.addreachData(data: data)
+                                          CloudDatabase.addData(
+                                                  data: data, col: 'reachtable')
                                               .then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);
@@ -313,7 +314,8 @@ class _AddReachState extends State<AddReach> {
                                               };
                                               CloudDatabase.updateData(
                                                       data: data,
-                                                      docId: widget.dataId)
+                                                      docId: widget.dataId,
+                                                      col: 'reachtable')
                                                   .then((result) {
                                                 if (result == null) {
                                                   setState(() {

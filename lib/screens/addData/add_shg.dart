@@ -161,7 +161,8 @@ class _AddShgState extends State<AddShg> {
                                             'modified':
                                                 DateTime.now().toString(),
                                           };
-                                          CloudDatabase.addshgData(data: data)
+                                          CloudDatabase.addData(
+                                                  data: data, col: 'shgtable')
                                               .then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);
@@ -313,7 +314,8 @@ class _AddShgState extends State<AddShg> {
                                               };
                                               CloudDatabase.updateData(
                                                       data: data,
-                                                      docId: widget.dataId)
+                                                      docId: widget.dataId,
+                                                      col: 'shgtable')
                                                   .then((result) {
                                                 if (result == null) {
                                                   setState(() {
