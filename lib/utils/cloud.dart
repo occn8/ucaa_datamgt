@@ -36,6 +36,19 @@ class CloudDatabase {
     }
   }
 
+  static Future addCarData({required Map<String, dynamic> data}) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        await _cartableCol.doc().set(data).whenComplete(() {
+          return;
+        }).catchError((e) => e.message);
+      }
+    } on SocketException {
+      return 'No Internet connection';
+    }
+  }
+
   static Future updateData(
       {required Map<String, dynamic> data,
       required String col,

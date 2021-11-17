@@ -109,8 +109,8 @@ class _AddCaRState extends State<AddCaR> {
                                     buildTextFormField(
                                       context,
                                       _parishController,
-                                      'Image Name',
-                                      "oralimage",
+                                      'Parish',
+                                      "parish-name",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
@@ -271,9 +271,9 @@ class _AddCaRState extends State<AddCaR> {
                                             'modified':
                                                 DateTime.now().toString(),
                                           };
-                                          CloudDatabase.addData(
-                                                  data: data, col: 'cartable')
-                                              .then((result) {
+                                          CloudDatabase.addCarData(
+                                            data: data,
+                                          ).then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);
                                               ScaffoldMessenger.of(context)
@@ -397,8 +397,8 @@ class _AddCaRState extends State<AddCaR> {
                                         buildTextFormField(
                                           context,
                                           _parishController,
-                                          'Image Name',
-                                          "oralimage",
+                                          'Parish',
+                                          "parish-name",
                                           TextInputType.text,
                                         ),
                                         buildTextFormField(
