@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ucaa_datamgt/auth_status.dart';
 import 'package:ucaa_datamgt/index.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -11,10 +14,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  User? user;
+
   @override
   void initState() {
     super.initState();
+    user = _auth.currentUser;
     getDocs();
+    setState(() {});
   }
 
   Future getDocs() async {
@@ -87,7 +94,7 @@ class _HomeState extends State<Home> {
                             children: const [
                               Icon(Icons.brightness_4),
                               SizedBox(width: 4),
-                              Text('Dark Theme'),
+                              Text('Dark Theme(!)'),
                             ],
                           ),
                           padding: const EdgeInsets.all(15),
@@ -120,14 +127,14 @@ class _HomeState extends State<Home> {
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-                child: const Text.rich(
+                child: Text.rich(
                   TextSpan(
                     text: 'Hello,\n',
-                    style: TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 18),
                     children: <TextSpan>[
                       TextSpan(
-                          text: 'Mr. Hillary ',
-                          style: TextStyle(
+                          text: user!.displayName,
+                          style: const TextStyle(
                               fontSize: 22, fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -158,15 +165,17 @@ class _HomeState extends State<Home> {
           spacing: 15,
           childrenButtonSize: 60,
           children: [
-            SpeedDialChild(
-              child: const Icon(Icons.people),
-              label: 'Add Users',
-              labelStyle: dialstyle,
-              onTap: () {
-                Get.to(() => const AddUser());
-              },
-              backgroundColor: Theme.of(context).primaryColorLight,
-            ),
+            user!.uid == 'PhPhu4ZFYCYOR9UZGFtm9xM8ivy2'
+                ? SpeedDialChild(
+                    child: const Icon(Icons.people),
+                    label: 'Add Users',
+                    labelStyle: dialstyle,
+                    onTap: () {
+                      Get.to(() => const AddUser());
+                    },
+                    backgroundColor: Theme.of(context).primaryColorLight,
+                  )
+                : SpeedDialChild(),
             SpeedDialChild(
               child: const Icon(Icons.add),
               label: 'Add CaR data',
