@@ -17,18 +17,7 @@ const kSHGDataColumns = <DataColumn>[
   DataColumn(label: Text('Loans.Saving Ratio')),
 ];
 
-final List<SHGdataModel> _shgDataRows = <SHGdataModel>[
-  SHGdataModel('shgName', 'location', '1/2/222', 18, 92, 9, 1000, 1000, 1000,
-      1000, 100, 6, 200, '1:1', '1/3/2021', '4/6/2020'),
-  SHGdataModel('shgName', 'location', '1/2/222', 18, 92, 9, 1000, 1000, 1000,
-      1000, 100, 6, 200, '1:1', '1/3/2021', '4/6/2020'),
-  SHGdataModel('shgName', 'location', '1/2/222', 18, 92, 9, 1000, 1000, 1000,
-      1000, 100, 6, 200, '1:1', '1/3/2021', '4/6/2020'),
-  SHGdataModel('shgName', 'location', '1/2/222', 18, 92, 9, 1000, 1000, 1000,
-      1000, 100, 6, 200, '1:1', '1/3/2021', '4/6/2020'),
-  SHGdataModel('shgName', 'location', '1/2/222', 18, 92, 9, 1000, 1000, 1000,
-      1000, 100, 6, 200, '1:1', '1/3/2021', '4/6/2020'),
-];
+final List<SHGdataModel> shgDataRows = <SHGdataModel>[];
 
 class SHGDataScr extends DataTableSource {
   int _selectedCount = 0;
@@ -36,8 +25,8 @@ class SHGDataScr extends DataTableSource {
   @override
   DataRow? getRow(int index) {
     assert(index >= 0);
-    if (index >= _shgDataRows.length) return null;
-    final SHGdataModel shgdata = _shgDataRows[index];
+    if (index >= shgDataRows.length) return null;
+    final SHGdataModel shgdata = shgDataRows[index];
     return DataRow.byIndex(
       index: index,
       selected: shgdata.selected,
@@ -73,7 +62,7 @@ class SHGDataScr extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => _shgDataRows.length;
+  int get rowCount => shgDataRows.length;
 
   @override
   int get selectedRowCount => _selectedCount;

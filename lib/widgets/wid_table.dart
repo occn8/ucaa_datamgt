@@ -18,20 +18,7 @@ const kWIDDataColumns = <DataColumn>[
   DataColumn(label: Text('loans-off')),
 ];
 
-final List<WIDdataModel> _widDataRows = <WIDdataModel>[
-  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
-  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
-  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
-  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
-  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
-  WIDdataModel('groupName', 'subCounty', 'parish', '1/5/633', 90, 3, 1000, 7,
-      3000, 20000, 1000, 1000, 4, 9, 2000, '1/3/2021', '4/6/2020'),
-];
+final List<WIDdataModel> widDataRows = <WIDdataModel>[];
 
 class WIDDataScr extends DataTableSource {
   int _selectedCount = 0;
@@ -39,8 +26,8 @@ class WIDDataScr extends DataTableSource {
   @override
   DataRow? getRow(int index) {
     assert(index >= 0);
-    if (index >= _widDataRows.length) return null;
-    final WIDdataModel widdata = _widDataRows[index];
+    if (index >= widDataRows.length) return null;
+    final WIDdataModel widdata = widDataRows[index];
     return DataRow.byIndex(
       index: index,
       selected: widdata.selected,
@@ -77,7 +64,7 @@ class WIDDataScr extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => _widDataRows.length;
+  int get rowCount => widDataRows.length;
 
   @override
   int get selectedRowCount => _selectedCount;

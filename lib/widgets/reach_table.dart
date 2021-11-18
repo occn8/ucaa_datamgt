@@ -14,18 +14,7 @@ const kREACHDataColumns = <DataColumn>[
   DataColumn(label: Text('loan-repay')),
 ];
 
-final List<REACHdataModel> _reachDataRows = <REACHdataModel>[
-  REACHdataModel('vslaName', 23, 'location', 19, 1000, 8000, 2990, 1000, 200, 5,
-      200, '1/3/2021', '4/6/2020'),
-  REACHdataModel('vslaName', 23, 'location', 19, 1000, 8000, 2990, 1000, 200, 5,
-      200, '1/3/2021', '4/6/2020'),
-  REACHdataModel('vslaName', 23, 'location', 19, 1000, 8000, 2990, 1000, 200, 5,
-      200, '1/3/2021', '4/6/2020'),
-  REACHdataModel('vslaName', 23, 'location', 19, 1000, 8000, 2990, 1000, 200, 5,
-      200, '1/3/2021', '4/6/2020'),
-  REACHdataModel('vslaName', 23, 'location', 19, 1000, 8000, 2990, 1000, 200, 5,
-      200, '1/3/2021', '4/6/2020'),
-];
+final List<REACHdataModel> reachDataRows = <REACHdataModel>[];
 
 class REACHDataScr extends DataTableSource {
   int _selectedCount = 0;
@@ -33,8 +22,8 @@ class REACHDataScr extends DataTableSource {
   @override
   DataRow? getRow(int index) {
     assert(index >= 0);
-    if (index >= _reachDataRows.length) return null;
-    final REACHdataModel reachdata = _reachDataRows[index];
+    if (index >= reachDataRows.length) return null;
+    final REACHdataModel reachdata = reachDataRows[index];
     return DataRow.byIndex(
       index: index,
       selected: reachdata.selected,
@@ -67,7 +56,7 @@ class REACHDataScr extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => _reachDataRows.length;
+  int get rowCount => reachDataRows.length;
 
   @override
   int get selectedRowCount => _selectedCount;

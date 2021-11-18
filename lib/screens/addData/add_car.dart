@@ -271,8 +271,9 @@ class _AddCaRState extends State<AddCaR> {
                                             'modified':
                                                 DateTime.now().toString(),
                                           };
-                                          CloudDatabase.addCarData(
+                                          CloudDatabase.addData(
                                             data: data,
+                                            col: 'cartable',
                                           ).then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);

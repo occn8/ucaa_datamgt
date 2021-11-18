@@ -106,32 +106,17 @@ class _HomeState extends State<Home> {
                 ),
               ),
               tableLinks(context, 'CaR Group Data', carDataRows.length, () {
-                Get.to(() => DataView(
-                      tableHeader: 'CaR Group Data',
-                      datacolumns: kCaRDataColumns,
-                      datasrc: CaRDataScr(),
-                    ));
+                Get.to(() => const DataView(tableHeader: 'CaR'));
               }),
-              tableLinks(context, 'REACH Data for Groups', 40, () {
-                Get.to(() => DataView(
-                      tableHeader: 'REACH Data for Groups',
-                      datacolumns: kREACHDataColumns,
-                      datasrc: REACHDataScr(),
-                    ));
+              tableLinks(context, 'REACH Data for Groups', reachDataRows.length,
+                  () {
+                Get.to(() => const DataView(tableHeader: 'REACH'));
               }),
-              tableLinks(context, 'SHG Data Collected', 11, () {
-                Get.to(() => DataView(
-                      tableHeader: 'SHG Data Collected',
-                      datacolumns: kSHGDataColumns,
-                      datasrc: SHGDataScr(),
-                    ));
+              tableLinks(context, 'SHG Data Collected', shgDataRows.length, () {
+                Get.to(() => const DataView(tableHeader: 'SHG'));
               }),
-              tableLinks(context, 'WID Data', 619, () {
-                Get.to(() => DataView(
-                      tableHeader: 'WID Data',
-                      datacolumns: kWIDDataColumns,
-                      datasrc: WIDDataScr(),
-                    ));
+              tableLinks(context, 'WID Data', widDataRows.length, () {
+                Get.to(() => const DataView(tableHeader: 'WID'));
               }),
             ],
           ),

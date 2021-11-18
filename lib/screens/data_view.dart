@@ -1,17 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:ucaa_datamgt/index.dart';
 
 class DataView extends StatefulWidget {
-  const DataView(
-      {Key? key,
-      required this.tableHeader,
-      required this.datacolumns,
-      required this.datasrc})
-      : super(key: key);
+  const DataView({
+    Key? key,
+    required this.tableHeader,
+  }) : super(key: key);
   final String tableHeader;
-  final List<DataColumn> datacolumns;
-  final DataTableSource datasrc;
 
   @override
   State<DataView> createState() => _DataViewState();
@@ -45,7 +40,8 @@ class _DataViewState extends State<DataView> {
                 ),
                 Text(
                   'Data Table ${carDataRows.length}',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(width: 10)
               ],
@@ -63,7 +59,13 @@ class _DataViewState extends State<DataView> {
                       const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   child: StreamBuilder<QuerySnapshot>(
                     stream: FirebaseFirestore.instance
-                        .collection('cartable')
+                        .collection(widget.tableHeader == 'CaR'
+                            ? 'cartable'
+                            : widget.tableHeader == 'REACH'
+                                ? 'reachtable'
+                                : widget.tableHeader == 'SHG'
+                                    ? 'shgtable'
+                                    : 'widtable')
                         .snapshots(),
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
