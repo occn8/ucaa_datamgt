@@ -103,7 +103,7 @@ class _AddCaRState extends State<AddCaR> {
                                       context,
                                       _subCountyController,
                                       'Sub-county',
-                                      "5,000",
+                                      "subcounty",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
@@ -391,7 +391,7 @@ class _AddCaRState extends State<AddCaR> {
                                           context,
                                           _subCountyController,
                                           'Sub-county',
-                                          "5,000",
+                                          "subcounty",
                                           TextInputType.text,
                                         ),
                                         buildTextFormField(

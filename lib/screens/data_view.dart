@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:ucaa_datamgt/index.dart';
 
 class DataView extends StatefulWidget {
@@ -42,8 +43,8 @@ class _DataViewState extends State<DataView> {
                     ),
                   ),
                 ),
-                const Text(
-                  'Data Table',
+                Text(
+                  'Data Table ${carDataRows.length}',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(width: 10)
@@ -62,7 +63,7 @@ class _DataViewState extends State<DataView> {
                       const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   child: StreamBuilder<QuerySnapshot>(
                     stream: FirebaseFirestore.instance
-                        .collection('tables')
+                        .collection('cartable')
                         .snapshots(),
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -71,7 +72,11 @@ class _DataViewState extends State<DataView> {
                       }
 
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const LinearProgressIndicator();
+                        return Column(
+                          children: const [
+                            LinearProgressIndicator(),
+                          ],
+                        );
                       }
                       if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
                         return Container(
@@ -83,14 +88,43 @@ class _DataViewState extends State<DataView> {
                               children: const [
                                 SizedBox(height: 10),
                                 Text(
-                                  'No Products here!',
+                                  'No Data here!',
                                   style: TextStyle(fontSize: 18),
                                 )
                               ],
                             ));
                       }
+                      int _rowsPerPage = PaginatedDataTable.defaultRowsPerPage;
 
-                      return const Text('data');
+                      // List docs = snapshot.data!.docs;
+                      // var cmodel = CaRDataModel('', '', '', '', '', 0, 0, 0, 0,
+                      //     0, 0, 0, 0, 0, 0, 0, 0, 0, 'created', 'modified');
+                      // carDataRows.clear();
+                      // for (var doc in docs) {
+                      //   cmodel.fromMap(
+                      //       doc.id, doc.data()! as Map<String, dynamic>);
+                      //   carDataRows.add(cmodel);
+                      //   print(doc.id);
+                      // }
+                      return SingleChildScrollView(
+                        child: PaginatedDataTable(
+                          header: Text(
+                            widget.tableHeader,
+                            style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.w800),
+                          ),
+                          rowsPerPage: _rowsPerPage,
+                          availableRowsPerPage: const <int>[5, 10, 20],
+                          onRowsPerPageChanged: (int? value) {
+                            if (value != null) {
+                              setState(() => _rowsPerPage = value);
+                            }
+                          },
+                          columns: kCaRDataColumns,
+                          source: CaRDataScr(),
+                        ),
+                      );
                     },
                   )),
             ),

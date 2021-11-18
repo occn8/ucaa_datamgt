@@ -20,15 +20,11 @@ const kCaRDataColumns = <DataColumn>[
   DataColumn(label: Text('loans-off')),
 ];
 
-final List<CaRDataModel> _carDataRows = <CaRDataModel>[
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
-  CaRDataModel('groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0, 100,
-      0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
+List<CaRDataModel> carDataRows = <CaRDataModel>[
+  CaRDataModel('wew', 'groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0,
+      100, 0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
+  CaRDataModel('wew', 'groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0,
+      100, 0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
 ];
 
 class CaRDataScr extends DataTableSource {
@@ -37,8 +33,8 @@ class CaRDataScr extends DataTableSource {
   @override
   DataRow? getRow(int index) {
     assert(index >= 0);
-    if (index >= _carDataRows.length) return null;
-    final CaRDataModel cardata = _carDataRows[index];
+    if (index >= carDataRows.length) return null;
+    final CaRDataModel cardata = carDataRows[index];
     return DataRow.byIndex(
       index: index,
       selected: cardata.selected,
@@ -77,7 +73,7 @@ class CaRDataScr extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => _carDataRows.length;
+  int get rowCount => carDataRows.length;
 
   @override
   int get selectedRowCount => _selectedCount;

@@ -1,9 +1,35 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ucaa_datamgt/auth_status.dart';
 import 'package:ucaa_datamgt/index.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    super.initState();
+    getDocs();
+  }
+
+  Future getDocs() async {
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection("cartable").get();
+    List docs = querySnapshot.docs;
+    var cmodel = CaRDataModel('', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 'created', 'modified');
+    carDataRows.clear();
+    for (var doc in docs) {
+      cmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+      carDataRows.add(cmodel);
+      print(doc.id);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +105,7 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ),
-              tableLinks(context, 'CaR Group Data', 69, () {
+              tableLinks(context, 'CaR Group Data', carDataRows.length, () {
                 Get.to(() => DataView(
                       tableHeader: 'CaR Group Data',
                       datacolumns: kCaRDataColumns,

@@ -99,7 +99,7 @@ class _AddReachState extends State<AddReach> {
                                       _perAttendenceController,
                                       'Attendance',
                                       "20",
-                                      TextInputType.text,
+                                      TextInputType.number,
                                     ),
                                     buildTextFormField(
                                       context,
@@ -324,7 +324,7 @@ class _AddReachState extends State<AddReach> {
                                           _perAttendenceController,
                                           'Attendance',
                                           "20",
-                                          TextInputType.text,
+                                          TextInputType.number,
                                         ),
                                         buildTextFormField(
                                           context,

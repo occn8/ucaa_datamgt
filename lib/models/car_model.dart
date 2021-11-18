@@ -1,26 +1,28 @@
 class CaRDataModel {
-  final String groupName;
-  final String subCounty;
-  final String parish;
-  final String gdFormed;
-  final int numMembers;
-  final int segMale;
-  final int segFemale;
-  final int timesSharedOut;
-  final int shareValue;
-  final int numChildren;
-  final int amntHighestSaver;
-  final int amntSaved;
-  final int amntSocialFund;
-  final int amntLoansTaken;
-  final int numLoansAccessed;
-  final int loanRepayment;
-  final int amntLoansWrittenoff;
-  final String created;
-  final String modified;
+  String id;
+  String groupName;
+  String subCounty;
+  String parish;
+  String gdFormed;
+  int numMembers;
+  int segMale;
+  int segFemale;
+  int timesSharedOut;
+  int shareValue;
+  int numChildren;
+  int amntHighestSaver;
+  int amntSaved;
+  int amntSocialFund;
+  int amntLoansTaken;
+  int numLoansAccessed;
+  int loanRepayment;
+  int amntLoansWrittenoff;
+  String created;
+  String modified;
   bool selected = false;
 
   CaRDataModel(
+    this.id,
     this.groupName,
     this.subCounty,
     this.parish,
@@ -41,4 +43,27 @@ class CaRDataModel {
     this.created,
     this.modified,
   );
+
+  void fromMap(String id, Map map) {
+    id = id;
+    groupName = map["groupName"];
+    subCounty = map["subCounty"];
+    parish = map["parish"];
+    gdFormed = map["gdFormed"];
+    numMembers = map["numMembers"];
+    segMale = map["segMale"];
+    segFemale = map["segFemale"];
+    timesSharedOut = map["timesSharedOut"];
+    shareValue = map["shareValue"];
+    numChildren = map["numChildren"];
+    amntHighestSaver = map["amntHighestSaver"];
+    amntSaved = map["amntSaved"];
+    amntSocialFund = map["amntSocialFund"];
+    amntLoansTaken = map["amntLoansTaken"];
+    numLoansAccessed = map["numLoansAccessed"];
+    loanRepayment = map["loanRepayment"];
+    amntLoansWrittenoff = map["amntLoansWrittenoff"];
+    created = map["created"];
+    modified = map["modified"];
+  }
 }
