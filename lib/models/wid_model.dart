@@ -14,8 +14,8 @@ class WIDdataModel {
   int numLoansAccessed;
   int loanRepayment;
   int amntLoansWrittenoff;
-  final String created;
-  final String modified;
+  String created;
+  String modified;
   bool selected = false;
 
   WIDdataModel(
@@ -37,4 +37,24 @@ class WIDdataModel {
     this.created,
     this.modified,
   );
+  void fromMap(String id, Map map) {
+    id = id;
+    groupName = map["groupName"];
+    subCounty = map["subCounty"];
+    parish = map["parish"];
+    gdFormed = map["gdFormed"];
+    numMembers = map["numMembers"];
+    timesSharedOut = map["timesSharedOut"];
+    shareValue = map["shareValue"];
+    numChildren = map["numChildren"];
+    amntHighestSaver = map["amntHighestSaver"];
+    amntSaved = map["amntSaved"];
+    amntSocialFund = map["amntSocialFund"];
+    amntLoansTaken = map["amntLoansTaken"];
+    numLoansAccessed = map["numLoansAccessed"];
+    loanRepayment = map["loanRepayment"];
+    amntLoansWrittenoff = map["amntLoansWrittenoff"];
+    created = map["created"];
+    modified = map["modified"];
+  }
 }

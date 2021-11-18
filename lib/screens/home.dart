@@ -21,13 +21,41 @@ class _HomeState extends State<Home> {
     QuerySnapshot querySnapshot =
         await FirebaseFirestore.instance.collection("cartable").get();
     List docs = querySnapshot.docs;
-    var cmodel = CaRDataModel('', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 'created', 'modified');
+    var cmodel = CaRDataModel(
+        '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
     carDataRows.clear();
     for (var doc in docs) {
       cmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
       carDataRows.add(cmodel);
-      print(doc.id);
+    }
+    QuerySnapshot querySnapshot2 =
+        await FirebaseFirestore.instance.collection("reachtable").get();
+    List docs2 = querySnapshot2.docs;
+    var rmodel = REACHdataModel('', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '');
+    reachDataRows.clear();
+    for (var doc in docs2) {
+      rmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+      reachDataRows.add(rmodel);
+    }
+    QuerySnapshot querySnapshot3 =
+        await FirebaseFirestore.instance.collection("shgtable").get();
+    List docs3 = querySnapshot3.docs;
+    var smodel =
+        SHGdataModel('', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '');
+    shgDataRows.clear();
+    for (var doc in docs3) {
+      smodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+      shgDataRows.add(smodel);
+    }
+    QuerySnapshot querySnapshot4 =
+        await FirebaseFirestore.instance.collection("widtable").get();
+    List docs4 = querySnapshot4.docs;
+    var wmodel =
+        WIDdataModel('', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
+    widDataRows.clear();
+    for (var doc in docs4) {
+      wmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+      widDataRows.add(wmodel);
     }
   }
 

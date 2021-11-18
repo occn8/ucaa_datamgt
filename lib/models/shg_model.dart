@@ -13,8 +13,8 @@ class SHGdataModel {
   int numLoansAccessed;
   int loanRepayment;
   String loanSavingRatio;
-  final String created;
-  final String modified;
+  String created;
+  String modified;
   bool selected = false;
 
   SHGdataModel(
@@ -35,4 +35,23 @@ class SHGdataModel {
     this.created,
     this.modified,
   );
+  void fromMap(String id, Map map) {
+    id = id;
+    shgName = map["shgName"];
+    location = map["location"];
+    shgFormed = map["shgFormed"];
+    numMember = map["numMember"];
+    perAttendanceWk = map["perAttendanceWk"];
+    numChildren = map["numChildren"];
+    wkSavings = map["wkSavings"];
+    wkSavingPerMember = map["wkSavingPerMember"];
+    totalSaving = map["totalSaving"];
+    shgFunds = map["shgFunds"];
+    amountLoanTaken = map["amountLoanTaken"];
+    numLoansAccessed = map["numLoansAccessed"];
+    loanRepayment = map["loanRepayment"];
+    loanSavingRatio = map["loanSavingRatio"];
+    created = map["created"];
+    modified = map["modified"];
+  }
 }

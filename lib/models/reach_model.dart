@@ -10,8 +10,8 @@ class REACHdataModel {
   int welfareLoanedOut;
   int membersAccessedLoans;
   int loanRepayment;
-  final String created;
-  final String modified;
+  String created;
+  String modified;
   bool selected = false;
 
   REACHdataModel(
@@ -29,4 +29,21 @@ class REACHdataModel {
     this.created,
     this.modified,
   );
+
+  void fromMap(String id, Map map) {
+    id = id;
+    vslaName = map["vslaName"];
+    perAttendence = map["perAttendence"];
+    location = map["location"];
+    numMembers = map["numMembers"];
+    totalSavings = map["totalSavings"];
+    vslaCapital = map["vslaCapital"];
+    loanTaken = map["loanTaken"];
+    totalWelfare = map["totalWelfare"];
+    welfareLoanedOut = map["welfareLoanedOut"];
+    membersAccessedLoans = map["membersAccessedLoans"];
+    loanRepayment = map["loanRepayment"];
+    created = map["created"];
+    modified = map["modified"];
+  }
 }

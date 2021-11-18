@@ -123,8 +123,20 @@ class _DataViewState extends State<DataView> {
                               setState(() => _rowsPerPage = value);
                             }
                           },
-                          columns: kCaRDataColumns,
-                          source: CaRDataScr(),
+                          columns: widget.tableHeader == 'CaR'
+                              ? kCaRDataColumns
+                              : widget.tableHeader == 'REACH'
+                                  ? kREACHDataColumns
+                                  : widget.tableHeader == 'SHG'
+                                      ? kSHGDataColumns
+                                      : kWIDDataColumns,
+                          source: widget.tableHeader == 'CaR'
+                              ? CaRDataScr()
+                              : widget.tableHeader == 'REACH'
+                                  ? REACHDataScr()
+                                  : widget.tableHeader == 'SHG'
+                                      ? SHGDataScr()
+                                      : WIDDataScr(),
                         ),
                       );
                     },

@@ -183,12 +183,12 @@ class _AddReachState extends State<AddReach> {
                                             'numMembers': int.parse(
                                                 _numMembersController
                                                     .value.text),
-                                            'totalSavings':
+                                            'totalSavings': int.parse(
                                                 _totalSavingsController
-                                                    .value.text,
-                                            'vslaCapital':
+                                                    .value.text),
+                                            'vslaCapital': int.parse(
                                                 _vslaCapitalController
-                                                    .value.text,
+                                                    .value.text),
                                             'loanTaken': int.parse(
                                                 _loanTakenController
                                                     .value.text),
@@ -410,12 +410,12 @@ class _AddReachState extends State<AddReach> {
                                                 'numMembers': int.parse(
                                                     _numMembersController
                                                         .value.text),
-                                                'totalSavings':
+                                                'totalSavings': int.parse(
                                                     _totalSavingsController
-                                                        .value.text,
-                                                'vslaCapital':
+                                                        .value.text),
+                                                'vslaCapital': int.parse(
                                                     _vslaCapitalController
-                                                        .value.text,
+                                                        .value.text),
                                                 'loanTaken': int.parse(
                                                     _loanTakenController
                                                         .value.text),
