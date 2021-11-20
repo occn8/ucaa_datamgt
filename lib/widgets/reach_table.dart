@@ -12,12 +12,14 @@ const kREACHDataColumns = <DataColumn>[
   DataColumn(label: Text('Welfare-Loaned')),
   DataColumn(label: Text('Members-loaned')),
   DataColumn(label: Text('loan-repay')),
+  DataColumn(label: Text('')),
+  DataColumn(label: Text('')),
 ];
 
 final List<REACHdataModel> reachDataRows = <REACHdataModel>[];
 
 class REACHDataScr extends DataTableSource {
-  int _selectedCount = 0;
+  // int _selectedCount = 0;
 
   @override
   DataRow? getRow(int index) {
@@ -26,16 +28,16 @@ class REACHDataScr extends DataTableSource {
     final REACHdataModel reachdata = reachDataRows[index];
     return DataRow.byIndex(
       index: index,
-      selected: reachdata.selected,
-      onSelectChanged: (bool? val) {
-        if (val == null) return;
-        if (reachdata.selected != val) {
-          _selectedCount += val ? 1 : -1;
-          assert(_selectedCount >= 0);
-          reachdata.selected = val;
-          notifyListeners();
-        }
-      },
+      // selected: reachdata.selected,
+      // onSelectChanged: (bool? val) {
+      //   if (val == null) return;
+      //   if (reachdata.selected != val) {
+      //     _selectedCount += val ? 1 : -1;
+      //     assert(_selectedCount >= 0);
+      //     reachdata.selected = val;
+      //     notifyListeners();
+      //   }
+      // },
       cells: <DataCell>[
         DataCell(Text(reachdata.vslaName)),
         DataCell(Text(reachdata.perAttendence.toString())),
@@ -48,6 +50,9 @@ class REACHDataScr extends DataTableSource {
         DataCell(Text(reachdata.welfareLoanedOut.toString())),
         DataCell(Text(reachdata.membersAccessedLoans.toString())),
         DataCell(Text(reachdata.loanRepayment.toString())),
+        DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {}),
+        DataCell(const Icon(Icons.delete, color: Colors.redAccent),
+            onTap: () {}),
       ],
     );
   }
@@ -59,5 +64,5 @@ class REACHDataScr extends DataTableSource {
   int get rowCount => reachDataRows.length;
 
   @override
-  int get selectedRowCount => _selectedCount;
+  int get selectedRowCount => 0;
 }

@@ -15,12 +15,14 @@ const kSHGDataColumns = <DataColumn>[
   DataColumn(label: Text('Loans-Accessed')),
   DataColumn(label: Text('Loan-repay')),
   DataColumn(label: Text('Loans.Saving Ratio')),
+  DataColumn(label: Text('')),
+  DataColumn(label: Text('')),
 ];
 
 final List<SHGdataModel> shgDataRows = <SHGdataModel>[];
 
 class SHGDataScr extends DataTableSource {
-  int _selectedCount = 0;
+  // int _selectedCount = 0;
 
   @override
   DataRow? getRow(int index) {
@@ -29,16 +31,16 @@ class SHGDataScr extends DataTableSource {
     final SHGdataModel shgdata = shgDataRows[index];
     return DataRow.byIndex(
       index: index,
-      selected: shgdata.selected,
-      onSelectChanged: (bool? val) {
-        if (val == null) return;
-        if (shgdata.selected != val) {
-          _selectedCount += val ? 1 : -1;
-          assert(_selectedCount >= 0);
-          shgdata.selected = val;
-          notifyListeners();
-        }
-      },
+      // selected: shgdata.selected,
+      // onSelectChanged: (bool? val) {
+      //   if (val == null) return;
+      //   if (shgdata.selected != val) {
+      //     _selectedCount += val ? 1 : -1;
+      //     assert(_selectedCount >= 0);
+      //     shgdata.selected = val;
+      //     notifyListeners();
+      //   }
+      // },
       cells: <DataCell>[
         DataCell(Text(shgdata.shgName)),
         DataCell(Text(shgdata.location)),
@@ -54,6 +56,9 @@ class SHGDataScr extends DataTableSource {
         DataCell(Text(shgdata.numLoansAccessed.toString())),
         DataCell(Text(shgdata.loanRepayment.toString())),
         DataCell(Text(shgdata.loanSavingRatio)),
+        DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {}),
+        DataCell(const Icon(Icons.delete, color: Colors.redAccent),
+            onTap: () {}),
       ],
     );
   }
@@ -65,5 +70,5 @@ class SHGDataScr extends DataTableSource {
   int get rowCount => shgDataRows.length;
 
   @override
-  int get selectedRowCount => _selectedCount;
+  int get selectedRowCount => 0;
 }

@@ -16,12 +16,14 @@ const kWIDDataColumns = <DataColumn>[
   DataColumn(label: Text('Loans-accessed')),
   DataColumn(label: Text('loan-repay')),
   DataColumn(label: Text('loans-off')),
+  DataColumn(label: Text('')),
+  DataColumn(label: Text('')),
 ];
 
 final List<WIDdataModel> widDataRows = <WIDdataModel>[];
 
 class WIDDataScr extends DataTableSource {
-  int _selectedCount = 0;
+  // int _selectedCount = 0;
 
   @override
   DataRow? getRow(int index) {
@@ -30,16 +32,16 @@ class WIDDataScr extends DataTableSource {
     final WIDdataModel widdata = widDataRows[index];
     return DataRow.byIndex(
       index: index,
-      selected: widdata.selected,
-      onSelectChanged: (bool? val) {
-        if (val == null) return;
-        if (widdata.selected != val) {
-          _selectedCount += val ? 1 : -1;
-          assert(_selectedCount >= 0);
-          widdata.selected = val;
-          notifyListeners();
-        }
-      },
+      // selected: widdata.selected,
+      // onSelectChanged: (bool? val) {
+      //   if (val == null) return;
+      //   if (widdata.selected != val) {
+      //     _selectedCount += val ? 1 : -1;
+      //     assert(_selectedCount >= 0);
+      //     widdata.selected = val;
+      //     notifyListeners();
+      //   }
+      // },
       cells: <DataCell>[
         DataCell(Text(widdata.groupName)),
         DataCell(Text(widdata.subCounty)),
@@ -56,6 +58,9 @@ class WIDDataScr extends DataTableSource {
         DataCell(Text(widdata.numLoansAccessed.toString())),
         DataCell(Text(widdata.loanRepayment.toString())),
         DataCell(Text(widdata.amntLoansWrittenoff.toString())),
+        DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {}),
+        DataCell(const Icon(Icons.delete, color: Colors.redAccent),
+            onTap: () {}),
       ],
     );
   }
@@ -67,5 +72,5 @@ class WIDDataScr extends DataTableSource {
   int get rowCount => widDataRows.length;
 
   @override
-  int get selectedRowCount => _selectedCount;
+  int get selectedRowCount => 0;
 }

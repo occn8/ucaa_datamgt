@@ -27,46 +27,49 @@ class _HomeState extends State<Home> {
     QuerySnapshot querySnapshot =
         await FirebaseFirestore.instance.collection("cartable").get();
     List docs = querySnapshot.docs;
-    var cmodel = CaRDataModel(
-        '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
     carDataRows.clear();
-    for (int i = 0; i < docs.length; i++) {
-      var doc = docs[i];
-      String did = docs[i].id;
-      cmodel.fromMap(did, doc.data()! as Map<String, dynamic>);
+    for (var doc in docs) {
+      var cmodel = CaRDataModel(
+          '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
+      cmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
       carDataRows.add(cmodel);
     }
     QuerySnapshot querySnapshot2 =
         await FirebaseFirestore.instance.collection("reachtable").get();
     List docs2 = querySnapshot2.docs;
-    var rmodel = REACHdataModel('', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '');
     reachDataRows.clear();
     for (var doc in docs2) {
+      var rmodel = REACHdataModel('', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '');
       rmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
       reachDataRows.add(rmodel);
     }
     QuerySnapshot querySnapshot3 =
         await FirebaseFirestore.instance.collection("shgtable").get();
     List docs3 = querySnapshot3.docs;
-    var smodel =
-        SHGdataModel('', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '');
     shgDataRows.clear();
     for (var doc in docs3) {
+      var smodel =
+          SHGdataModel('', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '');
       smodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
       shgDataRows.add(smodel);
     }
     QuerySnapshot querySnapshot4 =
         await FirebaseFirestore.instance.collection("widtable").get();
     List docs4 = querySnapshot4.docs;
-    var wmodel =
-        WIDdataModel('', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
     widDataRows.clear();
     for (var doc in docs4) {
+      var wmodel =
+          WIDdataModel('', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
       wmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
       widDataRows.add(wmodel);
     }
 
     setState(() {});
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override

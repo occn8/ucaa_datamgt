@@ -1,7 +1,6 @@
 import 'package:ucaa_datamgt/index.dart';
 
 const kCaRDataColumns = <DataColumn>[
-  DataColumn(label: Text('#')),
   DataColumn(label: Text('Group-Name')),
   DataColumn(label: Text('SubCounty')),
   DataColumn(label: Text('Parish')),
@@ -19,13 +18,28 @@ const kCaRDataColumns = <DataColumn>[
   DataColumn(label: Text('Loans-accessed')),
   DataColumn(label: Text('loan-repay')),
   DataColumn(label: Text('loans-off')),
+  DataColumn(label: Text('')),
+  DataColumn(label: Text('')),
 ];
 
 List<CaRDataModel> carDataRows = <CaRDataModel>[];
-List selecteddata = [];
+// List selecteddata = [];
 
 class CaRDataScr extends DataTableSource {
-  int _selectedCount = 0;
+  // int _selectedCount = 0;
+// deleteSelected() async {
+//     setState(() {
+//       if (selecteddata.isNotEmpty) {
+//         List temp = [];
+//         temp.addAll(selecteddata);
+//         for (var data in temp) {
+//           carDataRows.remove(data);
+//           selecteddata.remove(data);
+//           CloudDatabase.deleteData(docId: data.id);
+//         }
+//       }
+//     });
+//   }
 
   @override
   DataRow? getRow(int index) {
@@ -46,9 +60,6 @@ class CaRDataScr extends DataTableSource {
       //   }
       // },
       cells: <DataCell>[
-        DataCell(Text(cardata.id), onTap: () {
-          print('id ${cardata.id}');
-        }),
         DataCell(Text(cardata.groupName)),
         DataCell(Text(cardata.subCounty)),
         DataCell(Text(cardata.parish)),
@@ -66,6 +77,10 @@ class CaRDataScr extends DataTableSource {
         DataCell(Text(cardata.numLoansAccessed.toString())),
         DataCell(Text(cardata.loanRepayment.toString())),
         DataCell(Text(cardata.amntLoansWrittenoff.toString())),
+        DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {}),
+        DataCell(const Icon(Icons.delete, color: Colors.redAccent), onTap: () {
+          CloudDatabase.deleteData(docId: cardata.id);
+        }),
       ],
     );
   }
@@ -77,5 +92,5 @@ class CaRDataScr extends DataTableSource {
   int get rowCount => carDataRows.length;
 
   @override
-  int get selectedRowCount => _selectedCount;
+  int get selectedRowCount => 0;
 }
