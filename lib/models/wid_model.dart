@@ -1,4 +1,5 @@
 class WIDdataModel {
+  String id;
   String groupName;
   String subCounty;
   String parish;
@@ -19,6 +20,7 @@ class WIDdataModel {
   bool selected = false;
 
   WIDdataModel(
+    this.id,
     this.groupName,
     this.subCounty,
     this.parish,
@@ -37,8 +39,8 @@ class WIDdataModel {
     this.created,
     this.modified,
   );
-  void fromMap(String id, Map map) {
-    id = id;
+  void fromMap(String idd, Map map) {
+    id = idd;
     groupName = map["groupName"];
     subCounty = map["subCounty"];
     parish = map["parish"];

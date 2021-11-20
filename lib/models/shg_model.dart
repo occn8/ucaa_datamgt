@@ -1,4 +1,5 @@
 class SHGdataModel {
+  String id;
   String shgName;
   String location;
   String shgFormed;
@@ -18,6 +19,7 @@ class SHGdataModel {
   bool selected = false;
 
   SHGdataModel(
+    this.id,
     this.shgName,
     this.location,
     this.shgFormed,
@@ -35,8 +37,8 @@ class SHGdataModel {
     this.created,
     this.modified,
   );
-  void fromMap(String id, Map map) {
-    id = id;
+  void fromMap(String idd, Map map) {
+    id = idd;
     shgName = map["shgName"];
     location = map["location"];
     shgFormed = map["shgFormed"];

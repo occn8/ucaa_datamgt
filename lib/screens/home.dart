@@ -39,7 +39,8 @@ class _HomeState extends State<Home> {
     List docs2 = querySnapshot2.docs;
     reachDataRows.clear();
     for (var doc in docs2) {
-      var rmodel = REACHdataModel('', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '');
+      var rmodel =
+          REACHdataModel('', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '');
       rmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
       reachDataRows.add(rmodel);
     }
@@ -48,8 +49,8 @@ class _HomeState extends State<Home> {
     List docs3 = querySnapshot3.docs;
     shgDataRows.clear();
     for (var doc in docs3) {
-      var smodel =
-          SHGdataModel('', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '');
+      var smodel = SHGdataModel(
+          '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '');
       smodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
       shgDataRows.add(smodel);
     }
@@ -58,8 +59,8 @@ class _HomeState extends State<Home> {
     List docs4 = querySnapshot4.docs;
     widDataRows.clear();
     for (var doc in docs4) {
-      var wmodel =
-          WIDdataModel('', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
+      var wmodel = WIDdataModel(
+          '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
       wmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
       widDataRows.add(wmodel);
     }

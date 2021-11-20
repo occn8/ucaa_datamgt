@@ -1,4 +1,5 @@
 class REACHdataModel {
+  String id;
   String vslaName;
   int perAttendence;
   String location;
@@ -15,6 +16,7 @@ class REACHdataModel {
   bool selected = false;
 
   REACHdataModel(
+    this.id,
     this.vslaName,
     this.perAttendence,
     this.location,
@@ -30,8 +32,8 @@ class REACHdataModel {
     this.modified,
   );
 
-  void fromMap(String id, Map map) {
-    id = id;
+  void fromMap(String idd, Map map) {
+    id = idd;
     vslaName = map["vslaName"];
     perAttendence = map["perAttendence"];
     location = map["location"];
