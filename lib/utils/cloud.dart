@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-final CollectionReference _cartableCol = _firestore.collection('cartable');
+// final CollectionReference _cartableCol = _firestore.collection('cartable');
 final CollectionReference _usersCollection = _firestore.collection('users');
 
 class CloudDatabase {
@@ -36,19 +36,6 @@ class CloudDatabase {
     }
   }
 
-  static Future addCarData({required Map<String, dynamic> data}) async {
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        await _cartableCol.doc().set(data).whenComplete(() {
-          return;
-        }).catchError((e) => e.message);
-      }
-    } on SocketException {
-      return 'No Internet connection';
-    }
-  }
-
   static Future updateData(
       {required Map<String, dynamic> data,
       required String col,
@@ -68,11 +55,12 @@ class CloudDatabase {
     }
   }
 
-  static Future deleteData({required String docId}) async {
+  static Future deleteData({required String col, required String docId}) async {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        await _cartableCol
+        await _firestore
+            .collection(col)
             .doc(docId)
             .delete()
             .whenComplete(() => null)

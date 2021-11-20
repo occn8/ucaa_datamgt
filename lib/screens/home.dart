@@ -115,8 +115,8 @@ class _HomeState extends State<Home> {
                             ],
                           ),
                           onTap: () async {
-                            Get.off(() => const AuthStatus());
                             await AuthenticationHelper().signOut();
+                            Get.off(() => const AuthStatus());
                           },
                           padding: const EdgeInsets.all(15),
                         )

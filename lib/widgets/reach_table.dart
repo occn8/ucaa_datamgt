@@ -50,9 +50,12 @@ class REACHDataScr extends DataTableSource {
         DataCell(Text(reachdata.welfareLoanedOut.toString())),
         DataCell(Text(reachdata.membersAccessedLoans.toString())),
         DataCell(Text(reachdata.loanRepayment.toString())),
-        DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {}),
-        DataCell(const Icon(Icons.delete, color: Colors.redAccent),
-            onTap: () {}),
+        DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {
+          Get.to(() => AddReach(dataId: reachdata.id));
+        }),
+        DataCell(const Icon(Icons.delete, color: Colors.redAccent), onTap: () {
+          CloudDatabase.deleteData(docId: reachdata.id, col: 'reachtable');
+        }),
       ],
     );
   }

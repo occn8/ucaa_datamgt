@@ -77,9 +77,11 @@ class CaRDataScr extends DataTableSource {
         DataCell(Text(cardata.numLoansAccessed.toString())),
         DataCell(Text(cardata.loanRepayment.toString())),
         DataCell(Text(cardata.amntLoansWrittenoff.toString())),
-        DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {}),
+        DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {
+          Get.to(() => AddCaR(dataId: cardata.id));
+        }),
         DataCell(const Icon(Icons.delete, color: Colors.redAccent), onTap: () {
-          CloudDatabase.deleteData(docId: cardata.id);
+          CloudDatabase.deleteData(docId: cardata.id, col: 'cartable');
         }),
       ],
     );
