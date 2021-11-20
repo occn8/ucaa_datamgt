@@ -1,6 +1,7 @@
 import 'package:ucaa_datamgt/index.dart';
 
 const kCaRDataColumns = <DataColumn>[
+  DataColumn(label: Text('#')),
   DataColumn(label: Text('Group-Name')),
   DataColumn(label: Text('SubCounty')),
   DataColumn(label: Text('Parish')),
@@ -20,12 +21,8 @@ const kCaRDataColumns = <DataColumn>[
   DataColumn(label: Text('loans-off')),
 ];
 
-List<CaRDataModel> carDataRows = <CaRDataModel>[
-  CaRDataModel('wew', 'groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0,
-      100, 0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
-  CaRDataModel('wew', 'groupName', 'subCounty', 'parish', '1/12/1', 10, 5, 5, 0,
-      100, 0, 0, 1000, 10000, 1000, 2, 0, 1000, '1/12/1', '1/12/1'),
-];
+List<CaRDataModel> carDataRows = <CaRDataModel>[];
+List selecteddata = [];
 
 class CaRDataScr extends DataTableSource {
   int _selectedCount = 0;
@@ -37,17 +34,21 @@ class CaRDataScr extends DataTableSource {
     final CaRDataModel cardata = carDataRows[index];
     return DataRow.byIndex(
       index: index,
-      selected: cardata.selected,
-      onSelectChanged: (bool? val) {
-        if (val == null) return;
-        if (cardata.selected != val) {
-          _selectedCount += val ? 1 : -1;
-          assert(_selectedCount >= 0);
-          cardata.selected = val;
-          notifyListeners();
-        }
-      },
+      // selected: cardata.selected,
+      // onSelectChanged: (bool? val) {
+      //   if (val == null) return;
+      //   if (cardata.selected != val) {
+      //     _selectedCount += val ? 1 : -1;
+      //     assert(_selectedCount >= 0);
+      //     cardata.selected = val;
+      //     selecteddata.add(cardata);
+      //     notifyListeners();
+      //   }
+      // },
       cells: <DataCell>[
+        DataCell(Text(cardata.id), onTap: () {
+          print('id ${cardata.id}');
+        }),
         DataCell(Text(cardata.groupName)),
         DataCell(Text(cardata.subCounty)),
         DataCell(Text(cardata.parish)),

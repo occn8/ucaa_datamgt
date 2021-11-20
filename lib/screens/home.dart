@@ -21,7 +21,6 @@ class _HomeState extends State<Home> {
     super.initState();
     user = _auth.currentUser;
     getDocs();
-    setState(() {});
   }
 
   Future getDocs() async {
@@ -31,8 +30,10 @@ class _HomeState extends State<Home> {
     var cmodel = CaRDataModel(
         '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
     carDataRows.clear();
-    for (var doc in docs) {
-      cmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+    for (int i = 0; i < docs.length; i++) {
+      var doc = docs[i];
+      String did = docs[i].id;
+      cmodel.fromMap(did, doc.data()! as Map<String, dynamic>);
       carDataRows.add(cmodel);
     }
     QuerySnapshot querySnapshot2 =
@@ -64,6 +65,8 @@ class _HomeState extends State<Home> {
       wmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
       widDataRows.add(wmodel);
     }
+
+    setState(() {});
   }
 
   @override

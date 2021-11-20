@@ -13,6 +13,20 @@ class DataView extends StatefulWidget {
 }
 
 class _DataViewState extends State<DataView> {
+  deleteSelected() async {
+    setState(() {
+      if (selecteddata.isNotEmpty) {
+        List temp = [];
+        temp.addAll(selecteddata);
+        for (var data in temp) {
+          carDataRows.remove(data);
+          selecteddata.remove(data);
+          CloudDatabase.deleteData(docId: data.id);
+        }
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +53,7 @@ class _DataViewState extends State<DataView> {
                   ),
                 ),
                 Text(
-                  'Data Table ${carDataRows.length}',
+                  '${widget.tableHeader} Data Table',
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
@@ -53,6 +67,9 @@ class _DataViewState extends State<DataView> {
       body: SafeArea(
         child: Column(
           children: [
+            selecteddata.length != 0
+                ? ElevatedButton(onPressed: () {}, child: Text('Delete'))
+                : Container(),
             Expanded(
               child: Container(
                   padding:

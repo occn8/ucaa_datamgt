@@ -44,8 +44,8 @@ class CaRDataModel {
     this.modified,
   );
 
-  void fromMap(String id, Map map) {
-    id = id;
+  void fromMap(String idd, Map map) {
+    id = idd;
     groupName = map["groupName"];
     subCounty = map["subCounty"];
     parish = map["parish"];
