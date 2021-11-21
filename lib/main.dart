@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:ucaa_datamgt/auth_status.dart';
 import 'package:ucaa_datamgt/index.dart';
-import 'package:ucaa_datamgt/providers/themes_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +25,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  AppModel appModel = AppModel();
+  ThemeModel appModel = ThemeModel();
   @override
   void initState() {
     super.initState();
@@ -41,9 +40,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<AppModel>.value(value: appModel),
+        ChangeNotifierProvider<ThemeModel>.value(value: appModel),
       ],
-      child: Consumer<AppModel>(builder: (context, value, child) {
+      child: Consumer<ThemeModel>(builder: (context, value, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'UCAA Data Mgt',

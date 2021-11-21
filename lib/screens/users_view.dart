@@ -84,7 +84,6 @@ class _UserViewState extends State<UserView> {
                               ],
                             ));
                       }
-
                       return ListView.builder(
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (BuildContext context, int index) {

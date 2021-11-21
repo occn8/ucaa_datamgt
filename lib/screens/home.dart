@@ -75,6 +75,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final appModel = Provider.of<ThemeModel>(context);
+
     const TextStyle dialstyle =
         TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
     return Scaffold(
@@ -98,12 +100,20 @@ class _HomeState extends State<Home> {
                       return [
                         PopupMenuItem(
                           child: Row(
-                            children: const [
-                              Icon(Icons.brightness_4),
-                              SizedBox(width: 4),
-                              Text('Dark Theme(!)'),
+                            children: [
+                              Icon(
+                                  appModel.darkTheme != true
+                                      ? Icons.brightness_2
+                                      : Icons.brightness_7,
+                                  color: Theme.of(context).primaryColorDark),
+                              const SizedBox(width: 4),
+                              const Text('Dark Theme(!)'),
                             ],
                           ),
+                          onTap: () {
+                            appModel.darkTheme = !appModel.darkTheme;
+                            setState(() {});
+                          },
                           padding: const EdgeInsets.all(15),
                         ),
                         PopupMenuItem(

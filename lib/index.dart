@@ -1,5 +1,6 @@
 export 'package:flutter/material.dart';
 export 'package:get/get.dart';
+export 'package:provider/provider.dart';
 
 export 'package:ucaa_datamgt/screens/home.dart';
 export 'package:ucaa_datamgt/screens/sign_in.dart';
@@ -26,3 +27,5 @@ export 'package:ucaa_datamgt/widgets/snackbar.dart';
 
 export 'package:ucaa_datamgt/utils/auth.dart';
 export 'package:ucaa_datamgt/utils/cloud.dart';
+
+export 'package:ucaa_datamgt/providers/themes_provider.dart';
