@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:ucaa_datamgt/auth_status.dart';
 import 'package:ucaa_datamgt/index.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:ucaa_datamgt/screens/users_view.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -216,7 +217,7 @@ class _HomeState extends State<Home> {
                       labelBackgroundColor: Theme.of(context).backgroundColor,
                       labelStyle: dialstyle,
                       onTap: () {
-                        Get.to(() => const AddUser());
+                        Get.to(() => const UserView());
                       },
                       backgroundColor: Theme.of(context).primaryColorLight,
                     )

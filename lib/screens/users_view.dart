@@ -31,7 +31,7 @@ class _UserViewState extends State<UserView> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10)),
                       child: Icon(Icons.arrow_back,
-                          size: 28, color: Theme.of(context).primaryColorDark),
+                          size: 28, color: Theme.of(context).primaryColor),
                     ),
                   ),
                 ),
@@ -87,9 +87,15 @@ class _UserViewState extends State<UserView> {
                       return ListView.builder(
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (BuildContext context, int index) {
-                          Usr user = snapshot.data!.docs[index].data() as Usr;
+                          // Map<String, dynamic> user = snapshot.data!.docs[index]
+                          //     .data() as Map<String, dynamic>;
+                          var user = Usr('', '', '', '', 1, '');
+                          user.fromMap(
+                              snapshot.data!.docs[index].id,
+                              snapshot.data!.docs[index].data()
+                                  as Map<String, dynamic>);
                           return ListTile(
-                            title: Text(user.name),
+                            title: Text(user.email),
                           );
                         },
                       );
@@ -106,8 +112,4 @@ class _UserViewState extends State<UserView> {
   void dispose() {
     super.dispose();
   }
-}
-
-class Usr {
-  late final String name;
 }

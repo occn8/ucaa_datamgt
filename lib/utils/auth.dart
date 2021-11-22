@@ -24,7 +24,7 @@ class AuthenticationHelper {
               'userName': userName,
               'role': role,
               'status': 1,
-              'created': DateTime.now(),
+              'created': DateTime.now().toString(),
             }, doc: user.uid);
           });
 
