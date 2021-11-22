@@ -47,7 +47,7 @@ class _AddReachState extends State<AddReach> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10)),
                       child: Icon(Icons.arrow_back,
-                          size: 28, color: Theme.of(context).primaryColorDark),
+                          size: 28, color: Theme.of(context).primaryColor),
                     ),
                   ),
                 ),
@@ -477,34 +477,6 @@ class _AddReachState extends State<AddReach> {
                                           ),
                                         ),
                                         const SizedBox(height: 40),
-                                        ElevatedButton(
-                                          onPressed: () async {
-                                            // Navigator.pushReplacement(
-                                            //     context,
-                                            //     MaterialPageRoute(
-                                            //         builder: (context) =>
-                                            //             DeletePdt(
-                                            //               pdtId: widget.pdtId,
-                                            //             )));
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                            primary:
-                                                Theme.of(context).errorColor,
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 40, vertical: 15),
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(15)),
-                                          ),
-                                          child: const Text(
-                                            'Delete Data',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.white),
-                                          ),
-                                        ),
-                                        const SizedBox(height: 20),
                                       ],
                                     ),
                                   ),

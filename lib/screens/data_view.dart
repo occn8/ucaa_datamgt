@@ -34,7 +34,7 @@ class _DataViewState extends State<DataView> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10)),
                       child: Icon(Icons.arrow_back,
-                          size: 28, color: Theme.of(context).primaryColorDark),
+                          size: 28, color: Theme.of(context).primaryColor),
                     ),
                   ),
                 ),
