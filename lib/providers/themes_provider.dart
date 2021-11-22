@@ -28,15 +28,15 @@ class ThemeModel extends ChangeNotifier {
 }
 
 ThemeData lightTheme = ThemeData(
-  primaryColor: Color(0xffffb200),
-  splashColor: Color(0xffffb300),
+  primaryColor: Colors.green,
+  // splashColor: Colors.green,
   brightness: Brightness.dark,
   backgroundColor: Colors.white,
   scaffoldBackgroundColor: Colors.white,
-  primaryColorLight: Colors.grey[300],
-  primaryColorDark: Colors.black,
-  cardColor: Colors.grey[200],
-  canvasColor: Colors.white,
+  // primaryColorLight: Colors.grey[300],
+  // primaryColorDark: Colors.black,
+  // cardColor: Colors.grey[200],
+  // canvasColor: Colors.white,
   textTheme: const TextTheme(
     headline1: TextStyle(color: Colors.black),
     headline2: TextStyle(color: Colors.black),
@@ -50,15 +50,14 @@ ThemeData lightTheme = ThemeData(
 );
 
 ThemeData darkTheme = ThemeData(
-  primaryColor: Color(0xffffb200),
+  primaryColor: Colors.green,
   brightness: Brightness.light,
-  backgroundColor: Color(0xff2f2f2f),
-  scaffoldBackgroundColor: Color(0xff1d1d1d),
-  primaryColorLight: Colors.black,
-  primaryColorDark: Colors.white,
-  // cardColor: Color(0xff333333),
-  cardColor: Color(0xff424242),
-  canvasColor: Color(0xff333333),
+  backgroundColor: const Color(0xff2f2f2f),
+  scaffoldBackgroundColor: const Color(0xff1d1d1d),
+  // primaryColorLight: Colors.black,
+  // primaryColorDark: Colors.white,
+  // cardColor: Color(0xff424242),
+  // canvasColor: Color(0xff333333),
   textTheme: const TextTheme(
     headline1: TextStyle(color: Colors.white),
     headline2: TextStyle(color: Colors.white),

@@ -2,63 +2,50 @@ import 'package:flappy_search_bar_ns/flappy_search_bar_ns.dart';
 import 'package:flappy_search_bar_ns/search_bar_style.dart';
 import 'package:ucaa_datamgt/index.dart';
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
-
 class SearchView extends StatefulWidget {
-  SearchView({Key? key}) : super(key: key);
+  const SearchView({Key? key}) : super(key: key);
   @override
   _SearchViewState createState() => _SearchViewState();
 }
 
 class _SearchViewState extends State<SearchView> {
-  List<Product> spdts = [];
-  List<Bussiness> sbss = [];
+  List<CaRDataModel> scar = [];
+  List<REACHdataModel> sreach = [];
+  List<SHGdataModel> sshg = [];
+  List<WIDdataModel> swid = [];
 
   @override
   void initState() {
     super.initState();
-    fetchPdts();
   }
 
-  Future fetchPdts() async {
-    final QuerySnapshot<Map<String, dynamic>> _productsStream =
-        await FirebaseFirestore.instance
-            .collection('products')
-            .get()
-            .whenComplete(() {});
-    _productsStream.docs.forEach((doc) {
-      var pdtModel = Product(
-          category: '',
-          created: '',
-          imageUrl: '',
-          description: '',
-          pdtStatus: '',
-          price: 1,
-          pdtName: '',
-          pdtQuantity: 1,
-          pid: '',
-          bsId: '',
-          likes: [],
-          viewed: [],
-          comments: []);
-      pdtModel.fromMap(doc.id, doc.data());
-      spdts.add(pdtModel);
-    });
+  Future<List<CaRDataModel>> _getSearchCaRData(String? text) async {
+    List<CaRDataModel> searchedData = [];
+    searchedData.addAll(carDataRows.where((element) =>
+        element.groupName.toLowerCase().contains(text!.toLowerCase())));
+    return searchedData;
   }
 
-  Future<List<Product>> _getSearchProducts(String? text) async {
-    List<Product> searchedProducts = [];
-    searchedProducts.addAll(spdts.where((element) =>
-        element.pdtName.toLowerCase().contains(text!.toLowerCase())));
-    return searchedProducts;
+  Future<List<REACHdataModel>> _getSearchREACHData(String? text) async {
+    List<REACHdataModel> searchedData = [];
+    searchedData.addAll(reachDataRows.where((element) =>
+        element.vslaName.toLowerCase().contains(text!.toLowerCase())));
+    return searchedData;
   }
 
-//  suggestions()  {
-//     List<Product> sug = [];
-//     sug.addAll(spdts
-//         .where((element) => element.likes.contains(user!.uid)));
-//     return sug;
-//   }
+  Future<List<SHGdataModel>> _getSearchSHGData(String? text) async {
+    List<SHGdataModel> searchedData = [];
+    searchedData.addAll(shgDataRows.where((element) =>
+        element.shgName.toLowerCase().contains(text!.toLowerCase())));
+    return searchedData;
+  }
+
+  Future<List<WIDdataModel>> _getSearchWIDData(String? text) async {
+    List<WIDdataModel> searchedData = [];
+    searchedData.addAll(widDataRows.where((element) =>
+        element.groupName.toLowerCase().contains(text!.toLowerCase())));
+    return searchedData;
+  }
 
   bool isPdt = true;
   @override
@@ -70,7 +57,7 @@ class _SearchViewState extends State<SearchView> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SearchBar<Product>(
+            child: SearchBar<CaRDataModel>(
               header: Card(
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -103,28 +90,15 @@ class _SearchViewState extends State<SearchView> {
                   ),
                 ],
               )),
-              onSearch: _getSearchProducts,
-              onItemFound: (Product? product, int index) {
+              onSearch: _getSearchCaRData,
+              onItemFound: (CaRDataModel? data, int index) {
                 return Card(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
                   child: ListTile(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext ctx) => ProductDetail(
-                              documentId: product!.pid,
-                              userId: '',
-                            ),
-                          )).then(
-                        (value) {
-                          setState(() {});
-                        },
-                      );
-                    },
+                    onTap: () {},
                     title: Text(
-                      product.pdtName,
+                      data!.groupName,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                           fontSize: 16,
@@ -132,10 +106,7 @@ class _SearchViewState extends State<SearchView> {
                           color: Theme.of(context).primaryColorDark),
                     ),
                     subtitle: Text(
-                      'UGX ' +
-                          product.price.toString().replaceAllMapped(
-                              reg, (match) => '${match[1]},') +
-                          '/=',
+                      'sub',
                       style: TextStyle(
                         fontSize: 14,
                         shadows: [
@@ -163,29 +134,28 @@ class _SearchViewState extends State<SearchView> {
                 valueColor: AlwaysStoppedAnimation<Color>(Color(0xffffb300)),
               )),
               minimumChars: 1,
-              suggestions: spdts,
-              // placeHolder: Column(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Center(
-              //       child: Container(
-              //         padding: EdgeInsets.symmetric(
-              //             horizontal: 10, vertical: 8),
-              //         decoration: BoxDecoration(
-              //             color: Theme.of(context).cardColor,
-              //             borderRadius: BorderRadius.circular(10)),
-              //         child: Text(
-              //           'Search through all Products',
-              //           style: TextStyle(
-              //               fontSize: 16,
-              //               color: Theme.of(context).primaryColorDark),
-              //         ),
-              //       ),
-              //     ),
-              //     SizedBox(height: 50),
-              //     Image.asset('assets/images/searching.png'),
-              //   ],
-              // ),
+              placeHolder: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 8),
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Text(
+                        'Search through CaR Data',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Theme.of(context).primaryColorDark),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 50),
+                  // Image.asset('assets/images/searching.png'),
+                ],
+              ),
               emptyWidget: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -215,7 +185,7 @@ class _SearchViewState extends State<SearchView> {
                       //         Image.asset('assets/images/not_found.png'))
                     ],
                   )),
-              hintText: 'search product',
+              hintText: 'search CaR data',
               cancellationWidget: Text(
                 'Back',
                 style: TextStyle(
@@ -224,7 +194,6 @@ class _SearchViewState extends State<SearchView> {
               ),
               onCancelled: () {
                 Navigator.pop(context);
-                // print("Cancelled triggered");
               },
               icon: Icon(
                 Icons.search,
@@ -232,7 +201,7 @@ class _SearchViewState extends State<SearchView> {
               ),
               searchBarStyle: SearchBarStyle(
                 backgroundColor: Theme.of(context).cardColor,
-                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
