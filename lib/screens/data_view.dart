@@ -56,7 +56,7 @@ class _DataViewState extends State<DataView> {
             Expanded(
               child: Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
                   child: StreamBuilder<QuerySnapshot>(
                     stream: FirebaseFirestore.instance
                         .collection(widget.tableHeader == 'CaR'

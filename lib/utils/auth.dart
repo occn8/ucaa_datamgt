@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ucaa_datamgt/index.dart';
 
 class AuthenticationHelper {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -8,6 +9,7 @@ class AuthenticationHelper {
   Future signUp(
       {required String email,
       required String password,
+      required String? role,
       required String userName}) async {
     try {
       final result = await InternetAddress.lookup('google.com');
@@ -15,12 +17,21 @@ class AuthenticationHelper {
         try {
           await _auth
               .createUserWithEmailAndPassword(
-                email: email,
-                password: password,
-              )
-              .then((value) => user.updateProfile(
-                    displayName: userName,
-                  ));
+            email: email,
+            password: password,
+          )
+              .then((value) {
+            user.updateProfile(
+              displayName: userName,
+            );
+            CloudDatabase.addUser(data: {
+              'email': email,
+              'userName': userName,
+              'role': role,
+              'status': 1,
+              'created': DateTime.now(),
+            }, doc: user.uid);
+          });
 
           return null;
         } on FirebaseAuthException catch (e) {

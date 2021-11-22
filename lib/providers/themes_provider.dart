@@ -27,16 +27,14 @@ class ThemeModel extends ChangeNotifier {
   }
 }
 
-ThemeData lightTheme = ThemeData(
+ThemeData lightTheme = ThemeData.light().copyWith(
   primaryColor: Colors.green,
-  // splashColor: Colors.green,
+  primaryColorDark: Colors.green,
+  primaryColorLight: Colors.green,
   brightness: Brightness.dark,
   backgroundColor: Colors.white,
   scaffoldBackgroundColor: Colors.white,
-  // primaryColorLight: Colors.grey[300],
-  // primaryColorDark: Colors.black,
-  // cardColor: Colors.grey[200],
-  // canvasColor: Colors.white,
+  cardColor: Colors.grey[200],
   textTheme: const TextTheme(
     headline1: TextStyle(color: Colors.black),
     headline2: TextStyle(color: Colors.black),
@@ -49,15 +47,12 @@ ThemeData lightTheme = ThemeData(
   ),
 );
 
-ThemeData darkTheme = ThemeData(
+ThemeData darkTheme = ThemeData.dark().copyWith(
   primaryColor: Colors.green,
   brightness: Brightness.light,
   backgroundColor: const Color(0xff2f2f2f),
   scaffoldBackgroundColor: const Color(0xff1d1d1d),
-  // primaryColorLight: Colors.black,
-  // primaryColorDark: Colors.white,
-  // cardColor: Color(0xff424242),
-  // canvasColor: Color(0xff333333),
+  cardColor: const Color(0xff424242),
   textTheme: const TextTheme(
     headline1: TextStyle(color: Colors.white),
     headline2: TextStyle(color: Colors.white),

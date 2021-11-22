@@ -16,6 +16,7 @@ class _AddUserState extends State<AddUser> {
   bool isLoading = false;
   bool _showPassword = false;
   bool _showPassword2 = false;
+  String? _role = 'Viewer';
 
   @override
   void initState() {
@@ -292,6 +293,50 @@ class _AddUserState extends State<AddUser> {
                                 return null;
                               },
                             ),
+                            const SizedBox(height: 15),
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              child: DropdownButtonFormField(
+                                value: _role,
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColorDark),
+                                elevation: 2,
+                                iconSize: 26,
+                                iconEnabledColor:
+                                    Theme.of(context).primaryColorDark,
+                                decoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                      borderSide:
+                                          const BorderSide(color: Colors.grey)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xffffb300))),
+                                  contentPadding: const EdgeInsets.all(15),
+                                  fillColor: Colors.grey,
+                                  prefixText: 'User role:  ',
+                                  prefixStyle: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Theme.of(context).primaryColorDark,
+                                  ),
+                                ),
+                                items: ['Viewer', 'Editor', 'Admin']
+                                    .map<DropdownMenuItem<String>>(
+                                      (String value) =>
+                                          DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value),
+                                      ),
+                                    )
+                                    .toList(),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    _role = newValue;
+                                  });
+                                },
+                              ),
+                            ),
                             const SizedBox(height: 80),
                             isLoading != true
                                 ? ElevatedButton(
@@ -316,7 +361,8 @@ class _AddUserState extends State<AddUser> {
                                                 password:
                                                     _passController.value.text,
                                                 userName: _userNameController
-                                                    .value.text)
+                                                    .value.text,
+                                                role: _role)
                                             .then((result) {
                                           if (result == null) {
                                             Navigator.pushReplacement(
