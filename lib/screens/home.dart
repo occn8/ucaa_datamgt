@@ -115,7 +115,9 @@ class _HomeState extends State<Home> {
                                     appModel.darkTheme != true
                                         ? Icons.brightness_2
                                         : Icons.brightness_7,
-                                    color: Theme.of(context).primaryColor),
+                                    color: appModel.darkTheme != true
+                                        ? Colors.black
+                                        : Colors.white),
                                 const SizedBox(width: 4),
                                 Text(
                                   appModel.darkTheme != true

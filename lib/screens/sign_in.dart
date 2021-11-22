@@ -84,7 +84,7 @@ class _SignInState extends State<SignIn> {
                                   labelStyle: TextStyle(
                                       color:
                                           Theme.of(context).primaryColorDark),
-                                  hintText: 'ochen@gmail.com',
+                                  hintText: 'johndoe@gmail.com',
                                   hintStyle:
                                       const TextStyle(color: Colors.grey),
                                   prefixIcon: Icon(

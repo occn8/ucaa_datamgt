@@ -49,7 +49,7 @@ class _AddUserState extends State<AddUser> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10)),
                       child: Icon(Icons.arrow_back,
-                          size: 28, color: Theme.of(context).primaryColorDark),
+                          size: 28, color: Theme.of(context).primaryColor),
                     ),
                   ),
                 ),
@@ -91,8 +91,6 @@ class _AddUserState extends State<AddUser> {
                             const SizedBox(height: 50),
                             TextFormField(
                               controller: _emailController,
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColorDark),
                               cursorColor: const Color(0xffffb300),
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -101,18 +99,16 @@ class _AddUserState extends State<AddUser> {
                                         const BorderSide(color: Colors.grey)),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20),
-                                    borderSide: const BorderSide(
-                                        color: Color(0xffffb300))),
+                                    borderSide:
+                                        const BorderSide(color: Colors.green)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20),
-                                    borderSide: const BorderSide(
-                                      color: Colors.amber,
-                                    )),
+                                    borderSide:
+                                        const BorderSide(color: Colors.grey)),
                                 // contentPadding: EdgeInsets.all(15),
                                 labelText: ' Email',
-                                labelStyle: TextStyle(
-                                    color: Theme.of(context).primaryColorDark),
-                                hintText: 'ochen@gmail.com',
+                                labelStyle: const TextStyle(color: Colors.grey),
+                                hintText: 'johndoe@gmail.com',
                                 hintStyle: const TextStyle(color: Colors.grey),
                                 prefixIcon: Icon(
                                   Icons.email_outlined,
@@ -146,8 +142,6 @@ class _AddUserState extends State<AddUser> {
                             const SizedBox(height: 15),
                             TextFormField(
                               controller: _userNameController,
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColorDark),
                               cursorColor: const Color(0xffffb300),
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -156,17 +150,15 @@ class _AddUserState extends State<AddUser> {
                                         const BorderSide(color: Colors.grey)),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20),
-                                    borderSide: const BorderSide(
-                                        color: Color(0xffffb300))),
+                                    borderSide:
+                                        const BorderSide(color: Colors.green)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20),
-                                    borderSide: const BorderSide(
-                                      color: Colors.amber,
-                                    )),
+                                    borderSide:
+                                        const BorderSide(color: Colors.grey)),
                                 // contentPadding: EdgeInsets.all(15),
                                 labelText: ' UserName',
-                                labelStyle: TextStyle(
-                                    color: Theme.of(context).primaryColorDark),
+                                labelStyle: const TextStyle(color: Colors.grey),
                                 hintText: 'ochenHillary',
                                 hintStyle: const TextStyle(color: Colors.grey),
                                 prefixIcon: Icon(
@@ -196,8 +188,6 @@ class _AddUserState extends State<AddUser> {
                             TextFormField(
                               controller: _passController,
                               obscureText: !_showPassword,
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColorDark),
                               cursorColor: const Color(0xffffb300),
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -206,20 +196,18 @@ class _AddUserState extends State<AddUser> {
                                         const BorderSide(color: Colors.grey)),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20),
-                                    borderSide: const BorderSide(
-                                        color: Color(0xffffb300))),
+                                    borderSide:
+                                        const BorderSide(color: Colors.green)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20),
-                                    borderSide: const BorderSide(
-                                      color: Colors.amber,
-                                    )),
+                                    borderSide:
+                                        const BorderSide(color: Colors.grey)),
                                 prefixIcon: Icon(
                                   Icons.security_outlined,
                                   color: Theme.of(context).primaryColor,
                                 ),
                                 labelText: ' PassWord',
-                                labelStyle: TextStyle(
-                                    color: Theme.of(context).primaryColorDark),
+                                labelStyle: const TextStyle(color: Colors.grey),
                                 suffixIcon: IconButton(
                                   icon: _showPassword
                                       ? const Icon(Icons.visibility_off,
@@ -245,8 +233,6 @@ class _AddUserState extends State<AddUser> {
                             TextFormField(
                               controller: _pass2Controller,
                               obscureText: !_showPassword2,
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColorDark),
                               cursorColor: const Color(0xffffb300),
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -255,20 +241,18 @@ class _AddUserState extends State<AddUser> {
                                         const BorderSide(color: Colors.grey)),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20),
-                                    borderSide: const BorderSide(
-                                        color: Color(0xffffb300))),
+                                    borderSide:
+                                        const BorderSide(color: Colors.green)),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(20),
-                                    borderSide: const BorderSide(
-                                      color: Colors.amber,
-                                    )),
+                                    borderSide:
+                                        const BorderSide(color: Colors.grey)),
                                 prefixIcon: Icon(
                                   Icons.security_outlined,
                                   color: Theme.of(context).primaryColor,
                                 ),
                                 labelText: 'Retype PassWord',
-                                labelStyle: TextStyle(
-                                    color: Theme.of(context).primaryColorDark),
+                                labelStyle: const TextStyle(color: Colors.grey),
                                 suffixIcon: IconButton(
                                   icon: _showPassword2
                                       ? const Icon(Icons.visibility_off,
@@ -306,19 +290,19 @@ class _AddUserState extends State<AddUser> {
                                     Theme.of(context).primaryColorDark,
                                 decoration: InputDecoration(
                                   enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15),
+                                      borderRadius: BorderRadius.circular(20),
                                       borderSide:
                                           const BorderSide(color: Colors.grey)),
                                   focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15),
+                                      borderRadius: BorderRadius.circular(20),
                                       borderSide: const BorderSide(
-                                          color: Color(0xffffb300))),
-                                  contentPadding: const EdgeInsets.all(15),
+                                          color: Colors.green)),
+                                  contentPadding: const EdgeInsets.all(20),
                                   fillColor: Colors.grey,
                                   prefixText: 'User role:  ',
-                                  prefixStyle: TextStyle(
+                                  prefixStyle: const TextStyle(
                                     fontWeight: FontWeight.w500,
-                                    color: Theme.of(context).primaryColorDark,
+                                    color: Colors.grey,
                                   ),
                                 ),
                                 items: ['Viewer', 'Editor', 'Admin']
@@ -326,7 +310,12 @@ class _AddUserState extends State<AddUser> {
                                       (String value) =>
                                           DropdownMenuItem<String>(
                                         value: value,
-                                        child: Text(value),
+                                        child: Text(
+                                          value,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1,
+                                        ),
                                       ),
                                     )
                                     .toList(),
