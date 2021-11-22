@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:ucaa_datamgt/index.dart';
 
 class UserView extends StatefulWidget {
@@ -94,8 +95,15 @@ class _UserViewState extends State<UserView> {
                               snapshot.data!.docs[index].id,
                               snapshot.data!.docs[index].data()
                                   as Map<String, dynamic>);
-                          return ListTile(
-                            title: Text(user.email),
+                          return Card(
+                            child: ListTile(
+                              leading: Icon(Icons.person,
+                                  color: Theme.of(context).primaryColor),
+                              title: Text(user.email,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                              subtitle: Text('Role: ' + user.role),
+                            ),
                           );
                         },
                       );
@@ -104,6 +112,14 @@ class _UserViewState extends State<UserView> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Get.to(() => const AddUser());
+        },
+        icon: const Icon(Icons.add),
+        label: const Text('Add User'),
+        backgroundColor: Theme.of(context).primaryColorLight,
       ),
     );
   }

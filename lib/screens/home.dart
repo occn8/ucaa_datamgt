@@ -263,14 +263,6 @@ class _HomeState extends State<Home> {
                 backgroundColor: Theme.of(context).primaryColorLight,
               ),
             ]),
-
-        // FloatingActionButton.extended(
-        //   onPressed: () {
-        //     Get.to(() => const AddData());
-        //   },
-        //   icon: const Icon(Icons.add),
-        //   label: const Text('Add data'),
-        // ),
       ),
     );
   }
