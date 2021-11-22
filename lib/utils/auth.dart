@@ -16,14 +16,9 @@ class AuthenticationHelper {
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         try {
           await _auth
-              .createUserWithEmailAndPassword(
-            email: email,
-            password: password,
-          )
+              .createUserWithEmailAndPassword(email: email, password: password)
               .then((value) {
-            user.updateProfile(
-              displayName: userName,
-            );
+            user.updateProfile(displayName: userName);
             CloudDatabase.addUser(data: {
               'email': email,
               'userName': userName,

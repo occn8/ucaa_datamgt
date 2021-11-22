@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     user = _auth.currentUser;
-    getDocs();
+    getDocs().then((value) => setState(() {}));
   }
 
   Future getDocs() async {
@@ -65,8 +65,6 @@ class _HomeState extends State<Home> {
       wmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
       widDataRows.add(wmodel);
     }
-
-    setState(() {});
   }
 
   @override

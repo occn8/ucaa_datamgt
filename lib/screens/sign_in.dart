@@ -63,8 +63,11 @@ class _SignInState extends State<SignIn> {
                               TextFormField(
                                 controller: _emailController,
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColorDark),
-                                cursorColor: const Color(0xffffb300),
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2!
+                                        .color),
+                                cursorColor: Colors.green,
                                 textInputAction: TextInputAction.next,
                                 decoration: InputDecoration(
                                   enabledBorder: OutlineInputBorder(
@@ -74,16 +77,18 @@ class _SignInState extends State<SignIn> {
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(20),
                                       borderSide: const BorderSide(
-                                          color: Color(0xffffb300))),
+                                          color: Colors.green)),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(20),
-                                      borderSide: const BorderSide(
-                                          color: Colors.amber)),
+                                      borderSide:
+                                          const BorderSide(color: Colors.grey)),
                                   // contentPadding: EdgeInsets.all(15),
                                   labelText: ' Email',
                                   labelStyle: TextStyle(
-                                      color:
-                                          Theme.of(context).primaryColorDark),
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!
+                                          .color),
                                   hintText: 'johndoe@gmail.com',
                                   hintStyle:
                                       const TextStyle(color: Colors.grey),
@@ -119,8 +124,11 @@ class _SignInState extends State<SignIn> {
                                 controller: _passController,
                                 obscureText: !_showPassword,
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColorDark),
-                                cursorColor: const Color(0xffffb300),
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2!
+                                        .color),
+                                cursorColor: Colors.green,
                                 textInputAction: TextInputAction.done,
                                 decoration: InputDecoration(
                                   enabledBorder: OutlineInputBorder(
@@ -130,12 +138,11 @@ class _SignInState extends State<SignIn> {
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(20),
                                       borderSide: const BorderSide(
-                                          color: Color(0xffffb300))),
+                                          color: Colors.green)),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(20),
-                                      borderSide: const BorderSide(
-                                        color: Colors.amber,
-                                      )),
+                                      borderSide:
+                                          const BorderSide(color: Colors.grey)),
                                   prefixIcon: Icon(
                                     Icons.security_outlined,
                                     color: Theme.of(context).primaryColor,
@@ -154,8 +161,10 @@ class _SignInState extends State<SignIn> {
                                   ),
                                   labelText: ' PassWord',
                                   labelStyle: TextStyle(
-                                      color:
-                                          Theme.of(context).primaryColorDark),
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!
+                                          .color),
                                 ),
                                 keyboardType: TextInputType.visiblePassword,
                                 validator: (value) {
