@@ -525,20 +525,21 @@ class _AddReachState extends State<AddReach> {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         controller: control,
-        style: TextStyle(color: Theme.of(context).primaryColorDark),
+        style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
               borderSide: const BorderSide(color: Colors.grey)),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide: const BorderSide(color: Color(0xffffb300))),
+              borderSide: const BorderSide(color: Colors.green)),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
           ),
           contentPadding: const EdgeInsets.all(15),
           labelText: label,
-          labelStyle: TextStyle(color: Theme.of(context).primaryColorDark),
+          labelStyle:
+              TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
           hintText: hint,
           hintStyle: const TextStyle(color: Colors.grey),
         ),
