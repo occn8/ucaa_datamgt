@@ -1,23 +1,26 @@
 import 'package:ucaa_datamgt/index.dart';
 
+const TextStyle styl = TextStyle(
+    color: Colors.blueGrey, fontWeight: FontWeight.bold, fontSize: 16.5);
+
 const kCaRDataColumns = <DataColumn>[
-  DataColumn(label: Text('Group-Name')),
-  DataColumn(label: Text('SubCounty')),
-  DataColumn(label: Text('Parish')),
-  DataColumn(label: Text('Formed')),
-  DataColumn(label: Text('Members')),
-  DataColumn(label: Text('Male')),
-  DataColumn(label: Text('Female')),
-  DataColumn(label: Text('Times-shared')),
-  DataColumn(label: Text('shareValue')),
-  DataColumn(label: Text('Children')),
-  DataColumn(label: Text('Highest-saver')),
-  DataColumn(label: Text('Savings')),
-  DataColumn(label: Text('Social-fund')),
-  DataColumn(label: Text('Loans-taken')),
-  DataColumn(label: Text('Loans-accessed')),
-  DataColumn(label: Text('loan-repay')),
-  DataColumn(label: Text('loans-off')),
+  DataColumn(label: Text('Group-Name', style: styl)),
+  DataColumn(label: Text('SubCounty', style: styl)),
+  DataColumn(label: Text('Parish', style: styl)),
+  DataColumn(label: Text('Formed', style: styl)),
+  DataColumn(label: Text('Members', style: styl)),
+  DataColumn(label: Text('Male', style: styl)),
+  DataColumn(label: Text('Female', style: styl)),
+  DataColumn(label: Text('Times-shared', style: styl)),
+  DataColumn(label: Text('shareValue', style: styl)),
+  DataColumn(label: Text('Children', style: styl)),
+  DataColumn(label: Text('Highest-saver', style: styl)),
+  DataColumn(label: Text('Savings', style: styl)),
+  DataColumn(label: Text('Social-fund', style: styl)),
+  DataColumn(label: Text('Loans-taken', style: styl)),
+  DataColumn(label: Text('Loans-accessed', style: styl)),
+  DataColumn(label: Text('loan-repay', style: styl)),
+  DataColumn(label: Text('loans-off', style: styl)),
   DataColumn(label: Text('')),
   DataColumn(label: Text('')),
 ];

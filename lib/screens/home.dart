@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:ucaa_datamgt/auth_status.dart';
 import 'package:ucaa_datamgt/index.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:ucaa_datamgt/main.dart';
 import 'package:ucaa_datamgt/screens/users_view.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -75,8 +76,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    print('home:  jsj $usrrole');
     final appModel = Provider.of<ThemeModel>(context);
-
     const TextStyle dialstyle =
         TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -210,7 +211,7 @@ class _HomeState extends State<Home> {
             backgroundColor: Theme.of(context).primaryColor,
             childrenButtonSize: 60,
             children: [
-              user!.uid == 'PhPhu4ZFYCYOR9UZGFtm9xM8ivy2'
+              usrrole == 'Admin'
                   ? SpeedDialChild(
                       child: const Icon(Icons.people),
                       label: 'Users',

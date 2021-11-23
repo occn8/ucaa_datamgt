@@ -24,16 +24,32 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+String? usrrole;
+
 class _MyAppState extends State<MyApp> {
   ThemeModel appModel = ThemeModel();
+
   @override
   void initState() {
     super.initState();
     _initTheme();
+    getRole();
   }
 
   void _initTheme() async {
     appModel.darkTheme = await appModel.appPreference.getTheme();
+  }
+
+  // void role() {
+  //   var resutl = getRole().toString();
+  //   usrrole = aaa;
+  // }
+
+  getRole() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String aaa = prefs.getString('userRole') ?? 'Viewer';
+    usrrole = aaa;
+    return prefs.getString('userRole') ?? 'Viewer';
   }
 
   @override

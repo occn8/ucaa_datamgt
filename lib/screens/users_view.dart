@@ -100,8 +100,12 @@ class _UserViewState extends State<UserView> {
                               leading: Icon(Icons.person,
                                   color: Theme.of(context).primaryColor),
                               title: Text(user.email,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold)),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1!
+                                      .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16)),
                               subtitle: Text('Role: ' + user.role),
                             ),
                           );

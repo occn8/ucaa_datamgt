@@ -3,6 +3,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ucaa_datamgt/index.dart';
 
 class AuthenticationHelper {
+  setRolePref(String value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('userRole', value);
+  }
+
+  Future<String> getRole() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('userRole') ?? 'Viewer';
+  }
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   get user => _auth.currentUser;
 
@@ -26,6 +36,7 @@ class AuthenticationHelper {
               'status': 1,
               'created': DateTime.now().toString(),
             }, doc: user.uid);
+            setRolePref(role!);
           });
 
           return null;
@@ -52,6 +63,10 @@ class AuthenticationHelper {
         try {
           await _auth.signInWithEmailAndPassword(
               email: email, password: password);
+          var usrinfo = CloudDatabase.getUserInfo(doc: user.uid) as Usr;
+
+          print(usrinfo.role);
+          setRolePref(usrinfo.role);
 
           return null;
         } on FirebaseAuthException catch (e) {

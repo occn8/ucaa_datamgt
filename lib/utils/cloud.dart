@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ucaa_datamgt/index.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 // final CollectionReference _cartableCol = _firestore.collection('cartable');
@@ -19,6 +20,25 @@ class CloudDatabase {
       }
     } on SocketException {
       return 'No Internet connection';
+    }
+  }
+
+  static Future getUserInfo({required String doc}) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        _usersCollection.doc(doc).get().then((DocumentSnapshot docSnapshot) {
+          if (docSnapshot.exists) {
+            Usr user = Usr('', '', '', '', 1, '');
+            user.fromMap(
+                docSnapshot.id, docSnapshot.data()! as Map<String, Usr>);
+            print(user.email);
+            return user;
+          } else {}
+        });
+      }
+    } on SocketException {
+      // return 'No Internet connection';
     }
   }
 
