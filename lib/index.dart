@@ -3,11 +3,13 @@ export 'package:get/get.dart';
 export 'package:provider/provider.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 
+export 'package:ucaa_datamgt/main.dart';
 export 'package:ucaa_datamgt/screens/home.dart';
 export 'package:ucaa_datamgt/screens/sign_in.dart';
 export 'package:ucaa_datamgt/screens/addData/add_car.dart';
 export 'package:ucaa_datamgt/screens/users.dart';
 export 'package:ucaa_datamgt/screens/data_view.dart';
+export 'package:ucaa_datamgt/screens/users_view.dart';
 
 export 'package:ucaa_datamgt/screens/addData/add_reach.dart';
 export 'package:ucaa_datamgt/screens/addData/add_shg.dart';

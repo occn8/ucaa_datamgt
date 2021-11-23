@@ -57,10 +57,14 @@ class SHGDataScr extends DataTableSource {
         DataCell(Text(shgdata.loanRepayment.toString())),
         DataCell(Text(shgdata.loanSavingRatio)),
         DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {
-          Get.to(() => AddShg(dataId: shgdata.id));
+          (usrrole == 'Admin' || usrrole == 'Editor')
+              ? Get.to(() => AddShg(dataId: shgdata.id))
+              : null;
         }),
         DataCell(const Icon(Icons.delete, color: Colors.redAccent), onTap: () {
-          CloudDatabase.deleteData(docId: shgdata.id, col: 'shgtable');
+          (usrrole == 'Admin' || usrrole == 'Editor')
+              ? CloudDatabase.deleteData(docId: shgdata.id, col: 'shgtable')
+              : null;
         }),
       ],
     );

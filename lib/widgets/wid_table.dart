@@ -59,10 +59,14 @@ class WIDDataScr extends DataTableSource {
         DataCell(Text(widdata.loanRepayment.toString())),
         DataCell(Text(widdata.amntLoansWrittenoff.toString())),
         DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {
-          Get.to(() => AddWid(dataId: widdata.id));
+          (usrrole == 'Admin' || usrrole == 'Editor')
+              ? Get.to(() => AddWid(dataId: widdata.id))
+              : null;
         }),
         DataCell(const Icon(Icons.delete, color: Colors.redAccent), onTap: () {
-          CloudDatabase.deleteData(docId: widdata.id, col: 'widtable');
+          (usrrole == 'Admin' || usrrole == 'Editor')
+              ? CloudDatabase.deleteData(docId: widdata.id, col: 'widtable')
+              : null;
         }),
       ],
     );
