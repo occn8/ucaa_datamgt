@@ -6,6 +6,7 @@ class AuthenticationHelper {
   setRolePref(String value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('userRole', value);
+    print('added #####999999 prefrole ----$value');
   }
 
   Future<String> getRole() async {
@@ -63,10 +64,10 @@ class AuthenticationHelper {
         try {
           await _auth.signInWithEmailAndPassword(
               email: email, password: password);
-          var usrinfo = CloudDatabase.getUserInfo(doc: user.uid) as Usr;
-
-          print(usrinfo.role);
-          setRolePref(usrinfo.role);
+          var usrinfo = await CloudDatabase.getUserInfo(doc: user.uid);
+          String rr = usrinfo.toString();
+          setRolePref(rr);
+          print(usrinfo.toString() + rr);
 
           return null;
         } on FirebaseAuthException catch (e) {

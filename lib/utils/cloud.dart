@@ -31,9 +31,8 @@ class CloudDatabase {
           if (docSnapshot.exists) {
             Usr user = Usr('', '', '', '', 1, '');
             user.fromMap(
-                docSnapshot.id, docSnapshot.data()! as Map<String, Usr>);
-            print(user.email);
-            return user;
+                docSnapshot.id, docSnapshot.data()! as Map<String, dynamic>);
+            return user.role;
           } else {}
         });
       }
