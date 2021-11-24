@@ -43,6 +43,7 @@ dependencies:
   flutter_speed_dial: ^4.6.6
   flappy_search_bar_ns: ^2.0.2
   shared_preferences: ^2.0.9
+  desktop_window: ^0.4.0
 
 dev_dependencies:
   flutter_test:

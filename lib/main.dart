@@ -5,6 +5,7 @@ import 'package:ucaa_datamgt/index.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // await DesktopWindow.setMinWindowSize(const Size(600, 800));
   await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.white,
@@ -39,11 +40,6 @@ class _MyAppState extends State<MyApp> {
   void _initTheme() async {
     appModel.darkTheme = await appModel.appPreference.getTheme();
   }
-
-  // void role() {
-  //   var resutl = getRole().toString();
-  //   usrrole = aaa;
-  // }
 
   getRole() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

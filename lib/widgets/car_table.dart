@@ -80,16 +80,17 @@ class CaRDataScr extends DataTableSource {
         DataCell(Text(cardata.numLoansAccessed.toString())),
         DataCell(Text(cardata.loanRepayment.toString())),
         DataCell(Text(cardata.amntLoansWrittenoff.toString())),
-        DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {
-          (usrrole == 'Admin' || usrrole == 'Editor')
-              ? Get.to(() => AddCaR(dataId: cardata.id))
-              : null;
-        }),
-        DataCell(const Icon(Icons.delete, color: Colors.redAccent), onTap: () {
-          (usrrole == 'Admin' || usrrole == 'Editor')
-              ? CloudDatabase.deleteData(docId: cardata.id, col: 'cartable')
-              : null;
-        }),
+        (usrrole == 'Admin' || usrrole == 'Editor')
+            ? DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {
+                Get.to(() => AddCaR(dataId: cardata.id));
+              })
+            : const DataCell(Text('')),
+        (usrrole == 'Admin' || usrrole == 'Editor')
+            ? DataCell(const Icon(Icons.delete, color: Colors.redAccent),
+                onTap: () {
+                CloudDatabase.deleteData(docId: cardata.id, col: 'cartable');
+              })
+            : const DataCell(Text('')),
       ],
     );
   }

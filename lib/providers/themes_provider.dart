@@ -36,6 +36,11 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   scaffoldBackgroundColor: Colors.white,
   cardColor: Colors.grey[200],
   textTheme: const TextTheme(
+    button: TextStyle(color: Colors.black),
+    subtitle1: TextStyle(color: Colors.black),
+    subtitle2: TextStyle(color: Colors.black),
+    caption: TextStyle(color: Colors.black),
+    overline: TextStyle(color: Colors.black),
     headline1: TextStyle(color: Colors.black),
     headline2: TextStyle(color: Colors.black),
     headline3: TextStyle(color: Colors.black),
