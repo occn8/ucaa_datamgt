@@ -98,7 +98,11 @@ class _UserViewState extends State<UserView> {
                               snapshot.data!.docs[index].data()
                                   as Map<String, dynamic>);
                           return Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
                             child: ListTile(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
                               leading: Icon(Icons.person,
                                   color: Theme.of(context).primaryColor),
                               title: Text(user.email,
@@ -109,14 +113,17 @@ class _UserViewState extends State<UserView> {
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16)),
                               subtitle: Text('Role: ' + user.role),
-                              trailing: IconButton(
-                                  onPressed: () {
-                                    roleDialog(context);
-                                  },
-                                  icon: Icon(
-                                    Icons.edit,
-                                    color: Theme.of(context).primaryColor,
-                                  )),
+                              trailing: user.id !=
+                                      'PhPhu4ZFYCYOR9UZGFtm9xM8ivy2'
+                                  ? IconButton(
+                                      onPressed: () {
+                                        roleDialog(context, user.id);
+                                      },
+                                      icon: Icon(
+                                        Icons.edit,
+                                        color: Theme.of(context).primaryColor,
+                                      ))
+                                  : null,
                             ),
                           );
                         },
@@ -138,71 +145,92 @@ class _UserViewState extends State<UserView> {
     );
   }
 
-  Future<dynamic> roleDialog(BuildContext context) {
+  Future<dynamic> roleDialog(BuildContext context, String uid) {
     return showDialog(
         context: context,
         builder: (ctx) {
           return Dialog(
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: DropdownButtonFormField(
-                    value: _role,
-                    style: TextStyle(color: Theme.of(context).primaryColorDark),
-                    elevation: 2,
-                    iconSize: 26,
-                    iconEnabledColor: Theme.of(context).primaryColorDark,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(color: Colors.grey)),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(color: Colors.green)),
-                      contentPadding: const EdgeInsets.all(20),
-                      fillColor: Colors.grey,
-                      prefixText: 'User role:  ',
-                      prefixStyle: const TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.grey,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            child: Container(
+              height: 200,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(height: 10),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: DropdownButtonFormField(
+                      value: _role,
+                      style:
+                          TextStyle(color: Theme.of(context).primaryColorDark),
+                      elevation: 2,
+                      iconSize: 26,
+                      iconEnabledColor: Theme.of(context).primaryColorDark,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: const BorderSide(color: Colors.grey)),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: const BorderSide(color: Colors.green)),
+                        contentPadding: const EdgeInsets.all(20),
+                        fillColor: Colors.grey,
+                        prefixText: 'User role:  ',
+                        prefixStyle: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey,
+                        ),
                       ),
-                    ),
-                    items: ['Viewer', 'Editor', 'Admin']
-                        .map<DropdownMenuItem<String>>(
-                          (String value) => DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(
-                              value,
-                              style: Theme.of(context).textTheme.bodyText1,
+                      items: ['Viewer', 'Editor', 'Admin']
+                          .map<DropdownMenuItem<String>>(
+                            (String value) => DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(
+                                value,
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
                             ),
-                          ),
-                        )
-                        .toList(),
-                    onChanged: (String? newValue) {
-                      setState(() {
+                          )
+                          .toList(),
+                      onChanged: (String? newValue) {
+                        // setState(() {
                         _role = newValue;
+                        // });
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      CloudDatabase.updateData(
+                              data: {'role': _role}, docId: uid, col: 'users')
+                          .then((result) {
+                        if (result == null) {
+                          Navigator.pop(context);
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(buildSnackBar("Role Updated"));
+                        } else {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(buildSnackBar(result));
+                        }
                       });
                     },
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    CloudDatabase.addData(data: {'role': ''}, col: 'users')
-                        .then((result) {
-                      if (result == null) {
-                        Navigator.pop(context);
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(buildSnackBar("Role Updated"));
-                      } else {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(buildSnackBar(result));
-                      }
-                    });
-                  },
-                  child: const Text('Save'),
-                )
-              ],
+                    style: ButtonStyle(backgroundColor:
+                        MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                        return Theme.of(context).primaryColor;
+                      },
+                    )),
+                    child: const Text(
+                      'Save',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  )
+                ],
+              ),
             ),
           );
         });
