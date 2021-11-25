@@ -32,7 +32,10 @@ class CloudDatabase {
             Usr user = Usr('', '', '', '', 1, '');
             user.fromMap(
                 docSnapshot.id, docSnapshot.data()! as Map<String, dynamic>);
-            return user.role;
+            String rr = user.role;
+            setRolePref(rr);
+            usrrole = rr;
+            return rr;
           } else {}
         });
       }

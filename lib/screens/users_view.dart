@@ -10,6 +10,8 @@ class UserView extends StatefulWidget {
 }
 
 class _UserViewState extends State<UserView> {
+  String? _role = 'Viewer';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,6 +109,14 @@ class _UserViewState extends State<UserView> {
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16)),
                               subtitle: Text('Role: ' + user.role),
+                              trailing: IconButton(
+                                  onPressed: () {
+                                    roleDialog(context);
+                                  },
+                                  icon: Icon(
+                                    Icons.edit,
+                                    color: Theme.of(context).primaryColor,
+                                  )),
                             ),
                           );
                         },
@@ -126,6 +136,76 @@ class _UserViewState extends State<UserView> {
         backgroundColor: Theme.of(context).primaryColorLight,
       ),
     );
+  }
+
+  Future<dynamic> roleDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (ctx) {
+          return Dialog(
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  child: DropdownButtonFormField(
+                    value: _role,
+                    style: TextStyle(color: Theme.of(context).primaryColorDark),
+                    elevation: 2,
+                    iconSize: 26,
+                    iconEnabledColor: Theme.of(context).primaryColorDark,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(color: Colors.grey)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(color: Colors.green)),
+                      contentPadding: const EdgeInsets.all(20),
+                      fillColor: Colors.grey,
+                      prefixText: 'User role:  ',
+                      prefixStyle: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    items: ['Viewer', 'Editor', 'Admin']
+                        .map<DropdownMenuItem<String>>(
+                          (String value) => DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        _role = newValue;
+                      });
+                    },
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    CloudDatabase.addData(data: {'role': ''}, col: 'users')
+                        .then((result) {
+                      if (result == null) {
+                        Navigator.pop(context);
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(buildSnackBar("Role Updated"));
+                      } else {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(buildSnackBar(result));
+                      }
+                    });
+                  },
+                  child: const Text('Save'),
+                )
+              ],
+            ),
+          );
+        });
   }
 
   @override

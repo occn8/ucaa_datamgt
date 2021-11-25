@@ -106,6 +106,9 @@ class _HomeState extends State<Home> {
                             ),
                             onTap: () async {
                               await AuthenticationHelper().signOut();
+                              SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+                              prefs.setString('userRole', 'Viewer');
                               Get.off(() => const AuthStatus());
                             },
                             padding: const EdgeInsets.all(15),
@@ -127,7 +130,7 @@ class _HomeState extends State<Home> {
                       horizontal: 10.0, vertical: 10),
                   child: Text.rich(
                     TextSpan(
-                      text: 'Hello,\n',
+                      text: 'Hello,\n $usrrole',
                       style: const TextStyle(fontSize: 18),
                       children: <TextSpan>[
                         TextSpan(

@@ -1,4 +1,5 @@
 import 'package:ucaa_datamgt/index.dart';
+import 'package:ucaa_datamgt/screens/lander.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -202,7 +203,7 @@ class _SignInState extends State<SignIn> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          const Home()));
+                                                          Lander()));
                                             } else {
                                               setState(() {
                                                 isLoading = false;
@@ -238,17 +239,17 @@ class _SignInState extends State<SignIn> {
                                       ],
                                     ),
                               const SizedBox(height: 25),
-                              // TextButton(
-                              //   onPressed: () =>
-                              //       pushPage(context, ResetPassword()),
-                              //   child: Text(
-                              //     'Forgot Password',
-                              //     style: TextStyle(
-                              //         fontSize: 16,
-                              //         color: Theme.of(context).primaryColor),
-                              //   ),
-                              // ),
-                              // const SizedBox(height: 5),
+                              TextButton(
+                                onPressed: () =>
+                                    Get.to(() => const ResetPassword()),
+                                child: Text(
+                                  'Forgot Password',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Theme.of(context).primaryColor),
+                                ),
+                              ),
+                              const SizedBox(height: 5),
                             ],
                           ),
                         ),

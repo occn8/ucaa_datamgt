@@ -45,7 +45,6 @@ class _MyAppState extends State<MyApp> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String aaa = prefs.getString('userRole') ?? 'Viewer';
     usrrole = aaa;
-    return prefs.getString('userRole') ?? 'Viewer';
   }
 
   @override

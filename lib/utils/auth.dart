@@ -2,18 +2,17 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ucaa_datamgt/index.dart';
 
+setRolePref(String value) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('userRole', value);
+}
+
+// Future<String> getRole() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   return prefs.getString('userRole') ?? 'Viewer';
+// }
+
 class AuthenticationHelper {
-  setRolePref(String value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('userRole', value);
-    print('added #####999999 prefrole ----$value');
-  }
-
-  Future<String> getRole() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('userRole') ?? 'Viewer';
-  }
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
   get user => _auth.currentUser;
 
@@ -38,6 +37,7 @@ class AuthenticationHelper {
               'created': DateTime.now().toString(),
             }, doc: user.uid);
             setRolePref(role!);
+            usrrole = role;
           });
 
           return null;
@@ -64,10 +64,7 @@ class AuthenticationHelper {
         try {
           await _auth.signInWithEmailAndPassword(
               email: email, password: password);
-          var usrinfo = await CloudDatabase.getUserInfo(doc: user.uid);
-          String rr = usrinfo.toString();
-          setRolePref(rr);
-          print(usrinfo.toString() + rr);
+          await CloudDatabase.getUserInfo(doc: user.uid);
 
           return null;
         } on FirebaseAuthException catch (e) {
