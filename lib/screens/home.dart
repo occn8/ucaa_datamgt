@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
                       horizontal: 10.0, vertical: 10),
                   child: Text.rich(
                     TextSpan(
-                      text: 'Hello,\n $usrrole',
+                      text: 'Hello,\n',
                       style: const TextStyle(fontSize: 18),
                       children: <TextSpan>[
                         TextSpan(

@@ -298,7 +298,8 @@ class _AddShgState extends State<AddShg> {
                             }
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
-                              return const LinearProgressIndicator();
+                              return LinearProgressIndicator(
+                                  color: Theme.of(context).primaryColor);
                             }
 
                             if (snapshot.hasData && !snapshot.data!.exists) {}

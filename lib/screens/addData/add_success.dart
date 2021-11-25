@@ -3,31 +3,34 @@ import 'package:ucaa_datamgt/index.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-class AddWid extends StatefulWidget {
-  const AddWid({Key? key, required this.dataId}) : super(key: key);
+class AddSuccess extends StatefulWidget {
+  const AddSuccess({Key? key, required this.dataId}) : super(key: key);
 
   final String dataId;
   @override
-  _AddWidState createState() => _AddWidState();
+  _AddSuccessState createState() => _AddSuccessState();
 }
 
-class _AddWidState extends State<AddWid> {
+class _AddSuccessState extends State<AddSuccess> {
   final _formkey = GlobalKey<FormState>();
-  final _groupNameController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _maritalStatusController = TextEditingController();
+  final _numChildrenController = TextEditingController();
+  final _dateController = TextEditingController();
+  final _sexController = TextEditingController();
+  final _ageController = TextEditingController();
+  final _districtController = TextEditingController();
   final _subCountyController = TextEditingController();
   final _parishController = TextEditingController();
-  final _gdFormedController = TextEditingController();
-  final _numMembersController = TextEditingController();
-  final _timesSharedOutController = TextEditingController();
-  final _shareValueController = TextEditingController();
-  final _numChildrenController = TextEditingController();
-  final _amntHighestSaverController = TextEditingController();
-  final _amntSavedController = TextEditingController();
-  final _amntSocialFundController = TextEditingController();
-  final _amntLoansTakenController = TextEditingController();
-  final _numLoansAccessedController = TextEditingController();
-  final _loanRepaymentController = TextEditingController();
-  final _amntLoansWrittenoffController = TextEditingController();
+  final _villageController = TextEditingController();
+  final _groupNameController = TextEditingController();
+  final _yrOfEncounterAndHowController = TextEditingController();
+  final _lifeBeforeEncounterController = TextEditingController();
+  final _capacityBuildingController = TextEditingController();
+  final _changesInLifeComparedToBeforeController = TextEditingController();
+  final _otherInfluencesThatChangedLifeController = TextEditingController();
+  final _futurePlanController = TextEditingController();
+  final _otherCommentsController = TextEditingController();
   bool isUploading = false;
 
   @override
@@ -56,7 +59,7 @@ class _AddWidState extends State<AddWid> {
                   ),
                 ),
                 Text(
-                  widget.dataId == '' ? "Add Data" : "Edit Data",
+                  widget.dataId == '' ? "Add Story" : "Edit Story",
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
@@ -69,7 +72,6 @@ class _AddWidState extends State<AddWid> {
       ),
       body: SafeArea(
         child: GestureDetector(
-          // onTap: () => FocusScope.of(context).unfocus(),
           child: isUploading == false
               ? SafeArea(
                   child: widget.dataId == ''
@@ -80,7 +82,7 @@ class _AddWidState extends State<AddWid> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 15),
                               child: const Text(
-                                'Add WID Data',
+                                'Add Success Story',
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
@@ -93,16 +95,16 @@ class _AddWidState extends State<AddWid> {
                                   children: [
                                     buildTextFormField(
                                       context,
-                                      _groupNameController,
-                                      'Group Name',
-                                      "grp_name",
+                                      _nameController,
+                                      'Name',
+                                      "john doe",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _subCountyController,
-                                      'Sub-county',
-                                      "sub-county",
+                                      _maritalStatusController,
+                                      'Marital-Status',
+                                      "Married",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
@@ -114,31 +116,45 @@ class _AddWidState extends State<AddWid> {
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _gdFormedController,
-                                      'Formed(date)',
+                                      _dateController,
+                                      'Date',
                                       "1/1/2008",
                                       TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _numMembersController,
-                                      'No Members',
-                                      "15",
+                                      _sexController,
+                                      'Sex',
+                                      "Female/Male",
+                                      TextInputType.text,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _ageController,
+                                      'Age',
+                                      "25",
                                       TextInputType.number,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _timesSharedOutController,
-                                      'Times Shared Out',
-                                      "7",
-                                      TextInputType.number,
+                                      _districtController,
+                                      'District',
+                                      "gulu",
+                                      TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _shareValueController,
-                                      'Share Value',
-                                      "5,000",
-                                      TextInputType.number,
+                                      _subCountyController,
+                                      'Sub-county',
+                                      "sub-county",
+                                      TextInputType.text,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _villageController,
+                                      'Village',
+                                      "village-name",
+                                      TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
@@ -149,52 +165,59 @@ class _AddWidState extends State<AddWid> {
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _amntHighestSaverController,
-                                      'Amount of Highest Saver',
-                                      "5,000",
-                                      TextInputType.number,
+                                      _groupNameController,
+                                      'Group Name',
+                                      "group-nane",
+                                      TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _amntSavedController,
-                                      'Amount Saved',
-                                      "40000",
-                                      TextInputType.number,
+                                      _yrOfEncounterAndHowController,
+                                      'Year of first encounter with UCAA and how',
+                                      "...",
+                                      TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _amntSocialFundController,
-                                      'Amount of Social fund',
-                                      "5,000",
-                                      TextInputType.number,
+                                      _lifeBeforeEncounterController,
+                                      'Life before encounter with UCAA',
+                                      "...",
+                                      TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _amntLoansTakenController,
-                                      'Amount of Loans taken',
-                                      "4000",
-                                      TextInputType.number,
+                                      _capacityBuildingController,
+                                      'Capacity building/trainings provided by UCAA',
+                                      "...",
+                                      TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _numLoansAccessedController,
-                                      'No Loans Accessed',
-                                      "3",
-                                      TextInputType.number,
+                                      _changesInLifeComparedToBeforeController,
+                                      'Changes in yuor life right now compared to before the UCAA encounter',
+                                      "..",
+                                      TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _loanRepaymentController,
-                                      'Loans Repayment',
-                                      "3",
-                                      TextInputType.number,
+                                      _otherInfluencesThatChangedLifeController,
+                                      'Other influences beside UCAA that changed your life(own effort/gov./other Ngos)',
+                                      "...",
+                                      TextInputType.text,
                                     ),
                                     buildTextFormField(
                                       context,
-                                      _amntLoansWrittenoffController,
-                                      'Amount of Loans Written Off',
-                                      "3",
-                                      TextInputType.number,
+                                      _futurePlanController,
+                                      'Future Plan',
+                                      "...",
+                                      TextInputType.text,
+                                    ),
+                                    buildTextFormField(
+                                      context,
+                                      _otherCommentsController,
+                                      'Any Other comments on your story',
+                                      "...",
+                                      TextInputType.text,
                                     ),
                                     const SizedBox(height: 20),
                                     ElevatedButton(
@@ -205,64 +228,61 @@ class _AddWidState extends State<AddWid> {
                                             isUploading = true;
                                           });
                                           Map<String, dynamic> data = {
-                                            'groupName':
-                                                _groupNameController.value.text,
+                                            'name': _nameController.value.text,
+                                            'maritalStatus':
+                                                _maritalStatusController
+                                                    .value.text,
+                                            'numChildren': int.parse(
+                                                _numChildrenController
+                                                    .value.text),
+                                            'date': _dateController.value.text,
+                                            'sex': _sexController.value.text,
+                                            'age': int.parse(
+                                                _ageController.value.text),
+                                            'district':
+                                                _districtController.value.text,
                                             'subCounty':
                                                 _subCountyController.value.text,
                                             'parish':
                                                 _parishController.value.text,
-                                            'gdFormed':
-                                                _gdFormedController.value.text,
-                                            'numMembers': int.parse(
-                                                _numMembersController
-                                                    .value.text),
-                                            'timesSharedOut': int.parse(
-                                                _timesSharedOutController
-                                                    .value.text),
-                                            'shareValue': int.parse(
-                                                _shareValueController
-                                                    .value.text),
-                                            'numChildren': int.parse(
-                                                _numChildrenController
-                                                    .value.text),
-                                            'amntHighestSaver': int.parse(
-                                                _amntHighestSaverController
-                                                    .value.text),
-                                            'amntSaved': int.parse(
-                                                _amntSavedController
-                                                    .value.text),
-                                            'amntSocialFund': int.parse(
-                                                _amntSocialFundController
-                                                    .value.text),
-                                            'amntLoansTaken': int.parse(
-                                                _amntLoansTakenController
-                                                    .value.text),
-                                            'numLoansAccessed': int.parse(
-                                                _numLoansAccessedController
-                                                    .value.text),
-                                            'loanRepayment': int.parse(
-                                                _loanRepaymentController
-                                                    .value.text),
-                                            'amntLoansWrittenoff': int.parse(
-                                                _amntLoansWrittenoffController
-                                                    .value.text),
+                                            'village':
+                                                _villageController.value.text,
+                                            'groupName':
+                                                _groupNameController.value.text,
+                                            'yrOfEncounterAndHow':
+                                                _yrOfEncounterAndHowController
+                                                    .value.text,
+                                            'lifeBeforeEncounter':
+                                                _lifeBeforeEncounterController
+                                                    .value.text,
+                                            'capacityBuilding':
+                                                _capacityBuildingController
+                                                    .value.text,
+                                            'changesInLifeComparedToBefore':
+                                                _changesInLifeComparedToBeforeController
+                                                    .value.text,
+                                            'otherInfluencesThatChangedLife':
+                                                _otherInfluencesThatChangedLifeController
+                                                    .value.text,
+                                            'futurePlan': _futurePlanController
+                                                .value.text,
+                                            'otherComments':
+                                                _otherCommentsController
+                                                    .value.text,
                                             'created':
                                                 DateTime.now().toString(),
                                             'modified':
                                                 DateTime.now().toString(),
                                           };
                                           CloudDatabase.addData(
-                                                  data: data, col: 'widtable')
-                                              .then((result) {
+                                            data: data,
+                                            col: 'successstory',
+                                          ).then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(buildSnackBar(
                                                       "Data Added to Database"));
-                                              // Navigator.pushReplacement(
-                                              //     context,
-                                              //     MaterialPageRoute(
-                                              //         builder: (context) => ()));
                                             } else {
                                               setState(() {
                                                 isUploading = false;
@@ -283,7 +303,7 @@ class _AddWidState extends State<AddWid> {
                                                 BorderRadius.circular(15)),
                                       ),
                                       child: const Text(
-                                        'Add Data',
+                                        'Add Story',
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w800,
@@ -299,7 +319,7 @@ class _AddWidState extends State<AddWid> {
                         )
                       : FutureBuilder<DocumentSnapshot>(
                           future: _firestore
-                              .collection('widtable')
+                              .collection('successstory')
                               .doc(widget.dataId)
                               .get(),
                           builder: (BuildContext context,
@@ -316,31 +336,33 @@ class _AddWidState extends State<AddWid> {
                             if (snapshot.hasData && !snapshot.data!.exists) {}
                             Map<String, dynamic> data =
                                 snapshot.data!.data() as Map<String, dynamic>;
-                            _groupNameController.text = data['groupName'];
-                            _subCountyController.text = data['subCounty'];
+                            _nameController.text = data['groupName'];
+                            _maritalStatusController.text = data['subCounty'];
                             _parishController.text = data['parish'];
-                            _gdFormedController.text = data['gdFormed'];
-                            _numMembersController.text =
-                                data['numMembers'].toString();
-                            _timesSharedOutController.text =
+                            _dateController.text = data['gdFormed'];
+                            _sexController.text = data['numMembers'].toString();
+                            _ageController.text = data['segMale'].toString();
+                            _districtController.text =
+                                data['segFemale'].toString();
+                            _subCountyController.text =
                                 data['timesSharedOut'].toString();
-                            _shareValueController.text =
+                            _villageController.text =
                                 data['shareValue'].toString();
                             _numChildrenController.text =
                                 data['numChildren'].toString();
-                            _amntHighestSaverController.text =
+                            _groupNameController.text =
                                 data['amntHighestSaver'].toString();
-                            _amntSavedController.text =
+                            _yrOfEncounterAndHowController.text =
                                 data['amntSaved'].toString();
-                            _amntSocialFundController.text =
+                            _lifeBeforeEncounterController.text =
                                 data['amntSocialFund'].toString();
-                            _amntLoansTakenController.text =
+                            _capacityBuildingController.text =
                                 data['amntLoansTaken'].toString();
-                            _numLoansAccessedController.text =
+                            _changesInLifeComparedToBeforeController.text =
                                 data['numLoansAccessed'].toString();
-                            _loanRepaymentController.text =
+                            _otherInfluencesThatChangedLifeController.text =
                                 data['loanRepayment'].toString();
-                            _amntLoansWrittenoffController.text =
+                            _futurePlanController.text =
                                 data['amntLoansWrittenoff'].toString();
                             return ListView(
                               physics: const BouncingScrollPhysics(),
@@ -349,7 +371,7 @@ class _AddWidState extends State<AddWid> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 15),
                                   child: const Text(
-                                    'Update WID Data',
+                                    'Update Success Story',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
@@ -363,16 +385,16 @@ class _AddWidState extends State<AddWid> {
                                       children: [
                                         buildTextFormField(
                                           context,
-                                          _groupNameController,
-                                          'Group Name',
-                                          "grp_name",
+                                          _nameController,
+                                          'Name',
+                                          "john doe",
                                           TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _subCountyController,
-                                          'Sub-county',
-                                          "sub-county",
+                                          _maritalStatusController,
+                                          'Marital-Status',
+                                          "Married",
                                           TextInputType.text,
                                         ),
                                         buildTextFormField(
@@ -384,31 +406,45 @@ class _AddWidState extends State<AddWid> {
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _gdFormedController,
-                                          'Formed(date)',
+                                          _dateController,
+                                          'Date',
                                           "1/1/2008",
                                           TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _numMembersController,
-                                          'No Members',
-                                          "15",
+                                          _sexController,
+                                          'Sex',
+                                          "Female/Male",
+                                          TextInputType.text,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _ageController,
+                                          'Age',
+                                          "25",
                                           TextInputType.number,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _timesSharedOutController,
-                                          'Times Shared Out',
-                                          "7",
-                                          TextInputType.number,
+                                          _districtController,
+                                          'District',
+                                          "gulu",
+                                          TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _shareValueController,
-                                          'Share Value',
-                                          "5,000",
-                                          TextInputType.number,
+                                          _subCountyController,
+                                          'Sub-county',
+                                          "sub-county",
+                                          TextInputType.text,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _villageController,
+                                          'Village',
+                                          "village-name",
+                                          TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
@@ -419,52 +455,59 @@ class _AddWidState extends State<AddWid> {
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _amntHighestSaverController,
-                                          'Amount of Highest Saver',
-                                          "5,000",
-                                          TextInputType.number,
+                                          _groupNameController,
+                                          'Group Name',
+                                          "group-nane",
+                                          TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _amntSavedController,
-                                          'Amount Saved',
-                                          "40000",
-                                          TextInputType.number,
+                                          _yrOfEncounterAndHowController,
+                                          'Year of first encounter with UCAA and how',
+                                          "...",
+                                          TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _amntSocialFundController,
-                                          'Amount of Social fund',
-                                          "5,000",
-                                          TextInputType.number,
+                                          _lifeBeforeEncounterController,
+                                          'Life before encounter with UCAA',
+                                          "...",
+                                          TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _amntLoansTakenController,
-                                          'Amount of Loans taken',
-                                          "4000",
-                                          TextInputType.number,
+                                          _capacityBuildingController,
+                                          'Capacity building/trainings provided by UCAA',
+                                          "...",
+                                          TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _numLoansAccessedController,
-                                          'No Loans Accessed',
-                                          "3",
-                                          TextInputType.number,
+                                          _changesInLifeComparedToBeforeController,
+                                          'Changes in yuor life right now compared to before the UCAA encounter',
+                                          "..",
+                                          TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _loanRepaymentController,
-                                          'Loans Repayment',
-                                          "3",
-                                          TextInputType.number,
+                                          _otherInfluencesThatChangedLifeController,
+                                          'Other influences beside UCAA that changed your life(own effort/gov./other Ngos)',
+                                          "...",
+                                          TextInputType.text,
                                         ),
                                         buildTextFormField(
                                           context,
-                                          _amntLoansWrittenoffController,
-                                          'Amount of Loans Written Off',
-                                          "3000",
-                                          TextInputType.number,
+                                          _futurePlanController,
+                                          'Future Plan',
+                                          "...",
+                                          TextInputType.text,
+                                        ),
+                                        buildTextFormField(
+                                          context,
+                                          _otherCommentsController,
+                                          'Any Other comments on your story',
+                                          "...",
+                                          TextInputType.text,
                                         ),
                                         const SizedBox(height: 40),
                                         ElevatedButton(
@@ -477,56 +520,60 @@ class _AddWidState extends State<AddWid> {
                                               FocusScope.of(context).unfocus();
 
                                               Map<String, dynamic> data = {
-                                                'groupName':
-                                                    _groupNameController
+                                                'name':
+                                                    _nameController.value.text,
+                                                'maritalStatus':
+                                                    _maritalStatusController
                                                         .value.text,
+                                                'numChildren': int.parse(
+                                                    _numChildrenController
+                                                        .value.text),
+                                                'date':
+                                                    _dateController.value.text,
+                                                'sex':
+                                                    _sexController.value.text,
+                                                'age': int.parse(
+                                                    _ageController.value.text),
+                                                'district': _districtController
+                                                    .value.text,
                                                 'subCounty':
                                                     _subCountyController
                                                         .value.text,
                                                 'parish': _parishController
                                                     .value.text,
-                                                'gdFormed': _gdFormedController
+                                                'village': _villageController
                                                     .value.text,
-                                                'numMembers': int.parse(
-                                                    _numMembersController
-                                                        .value.text),
-                                                'timesSharedOut': int.parse(
-                                                    _timesSharedOutController
-                                                        .value.text),
-                                                'shareValue': int.parse(
-                                                    _shareValueController
-                                                        .value.text),
-                                                'numChildren': int.parse(
-                                                    _numChildrenController
-                                                        .value.text),
-                                                'amntHighestSaver': int.parse(
-                                                    _amntHighestSaverController
-                                                        .value.text),
-                                                'amntSaved': int.parse(
-                                                    _amntSavedController
-                                                        .value.text),
-                                                'amntSocialFund': int.parse(
-                                                    _amntSocialFundController
-                                                        .value.text),
-                                                'amntLoansTaken': int.parse(
-                                                    _amntLoansTakenController
-                                                        .value.text),
-                                                'numLoansAccessed': int.parse(
-                                                    _numLoansAccessedController
-                                                        .value.text),
-                                                'loanRepayment': int.parse(
-                                                    _loanRepaymentController
-                                                        .value.text),
-                                                'amntLoansWrittenoff': int.parse(
-                                                    _amntLoansWrittenoffController
-                                                        .value.text),
+                                                'groupName':
+                                                    _groupNameController
+                                                        .value.text,
+                                                'yrOfEncounterAndHow':
+                                                    _yrOfEncounterAndHowController
+                                                        .value.text,
+                                                'lifeBeforeEncounter':
+                                                    _lifeBeforeEncounterController
+                                                        .value.text,
+                                                'capacityBuilding':
+                                                    _capacityBuildingController
+                                                        .value.text,
+                                                'changesInLifeComparedToBefore':
+                                                    _changesInLifeComparedToBeforeController
+                                                        .value.text,
+                                                'otherInfluencesThatChangedLife':
+                                                    _otherInfluencesThatChangedLifeController
+                                                        .value.text,
+                                                'futurePlan':
+                                                    _futurePlanController
+                                                        .value.text,
+                                                'otherComments':
+                                                    _otherCommentsController
+                                                        .value.text,
                                                 'modified':
                                                     DateTime.now().toString(),
                                               };
                                               CloudDatabase.updateData(
                                                       data: data,
                                                       docId: widget.dataId,
-                                                      col: 'widtable')
+                                                      col: 'cartable')
                                                   .then((result) {
                                                 if (result == null) {
                                                   setState(() {
@@ -535,7 +582,7 @@ class _AddWidState extends State<AddWid> {
                                                   Navigator.pop(context);
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(buildSnackBar(
-                                                          "Product Updated successfully"));
+                                                          "Updated successfully"));
                                                 } else {
                                                   setState(() {
                                                     isUploading = false;
@@ -558,7 +605,7 @@ class _AddWidState extends State<AddWid> {
                                                     BorderRadius.circular(15)),
                                           ),
                                           child: const Text(
-                                            'Update Product',
+                                            'Update Data',
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w800,
@@ -617,12 +664,12 @@ class _AddWidState extends State<AddWid> {
 
   @override
   void dispose() {
-    _groupNameController.dispose();
-    _gdFormedController.dispose();
-    _timesSharedOutController.dispose();
+    _nameController.dispose();
+    _dateController.dispose();
+    _ageController.dispose();
     _parishController.dispose();
-    _subCountyController.dispose();
-    _numMembersController.dispose();
+    _maritalStatusController.dispose();
+    _sexController.dispose();
     super.dispose();
   }
 }

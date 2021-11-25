@@ -267,7 +267,8 @@ class _AddReachState extends State<AddReach> {
                             }
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
-                              return const LinearProgressIndicator();
+                              return LinearProgressIndicator(
+                                  color: Theme.of(context).primaryColor);
                             }
 
                             if (snapshot.hasData && !snapshot.data!.exists) {}

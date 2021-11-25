@@ -326,7 +326,8 @@ class _AddCaRState extends State<AddCaR> {
                             }
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
-                              return const LinearProgressIndicator();
+                              return LinearProgressIndicator(
+                                  color: Theme.of(context).primaryColor);
                             }
 
                             if (snapshot.hasData && !snapshot.data!.exists) {}
@@ -575,7 +576,7 @@ class _AddCaRState extends State<AddCaR> {
                                                   Navigator.pop(context);
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(buildSnackBar(
-                                                          "Product Updated successfully"));
+                                                          "Updated successfully"));
                                                 } else {
                                                   setState(() {
                                                     isUploading = false;
