@@ -27,7 +27,6 @@ class MonitorToolModel {
   String challenges;
   String solutions;
   String grpActionPlan;
-
   String created;
   String modified;
 
@@ -63,4 +62,37 @@ class MonitorToolModel {
     this.totalSocialFund,
     this.village,
   );
+
+  void fromMap(String idd, Map map) {
+    id = idd;
+    collectorName = map["collectorName"];
+    title = map["title"];
+    date = map["date"];
+    grpName = map["grpName"];
+    numMembers = map["numMembers"];
+    numMale = map["numMale"];
+    numFemale = map["numFemale"];
+    subCounty = map["subCounty"];
+    parish = map["parish"];
+    village = map["village"];
+    reportQuarter = map["reportQuarter"];
+    month = map["month"];
+    totalSavings = map["totalSavings"];
+    loanAmtGivenOut = map["loanAmtGivenOut"];
+    loanRepaymentAmt = map["loanRepaymentAmt"];
+    totalSocialFund = map["totalSocialFund"];
+    remarks = map["remarks"];
+    numMemeberWithIGA = map["numMemeberWithIGA"];
+    numMembersIGAcollapsed = map["numMembersIGAcollapsed"];
+    numMembersIGAmaitained = map["numMembersIGAmaitained"];
+    numMembersNewIGA = map["numMembersNewIGA"];
+    anyIGAyesORno = map["anyIGAyesORno"];
+    ifYesWhichIGA = map["ifYesWhichIGA"];
+    summaryOFArchievements = map["summaryOFArchievements"];
+    challenges = map["challenges"];
+    solutions = map["solutions"];
+    grpActionPlan = map["grpActionPlan"];
+    created = map["created"];
+    modified = map["modified"];
+  }
 }

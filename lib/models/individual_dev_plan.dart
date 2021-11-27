@@ -30,4 +30,21 @@ class IndDevPlanModel {
     this.subCounty,
     this.village,
   );
+
+  void fromMap(String idd, Map map) {
+    id = idd;
+    dataMakingPlan = map["dataMakingPlan"];
+    name = map["name"];
+    grpName = map["grpName"];
+    district = map["district"];
+    subCounty = map["subCounty"];
+    parish = map["parish"];
+    village = map["village"];
+    needs = map["needs"];
+    actionsTaken = map["actionsTaken"];
+    staff = map["staff"];
+    date = map["date"];
+    created = map["created"];
+    modified = map["modified"];
+  }
 }

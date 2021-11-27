@@ -30,4 +30,21 @@ class StaffGrpTrackToolModel {
     this.title,
     this.year,
   );
+
+  void fromMap(String idd, Map map) {
+    id = idd;
+    project = map["project"];
+    areaOfOp = map["areaOfOp"];
+    staffName = map["staffName"];
+    title = map["title"];
+    date = map["date"];
+    monthUnderReview = map["monthUnderReview"];
+    year = map["year"];
+    grpName = map["grpName"];
+    lessonsLearnt = map["lessonsLearnt"];
+    challengesFaced = map["challengesFaced"];
+    possibleSolution = map["possibleSolution"];
+    created = map["created"];
+    modified = map["modified"];
+  }
 }
