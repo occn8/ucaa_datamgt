@@ -338,12 +338,13 @@ class _AddStaffTrackState extends State<AddStaffTrack> {
         buildTextFormField(context, _yearController, 'Parish', ""),
         buildTextFormField(context, _grpNameController, 'Village', ""),
         buildTextFormField(context, _lessonsLearntController, 'Needs', "",
-            mxl: 4),
+            mxl: 5),
         buildTextFormField(context, _challengesFacedController,
             'Actions to be taken/services needed', "",
-            mxl: 4),
+            mxl: 5),
         buildTextFormField(
-            context, _possibleSolutionController, 'Title&Name of staff', ""),
+            context, _possibleSolutionController, 'Title & Name of staff', "",
+            mxl: 5),
         buildTextFormField(context, _dateController, 'Date', "30/3/2021"),
       ],
     );

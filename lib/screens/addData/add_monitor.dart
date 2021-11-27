@@ -514,14 +514,18 @@ class _AddMonitoringState extends State<AddMonitoring> {
         buildTextFormField(
             context, _ifYesWhichIGAController, 'If yes, which type of IGA', ""),
         buildTextFormField(context, _summaryOFArchievementsController,
-            'Summary of Group achievements', ""),
+            'Summary of Group achievements', "",
+            mxl: 5),
         buildTextFormField(
-            context, _challengesController, 'Challenges encountered', ""),
+            context, _challengesController, 'Challenges encountered', "",
+            mxl: 5),
         buildTextFormField(
-            context, _solutionsController, 'Proposed solutions', ""),
+            context, _solutionsController, 'Proposed solutions', "",
+            mxl: 5),
         buildTextFormField(context, _grpActionPlanController,
-            'Group Action Plan(activities planned)', ""),
-        buildTextFormField(context, _remarksController, 'Remarks', ""),
+            'Group Action Plan(activities planned)', "",
+            mxl: 5),
+        buildTextFormField(context, _remarksController, 'Remarks', "", mxl: 5),
         buildTextFormField(context, _dateController, 'Date', "30/3/2021"),
       ],
     );

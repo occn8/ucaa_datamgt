@@ -328,10 +328,10 @@ class _AddDevPlanState extends State<AddDevPlan> {
         buildTextFormField(context, _subCountyController, 'Sub-County', ""),
         buildTextFormField(context, _parishController, 'Parish', ""),
         buildTextFormField(context, _villageController, 'Village', ""),
-        buildTextFormField(context, _needsController, 'Needs', "", mxl: 4),
+        buildTextFormField(context, _needsController, 'Needs', "", mxl: 5),
         buildTextFormField(context, _actionsTakenController,
             'Actions to be taken/services needed', "",
-            mxl: 4),
+            mxl: 5),
         buildTextFormField(
             context, _staffController, 'Title&Name of staff', ""),
         buildTextFormField(context, _dateController, 'Date', "30/3/2021"),

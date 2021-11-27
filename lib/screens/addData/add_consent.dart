@@ -92,9 +92,12 @@ class _AddConsentState extends State<AddConsent> {
                                           });
                                           Map<String, dynamic> data = {
                                             'name': _nameController.value.text,
-                                            'nameParent': int.parse(
-                                                _nameParentController
-                                                    .value.text),
+                                            'nameParent': (_nameParentController
+                                                        .value.text !=
+                                                    '')
+                                                ? _nameParentController
+                                                    .value.text
+                                                : 'not applicable',
                                             'phone':
                                                 _phoneController.value.text,
                                             'date': _dateController.value.text,
@@ -212,9 +215,9 @@ class _AddConsentState extends State<AddConsent> {
                                               Map<String, dynamic> data = {
                                                 'name':
                                                     _nameController.value.text,
-                                                'nameParent': int.parse(
+                                                'nameParent':
                                                     _nameParentController
-                                                        .value.text),
+                                                        .value.text,
                                                 'phone':
                                                     _phoneController.value.text,
                                                 'date':

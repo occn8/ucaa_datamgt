@@ -19,4 +19,14 @@ class ConsentModel {
     this.nameParent,
     this.phone,
   );
+  void fromMap(String idd, Map map) {
+    id = idd;
+    name = map["name"];
+    nameParent = map["nameParent"];
+    phone = map["phone"];
+    approval = map["approval"];
+    date = map["date"];
+    created = map["created"];
+    modified = map["modified"];
+  }
 }
