@@ -93,132 +93,7 @@ class _AddSuccessState extends State<AddSuccess> {
                                 padding: const EdgeInsets.all(8),
                                 child: Column(
                                   children: [
-                                    buildTextFormField(
-                                      context,
-                                      _nameController,
-                                      'Name',
-                                      "john doe",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _maritalStatusController,
-                                      'Marital-Status',
-                                      "Married",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _parishController,
-                                      'Parish',
-                                      "parish-name",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _dateController,
-                                      'Date',
-                                      "1/1/2008",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _sexController,
-                                      'Sex',
-                                      "Female/Male",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _ageController,
-                                      'Age',
-                                      "25",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _districtController,
-                                      'District',
-                                      "gulu",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _subCountyController,
-                                      'Sub-county',
-                                      "sub-county",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _villageController,
-                                      'Village',
-                                      "village-name",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _numChildrenController,
-                                      'Number of Children',
-                                      "2",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _groupNameController,
-                                      'Group Name',
-                                      "group-nane",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _yrOfEncounterAndHowController,
-                                      'Year of first encounter with UCAA and how',
-                                      "...",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _lifeBeforeEncounterController,
-                                      'Life before encounter with UCAA',
-                                      "...",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _capacityBuildingController,
-                                      'Capacity building/trainings provided by UCAA',
-                                      "...",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _changesInLifeComparedToBeforeController,
-                                      'Changes in yuor life right now compared to before the UCAA encounter',
-                                      "..",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _otherInfluencesThatChangedLifeController,
-                                      'Other influences beside UCAA that changed your life(own effort/gov./other Ngos)',
-                                      "...",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _futurePlanController,
-                                      'Future Plan',
-                                      "...",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _otherCommentsController,
-                                      'Any Other comments on your story',
-                                      "...",
-                                      TextInputType.text,
-                                    ),
+                                    formColumn(context),
                                     const SizedBox(height: 20),
                                     ElevatedButton(
                                       onPressed: () async {
@@ -381,132 +256,7 @@ class _AddSuccessState extends State<AddSuccess> {
                                     padding: const EdgeInsets.all(8),
                                     child: Column(
                                       children: [
-                                        buildTextFormField(
-                                          context,
-                                          _nameController,
-                                          'Name',
-                                          "john doe",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _maritalStatusController,
-                                          'Marital-Status',
-                                          "Married",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _parishController,
-                                          'Parish',
-                                          "parish-name",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _dateController,
-                                          'Date',
-                                          "1/1/2008",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _sexController,
-                                          'Sex',
-                                          "Female/Male",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _ageController,
-                                          'Age',
-                                          "25",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _districtController,
-                                          'District',
-                                          "gulu",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _subCountyController,
-                                          'Sub-county',
-                                          "sub-county",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _villageController,
-                                          'Village',
-                                          "village-name",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _numChildrenController,
-                                          'Number of Children',
-                                          "2",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _groupNameController,
-                                          'Group Name',
-                                          "group-nane",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _yrOfEncounterAndHowController,
-                                          'Year of first encounter with UCAA and how',
-                                          "...",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _lifeBeforeEncounterController,
-                                          'Life before encounter with UCAA',
-                                          "...",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _capacityBuildingController,
-                                          'Capacity building/trainings provided by UCAA',
-                                          "...",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _changesInLifeComparedToBeforeController,
-                                          'Changes in yuor life right now compared to before the UCAA encounter',
-                                          "..",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _otherInfluencesThatChangedLifeController,
-                                          'Other influences beside UCAA that changed your life(own effort/gov./other Ngos)',
-                                          "...",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _futurePlanController,
-                                          'Future Plan',
-                                          "...",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _otherCommentsController,
-                                          'Any Other comments on your story',
-                                          "...",
-                                          TextInputType.text,
-                                        ),
+                                        formColumn(context),
                                         const SizedBox(height: 40),
                                         ElevatedButton(
                                           onPressed: () {
@@ -625,12 +375,73 @@ class _AddSuccessState extends State<AddSuccess> {
     );
   }
 
+  Column formColumn(BuildContext context) {
+    return Column(
+      children: [
+        buildTextFormField(
+            context, _nameController, 'Name', "john doe", TextInputType.text),
+        buildTextFormField(context, _maritalStatusController, 'Marital-Status',
+            "Married", TextInputType.text),
+        buildTextFormField(context, _parishController, 'Parish', "parish-name",
+            TextInputType.text),
+        buildTextFormField(
+            context, _dateController, 'Date', "1/1/2008", TextInputType.text),
+        buildTextFormField(
+            context, _sexController, 'Sex', "Female/Male", TextInputType.text),
+        buildTextFormField(
+            context, _ageController, 'Age', "25", TextInputType.number),
+        buildTextFormField(context, _districtController, 'District', "gulu",
+            TextInputType.text),
+        buildTextFormField(context, _subCountyController, 'Sub-county',
+            "sub-county", TextInputType.text),
+        buildTextFormField(context, _villageController, 'Village',
+            "village-name", TextInputType.text),
+        buildTextFormField(context, _numChildrenController,
+            'Number of Children', "2", TextInputType.number),
+        buildTextFormField(context, _groupNameController, 'Group Name',
+            "group-nane", TextInputType.text),
+        buildTextFormField(
+            context,
+            _yrOfEncounterAndHowController,
+            'Year of first encounter with UCAA and how',
+            "...",
+            TextInputType.text),
+        buildTextFormField(context, _lifeBeforeEncounterController,
+            'Life before encounter with UCAA', "...", TextInputType.text),
+        buildTextFormField(
+            context,
+            _capacityBuildingController,
+            'Capacity building/trainings provided by UCAA',
+            "...",
+            TextInputType.text),
+        buildTextFormField(
+            context,
+            _changesInLifeComparedToBeforeController,
+            'Changes in yuor life right now compared to before the UCAA encounter',
+            "..",
+            TextInputType.text),
+        buildTextFormField(
+            context,
+            _otherInfluencesThatChangedLifeController,
+            'Other influences beside UCAA that changed your life(own effort/gov./other Ngos)',
+            "...",
+            TextInputType.text),
+        buildTextFormField(context, _futurePlanController, 'Future Plan', "...",
+            TextInputType.text),
+        buildTextFormField(context, _otherCommentsController,
+            'Any Other comments on your story', "...", TextInputType.text),
+      ],
+    );
+  }
+
   buildTextFormField(BuildContext context, TextEditingController control,
-      String label, String hint, TextInputType type) {
+      String label, String hint, TextInputType type,
+      {int mxl = 1}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         controller: control,
+        textInputAction: TextInputAction.next,
         style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
@@ -650,6 +461,7 @@ class _AddSuccessState extends State<AddSuccess> {
           hintStyle: const TextStyle(color: Colors.grey),
         ),
         keyboardType: type,
+        maxLines: mxl,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter $label';
