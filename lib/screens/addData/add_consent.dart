@@ -81,41 +81,7 @@ class _AddConsentState extends State<AddConsent> {
                                 padding: const EdgeInsets.all(8),
                                 child: Column(
                                   children: [
-                                    buildTextFormField(
-                                      context,
-                                      _nameController,
-                                      'Individual/Group Name',
-                                      "name",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _nameParentController,
-                                      'Name of parent/ guardian(under 18)',
-                                      "name",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _phoneController,
-                                      'Location',
-                                      "",
-                                      TextInputType.phone,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _dateController,
-                                      'Date',
-                                      "25/3/2021",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _approvalController,
-                                      'Approval',
-                                      "yes/no",
-                                      TextInputType.text,
-                                    ),
+                                    formColumn(context),
                                     const SizedBox(height: 20),
                                     ElevatedButton(
                                       onPressed: () async {
@@ -232,41 +198,7 @@ class _AddConsentState extends State<AddConsent> {
                                     padding: const EdgeInsets.all(8),
                                     child: Column(
                                       children: [
-                                        buildTextFormField(
-                                          context,
-                                          _nameController,
-                                          'Individual/Group Name',
-                                          "name",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _nameParentController,
-                                          'Name of parent/ guardian(under 18)',
-                                          "name",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _phoneController,
-                                          'Location',
-                                          "",
-                                          TextInputType.phone,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _dateController,
-                                          'Date',
-                                          "25/3/2021",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _approvalController,
-                                          'Approval',
-                                          "yes/no",
-                                          TextInputType.text,
-                                        ),
+                                        formColumn(context),
                                         const SizedBox(height: 40),
                                         ElevatedButton(
                                           onPressed: () {
@@ -349,12 +281,35 @@ class _AddConsentState extends State<AddConsent> {
     );
   }
 
+  Column formColumn(BuildContext context) {
+    return Column(
+      children: [
+        buildTextFormField(context, _nameController, 'Individual/Group Name',
+            "name", TextInputType.text, 1),
+        buildTextFormField(
+            context,
+            _nameParentController,
+            'Name of parent/ guardian(under 18)',
+            "name",
+            TextInputType.text,
+            1),
+        buildTextFormField(
+            context, _phoneController, 'Location', "", TextInputType.phone, 1),
+        buildTextFormField(context, _dateController, 'Date', "25/3/2021",
+            TextInputType.text, 1),
+        buildTextFormField(context, _approvalController, 'Approval', "yes/no",
+            TextInputType.text, 1),
+      ],
+    );
+  }
+
   buildTextFormField(BuildContext context, TextEditingController control,
-      String label, String hint, TextInputType type) {
+      String label, String hint, TextInputType type, int mxl) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         controller: control,
+        textInputAction: TextInputAction.next,
         style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
@@ -374,6 +329,7 @@ class _AddConsentState extends State<AddConsent> {
           hintStyle: const TextStyle(color: Colors.grey),
         ),
         keyboardType: type,
+        maxLines: mxl,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter $label';
