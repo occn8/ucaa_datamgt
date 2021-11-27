@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ucaa_datamgt/index.dart';
 
@@ -22,38 +21,38 @@ class AuthenticationHelper {
       required String? role,
       required String userName}) async {
     try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        try {
-          await _auth
-              .createUserWithEmailAndPassword(email: email, password: password)
-              .then((value) {
-            user.updateProfile(displayName: userName);
-            CloudDatabase.addUser(data: {
-              'email': email,
-              'userName': userName,
-              'role': role,
-              'status': 1,
-              'created': DateTime.now().toString(),
-            }, doc: user.uid);
-            setRolePref(role!);
-            usrrole = role;
-          });
+      // final result = await InternetAddress.lookup('google.com');
+      // if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+      try {
+        await _auth
+            .createUserWithEmailAndPassword(email: email, password: password)
+            .then((value) {
+          user.updateProfile(displayName: userName);
+          CloudDatabase.addUser(data: {
+            'email': email,
+            'userName': userName,
+            'role': role,
+            'status': 1,
+            'created': DateTime.now().toString(),
+          }, doc: user.uid);
+          setRolePref(role!);
+          usrrole = role;
+        });
 
-          return null;
-        } on FirebaseAuthException catch (e) {
-          if (e.code == 'weak-password') {
-            return 'The password provided is too weak.';
-          } else if (e.code == 'email-already-in-use') {
-            return 'The account already exists for that email.';
-          }
-          return e.message;
-        } catch (e) {
-          return 'An Error Has Occured';
+        return null;
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          return 'The password provided is too weak.';
+        } else if (e.code == 'email-already-in-use') {
+          return 'The account already exists for that email.';
         }
+        return e.message;
+      } catch (e) {
+        return 'An Error Has Occured';
       }
-    } on SocketException {
-      return 'No Internet connection';
+      // }
+    } catch (e) {
+      return 'An Error Occured';
     }
   }
 
@@ -84,19 +83,19 @@ class AuthenticationHelper {
 
   Future verifReset({required String email}) async {
     try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        try {
-          await _auth.sendPasswordResetEmail(email: email);
-          return null;
-        } on FirebaseAuthException catch (e) {
-          return e.message;
-        } catch (e) {
-          return 'An Error Has Occured';
-        }
+      // final result = await InternetAddress.lookup('google.com');
+      // if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+      try {
+        await _auth.sendPasswordResetEmail(email: email);
+        return null;
+      } on FirebaseAuthException catch (e) {
+        return e.message;
+      } catch (e) {
+        return 'An Error Has Occured';
       }
-    } on SocketException {
-      return 'No Internet connection';
+      // }
+    } catch (e) {
+      return 'An Error Occured';
     }
   }
 

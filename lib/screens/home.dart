@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:ucaa_datamgt/auth_status.dart';
 import 'package:ucaa_datamgt/index.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:ucaa_datamgt/responsive.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -47,118 +48,9 @@ class _HomeState extends State<Home> {
       ),
       child: Scaffold(
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListView(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 10),
-                      child: const Text('UCAA',
-                          style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold)),
-                    ),
-                    PopupMenuButton(
-                      itemBuilder: (BuildContext context) {
-                        return [
-                          PopupMenuItem(
-                            child: Row(
-                              children: [
-                                Icon(
-                                    appModel.darkTheme != true
-                                        ? Icons.brightness_2
-                                        : Icons.brightness_7,
-                                    color: appModel.darkTheme != true
-                                        ? Colors.black
-                                        : Colors.white),
-                                const SizedBox(width: 4),
-                                Text(
-                                  appModel.darkTheme != true
-                                      ? 'Dark Theme'
-                                      : 'Light Theme',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText2!
-                                      .copyWith(fontSize: 16),
-                                ),
-                              ],
-                            ),
-                            onTap: () {
-                              appModel.darkTheme = !appModel.darkTheme;
-                              setState(() {});
-                            },
-                            padding: const EdgeInsets.all(15),
-                          ),
-                          PopupMenuItem(
-                            child: Row(
-                              children: [
-                                const Icon(Icons.logout),
-                                const SizedBox(width: 4),
-                                Text(
-                                  'LogOut',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText2!
-                                      .copyWith(fontSize: 16),
-                                ),
-                              ],
-                            ),
-                            onTap: () async {
-                              await AuthenticationHelper().signOut();
-                              SharedPreferences prefs =
-                                  await SharedPreferences.getInstance();
-                              prefs.setString('userRole', 'Viewer');
-                              Get.off(() => const AuthStatus());
-                            },
-                            padding: const EdgeInsets.all(15),
-                          )
-                        ];
-                      },
-                    )
-                  ],
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.only(left: 20, right: 100, bottom: 20),
-                  color: Colors.green,
-                  height: 1,
-                  width: 150,
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 10),
-                  child: Text.rich(
-                    TextSpan(
-                      text: 'Hello,\n',
-                      style: const TextStyle(fontSize: 18),
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: user!.displayName,
-                            style: const TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                ),
-                tableLinks(context, 'CaR Group Data', carDataRows.length, () {
-                  Get.to(() => const DataView(tableHeader: 'CaR'));
-                }),
-                tableLinks(
-                    context, 'REACH Data for Groups', reachDataRows.length, () {
-                  Get.to(() => const DataView(tableHeader: 'REACH'));
-                }),
-                tableLinks(context, 'SHG Data Collected', shgDataRows.length,
-                    () {
-                  Get.to(() => const DataView(tableHeader: 'SHG'));
-                }),
-                tableLinks(context, 'WID Data', widDataRows.length, () {
-                  Get.to(() => const DataView(tableHeader: 'WID'));
-                }),
-              ],
-            ),
+          child: RespWidget(
+            largeScreen: largeScreen(appModel),
+            smallScreen: smallScreen(appModel),
           ),
         ),
         // drawer: const CustomDrawer(),
@@ -227,6 +119,255 @@ class _HomeState extends State<Home> {
                     ),
                   ])
             : null,
+      ),
+    );
+  }
+
+  Container largeScreen(ThemeModel appModel) {
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Expanded(
+          child: Row(
+            children: [
+              Container(
+                width: 280,
+                height: double.infinity,
+                color: Colors.amber,
+              ),
+              Expanded(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 10),
+                          child: const Text('UCAA',
+                              style: TextStyle(
+                                  fontSize: 24, fontWeight: FontWeight.bold)),
+                        ),
+                        PopupMenuButton(
+                          itemBuilder: (BuildContext context) {
+                            return [
+                              PopupMenuItem(
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                        appModel.darkTheme != true
+                                            ? Icons.brightness_2
+                                            : Icons.brightness_7,
+                                        color: appModel.darkTheme != true
+                                            ? Colors.black
+                                            : Colors.white),
+                                    const SizedBox(width: 4),
+                                    Text(
+                                      appModel.darkTheme != true
+                                          ? 'Dark Theme'
+                                          : 'Light Theme',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!
+                                          .copyWith(fontSize: 16),
+                                    ),
+                                  ],
+                                ),
+                                onTap: () {
+                                  appModel.darkTheme = !appModel.darkTheme;
+                                  setState(() {});
+                                },
+                                padding: const EdgeInsets.all(15),
+                              ),
+                              PopupMenuItem(
+                                child: Row(
+                                  children: [
+                                    const Icon(Icons.logout),
+                                    const SizedBox(width: 4),
+                                    Text(
+                                      'LogOut',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText2!
+                                          .copyWith(fontSize: 16),
+                                    ),
+                                  ],
+                                ),
+                                onTap: () async {
+                                  await AuthenticationHelper().signOut();
+                                  SharedPreferences prefs =
+                                      await SharedPreferences.getInstance();
+                                  prefs.setString('userRole', 'Viewer');
+                                  Get.off(() => const AuthStatus());
+                                },
+                                padding: const EdgeInsets.all(15),
+                              )
+                            ];
+                          },
+                        )
+                      ],
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(
+                          left: 20, right: 100, bottom: 20),
+                      color: Colors.green,
+                      height: 1,
+                      width: 150,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 10),
+                      child: Text.rich(
+                        TextSpan(
+                          text: 'Hello,\n $usrrole',
+                          style: const TextStyle(fontSize: 18),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: user!.displayName,
+                                style: const TextStyle(
+                                    fontSize: 22, fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    tableLinks(context, 'CaR Group Data', carDataRows.length,
+                        () {
+                      Get.to(() => const DataView(tableHeader: 'CaR'));
+                    }),
+                    tableLinks(
+                        context, 'REACH Data for Groups', reachDataRows.length,
+                        () {
+                      Get.to(() => const DataView(tableHeader: 'REACH'));
+                    }),
+                    tableLinks(
+                        context, 'SHG Data Collected', shgDataRows.length, () {
+                      Get.to(() => const DataView(tableHeader: 'SHG'));
+                    }),
+                    tableLinks(context, 'WID Data', widDataRows.length, () {
+                      Get.to(() => const DataView(tableHeader: 'WID'));
+                    }),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Container smallScreen(ThemeModel appModel) {
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10),
+                  child: const Text('UCAA',
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                ),
+                PopupMenuButton(
+                  itemBuilder: (BuildContext context) {
+                    return [
+                      PopupMenuItem(
+                        child: Row(
+                          children: [
+                            Icon(
+                                appModel.darkTheme != true
+                                    ? Icons.brightness_2
+                                    : Icons.brightness_7,
+                                color: appModel.darkTheme != true
+                                    ? Colors.black
+                                    : Colors.white),
+                            const SizedBox(width: 4),
+                            Text(
+                              appModel.darkTheme != true
+                                  ? 'Dark Theme'
+                                  : 'Light Theme',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        onTap: () {
+                          appModel.darkTheme = !appModel.darkTheme;
+                          setState(() {});
+                        },
+                        padding: const EdgeInsets.all(15),
+                      ),
+                      PopupMenuItem(
+                        child: Row(
+                          children: [
+                            const Icon(Icons.logout),
+                            const SizedBox(width: 4),
+                            Text(
+                              'LogOut',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        onTap: () async {
+                          await AuthenticationHelper().signOut();
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          prefs.setString('userRole', 'Viewer');
+                          Get.off(() => const AuthStatus());
+                        },
+                        padding: const EdgeInsets.all(15),
+                      )
+                    ];
+                  },
+                )
+              ],
+            ),
+            Container(
+              margin: const EdgeInsets.only(left: 20, right: 100, bottom: 20),
+              color: Colors.green,
+              height: 1,
+              width: 150,
+            ),
+            Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+              child: Text.rich(
+                TextSpan(
+                  text: 'Hello,\n $usrrole',
+                  style: const TextStyle(fontSize: 18),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: user!.displayName,
+                        style: const TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
+            ),
+            tableLinks(context, 'CaR Group Data', carDataRows.length, () {
+              Get.to(() => const DataView(tableHeader: 'CaR'));
+            }),
+            tableLinks(context, 'REACH Data for Groups', reachDataRows.length,
+                () {
+              Get.to(() => const DataView(tableHeader: 'REACH'));
+            }),
+            tableLinks(context, 'SHG Data Collected', shgDataRows.length, () {
+              Get.to(() => const DataView(tableHeader: 'SHG'));
+            }),
+            tableLinks(context, 'WID Data', widDataRows.length, () {
+              Get.to(() => const DataView(tableHeader: 'WID'));
+            }),
+          ],
+        ),
       ),
     );
   }

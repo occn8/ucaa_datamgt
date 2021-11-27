@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
 
   getRole() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String aaa = prefs.getString('userRole') ?? 'Viewer';
+    String aaa = prefs.getString('userRole') ?? 'Admin';
     usrrole = aaa;
   }
 

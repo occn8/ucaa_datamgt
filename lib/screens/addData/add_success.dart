@@ -336,34 +336,32 @@ class _AddSuccessState extends State<AddSuccess> {
                             if (snapshot.hasData && !snapshot.data!.exists) {}
                             Map<String, dynamic> data =
                                 snapshot.data!.data() as Map<String, dynamic>;
-                            _nameController.text = data['groupName'];
-                            _maritalStatusController.text = data['subCounty'];
+                            _nameController.text = data['name'];
+                            _maritalStatusController.text =
+                                data['maritalStatus'];
                             _parishController.text = data['parish'];
-                            _dateController.text = data['gdFormed'];
-                            _sexController.text = data['numMembers'].toString();
-                            _ageController.text = data['segMale'].toString();
-                            _districtController.text =
-                                data['segFemale'].toString();
-                            _subCountyController.text =
-                                data['timesSharedOut'].toString();
-                            _villageController.text =
-                                data['shareValue'].toString();
+                            _dateController.text = data['date'];
+                            _sexController.text = data['sex'];
+                            _ageController.text = data['age'].toString();
+                            _districtController.text = data['district'];
+                            _subCountyController.text = data['subCounty'];
+                            _villageController.text = data['village'];
                             _numChildrenController.text =
                                 data['numChildren'].toString();
-                            _groupNameController.text =
-                                data['amntHighestSaver'].toString();
+                            _groupNameController.text = data['groupName'];
                             _yrOfEncounterAndHowController.text =
-                                data['amntSaved'].toString();
+                                data['yrOfEncounterAndHow'];
                             _lifeBeforeEncounterController.text =
-                                data['amntSocialFund'].toString();
+                                data['lifeBeforeEncounter'];
                             _capacityBuildingController.text =
-                                data['amntLoansTaken'].toString();
+                                data['capacityBuilding'];
                             _changesInLifeComparedToBeforeController.text =
-                                data['numLoansAccessed'].toString();
+                                data['changesInLifeComparedToBefore'];
                             _otherInfluencesThatChangedLifeController.text =
-                                data['loanRepayment'].toString();
-                            _futurePlanController.text =
-                                data['amntLoansWrittenoff'].toString();
+                                data['otherInfluencesThatChangedLife'];
+                            _futurePlanController.text = data['futurePlan'];
+                            _otherCommentsController.text =
+                                data['otherComments'];
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
@@ -573,7 +571,7 @@ class _AddSuccessState extends State<AddSuccess> {
                                               CloudDatabase.updateData(
                                                       data: data,
                                                       docId: widget.dataId,
-                                                      col: 'cartable')
+                                                      col: 'successstory')
                                                   .then((result) {
                                                 if (result == null) {
                                                   setState(() {
