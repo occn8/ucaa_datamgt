@@ -58,29 +58,28 @@ class AuthenticationHelper {
   }
 
   Future signIn({required String email, required String password}) async {
+    // try {
+    //   final result = await InternetAddress.lookup('google.com');
+    //   if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
     try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        try {
-          await _auth.signInWithEmailAndPassword(
-              email: email, password: password);
-          await CloudDatabase.getUserInfo(doc: user.uid);
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      await CloudDatabase.getUserInfo(doc: user.uid);
 
-          return null;
-        } on FirebaseAuthException catch (e) {
-          if (e.code == 'user-not-found') {
-            return 'No user found for that Email.';
-          } else if (e.code == 'wrong-password') {
-            return 'Wrong password provided for that User.';
-          }
-          return e.message;
-        } catch (e) {
-          return 'An Error Has Occured';
-        }
+      return null;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        return 'No user found for that Email.';
+      } else if (e.code == 'wrong-password') {
+        return 'Wrong password provided for that User.';
       }
-    } on SocketException {
-      return 'No Internet connection';
+      return e.message;
+    } catch (e) {
+      return 'An Error Has Occured';
     }
+    // }
+    // } on SocketException {
+    //   return 'No Internet connection';
+    // }
   }
 
   Future verifReset({required String email}) async {

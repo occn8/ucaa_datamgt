@@ -7,14 +7,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await DesktopWindow.setMinWindowSize(const Size(600, 800));
   await Firebase.initializeApp();
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.white,
-    statusBarBrightness: Brightness.dark,
-    statusBarIconBrightness: Brightness.dark,
-    systemNavigationBarColor: Colors.white,
-    systemNavigationBarIconBrightness: Brightness.dark,
-    systemNavigationBarDividerColor: Colors.white,
-  ));
+  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+  //   statusBarColor: Colors.white,
+  //   statusBarBrightness: Brightness.dark,
+  //   statusBarIconBrightness: Brightness.dark,
+  //   systemNavigationBarColor: Colors.white,
+  //   systemNavigationBarIconBrightness: Brightness.dark,
+  //   systemNavigationBarDividerColor: Colors.white,
+  // ));
   runApp(const MyApp());
 }
 

@@ -7,6 +7,8 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
+const String ucaa = 'Uganda Change Agent Association';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
