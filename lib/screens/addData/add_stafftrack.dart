@@ -3,20 +3,26 @@ import 'package:ucaa_datamgt/index.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-class AddConsent extends StatefulWidget {
-  const AddConsent({Key? key, required this.dataId}) : super(key: key);
+class AddStaffTrack extends StatefulWidget {
+  const AddStaffTrack({Key? key, required this.dataId}) : super(key: key);
 
   final String dataId;
   @override
-  _AddConsentState createState() => _AddConsentState();
+  _AddStaffTrackState createState() => _AddStaffTrackState();
 }
 
-class _AddConsentState extends State<AddConsent> {
+class _AddStaffTrackState extends State<AddStaffTrack> {
   final _formkey = GlobalKey<FormState>();
+  final _dataMakingPlanController = TextEditingController();
   final _nameController = TextEditingController();
-  final _nameParentController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _approvalController = TextEditingController();
+  final _grpNameController = TextEditingController();
+  final _districtController = TextEditingController();
+  final _subCountyController = TextEditingController();
+  final _parishController = TextEditingController();
+  final _villageController = TextEditingController();
+  final _needsController = TextEditingController();
+  final _actionsTakenController = TextEditingController();
+  final _staffController = TextEditingController();
   final _dateController = TextEditingController();
   bool isUploading = false;
 
@@ -70,7 +76,7 @@ class _AddConsentState extends State<AddConsent> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 15),
                               child: const Text(
-                                'Add Consent Data',
+                                'Add Staff Tracking Tools Data',
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
@@ -91,15 +97,28 @@ class _AddConsentState extends State<AddConsent> {
                                             isUploading = true;
                                           });
                                           Map<String, dynamic> data = {
+                                            'dataMakingPlan':
+                                                _dataMakingPlanController
+                                                    .value.text,
                                             'name': _nameController.value.text,
-                                            'nameParent': int.parse(
-                                                _nameParentController
-                                                    .value.text),
-                                            'phone':
-                                                _phoneController.value.text,
+                                            'grpName':
+                                                _grpNameController.value.text,
+                                            'subCounty':
+                                                _subCountyController.value.text,
+                                            'district':
+                                                _districtController.value.text,
+                                            'parish':
+                                                _parishController.value.text,
+                                            'village':
+                                                _villageController.value.text,
+                                            'needs':
+                                                _needsController.value.text,
+                                            'actionsTaken':
+                                                _actionsTakenController
+                                                    .value.text,
+                                            'staff':
+                                                _staffController.value.text,
                                             'date': _dateController.value.text,
-                                            'approval':
-                                                _approvalController.value.text,
                                             'created':
                                                 DateTime.now().toString(),
                                             'modified':
@@ -107,7 +126,7 @@ class _AddConsentState extends State<AddConsent> {
                                           };
                                           CloudDatabase.addData(
                                                   data: data,
-                                                  col: 'consenttable')
+                                                  col: 'stafftracktable')
                                               .then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);
@@ -154,7 +173,7 @@ class _AddConsentState extends State<AddConsent> {
                         )
                       : FutureBuilder<DocumentSnapshot>(
                           future: _firestore
-                              .collection('consenttable')
+                              .collection('stafftracktable')
                               .doc(widget.dataId)
                               .get(),
                           builder: (BuildContext context,
@@ -171,14 +190,18 @@ class _AddConsentState extends State<AddConsent> {
                             if (snapshot.hasData && !snapshot.data!.exists) {}
                             Map<String, dynamic> data =
                                 snapshot.data!.data() as Map<String, dynamic>;
-                            _nameController.text = data['vslaName'];
-                            _nameParentController.text =
-                                data['perAttendence'].toString();
-                            _phoneController.text = data['location'];
-                            _dateController.text =
-                                data['numMembers'].toString();
-                            _approvalController.text =
-                                data['totalSavings'].toString();
+                            _dataMakingPlanController.text =
+                                data['dataMakingPlan'];
+                            _nameController.text = data['name'];
+                            _grpNameController.text = data['grpName'];
+                            _districtController.text = data['district'];
+                            _subCountyController.text = data['subCounty'];
+                            _parishController.text = data['parish'];
+                            _villageController.text = data['village'];
+                            _needsController.text = data['needs'];
+                            _actionsTakenController.text = data['actionsTaken'];
+                            _staffController.text = data['staff'];
+                            _dateController.text = data['date'];
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
@@ -186,7 +209,7 @@ class _AddConsentState extends State<AddConsent> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 15),
                                   child: const Text(
-                                    'Update Data',
+                                    'Update Staff Tracking Tools',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
@@ -210,24 +233,38 @@ class _AddConsentState extends State<AddConsent> {
                                               FocusScope.of(context).unfocus();
 
                                               Map<String, dynamic> data = {
+                                                'dataMakingPlan':
+                                                    _dataMakingPlanController
+                                                        .value.text,
                                                 'name':
                                                     _nameController.value.text,
-                                                'nameParent': int.parse(
-                                                    _nameParentController
-                                                        .value.text),
-                                                'phone':
-                                                    _phoneController.value.text,
+                                                'grpName': _grpNameController
+                                                    .value.text,
+                                                'subCounty':
+                                                    _subCountyController
+                                                        .value.text,
+                                                'district': _districtController
+                                                    .value.text,
+                                                'parish': _parishController
+                                                    .value.text,
+                                                'village': _villageController
+                                                    .value.text,
+                                                'needs':
+                                                    _needsController.value.text,
+                                                'actionsTaken':
+                                                    _actionsTakenController
+                                                        .value.text,
+                                                'staff':
+                                                    _staffController.value.text,
                                                 'date':
                                                     _dateController.value.text,
-                                                'approval': _approvalController
-                                                    .value.text,
                                                 'modified':
                                                     DateTime.now().toString(),
                                               };
                                               CloudDatabase.updateData(
                                                       data: data,
                                                       docId: widget.dataId,
-                                                      col: 'consenttable')
+                                                      col: 'stafftracktable')
                                                   .then((result) {
                                                 if (result == null) {
                                                   setState(() {
@@ -284,14 +321,20 @@ class _AddConsentState extends State<AddConsent> {
   Column formColumn(BuildContext context) {
     return Column(
       children: [
+        buildTextFormField(context, _dataMakingPlanController,
+            'Date of making the plan', "21/2/2021"),
+        buildTextFormField(context, _nameController, 'Name of Member', "name"),
+        buildTextFormField(context, _grpNameController, 'Group Name', ""),
+        buildTextFormField(context, _subCountyController, 'Sub-County', ""),
+        buildTextFormField(context, _parishController, 'Parish', ""),
+        buildTextFormField(context, _villageController, 'Village', ""),
+        buildTextFormField(context, _needsController, 'Needs', "", mxl: 4),
+        buildTextFormField(context, _actionsTakenController,
+            'Actions to be taken/services needed', "",
+            mxl: 4),
         buildTextFormField(
-            context, _nameController, 'Individual/Group Name', "name"),
-        buildTextFormField(context, _nameParentController,
-            'Name of parent/ guardian(under 18)', "name"),
-        buildTextFormField(context, _phoneController, 'Location', "",
-            type: TextInputType.phone),
-        buildTextFormField(context, _dateController, 'Date', "25/3/2021"),
-        buildTextFormField(context, _approvalController, 'Approval', "yes/no"),
+            context, _staffController, 'Title&Name of staff', ""),
+        buildTextFormField(context, _dateController, 'Date', "30/3/2021"),
       ],
     );
   }
@@ -336,11 +379,11 @@ class _AddConsentState extends State<AddConsent> {
 
   @override
   void dispose() {
+    _dataMakingPlanController.dispose();
+    _districtController.dispose();
+    _grpNameController.dispose();
     _nameController.dispose();
-    _approvalController.dispose();
-    _phoneController.dispose();
-    _nameParentController.dispose();
-    _dateController.dispose();
+    _subCountyController.dispose();
     super.dispose();
   }
 }

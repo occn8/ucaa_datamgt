@@ -3,27 +3,43 @@ import 'package:ucaa_datamgt/index.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-class AddDevPlan extends StatefulWidget {
-  const AddDevPlan({Key? key, required this.dataId}) : super(key: key);
+class AddMonitoring extends StatefulWidget {
+  const AddMonitoring({Key? key, required this.dataId}) : super(key: key);
 
   final String dataId;
   @override
-  _AddDevPlanState createState() => _AddDevPlanState();
+  _AddMonitoringState createState() => _AddMonitoringState();
 }
 
-class _AddDevPlanState extends State<AddDevPlan> {
+class _AddMonitoringState extends State<AddMonitoring> {
   final _formkey = GlobalKey<FormState>();
-  final _dataMakingPlanController = TextEditingController();
-  final _nameController = TextEditingController();
+  final _collectorNameController = TextEditingController();
+  final _titleController = TextEditingController();
+  final _dateController = TextEditingController();
   final _grpNameController = TextEditingController();
-  final _districtController = TextEditingController();
+  final _numMembersController = TextEditingController();
+  final _numMaleController = TextEditingController();
+  final _numFemaleController = TextEditingController();
   final _subCountyController = TextEditingController();
   final _parishController = TextEditingController();
   final _villageController = TextEditingController();
-  final _needsController = TextEditingController();
-  final _actionsTakenController = TextEditingController();
-  final _staffController = TextEditingController();
-  final _dateController = TextEditingController();
+  final _reportQuarterController = TextEditingController();
+  final _monthController = TextEditingController();
+  final _totalSavingsController = TextEditingController();
+  final _loanAmtGivenOutController = TextEditingController();
+  final _loanRepaymentAmtController = TextEditingController();
+  final _totalSocialFundController = TextEditingController();
+  final _remarksController = TextEditingController();
+  final _numMemeberWithIGAController = TextEditingController();
+  final _numMembersIGAcollapsedController = TextEditingController();
+  final _numMembersIGAmaitainedController = TextEditingController();
+  final _numMembersNewIGAController = TextEditingController();
+  final _anyIGAyesORnoController = TextEditingController();
+  final _ifYesWhichIGAController = TextEditingController();
+  final _summaryOFArchievementsController = TextEditingController();
+  final _challengesController = TextEditingController();
+  final _solutionsController = TextEditingController();
+  final _grpActionPlanController = TextEditingController();
   bool isUploading = false;
 
   @override
@@ -97,28 +113,75 @@ class _AddDevPlanState extends State<AddDevPlan> {
                                             isUploading = true;
                                           });
                                           Map<String, dynamic> data = {
-                                            'dataMakingPlan':
-                                                _dataMakingPlanController
+                                            'collectorName':
+                                                _collectorNameController
                                                     .value.text,
-                                            'name': _nameController.value.text,
+                                            'title':
+                                                _titleController.value.text,
                                             'grpName':
                                                 _grpNameController.value.text,
+                                            'numMale': int.parse(
+                                                _numMaleController.value.text),
+                                            'numMembers': int.parse(
+                                                _numMembersController
+                                                    .value.text),
+                                            'numFemale': int.parse(
+                                                _numFemaleController
+                                                    .value.text),
                                             'subCounty':
                                                 _subCountyController.value.text,
-                                            'district':
-                                                _districtController.value.text,
                                             'parish':
                                                 _parishController.value.text,
                                             'village':
                                                 _villageController.value.text,
-                                            'needs':
-                                                _needsController.value.text,
-                                            'actionsTaken':
-                                                _actionsTakenController
+                                            'reportQuarter':
+                                                _reportQuarterController
                                                     .value.text,
-                                            'staff':
-                                                _staffController.value.text,
                                             'date': _dateController.value.text,
+                                            'month':
+                                                _monthController.value.text,
+                                            'totalSavings': int.parse(
+                                                _totalSavingsController
+                                                    .value.text),
+                                            'loanAmtGivenOut': int.parse(
+                                                _loanAmtGivenOutController
+                                                    .value.text),
+                                            'loanRepaymentAmt': int.parse(
+                                                _loanRepaymentAmtController
+                                                    .value.text),
+                                            'totalSocialFund': int.parse(
+                                                _totalSocialFundController
+                                                    .value.text),
+                                            'remarks':
+                                                _remarksController.value.text,
+                                            'numMemeberWithIGA': int.parse(
+                                                _numMemeberWithIGAController
+                                                    .value.text),
+                                            'numMembersIGAcollapsed': int.parse(
+                                                _numMembersIGAcollapsedController
+                                                    .value.text),
+                                            'numMembersIGAmaitained': int.parse(
+                                                _numMembersIGAmaitainedController
+                                                    .value.text),
+                                            'numMembersNewIGA': int.parse(
+                                                _numMembersNewIGAController
+                                                    .value.text),
+                                            'anyIGAyesORno':
+                                                _anyIGAyesORnoController
+                                                    .value.text,
+                                            'ifYesWhichIGA':
+                                                _ifYesWhichIGAController
+                                                    .value.text,
+                                            'summaryOFArchievements':
+                                                _summaryOFArchievementsController
+                                                    .value.text,
+                                            'challenges': _challengesController
+                                                .value.text,
+                                            'solutions':
+                                                _solutionsController.value.text,
+                                            'grpActionPlan':
+                                                _grpActionPlanController
+                                                    .value.text,
                                             'created':
                                                 DateTime.now().toString(),
                                             'modified':
@@ -126,7 +189,7 @@ class _AddDevPlanState extends State<AddDevPlan> {
                                           };
                                           CloudDatabase.addData(
                                                   data: data,
-                                                  col: 'devplantable')
+                                                  col: 'monitortable')
                                               .then((result) {
                                             if (result == null) {
                                               Navigator.pop(context);
@@ -173,7 +236,7 @@ class _AddDevPlanState extends State<AddDevPlan> {
                         )
                       : FutureBuilder<DocumentSnapshot>(
                           future: _firestore
-                              .collection('devplantable')
+                              .collection('monitortable')
                               .doc(widget.dataId)
                               .get(),
                           builder: (BuildContext context,
@@ -190,18 +253,50 @@ class _AddDevPlanState extends State<AddDevPlan> {
                             if (snapshot.hasData && !snapshot.data!.exists) {}
                             Map<String, dynamic> data =
                                 snapshot.data!.data() as Map<String, dynamic>;
-                            _dataMakingPlanController.text =
-                                data['dataMakingPlan'];
-                            _nameController.text = data['name'];
+                            _collectorNameController.text =
+                                data['collectorName'];
+                            _titleController.text = data['title'];
+                            _dateController.text = data['date'];
                             _grpNameController.text = data['grpName'];
-                            _districtController.text = data['district'];
+                            _numMembersController.text =
+                                data['numMembers'].toString();
+                            _numMaleController.text =
+                                data['numMale'].toString();
+                            _numFemaleController.text =
+                                data['numFemale'].toString();
                             _subCountyController.text = data['subCounty'];
                             _parishController.text = data['parish'];
                             _villageController.text = data['village'];
-                            _needsController.text = data['needs'];
-                            _actionsTakenController.text = data['actionsTaken'];
-                            _staffController.text = data['staff'];
-                            _dateController.text = data['date'];
+                            _reportQuarterController.text =
+                                data['reportQuarter'];
+                            _monthController.text = data['month'];
+                            _totalSavingsController.text =
+                                data['totalSavings'].toString();
+                            _loanAmtGivenOutController.text =
+                                data['loanAmtGivenOut'].toString();
+                            _loanRepaymentAmtController.text =
+                                data['loanRepaymentAmt'].toString();
+                            _totalSocialFundController.text =
+                                data['totalSocialFund'].toString();
+                            _remarksController.text = data['remarks'];
+                            _numMemeberWithIGAController.text =
+                                data['numMemeberWithIGA'].toString();
+                            _numMembersIGAcollapsedController.text =
+                                data['numMembersIGAcollapsed'].toString();
+                            _numMembersIGAmaitainedController.text =
+                                data['numMembersIGAmaitained'].toString();
+                            _numMembersNewIGAController.text =
+                                data['numMembersNewIGA'].toString();
+                            _anyIGAyesORnoController.text =
+                                data['anyIGAyesORno'];
+                            _ifYesWhichIGAController.text =
+                                data['ifYesWhichIGA'];
+                            _summaryOFArchievementsController.text =
+                                data['summaryOFArchievements'];
+                            _challengesController.text = data['challenges'];
+                            _solutionsController.text = data['solutions'];
+                            _grpActionPlanController.text =
+                                data['grpActionPlan'];
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
@@ -233,38 +328,87 @@ class _AddDevPlanState extends State<AddDevPlan> {
                                               FocusScope.of(context).unfocus();
 
                                               Map<String, dynamic> data = {
-                                                'dataMakingPlan':
-                                                    _dataMakingPlanController
+                                                'collectorName':
+                                                    _collectorNameController
                                                         .value.text,
-                                                'name':
-                                                    _nameController.value.text,
+                                                'title':
+                                                    _titleController.value.text,
                                                 'grpName': _grpNameController
                                                     .value.text,
+                                                'numMale': int.parse(
+                                                    _numMaleController
+                                                        .value.text),
+                                                'numMembers': int.parse(
+                                                    _numMembersController
+                                                        .value.text),
+                                                'numFemale': int.parse(
+                                                    _numFemaleController
+                                                        .value.text),
                                                 'subCounty':
                                                     _subCountyController
                                                         .value.text,
-                                                'district': _districtController
-                                                    .value.text,
                                                 'parish': _parishController
                                                     .value.text,
                                                 'village': _villageController
                                                     .value.text,
-                                                'needs':
-                                                    _needsController.value.text,
-                                                'actionsTaken':
-                                                    _actionsTakenController
+                                                'reportQuarter':
+                                                    _reportQuarterController
                                                         .value.text,
-                                                'staff':
-                                                    _staffController.value.text,
                                                 'date':
                                                     _dateController.value.text,
+                                                'month':
+                                                    _monthController.value.text,
+                                                'totalSavings': int.parse(
+                                                    _totalSavingsController
+                                                        .value.text),
+                                                'loanAmtGivenOut': int.parse(
+                                                    _loanAmtGivenOutController
+                                                        .value.text),
+                                                'loanRepaymentAmt': int.parse(
+                                                    _loanRepaymentAmtController
+                                                        .value.text),
+                                                'totalSocialFund': int.parse(
+                                                    _totalSocialFundController
+                                                        .value.text),
+                                                'remarks': _remarksController
+                                                    .value.text,
+                                                'numMemeberWithIGA': int.parse(
+                                                    _numMemeberWithIGAController
+                                                        .value.text),
+                                                'numMembersIGAcollapsed': int.parse(
+                                                    _numMembersIGAcollapsedController
+                                                        .value.text),
+                                                'numMembersIGAmaitained': int.parse(
+                                                    _numMembersIGAmaitainedController
+                                                        .value.text),
+                                                'numMembersNewIGA': int.parse(
+                                                    _numMembersNewIGAController
+                                                        .value.text),
+                                                'anyIGAyesORno':
+                                                    _anyIGAyesORnoController
+                                                        .value.text,
+                                                'ifYesWhichIGA':
+                                                    _ifYesWhichIGAController
+                                                        .value.text,
+                                                'summaryOFArchievements':
+                                                    _summaryOFArchievementsController
+                                                        .value.text,
+                                                'challenges':
+                                                    _challengesController
+                                                        .value.text,
+                                                'solutions':
+                                                    _solutionsController
+                                                        .value.text,
+                                                'grpActionPlan':
+                                                    _grpActionPlanController
+                                                        .value.text,
                                                 'modified':
                                                     DateTime.now().toString(),
                                               };
                                               CloudDatabase.updateData(
                                                       data: data,
                                                       docId: widget.dataId,
-                                                      col: 'devplantable')
+                                                      col: 'monitortable')
                                                   .then((result) {
                                                 if (result == null) {
                                                   setState(() {
@@ -321,19 +465,63 @@ class _AddDevPlanState extends State<AddDevPlan> {
   Column formColumn(BuildContext context) {
     return Column(
       children: [
-        buildTextFormField(context, _dataMakingPlanController,
-            'Date of making the plan', "21/2/2021"),
-        buildTextFormField(context, _nameController, 'Name of Member', "name"),
-        buildTextFormField(context, _grpNameController, 'Group Name', ""),
+        buildTextFormField(
+            context, _collectorNameController, 'Name of Data Collector', ""),
+        buildTextFormField(context, _titleController, 'Title', ""),
+        buildTextFormField(
+            context, _grpNameController, 'Name of the group', ""),
+        buildTextFormField(context, _numMembersController, 'Total members', "",
+            type: TextInputType.number),
+        buildTextFormField(context, _numMaleController, 'Male', "15",
+            type: TextInputType.number),
+        buildTextFormField(context, _numFemaleController, 'Female', "15",
+            type: TextInputType.number),
         buildTextFormField(context, _subCountyController, 'Sub-County', ""),
         buildTextFormField(context, _parishController, 'Parish', ""),
         buildTextFormField(context, _villageController, 'Village', ""),
-        buildTextFormField(context, _needsController, 'Needs', "", mxl: 4),
-        buildTextFormField(context, _actionsTakenController,
-            'Actions to be taken/services needed', "",
-            mxl: 4),
         buildTextFormField(
-            context, _staffController, 'Title&Name of staff', ""),
+            context, _reportQuarterController, 'Reporting Quarter', ""),
+        buildTextFormField(context, _monthController, 'Month', "Jan"),
+        buildTextFormField(context, _totalSavingsController,
+            'Total Savings for this month', "300000",
+            type: TextInputType.number),
+        buildTextFormField(context, _loanAmtGivenOutController,
+            'Loan amount given out this month', "10000",
+            type: TextInputType.number),
+        buildTextFormField(context, _loanRepaymentAmtController,
+            'Loan repayment amount this month', "1000",
+            type: TextInputType.number),
+        buildTextFormField(context, _totalSocialFundController,
+            'Total Social fund this month', "5000",
+            type: TextInputType.number),
+        buildTextFormField(context, _numMemeberWithIGAController,
+            'Number of members with IGAs', "30",
+            type: TextInputType.number),
+        buildTextFormField(context, _numMembersNewIGAController,
+            'Number of members who revived or started the new IGAs', "",
+            type: TextInputType.number),
+        buildTextFormField(context, _numMembersIGAcollapsedController,
+            'Number of members whose IGAs collapsed', "",
+            type: TextInputType.number),
+        buildTextFormField(context, _numMembersIGAmaitainedController,
+            'Number of members whose IGAs are maitained', "",
+            type: TextInputType.number),
+        buildTextFormField(
+            context,
+            _anyIGAyesORnoController,
+            'Does your group have any income generating activities/projects',
+            "yes/no"),
+        buildTextFormField(
+            context, _ifYesWhichIGAController, 'If yes, which type of IGA', ""),
+        buildTextFormField(context, _summaryOFArchievementsController,
+            'Summary of Group achievements', ""),
+        buildTextFormField(
+            context, _challengesController, 'Challenges encountered', ""),
+        buildTextFormField(
+            context, _solutionsController, 'Proposed solutions', ""),
+        buildTextFormField(context, _grpActionPlanController,
+            'Group Action Plan(activities planned)', ""),
+        buildTextFormField(context, _remarksController, 'Remarks', ""),
         buildTextFormField(context, _dateController, 'Date', "30/3/2021"),
       ],
     );
@@ -379,11 +567,11 @@ class _AddDevPlanState extends State<AddDevPlan> {
 
   @override
   void dispose() {
-    _dataMakingPlanController.dispose();
-    _districtController.dispose();
+    _collectorNameController.dispose();
+    _numMembersController.dispose();
     _grpNameController.dispose();
-    _nameController.dispose();
-    _subCountyController.dispose();
+    _titleController.dispose();
+    _numMaleController.dispose();
     super.dispose();
   }
 }
