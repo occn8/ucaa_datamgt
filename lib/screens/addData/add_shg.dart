@@ -368,40 +368,37 @@ class _AddShgState extends State<AddShg> {
     return Column(
       children: [
         buildTextFormField(context, _shgNameController, 'SHG Name', "shg_name",
-            TextInputType.text),
+            type: TextInputType.text),
         buildTextFormField(context, _locationController, 'Location', "kampala",
-            TextInputType.text),
+            type: TextInputType.text),
         buildTextFormField(context, _shgFormedController, 'Formed', "1/3/2019",
-            TextInputType.text),
-        buildTextFormField(context, _numMemberController, 'No Members', "19",
-            TextInputType.number),
-        buildTextFormField(context, _perAttendanceWkController,
-            '%Attendance per Week', "15", TextInputType.number),
-        buildTextFormField(context, _numChildrenController, 'No Children', "3",
-            TextInputType.number),
-        buildTextFormField(context, _wkSavingsController, 'Week Savings',
-            "1500", TextInputType.number),
+            type: TextInputType.text),
+        buildTextFormField(context, _numMemberController, 'No Members', "19"),
+        buildTextFormField(
+            context, _perAttendanceWkController, '%Attendance per Week', "15"),
+        buildTextFormField(context, _numChildrenController, 'No Children', "3"),
+        buildTextFormField(
+            context, _wkSavingsController, 'Week Savings', "1500"),
         buildTextFormField(context, _wkSavingPerMemberController,
-            'Weekly savings per member', "150", TextInputType.number),
-        buildTextFormField(context, _totalSavingController, 'Total Savings',
-            "10500", TextInputType.number),
-        buildTextFormField(context, _shgFundsController, 'SHG Funds', "5000",
-            TextInputType.number),
-        buildTextFormField(context, _amountLoanTakenController,
-            'Amount of Loan taken', "500", TextInputType.number),
-        buildTextFormField(context, _numLoansAccessedController,
-            'No Loans accessed', "4", TextInputType.number),
-        buildTextFormField(context, _loanRepaymentController, 'Loans Repayment',
-            "400", TextInputType.number),
-        buildTextFormField(context, _loanSavingRatioController,
-            'Loan/Savings ratio', "1:3", TextInputType.number),
+            'Weekly savings per member', "150"),
+        buildTextFormField(
+            context, _totalSavingController, 'Total Savings', "10500"),
+        buildTextFormField(context, _shgFundsController, 'SHG Funds', "5000"),
+        buildTextFormField(
+            context, _amountLoanTakenController, 'Amount of Loan taken', "500"),
+        buildTextFormField(
+            context, _numLoansAccessedController, 'No Loans accessed', "4"),
+        buildTextFormField(
+            context, _loanRepaymentController, 'Loans Repayment', "400"),
+        buildTextFormField(
+            context, _loanSavingRatioController, 'Loan/Savings ratio', "1:3"),
       ],
     );
   }
 
   buildTextFormField(BuildContext context, TextEditingController control,
-      String label, String hint, TextInputType type,
-      {int mxl = 1}) {
+      String label, String hint,
+      {TextInputType type = TextInputType.number, int mxl = 1}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(

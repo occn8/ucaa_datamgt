@@ -284,23 +284,21 @@ class _AddConsentState extends State<AddConsent> {
   Column formColumn(BuildContext context) {
     return Column(
       children: [
-        buildTextFormField(context, _nameController, 'Individual/Group Name',
-            "name", TextInputType.text),
+        buildTextFormField(
+            context, _nameController, 'Individual/Group Name', "name"),
         buildTextFormField(context, _nameParentController,
-            'Name of parent/ guardian(under 18)', "name", TextInputType.text),
-        buildTextFormField(
-            context, _phoneController, 'Location', "", TextInputType.phone),
-        buildTextFormField(
-            context, _dateController, 'Date', "25/3/2021", TextInputType.text),
-        buildTextFormField(context, _approvalController, 'Approval', "yes/no",
-            TextInputType.text),
+            'Name of parent/ guardian(under 18)', "name"),
+        buildTextFormField(context, _phoneController, 'Location', "",
+            type: TextInputType.phone),
+        buildTextFormField(context, _dateController, 'Date', "25/3/2021"),
+        buildTextFormField(context, _approvalController, 'Approval', "yes/no"),
       ],
     );
   }
 
   buildTextFormField(BuildContext context, TextEditingController control,
-      String label, String hint, TextInputType type,
-      {int mxl = 1}) {
+      String label, String hint,
+      {TextInputType type = TextInputType.text, int mxl = 1}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(

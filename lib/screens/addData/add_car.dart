@@ -387,46 +387,46 @@ class _AddCaRState extends State<AddCaR> {
 
   Column formColumn(BuildContext context) {
     return Column(children: [
-      buildTextFormField(context, _groupNameController, 'Group Name',
-          "grp_name", TextInputType.text),
-      buildTextFormField(context, _subCountyController, 'Sub-county',
-          "subcounty", TextInputType.text),
-      buildTextFormField(context, _parishController, 'Parish', "parish-name",
-          TextInputType.text),
-      buildTextFormField(context, _gdFormedController, 'Formed(date)',
-          "1/1/2008", TextInputType.text),
-      buildTextFormField(context, _numMembersController, 'No Members', "15",
-          TextInputType.number),
       buildTextFormField(
-          context, _segMaleController, 'No Males', "5", TextInputType.number),
-      buildTextFormField(context, _segFemaleController, 'No Females', "10",
-          TextInputType.number),
-      buildTextFormField(context, _timesSharedOutController, 'Times Shared Out',
-          "7", TextInputType.number),
-      buildTextFormField(context, _shareValueController, 'Share Value', "5,000",
-          TextInputType.number),
-      buildTextFormField(context, _numChildrenController, 'Number of Children',
-          "2", TextInputType.number),
+          context, _groupNameController, 'Group Name', "grp_name",
+          type: TextInputType.text),
+      buildTextFormField(
+          context, _subCountyController, 'Sub-county', "subcounty",
+          type: TextInputType.text),
+      buildTextFormField(context, _parishController, 'Parish', "parish-name",
+          type: TextInputType.text),
+      buildTextFormField(
+          context, _gdFormedController, 'Formed(date)', "1/1/2008",
+          type: TextInputType.text),
+      buildTextFormField(context, _numMembersController, 'No Members', "15"),
+      buildTextFormField(context, _segMaleController, 'No Males', "5"),
+      buildTextFormField(context, _segFemaleController, 'No Females', "10"),
+      buildTextFormField(
+          context, _timesSharedOutController, 'Times Shared Out', "7"),
+      buildTextFormField(
+          context, _shareValueController, 'Share Value', "5,000"),
+      buildTextFormField(
+          context, _numChildrenController, 'Number of Children', "2"),
       buildTextFormField(context, _amntHighestSaverController,
-          'Amount of Highest Saver', "5,000", TextInputType.number),
-      buildTextFormField(context, _amntSavedController, 'Amount Saved', "40000",
-          TextInputType.number),
-      buildTextFormField(context, _amntSocialFundController,
-          'Amount of Social fund', "5,000", TextInputType.number),
-      buildTextFormField(context, _amntLoansTakenController,
-          'Amount of Loans taken', "4000", TextInputType.number),
-      buildTextFormField(context, _numLoansAccessedController,
-          'No Loans Accessed', "3", TextInputType.number),
-      buildTextFormField(context, _loanRepaymentController, 'Loans Repayment',
-          "3", TextInputType.number),
+          'Amount of Highest Saver', "5,000"),
+      buildTextFormField(
+          context, _amntSavedController, 'Amount Saved', "40000"),
+      buildTextFormField(
+          context, _amntSocialFundController, 'Amount of Social fund', "5,000"),
+      buildTextFormField(
+          context, _amntLoansTakenController, 'Amount of Loans taken', "4000"),
+      buildTextFormField(
+          context, _numLoansAccessedController, 'No Loans Accessed', "3"),
+      buildTextFormField(
+          context, _loanRepaymentController, 'Loans Repayment', "3"),
       buildTextFormField(context, _amntLoansWrittenoffController,
-          'Amount of Loans Written Off', "3", TextInputType.number),
+          'Amount of Loans Written Off', "3"),
     ]);
   }
 
   buildTextFormField(BuildContext context, TextEditingController control,
-      String label, String hint, TextInputType type,
-      {int mxl = 1}) {
+      String label, String hint,
+      {TextInputType type = TextInputType.number, int mxl = 1}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(

@@ -91,111 +91,7 @@ class _AddWidState extends State<AddWid> {
                                 padding: const EdgeInsets.all(8),
                                 child: Column(
                                   children: [
-                                    buildTextFormField(
-                                      context,
-                                      _groupNameController,
-                                      'Group Name',
-                                      "grp_name",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _subCountyController,
-                                      'Sub-county',
-                                      "sub-county",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _parishController,
-                                      'Parish',
-                                      "parish-name",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _gdFormedController,
-                                      'Formed(date)',
-                                      "1/1/2008",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _numMembersController,
-                                      'No Members',
-                                      "15",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _timesSharedOutController,
-                                      'Times Shared Out',
-                                      "7",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _shareValueController,
-                                      'Share Value',
-                                      "5,000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _numChildrenController,
-                                      'Number of Children',
-                                      "2",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _amntHighestSaverController,
-                                      'Amount of Highest Saver',
-                                      "5,000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _amntSavedController,
-                                      'Amount Saved',
-                                      "40000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _amntSocialFundController,
-                                      'Amount of Social fund',
-                                      "5,000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _amntLoansTakenController,
-                                      'Amount of Loans taken',
-                                      "4000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _numLoansAccessedController,
-                                      'No Loans Accessed',
-                                      "3",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _loanRepaymentController,
-                                      'Loans Repayment',
-                                      "3",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _amntLoansWrittenoffController,
-                                      'Amount of Loans Written Off',
-                                      "3",
-                                      TextInputType.number,
-                                    ),
+                                    formColumn(context),
                                     const SizedBox(height: 20),
                                     ElevatedButton(
                                       onPressed: () async {
@@ -361,111 +257,7 @@ class _AddWidState extends State<AddWid> {
                                     padding: const EdgeInsets.all(8),
                                     child: Column(
                                       children: [
-                                        buildTextFormField(
-                                          context,
-                                          _groupNameController,
-                                          'Group Name',
-                                          "grp_name",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _subCountyController,
-                                          'Sub-county',
-                                          "sub-county",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _parishController,
-                                          'Parish',
-                                          "parish-name",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _gdFormedController,
-                                          'Formed(date)',
-                                          "1/1/2008",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _numMembersController,
-                                          'No Members',
-                                          "15",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _timesSharedOutController,
-                                          'Times Shared Out',
-                                          "7",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _shareValueController,
-                                          'Share Value',
-                                          "5,000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _numChildrenController,
-                                          'Number of Children',
-                                          "2",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _amntHighestSaverController,
-                                          'Amount of Highest Saver',
-                                          "5,000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _amntSavedController,
-                                          'Amount Saved',
-                                          "40000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _amntSocialFundController,
-                                          'Amount of Social fund',
-                                          "5,000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _amntLoansTakenController,
-                                          'Amount of Loans taken',
-                                          "4000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _numLoansAccessedController,
-                                          'No Loans Accessed',
-                                          "3",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _loanRepaymentController,
-                                          'Loans Repayment',
-                                          "3",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _amntLoansWrittenoffController,
-                                          'Amount of Loans Written Off',
-                                          "3000",
-                                          TextInputType.number,
-                                        ),
+                                        formColumn(context),
                                         const SizedBox(height: 40),
                                         ElevatedButton(
                                           onPressed: () {
@@ -580,12 +372,61 @@ class _AddWidState extends State<AddWid> {
     );
   }
 
+  Column formColumn(BuildContext context) {
+    return Column(
+      children: [
+        buildTextFormField(
+            context, _groupNameController, 'Group Name', "grp_name"),
+        buildTextFormField(
+            context, _subCountyController, 'Sub-county', "sub-county"),
+        buildTextFormField(context, _parishController, 'Parish', "parish-name"),
+        buildTextFormField(
+            context, _gdFormedController, 'Formed(date)', "1/1/2008"),
+        buildTextFormField(context, _numMembersController, 'No Members', "15",
+            type: TextInputType.number),
+        buildTextFormField(
+            context, _timesSharedOutController, 'Times Shared Out', "7",
+            type: TextInputType.number),
+        buildTextFormField(
+            context, _shareValueController, 'Share Value', "5,000",
+            type: TextInputType.number),
+        buildTextFormField(
+            context, _numChildrenController, 'Number of Children', "2",
+            type: TextInputType.number),
+        buildTextFormField(context, _amntHighestSaverController,
+            'Amount of Highest Saver', "5,000",
+            type: TextInputType.number),
+        buildTextFormField(
+            context, _amntSavedController, 'Amount Saved', "40000",
+            type: TextInputType.number),
+        buildTextFormField(context, _amntSocialFundController,
+            'Amount of Social fund', "5,000",
+            type: TextInputType.number),
+        buildTextFormField(
+            context, _amntLoansTakenController, 'Amount of Loans taken', "4000",
+            type: TextInputType.number),
+        buildTextFormField(
+            context, _numLoansAccessedController, 'No Loans Accessed', "3",
+            type: TextInputType.number),
+        buildTextFormField(
+            context, _loanRepaymentController, 'Loans Repayment', "3",
+            type: TextInputType.number),
+        buildTextFormField(context, _amntLoansWrittenoffController,
+            'Amount of Loans Written Off', "3",
+            type: TextInputType.number),
+      ],
+    );
+  }
+
   buildTextFormField(BuildContext context, TextEditingController control,
-      String label, String hint, TextInputType type) {
+      String label, String hint,
+      {TextInputType type = TextInputType.text, int mxl = 1}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         controller: control,
+        textInputAction: TextInputAction.next,
+        maxLines: mxl,
         style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
