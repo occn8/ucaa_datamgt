@@ -13,6 +13,7 @@ class StaffGrpTrackToolModel {
   String possibleSolution;
   String created;
   String modified;
+
   StaffGrpTrackToolModel(
     this.areaOfOp,
     this.challengesFaced,

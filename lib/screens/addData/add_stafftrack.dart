@@ -13,17 +13,17 @@ class AddStaffTrack extends StatefulWidget {
 
 class _AddStaffTrackState extends State<AddStaffTrack> {
   final _formkey = GlobalKey<FormState>();
-  final _dataMakingPlanController = TextEditingController();
-  final _nameController = TextEditingController();
-  final _grpNameController = TextEditingController();
-  final _districtController = TextEditingController();
-  final _subCountyController = TextEditingController();
-  final _parishController = TextEditingController();
-  final _villageController = TextEditingController();
-  final _needsController = TextEditingController();
-  final _actionsTakenController = TextEditingController();
-  final _staffController = TextEditingController();
+  final _projectController = TextEditingController();
+  final _areaOfOpController = TextEditingController();
+  final _staffNameController = TextEditingController();
+  final _titleController = TextEditingController();
   final _dateController = TextEditingController();
+  final _monthUnderReviewController = TextEditingController();
+  final _yearController = TextEditingController();
+  final _grpNameController = TextEditingController();
+  final _lessonsLearntController = TextEditingController();
+  final _challengesFacedController = TextEditingController();
+  final _possibleSolutionController = TextEditingController();
   bool isUploading = false;
 
   @override
@@ -97,27 +97,29 @@ class _AddStaffTrackState extends State<AddStaffTrack> {
                                             isUploading = true;
                                           });
                                           Map<String, dynamic> data = {
-                                            'dataMakingPlan':
-                                                _dataMakingPlanController
+                                            'project':
+                                                _projectController.value.text,
+                                            'areaOfOp':
+                                                _areaOfOpController.value.text,
+                                            'staffName':
+                                                _staffNameController.value.text,
+                                            'monthUnderReview':
+                                                _monthUnderReviewController
                                                     .value.text,
-                                            'name': _nameController.value.text,
+                                            'title':
+                                                _titleController.value.text,
+                                            'year': _yearController.value.text,
                                             'grpName':
                                                 _grpNameController.value.text,
-                                            'subCounty':
-                                                _subCountyController.value.text,
-                                            'district':
-                                                _districtController.value.text,
-                                            'parish':
-                                                _parishController.value.text,
-                                            'village':
-                                                _villageController.value.text,
-                                            'needs':
-                                                _needsController.value.text,
-                                            'actionsTaken':
-                                                _actionsTakenController
+                                            'lessonsLearnt':
+                                                _lessonsLearntController
                                                     .value.text,
-                                            'staff':
-                                                _staffController.value.text,
+                                            'challengesFaced':
+                                                _challengesFacedController
+                                                    .value.text,
+                                            'possibleSolution':
+                                                _possibleSolutionController
+                                                    .value.text,
                                             'date': _dateController.value.text,
                                             'created':
                                                 DateTime.now().toString(),
@@ -190,17 +192,20 @@ class _AddStaffTrackState extends State<AddStaffTrack> {
                             if (snapshot.hasData && !snapshot.data!.exists) {}
                             Map<String, dynamic> data =
                                 snapshot.data!.data() as Map<String, dynamic>;
-                            _dataMakingPlanController.text =
-                                data['dataMakingPlan'];
-                            _nameController.text = data['name'];
+                            _projectController.text = data['project'];
+                            _areaOfOpController.text = data['areaOfOp'];
+                            _staffNameController.text = data['staffName'];
+                            _titleController.text = data['title'];
+                            _monthUnderReviewController.text =
+                                data['monthUnderReview'];
+                            _yearController.text = data['year'];
                             _grpNameController.text = data['grpName'];
-                            _districtController.text = data['district'];
-                            _subCountyController.text = data['subCounty'];
-                            _parishController.text = data['parish'];
-                            _villageController.text = data['village'];
-                            _needsController.text = data['needs'];
-                            _actionsTakenController.text = data['actionsTaken'];
-                            _staffController.text = data['staff'];
+                            _lessonsLearntController.text =
+                                data['lessonsLearnt'];
+                            _challengesFacedController.text =
+                                data['challengesFaced'];
+                            _possibleSolutionController.text =
+                                data['possibleSolution'];
                             _dateController.text = data['date'];
                             return ListView(
                               physics: const BouncingScrollPhysics(),
@@ -233,29 +238,31 @@ class _AddStaffTrackState extends State<AddStaffTrack> {
                                               FocusScope.of(context).unfocus();
 
                                               Map<String, dynamic> data = {
-                                                'dataMakingPlan':
-                                                    _dataMakingPlanController
+                                                'project': _projectController
+                                                    .value.text,
+                                                'areaOfOp': _areaOfOpController
+                                                    .value.text,
+                                                'staffName':
+                                                    _staffNameController
                                                         .value.text,
-                                                'name':
-                                                    _nameController.value.text,
+                                                'monthUnderReview':
+                                                    _monthUnderReviewController
+                                                        .value.text,
+                                                'title':
+                                                    _titleController.value.text,
+                                                'year':
+                                                    _yearController.value.text,
                                                 'grpName': _grpNameController
                                                     .value.text,
-                                                'subCounty':
-                                                    _subCountyController
+                                                'lessonsLearnt':
+                                                    _lessonsLearntController
                                                         .value.text,
-                                                'district': _districtController
-                                                    .value.text,
-                                                'parish': _parishController
-                                                    .value.text,
-                                                'village': _villageController
-                                                    .value.text,
-                                                'needs':
-                                                    _needsController.value.text,
-                                                'actionsTaken':
-                                                    _actionsTakenController
+                                                'challengesFaced':
+                                                    _challengesFacedController
                                                         .value.text,
-                                                'staff':
-                                                    _staffController.value.text,
+                                                'possibleSolution':
+                                                    _possibleSolutionController
+                                                        .value.text,
                                                 'date':
                                                     _dateController.value.text,
                                                 'modified':
@@ -321,19 +328,22 @@ class _AddStaffTrackState extends State<AddStaffTrack> {
   Column formColumn(BuildContext context) {
     return Column(
       children: [
-        buildTextFormField(context, _dataMakingPlanController,
+        buildTextFormField(context, _projectController,
             'Date of making the plan', "21/2/2021"),
-        buildTextFormField(context, _nameController, 'Name of Member', "name"),
-        buildTextFormField(context, _grpNameController, 'Group Name', ""),
-        buildTextFormField(context, _subCountyController, 'Sub-County', ""),
-        buildTextFormField(context, _parishController, 'Parish', ""),
-        buildTextFormField(context, _villageController, 'Village', ""),
-        buildTextFormField(context, _needsController, 'Needs', "", mxl: 4),
-        buildTextFormField(context, _actionsTakenController,
+        buildTextFormField(
+            context, _areaOfOpController, 'Name of Member', "name"),
+        buildTextFormField(context, _staffNameController, 'Group Name', ""),
+        buildTextFormField(
+            context, _monthUnderReviewController, 'Sub-County', ""),
+        buildTextFormField(context, _yearController, 'Parish', ""),
+        buildTextFormField(context, _grpNameController, 'Village', ""),
+        buildTextFormField(context, _lessonsLearntController, 'Needs', "",
+            mxl: 4),
+        buildTextFormField(context, _challengesFacedController,
             'Actions to be taken/services needed', "",
             mxl: 4),
         buildTextFormField(
-            context, _staffController, 'Title&Name of staff', ""),
+            context, _possibleSolutionController, 'Title&Name of staff', ""),
         buildTextFormField(context, _dateController, 'Date', "30/3/2021"),
       ],
     );
@@ -379,11 +389,11 @@ class _AddStaffTrackState extends State<AddStaffTrack> {
 
   @override
   void dispose() {
-    _dataMakingPlanController.dispose();
-    _districtController.dispose();
-    _grpNameController.dispose();
-    _nameController.dispose();
-    _subCountyController.dispose();
+    _projectController.dispose();
+    _titleController.dispose();
+    _staffNameController.dispose();
+    _areaOfOpController.dispose();
+    _monthUnderReviewController.dispose();
     super.dispose();
   }
 }
