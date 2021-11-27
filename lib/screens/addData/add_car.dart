@@ -92,125 +92,7 @@ class _AddCaRState extends State<AddCaR> {
                                 padding: const EdgeInsets.all(8),
                                 child: Column(
                                   children: [
-                                    buildTextFormField(
-                                      context,
-                                      _groupNameController,
-                                      'Group Name',
-                                      "grp_name",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _subCountyController,
-                                      'Sub-county',
-                                      "subcounty",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _parishController,
-                                      'Parish',
-                                      "parish-name",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _gdFormedController,
-                                      'Formed(date)',
-                                      "1/1/2008",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _numMembersController,
-                                      'No Members',
-                                      "15",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _segMaleController,
-                                      'No Males',
-                                      "5",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _segFemaleController,
-                                      'No Females',
-                                      "10",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _timesSharedOutController,
-                                      'Times Shared Out',
-                                      "7",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _shareValueController,
-                                      'Share Value',
-                                      "5,000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _numChildrenController,
-                                      'Number of Children',
-                                      "2",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _amntHighestSaverController,
-                                      'Amount of Highest Saver',
-                                      "5,000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _amntSavedController,
-                                      'Amount Saved',
-                                      "40000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _amntSocialFundController,
-                                      'Amount of Social fund',
-                                      "5,000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _amntLoansTakenController,
-                                      'Amount of Loans taken',
-                                      "4000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _numLoansAccessedController,
-                                      'No Loans Accessed',
-                                      "3",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _loanRepaymentController,
-                                      'Loans Repayment',
-                                      "3",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _amntLoansWrittenoffController,
-                                      'Amount of Loans Written Off',
-                                      "3",
-                                      TextInputType.number,
-                                    ),
+                                    formColumn(context),
                                     const SizedBox(height: 20),
                                     ElevatedButton(
                                       onPressed: () async {
@@ -382,125 +264,7 @@ class _AddCaRState extends State<AddCaR> {
                                     padding: const EdgeInsets.all(8),
                                     child: Column(
                                       children: [
-                                        buildTextFormField(
-                                          context,
-                                          _groupNameController,
-                                          'Group Name',
-                                          "grp_name",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _subCountyController,
-                                          'Sub-county',
-                                          "subcounty",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _parishController,
-                                          'Parish',
-                                          "parish-name",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _gdFormedController,
-                                          'Formed(date)',
-                                          "1/1/2008",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _numMembersController,
-                                          'No Members',
-                                          "15",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _segMaleController,
-                                          'No Males',
-                                          "5",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _segFemaleController,
-                                          'No Females',
-                                          "10",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _timesSharedOutController,
-                                          'Times Shared Out',
-                                          "7",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _shareValueController,
-                                          'Share Value',
-                                          "5,000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _numChildrenController,
-                                          'Number of Children',
-                                          "2",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _amntHighestSaverController,
-                                          'Amount of Highest Saver',
-                                          "5,000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _amntSavedController,
-                                          'Amount Saved',
-                                          "40000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _amntSocialFundController,
-                                          'Amount of Social fund',
-                                          "5,000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _amntLoansTakenController,
-                                          'Amount of Loans taken',
-                                          "4000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _numLoansAccessedController,
-                                          'No Loans Accessed',
-                                          "3",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _loanRepaymentController,
-                                          'Loans Repayment',
-                                          "3",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _amntLoansWrittenoffController,
-                                          'Amount of Loans Written Off',
-                                          "3",
-                                          TextInputType.number,
-                                        ),
+                                        formColumn(context),
                                         const SizedBox(height: 40),
                                         ElevatedButton(
                                           onPressed: () {
@@ -621,12 +385,52 @@ class _AddCaRState extends State<AddCaR> {
     );
   }
 
+  Column formColumn(BuildContext context) {
+    return Column(children: [
+      buildTextFormField(context, _groupNameController, 'Group Name',
+          "grp_name", TextInputType.text, 1),
+      buildTextFormField(context, _subCountyController, 'Sub-county',
+          "subcounty", TextInputType.text, 1),
+      buildTextFormField(context, _parishController, 'Parish', "parish-name",
+          TextInputType.text, 1),
+      buildTextFormField(context, _gdFormedController, 'Formed(date)',
+          "1/1/2008", TextInputType.text, 1),
+      buildTextFormField(context, _numMembersController, 'No Members', "15",
+          TextInputType.number, 1),
+      buildTextFormField(context, _segMaleController, 'No Males', "5",
+          TextInputType.number, 1),
+      buildTextFormField(context, _segFemaleController, 'No Females', "10",
+          TextInputType.number, 1),
+      buildTextFormField(context, _timesSharedOutController, 'Times Shared Out',
+          "7", TextInputType.number, 1),
+      buildTextFormField(context, _shareValueController, 'Share Value', "5,000",
+          TextInputType.number, 1),
+      buildTextFormField(context, _numChildrenController, 'Number of Children',
+          "2", TextInputType.number, 1),
+      buildTextFormField(context, _amntHighestSaverController,
+          'Amount of Highest Saver', "5,000", TextInputType.number, 1),
+      buildTextFormField(context, _amntSavedController, 'Amount Saved', "40000",
+          TextInputType.number, 1),
+      buildTextFormField(context, _amntSocialFundController,
+          'Amount of Social fund', "5,000", TextInputType.number, 1),
+      buildTextFormField(context, _amntLoansTakenController,
+          'Amount of Loans taken', "4000", TextInputType.number, 1),
+      buildTextFormField(context, _numLoansAccessedController,
+          'No Loans Accessed', "3", TextInputType.number, 1),
+      buildTextFormField(context, _loanRepaymentController, 'Loans Repayment',
+          "3", TextInputType.number, 1),
+      buildTextFormField(context, _amntLoansWrittenoffController,
+          'Amount of Loans Written Off', "3", TextInputType.number, 1),
+    ]);
+  }
+
   buildTextFormField(BuildContext context, TextEditingController control,
-      String label, String hint, TextInputType type) {
+      String label, String hint, TextInputType type, int mxl) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         controller: control,
+        textInputAction: TextInputAction.next,
         style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
@@ -646,6 +450,7 @@ class _AddCaRState extends State<AddCaR> {
           hintStyle: const TextStyle(color: Colors.grey),
         ),
         keyboardType: type,
+        maxLines: mxl,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter $label';
