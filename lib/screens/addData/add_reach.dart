@@ -344,33 +344,34 @@ class _AddReachState extends State<AddReach> {
     return Column(
       children: [
         buildTextFormField(context, _vslaNameController, 'VLSA Name',
-            "vlsa_name", TextInputType.text, 1),
+            "vlsa_name", TextInputType.text),
         buildTextFormField(context, _perAttendenceController, 'Attendance',
-            "20", TextInputType.number, 1),
+            "20", TextInputType.number),
         buildTextFormField(context, _locationController, 'Location', "kampala",
-            TextInputType.text, 1),
+            TextInputType.text),
         buildTextFormField(context, _numMembersController, 'Number of Members',
-            "25", TextInputType.number, 1),
+            "25", TextInputType.number),
         buildTextFormField(context, _totalSavingsController, 'Total Savings',
-            "20000", TextInputType.number, 1),
+            "20000", TextInputType.number),
         buildTextFormField(context, _vslaCapitalController, 'VLSA Capital',
-            "2000", TextInputType.number, 1),
+            "2000", TextInputType.number),
         buildTextFormField(context, _loanTakenController, 'Loan taken', "10000",
-            TextInputType.number, 1),
+            TextInputType.number),
         buildTextFormField(context, _totalWelfareController, 'Total welfare',
-            "20000", TextInputType.number, 1),
+            "20000", TextInputType.number),
         buildTextFormField(context, _welfareLoanedOutController,
-            'Welfare Loaned out', "400", TextInputType.number, 1),
+            'Welfare Loaned out', "400", TextInputType.number),
         buildTextFormField(context, _membersAccessedLoansController,
-            'Member accessed Loans', "6", TextInputType.number, 1),
+            'Member accessed Loans', "6", TextInputType.number),
         buildTextFormField(context, _loanRepaymentController, 'Loan Repayment',
-            "2000", TextInputType.number, 1),
+            "2000", TextInputType.number),
       ],
     );
   }
 
   buildTextFormField(BuildContext context, TextEditingController control,
-      String label, String hint, TextInputType type, int mxl) {
+      String label, String hint, TextInputType type,
+      {int mxl = 1}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(

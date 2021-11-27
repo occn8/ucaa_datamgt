@@ -322,31 +322,34 @@ class _AddDevPlanState extends State<AddDevPlan> {
     return Column(
       children: [
         buildTextFormField(context, _dataMakingPlanController,
-            'Date of making the plan', "21/2/2021", TextInputType.text, 1),
+            'Date of making the plan', "21/2/2021", TextInputType.text),
         buildTextFormField(context, _nameController, 'Name of Member', "name",
-            TextInputType.text, 1),
-        buildTextFormField(context, _grpNameController, 'Group Name', "",
-            TextInputType.text, 1),
+            TextInputType.text),
+        buildTextFormField(
+            context, _grpNameController, 'Group Name', "", TextInputType.text),
         buildTextFormField(context, _subCountyController, 'Sub-County', "",
-            TextInputType.text, 1),
+            TextInputType.text),
         buildTextFormField(
-            context, _parishController, 'Parish', "", TextInputType.text, 1),
+            context, _parishController, 'Parish', "", TextInputType.text),
         buildTextFormField(
-            context, _villageController, 'Village', "", TextInputType.text, 1),
+            context, _villageController, 'Village', "", TextInputType.text),
         buildTextFormField(
-            context, _needsController, 'Needs', "", TextInputType.text, 4),
+            context, _needsController, 'Needs', "", TextInputType.text,
+            mxl: 4),
         buildTextFormField(context, _actionsTakenController,
-            'Actions to be taken/services needed', "", TextInputType.text, 4),
+            'Actions to be taken/services needed', "", TextInputType.text,
+            mxl: 4),
         buildTextFormField(context, _staffController, 'Title&Name of staff', "",
-            TextInputType.text, 1),
-        buildTextFormField(context, _dateController, 'Date', "30/3/2021",
-            TextInputType.text, 1),
+            TextInputType.text),
+        buildTextFormField(
+            context, _dateController, 'Date', "30/3/2021", TextInputType.text),
       ],
     );
   }
 
   buildTextFormField(BuildContext context, TextEditingController control,
-      String label, String hint, TextInputType type, int mxl) {
+      String label, String hint, TextInputType type,
+      {int mxl = 1}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
