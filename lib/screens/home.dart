@@ -4,8 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:ucaa_datamgt/auth_status.dart';
 import 'package:ucaa_datamgt/index.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:ucaa_datamgt/responsive.dart';
-import 'package:ucaa_datamgt/screens/addData/add_devplan.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -257,6 +255,22 @@ class _HomeState extends State<Home> {
                     tableLinks(context, 'WID Data', widDataRows.length, () {
                       Get.to(() => const DataView(tableHeader: 'WID'));
                     }),
+                    tableLinks(context, 'UCAA Consent Data', 0, () {
+                      Get.to(() => const DataView(tableHeader: 'Consent'));
+                    }),
+                    tableLinks(context, 'Individual Development Plan', 0, () {
+                      Get.to(() => const DataView(tableHeader: 'IndDevPlan'));
+                    }),
+                    tableLinks(context, 'Monitoring Tool for Groups', 0, () {
+                      Get.to(() => const DataView(tableHeader: 'MonitorTool'));
+                    }),
+                    tableLinks(context, 'Staff Group Tracking Tool', 0, () {
+                      Get.to(() =>
+                          const DataView(tableHeader: 'StaffGrpTrackTool'));
+                    }),
+                    tableLinks(context, 'Success Stories', 0, () {
+                      Get.to(() => const DataView(tableHeader: 'SuccessStory'));
+                    }),
                   ],
                 ),
               ),
@@ -376,6 +390,21 @@ class _HomeState extends State<Home> {
             }),
             tableLinks(context, 'WID Data', widDataRows.length, () {
               Get.to(() => const DataView(tableHeader: 'WID'));
+            }),
+            tableLinks(context, 'UCAA Consent Data', 0, () {
+              Get.to(() => const DataView(tableHeader: 'Consent'));
+            }),
+            tableLinks(context, 'Individual Development Plan', 0, () {
+              Get.to(() => const DataView(tableHeader: 'IndDevPlan'));
+            }),
+            tableLinks(context, 'Monitoring Tool for Groups', 0, () {
+              Get.to(() => const DataView(tableHeader: 'MonitorTool'));
+            }),
+            tableLinks(context, 'Staff Group Tracking Tool', 0, () {
+              Get.to(() => const DataView(tableHeader: 'StaffGrpTrackTool'));
+            }),
+            tableLinks(context, 'Success Stories', 0, () {
+              Get.to(() => const DataView(tableHeader: 'SuccessStory'));
             }),
           ],
         ),
