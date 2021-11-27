@@ -10,14 +10,14 @@ class IndDevPlanModel {
   String needs;
   String actionsTaken;
   String staff;
-  String data;
+  String date;
   String created;
   String modified;
 
   IndDevPlanModel(
     this.actionsTaken,
     this.created,
-    this.data,
+    this.date,
     this.dataMakingPlan,
     this.district,
     this.grpName,
