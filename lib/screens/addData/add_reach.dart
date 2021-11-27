@@ -87,83 +87,7 @@ class _AddReachState extends State<AddReach> {
                                 padding: const EdgeInsets.all(8),
                                 child: Column(
                                   children: [
-                                    buildTextFormField(
-                                      context,
-                                      _vslaNameController,
-                                      'VLSA Name',
-                                      "vlsa_name",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _perAttendenceController,
-                                      'Attendance',
-                                      "20",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _locationController,
-                                      'Location',
-                                      "kampala",
-                                      TextInputType.text,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _numMembersController,
-                                      'Number of Members',
-                                      "25",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _totalSavingsController,
-                                      'Total Savings',
-                                      "20000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _vslaCapitalController,
-                                      'VLSA Capital',
-                                      "2000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _loanTakenController,
-                                      'Loan taken',
-                                      "10000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _totalWelfareController,
-                                      'Total welfare',
-                                      "20000",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _welfareLoanedOutController,
-                                      'Welfare Loaned out',
-                                      "400",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _membersAccessedLoansController,
-                                      'Member accessed Loans',
-                                      "6",
-                                      TextInputType.number,
-                                    ),
-                                    buildTextFormField(
-                                      context,
-                                      _loanRepaymentController,
-                                      'Loan Repayment',
-                                      "2000",
-                                      TextInputType.number,
-                                    ),
+                                    formColumn(context),
                                     const SizedBox(height: 20),
                                     ElevatedButton(
                                       onPressed: () async {
@@ -313,83 +237,7 @@ class _AddReachState extends State<AddReach> {
                                     padding: const EdgeInsets.all(8),
                                     child: Column(
                                       children: [
-                                        buildTextFormField(
-                                          context,
-                                          _vslaNameController,
-                                          'VLSA Name',
-                                          "vlsa_name",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _perAttendenceController,
-                                          'Attendance',
-                                          "20",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _locationController,
-                                          'Location',
-                                          "kampala",
-                                          TextInputType.text,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _numMembersController,
-                                          'Number of Members',
-                                          "25",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _totalSavingsController,
-                                          'Total Savings',
-                                          "20000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _vslaCapitalController,
-                                          'VLSA Capital',
-                                          "2000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _loanTakenController,
-                                          'Loan taken',
-                                          "10000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _totalWelfareController,
-                                          'Total welfare',
-                                          "20000",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _welfareLoanedOutController,
-                                          'Welfare Loaned out',
-                                          "400",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _membersAccessedLoansController,
-                                          'Member accessed Loans',
-                                          "6",
-                                          TextInputType.number,
-                                        ),
-                                        buildTextFormField(
-                                          context,
-                                          _loanRepaymentController,
-                                          'Loan Repayment',
-                                          "2000",
-                                          TextInputType.number,
-                                        ),
+                                        formColumn(context),
                                         const SizedBox(height: 40),
                                         ElevatedButton(
                                           onPressed: () {
@@ -492,12 +340,42 @@ class _AddReachState extends State<AddReach> {
     );
   }
 
+  Column formColumn(BuildContext context) {
+    return Column(
+      children: [
+        buildTextFormField(context, _vslaNameController, 'VLSA Name',
+            "vlsa_name", TextInputType.text, 1),
+        buildTextFormField(context, _perAttendenceController, 'Attendance',
+            "20", TextInputType.number, 1),
+        buildTextFormField(context, _locationController, 'Location', "kampala",
+            TextInputType.text, 1),
+        buildTextFormField(context, _numMembersController, 'Number of Members',
+            "25", TextInputType.number, 1),
+        buildTextFormField(context, _totalSavingsController, 'Total Savings',
+            "20000", TextInputType.number, 1),
+        buildTextFormField(context, _vslaCapitalController, 'VLSA Capital',
+            "2000", TextInputType.number, 1),
+        buildTextFormField(context, _loanTakenController, 'Loan taken', "10000",
+            TextInputType.number, 1),
+        buildTextFormField(context, _totalWelfareController, 'Total welfare',
+            "20000", TextInputType.number, 1),
+        buildTextFormField(context, _welfareLoanedOutController,
+            'Welfare Loaned out', "400", TextInputType.number, 1),
+        buildTextFormField(context, _membersAccessedLoansController,
+            'Member accessed Loans', "6", TextInputType.number, 1),
+        buildTextFormField(context, _loanRepaymentController, 'Loan Repayment',
+            "2000", TextInputType.number, 1),
+      ],
+    );
+  }
+
   buildTextFormField(BuildContext context, TextEditingController control,
-      String label, String hint, TextInputType type) {
+      String label, String hint, TextInputType type, int mxl) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         controller: control,
+        textInputAction: TextInputAction.next,
         style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
@@ -517,6 +395,7 @@ class _AddReachState extends State<AddReach> {
           hintStyle: const TextStyle(color: Colors.grey),
         ),
         keyboardType: type,
+        maxLines: mxl,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter $label';
