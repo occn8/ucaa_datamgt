@@ -343,34 +343,34 @@ class _AddReachState extends State<AddReach> {
   Column formColumn(BuildContext context) {
     return Column(
       children: [
-        buildTextFormField(
+        buildTextFormField2(
             context, _vslaNameController, 'VLSA Name', "vlsa_name",
             type: TextInputType.text),
-        buildTextFormField(
+        buildTextFormField2(
             context, _perAttendenceController, 'Attendance', "20"),
-        buildTextFormField(context, _locationController, 'Location', "kampala",
+        buildTextFormField2(context, _locationController, 'Location', "kampala",
             type: TextInputType.text),
-        buildTextFormField(
+        buildTextFormField2(
             context, _numMembersController, 'Number of Members', "25"),
-        buildTextFormField(
+        buildTextFormField2(
             context, _totalSavingsController, 'Total Savings', "20000"),
-        buildTextFormField(
+        buildTextFormField2(
             context, _vslaCapitalController, 'VLSA Capital', "2000"),
-        buildTextFormField(
+        buildTextFormField2(
             context, _loanTakenController, 'Loan taken', "10000"),
-        buildTextFormField(
+        buildTextFormField2(
             context, _totalWelfareController, 'Total welfare', "20000"),
-        buildTextFormField(
+        buildTextFormField2(
             context, _welfareLoanedOutController, 'Welfare Loaned out', "400"),
-        buildTextFormField(context, _membersAccessedLoansController,
+        buildTextFormField2(context, _membersAccessedLoansController,
             'Member accessed Loans', "6"),
-        buildTextFormField(
+        buildTextFormField2(
             context, _loanRepaymentController, 'Loan Repayment', "2000"),
       ],
     );
   }
 
-  buildTextFormField(BuildContext context, TextEditingController control,
+  buildTextFormField2(BuildContext context, TextEditingController control,
       String label, String hint,
       {TextInputType type = TextInputType.number, int mxl = 1}) {
     return Padding(

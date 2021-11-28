@@ -58,7 +58,7 @@ class _AddCaRState extends State<AddCaR> {
                   ),
                 ),
                 Text(
-                  widget.dataId == '' ? "Add Data" : "Edit Data",
+                  widget.dataId == '' ? "Add CaR Data" : "Update CaR Data",
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
@@ -77,15 +77,6 @@ class _AddCaRState extends State<AddCaR> {
                       ? ListView(
                           physics: const BouncingScrollPhysics(),
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: const Text(
-                                'Add CaR Data',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            ),
                             Form(
                               key: _formkey,
                               child: Container(
@@ -248,16 +239,6 @@ class _AddCaRState extends State<AddCaR> {
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 15),
-                                  child: const Text(
-                                    'Update CaR Data',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
                                 Form(
                                   key: _formkey,
                                   child: Container(
@@ -387,44 +368,44 @@ class _AddCaRState extends State<AddCaR> {
 
   Column formColumn(BuildContext context) {
     return Column(children: [
-      buildTextFormField(
+      buildTextFormField2(
           context, _groupNameController, 'Group Name', "grp_name",
           type: TextInputType.text),
-      buildTextFormField(
+      buildTextFormField2(
           context, _subCountyController, 'Sub-county', "subcounty",
           type: TextInputType.text),
-      buildTextFormField(context, _parishController, 'Parish', "parish-name",
+      buildTextFormField2(context, _parishController, 'Parish', "parish-name",
           type: TextInputType.text),
-      buildTextFormField(
+      buildTextFormField2(
           context, _gdFormedController, 'Formed(date)', "1/1/2008",
           type: TextInputType.text),
-      buildTextFormField(context, _numMembersController, 'No Members', "15"),
-      buildTextFormField(context, _segMaleController, 'No Males', "5"),
-      buildTextFormField(context, _segFemaleController, 'No Females', "10"),
-      buildTextFormField(
+      buildTextFormField2(context, _numMembersController, 'No Members', "15"),
+      buildTextFormField2(context, _segMaleController, 'No Males', "5"),
+      buildTextFormField2(context, _segFemaleController, 'No Females', "10"),
+      buildTextFormField2(
           context, _timesSharedOutController, 'Times Shared Out', "7"),
-      buildTextFormField(
+      buildTextFormField2(
           context, _shareValueController, 'Share Value', "5,000"),
-      buildTextFormField(
+      buildTextFormField2(
           context, _numChildrenController, 'Number of Children', "2"),
-      buildTextFormField(context, _amntHighestSaverController,
+      buildTextFormField2(context, _amntHighestSaverController,
           'Amount of Highest Saver', "5,000"),
-      buildTextFormField(
+      buildTextFormField2(
           context, _amntSavedController, 'Amount Saved', "40000"),
-      buildTextFormField(
+      buildTextFormField2(
           context, _amntSocialFundController, 'Amount of Social fund', "5,000"),
-      buildTextFormField(
+      buildTextFormField2(
           context, _amntLoansTakenController, 'Amount of Loans taken', "4000"),
-      buildTextFormField(
+      buildTextFormField2(
           context, _numLoansAccessedController, 'No Loans Accessed', "3"),
-      buildTextFormField(
+      buildTextFormField2(
           context, _loanRepaymentController, 'Loans Repayment', "3"),
-      buildTextFormField(context, _amntLoansWrittenoffController,
+      buildTextFormField2(context, _amntLoansWrittenoffController,
           'Amount of Loans Written Off', "3"),
     ]);
   }
 
-  buildTextFormField(BuildContext context, TextEditingController control,
+  buildTextFormField2(BuildContext context, TextEditingController control,
       String label, String hint,
       {TextInputType type = TextInputType.number, int mxl = 1}) {
     return Padding(

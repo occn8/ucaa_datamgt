@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:ucaa_datamgt/auth_status.dart';
 import 'package:ucaa_datamgt/index.dart';
@@ -7,14 +8,15 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await DesktopWindow.setMinWindowSize(const Size(600, 800));
   await Firebase.initializeApp();
-  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-  //   statusBarColor: Colors.white,
-  //   statusBarBrightness: Brightness.dark,
-  //   statusBarIconBrightness: Brightness.dark,
-  //   systemNavigationBarColor: Colors.white,
-  //   systemNavigationBarIconBrightness: Brightness.dark,
-  //   systemNavigationBarDividerColor: Colors.white,
-  // ));
+  if (!kIsWeb)
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      systemNavigationBarDividerColor: Colors.white,
+    ));
   runApp(const MyApp());
 }
 

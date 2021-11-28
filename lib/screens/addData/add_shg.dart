@@ -367,36 +367,37 @@ class _AddShgState extends State<AddShg> {
   Column formColumn(BuildContext context) {
     return Column(
       children: [
-        buildTextFormField(context, _shgNameController, 'SHG Name', "shg_name",
+        buildTextFormField2(context, _shgNameController, 'SHG Name', "shg_name",
             type: TextInputType.text),
-        buildTextFormField(context, _locationController, 'Location', "kampala",
+        buildTextFormField2(context, _locationController, 'Location', "kampala",
             type: TextInputType.text),
-        buildTextFormField(context, _shgFormedController, 'Formed', "1/3/2019",
+        buildTextFormField2(context, _shgFormedController, 'Formed', "1/3/2019",
             type: TextInputType.text),
-        buildTextFormField(context, _numMemberController, 'No Members', "19"),
-        buildTextFormField(
+        buildTextFormField2(context, _numMemberController, 'No Members', "19"),
+        buildTextFormField2(
             context, _perAttendanceWkController, '%Attendance per Week', "15"),
-        buildTextFormField(context, _numChildrenController, 'No Children', "3"),
-        buildTextFormField(
+        buildTextFormField2(
+            context, _numChildrenController, 'No Children', "3"),
+        buildTextFormField2(
             context, _wkSavingsController, 'Week Savings', "1500"),
-        buildTextFormField(context, _wkSavingPerMemberController,
+        buildTextFormField2(context, _wkSavingPerMemberController,
             'Weekly savings per member', "150"),
-        buildTextFormField(
+        buildTextFormField2(
             context, _totalSavingController, 'Total Savings', "10500"),
-        buildTextFormField(context, _shgFundsController, 'SHG Funds', "5000"),
-        buildTextFormField(
+        buildTextFormField2(context, _shgFundsController, 'SHG Funds', "5000"),
+        buildTextFormField2(
             context, _amountLoanTakenController, 'Amount of Loan taken', "500"),
-        buildTextFormField(
+        buildTextFormField2(
             context, _numLoansAccessedController, 'No Loans accessed', "4"),
-        buildTextFormField(
+        buildTextFormField2(
             context, _loanRepaymentController, 'Loans Repayment', "400"),
-        buildTextFormField(
+        buildTextFormField2(
             context, _loanSavingRatioController, 'Loan/Savings ratio', "1:3"),
       ],
     );
   }
 
-  buildTextFormField(BuildContext context, TextEditingController control,
+  buildTextFormField2(BuildContext context, TextEditingController control,
       String label, String hint,
       {TextInputType type = TextInputType.number, int mxl = 1}) {
     return Padding(

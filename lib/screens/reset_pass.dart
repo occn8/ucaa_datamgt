@@ -37,7 +37,8 @@ class _ResetPasswordState extends State<ResetPassword> {
                       children: [
                         Builder(
                           builder: (context) => InkWell(
-                            splashColor: Theme.of(context).accentColor,
+                            splashColor:
+                                Theme.of(context).colorScheme.secondary,
                             borderRadius: BorderRadius.circular(10),
                             onTap: () {
                               Navigator.pop(context);

@@ -418,44 +418,6 @@ class _AddWidState extends State<AddWid> {
     );
   }
 
-  buildTextFormField(BuildContext context, TextEditingController control,
-      String label, String hint,
-      {TextInputType type = TextInputType.text, int mxl = 1}) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextFormField(
-        controller: control,
-        textInputAction: TextInputAction.next,
-        maxLines: mxl,
-        style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
-        decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: const BorderSide(color: Colors.grey)),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: const BorderSide(color: Colors.green)),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          contentPadding: const EdgeInsets.all(15),
-          labelText: label,
-          labelStyle:
-              TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
-          hintText: hint,
-          hintStyle: const TextStyle(color: Colors.grey),
-        ),
-        keyboardType: type,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Please enter $label';
-          }
-          return null;
-        },
-      ),
-    );
-  }
-
   @override
   void dispose() {
     _groupNameController.dispose();

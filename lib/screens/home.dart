@@ -78,6 +78,46 @@ class _HomeState extends State<Home> {
                         : SpeedDialChild(),
                     SpeedDialChild(
                       child: const Icon(Icons.add),
+                      label: 'Add Consent',
+                      labelBackgroundColor: Theme.of(context).backgroundColor,
+                      labelStyle: dialstyle,
+                      onTap: () {
+                        Get.to(() => const AddConsent(dataId: ''));
+                      },
+                      backgroundColor: Theme.of(context).primaryColorLight,
+                    ),
+                    SpeedDialChild(
+                      child: const Icon(Icons.add),
+                      label: 'Add Success Story',
+                      labelBackgroundColor: Theme.of(context).backgroundColor,
+                      labelStyle: dialstyle,
+                      onTap: () {
+                        Get.to(() => const AddSuccess(dataId: ''));
+                      },
+                      backgroundColor: Theme.of(context).primaryColorLight,
+                    ),
+                    SpeedDialChild(
+                      child: const Icon(Icons.add),
+                      label: 'Add Staff Tracking',
+                      labelBackgroundColor: Theme.of(context).backgroundColor,
+                      labelStyle: dialstyle,
+                      onTap: () {
+                        Get.to(() => const AddStaffTrack(dataId: ''));
+                      },
+                      backgroundColor: Theme.of(context).primaryColorLight,
+                    ),
+                    SpeedDialChild(
+                      child: const Icon(Icons.add),
+                      label: 'Add Monitoring Tool',
+                      labelBackgroundColor: Theme.of(context).backgroundColor,
+                      labelStyle: dialstyle,
+                      onTap: () {
+                        Get.to(() => const AddMonitoring(dataId: ''));
+                      },
+                      backgroundColor: Theme.of(context).primaryColorLight,
+                    ),
+                    SpeedDialChild(
+                      child: const Icon(Icons.add),
                       label: 'Add Dev Plan',
                       labelBackgroundColor: Theme.of(context).backgroundColor,
                       labelStyle: dialstyle,
@@ -491,43 +531,43 @@ class _HomeState extends State<Home> {
 }
 
 Future getDocs() async {
-  QuerySnapshot querySnapshot =
-      await FirebaseFirestore.instance.collection("cartable").get();
-  List docs = querySnapshot.docs;
-  carDataRows.clear();
-  for (var doc in docs) {
-    var cmodel = CaRDataModel(
-        '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
-    cmodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
-    carDataRows.add(cmodel);
-  }
-  QuerySnapshot querySnapshot2 =
-      await FirebaseFirestore.instance.collection("reachtable").get();
-  List docs2 = querySnapshot2.docs;
-  reachDataRows.clear();
-  for (var doc in docs2) {
-    var rmodel = REACHdataModel('', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '');
-    rmodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
-    reachDataRows.add(rmodel);
-  }
-  QuerySnapshot querySnapshot3 =
-      await FirebaseFirestore.instance.collection("shgtable").get();
-  List docs3 = querySnapshot3.docs;
-  shgDataRows.clear();
-  for (var doc in docs3) {
-    var smodel =
-        SHGdataModel('', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '');
-    smodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
-    shgDataRows.add(smodel);
-  }
-  QuerySnapshot querySnapshot4 =
-      await FirebaseFirestore.instance.collection("widtable").get();
-  List docs4 = querySnapshot4.docs;
-  widDataRows.clear();
-  for (var doc in docs4) {
-    var wmodel = WIDdataModel(
-        '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
-    wmodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
-    widDataRows.add(wmodel);
-  }
+  // QuerySnapshot querySnapshot =
+  //     await FirebaseFirestore.instance.collection("cartable").get();
+  // List docs = querySnapshot.docs;
+  // carDataRows.clear();
+  // for (var doc in docs) {
+  //   var cmodel = CaRDataModel(
+  //       '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
+  //   cmodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
+  //   carDataRows.add(cmodel);
+  // }
+  // QuerySnapshot querySnapshot2 =
+  //     await FirebaseFirestore.instance.collection("reachtable").get();
+  // List docs2 = querySnapshot2.docs;
+  // reachDataRows.clear();
+  // for (var doc in docs2) {
+  //   var rmodel = REACHdataModel('', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '');
+  //   rmodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
+  //   reachDataRows.add(rmodel);
+  // }
+  // QuerySnapshot querySnapshot3 =
+  //     await FirebaseFirestore.instance.collection("shgtable").get();
+  // List docs3 = querySnapshot3.docs;
+  // shgDataRows.clear();
+  // for (var doc in docs3) {
+  //   var smodel =
+  //       SHGdataModel('', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '');
+  //   smodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
+  //   shgDataRows.add(smodel);
+  // }
+  // QuerySnapshot querySnapshot4 =
+  //     await FirebaseFirestore.instance.collection("widtable").get();
+  // List docs4 = querySnapshot4.docs;
+  // widDataRows.clear();
+  // for (var doc in docs4) {
+  //   var wmodel = WIDdataModel(
+  //       '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
+  //   wmodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
+  //   widDataRows.add(wmodel);
+  // }
 }
