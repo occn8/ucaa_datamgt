@@ -328,24 +328,27 @@ class _AddStaffTrackState extends State<AddStaffTrack> {
   Column formColumn(BuildContext context) {
     return Column(
       children: [
-        buildTextFormField(context, _projectController,
-            'Date of making the plan', "21/2/2021"),
+        buildTextFormField(context, _projectController, 'Project', ""),
         buildTextFormField(
-            context, _areaOfOpController, 'Name of Member', "name"),
-        buildTextFormField(context, _staffNameController, 'Group Name', ""),
+            context, _areaOfOpController, 'Area of Operation', ""),
+        buildTextFormField(context, _staffNameController, 'Name of staff', ""),
+        buildTextFormField(context, _titleController, 'Title', ""),
         buildTextFormField(
-            context, _monthUnderReviewController, 'Sub-County', ""),
-        buildTextFormField(context, _yearController, 'Parish', ""),
-        buildTextFormField(context, _grpNameController, 'Village', ""),
-        buildTextFormField(context, _lessonsLearntController, 'Needs', "",
+            context, _monthUnderReviewController, 'Month Under review', ""),
+        buildTextFormField(context, _yearController, 'Year', ""),
+        buildTextFormField(
+            context, _grpNameController, 'Name of Group under support', ""),
+        buildTextFormField(context, _lessonsLearntController,
+            'Lessons learnt & best practices', "",
             mxl: 5),
         buildTextFormField(context, _challengesFacedController,
-            'Actions to be taken/services needed', "",
+            'Challenges faced during the month', "",
+            mxl: 5),
+        buildTextFormField(context, _possibleSolutionController,
+            'Possible solutions suggested', "",
             mxl: 5),
         buildTextFormField(
-            context, _possibleSolutionController, 'Title & Name of staff', "",
-            mxl: 5),
-        buildTextFormField(context, _dateController, 'Date', "30/3/2021"),
+            context, _dateController, 'Date of reporting', "30/3/2021"),
       ],
     );
   }
