@@ -28,16 +28,6 @@ class REACHDataScr extends DataTableSource {
     final REACHdataModel reachdata = reachDataRows[index];
     return DataRow.byIndex(
       index: index,
-      // selected: reachdata.selected,
-      // onSelectChanged: (bool? val) {
-      //   if (val == null) return;
-      //   if (reachdata.selected != val) {
-      //     _selectedCount += val ? 1 : -1;
-      //     assert(_selectedCount >= 0);
-      //     reachdata.selected = val;
-      //     notifyListeners();
-      //   }
-      // },
       cells: <DataCell>[
         DataCell(Text(reachdata.vslaName)),
         DataCell(Text(reachdata.perAttendence.toString())),

@@ -31,16 +31,6 @@ class SHGDataScr extends DataTableSource {
     final SHGdataModel shgdata = shgDataRows[index];
     return DataRow.byIndex(
       index: index,
-      // selected: shgdata.selected,
-      // onSelectChanged: (bool? val) {
-      //   if (val == null) return;
-      //   if (shgdata.selected != val) {
-      //     _selectedCount += val ? 1 : -1;
-      //     assert(_selectedCount >= 0);
-      //     shgdata.selected = val;
-      //     notifyListeners();
-      //   }
-      // },
       cells: <DataCell>[
         DataCell(Text(shgdata.shgName)),
         DataCell(Text(shgdata.location)),

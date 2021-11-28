@@ -32,16 +32,6 @@ class WIDDataScr extends DataTableSource {
     final WIDdataModel widdata = widDataRows[index];
     return DataRow.byIndex(
       index: index,
-      // selected: widdata.selected,
-      // onSelectChanged: (bool? val) {
-      //   if (val == null) return;
-      //   if (widdata.selected != val) {
-      //     _selectedCount += val ? 1 : -1;
-      //     assert(_selectedCount >= 0);
-      //     widdata.selected = val;
-      //     notifyListeners();
-      //   }
-      // },
       cells: <DataCell>[
         DataCell(Text(widdata.groupName)),
         DataCell(Text(widdata.subCounty)),
