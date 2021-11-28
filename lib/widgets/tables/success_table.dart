@@ -1,22 +1,29 @@
 import 'package:ucaa_datamgt/index.dart';
 
 const kREACHDataColumns = <DataColumn>[
-  DataColumn(label: Text('VSLA-Name')),
-  DataColumn(label: Text('Attendance')),
-  DataColumn(label: Text('location')),
-  DataColumn(label: Text('Members')),
-  DataColumn(label: Text('Total-savings')),
-  DataColumn(label: Text('VSLA-Capital')),
-  DataColumn(label: Text('Loan-taken')),
-  DataColumn(label: Text('Total-welfare')),
-  DataColumn(label: Text('Welfare-Loaned')),
-  DataColumn(label: Text('Members-loaned')),
-  DataColumn(label: Text('loan-repay')),
+  DataColumn(label: Text('Name')),
+  DataColumn(label: Text('Marital-Status')),
+  DataColumn(label: Text('Number of Children')),
+  DataColumn(label: Text('Date')),
+  DataColumn(label: Text('Sex')),
+  DataColumn(label: Text('Age')),
+  DataColumn(label: Text('District')),
+  DataColumn(label: Text('Sub-county')),
+  DataColumn(label: Text('Parish')),
+  DataColumn(label: Text('Village')),
+  DataColumn(label: Text('Group Name')),
+  DataColumn(label: Text('Year of encounter')),
+  DataColumn(label: Text('Life before')),
+  DataColumn(label: Text('Capacity building')),
+  DataColumn(label: Text('Changes compared to before')),
+  DataColumn(label: Text('Other influences')),
+  DataColumn(label: Text('Future Plan')),
+  DataColumn(label: Text('Other comments')),
   DataColumn(label: Text('')),
   DataColumn(label: Text('')),
 ];
 
-final List<REACHdataModel> reachDataRows = <REACHdataModel>[];
+final List<SuccessStoryModel> successDataRows = <SuccessStoryModel>[];
 
 class REACHDataScr extends DataTableSource {
   // int _selectedCount = 0;
@@ -24,32 +31,39 @@ class REACHDataScr extends DataTableSource {
   @override
   DataRow? getRow(int index) {
     assert(index >= 0);
-    if (index >= reachDataRows.length) return null;
-    final REACHdataModel reachdata = reachDataRows[index];
+    if (index >= successDataRows.length) return null;
+    final SuccessStoryModel successdata = successDataRows[index];
     return DataRow.byIndex(
       index: index,
       cells: <DataCell>[
-        DataCell(Text(reachdata.vslaName)),
-        DataCell(Text(reachdata.perAttendence.toString())),
-        DataCell(Text(reachdata.location)),
-        DataCell(Text(reachdata.numMembers.toString())),
-        DataCell(Text(reachdata.totalSavings.toString())),
-        DataCell(Text(reachdata.vslaCapital.toString())),
-        DataCell(Text(reachdata.loanTaken.toString())),
-        DataCell(Text(reachdata.totalWelfare.toString())),
-        DataCell(Text(reachdata.welfareLoanedOut.toString())),
-        DataCell(Text(reachdata.membersAccessedLoans.toString())),
-        DataCell(Text(reachdata.loanRepayment.toString())),
+        DataCell(Text(successdata.name)),
+        DataCell(Text(successdata.maritalStatus)),
+        DataCell(Text(successdata.numChildren.toString())),
+        DataCell(Text(successdata.date)),
+        DataCell(Text(successdata.sex)),
+        DataCell(Text(successdata.age.toString())),
+        DataCell(Text(successdata.district)),
+        DataCell(Text(successdata.subCounty)),
+        DataCell(Text(successdata.parish)),
+        DataCell(Text(successdata.village)),
+        DataCell(Text(successdata.groupName)),
+        DataCell(Text(successdata.yrOfEncounterAndHow)),
+        DataCell(Text(successdata.lifeBeforeEncounter)),
+        DataCell(Text(successdata.capacityBuilding)),
+        DataCell(Text(successdata.changesInLifeComparedToBefore)),
+        DataCell(Text(successdata.otherInfluencesThatChangedLife)),
+        DataCell(Text(successdata.futurePlan)),
+        DataCell(Text(successdata.otherComments)),
         (usrrole == 'Admin' || usrrole == 'Editor')
             ? DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {
-                Get.to(() => AddReach(dataId: reachdata.id));
+                Get.to(() => AddSuccess(dataId: successdata.id));
               })
             : const DataCell(Text('')),
         (usrrole == 'Admin' || usrrole == 'Editor')
             ? DataCell(const Icon(Icons.delete, color: Colors.redAccent),
                 onTap: () {
                 CloudDatabase.deleteData(
-                    docId: reachdata.id, col: 'reachtable');
+                    docId: successdata.id, col: 'successstory');
               })
             : const DataCell(Text('')),
       ],
@@ -60,7 +74,7 @@ class REACHDataScr extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => reachDataRows.length;
+  int get rowCount => successDataRows.length;
 
   @override
   int get selectedRowCount => 0;

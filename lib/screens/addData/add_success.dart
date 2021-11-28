@@ -381,7 +381,9 @@ class _AddSuccessState extends State<AddSuccess> {
         buildTextFormField(context, _nameController, 'Name', "john doe"),
         buildTextFormField(
             context, _maritalStatusController, 'Marital-Status', "Married"),
-        buildTextFormField(context, _parishController, 'Parish', "parish-name"),
+        buildTextFormField(
+            context, _numChildrenController, 'Number of Children', "2",
+            type: TextInputType.number),
         buildTextFormField(context, _dateController, 'Date', "1/1/2008"),
         buildTextFormField(context, _sexController, 'Sex', "Female/Male"),
         buildTextFormField(context, _ageController, 'Age', "25",
@@ -389,11 +391,9 @@ class _AddSuccessState extends State<AddSuccess> {
         buildTextFormField(context, _districtController, 'District', "gulu"),
         buildTextFormField(
             context, _subCountyController, 'Sub-county', "sub-county"),
+        buildTextFormField(context, _parishController, 'Parish', "parish-name"),
         buildTextFormField(
             context, _villageController, 'Village', "village-name"),
-        buildTextFormField(
-            context, _numChildrenController, 'Number of Children', "2",
-            type: TextInputType.number),
         buildTextFormField(
             context, _groupNameController, 'Group Name', "group-nane"),
         buildTextFormField(context, _yrOfEncounterAndHowController,
@@ -405,7 +405,7 @@ class _AddSuccessState extends State<AddSuccess> {
         buildTextFormField(
             context,
             _changesInLifeComparedToBeforeController,
-            'Changes in yuor life right now compared to before the UCAA encounter',
+            'Changes in your life right now compared to before the UCAA encounter',
             ".."),
         buildTextFormField(
             context,
