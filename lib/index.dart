@@ -36,6 +36,7 @@ export 'package:ucaa_datamgt/models/success_stroy_model.dart';
 
 export 'package:ucaa_datamgt/widgets/custom_drawer.dart';
 export 'package:ucaa_datamgt/widgets/snackbar.dart';
+export 'package:ucaa_datamgt/widgets/custom_textfield.dart';
 export 'package:ucaa_datamgt/widgets/tables/car_table.dart';
 export 'package:ucaa_datamgt/widgets/tables/reach_table.dart';
 export 'package:ucaa_datamgt/widgets/tables/shg_table.dart';

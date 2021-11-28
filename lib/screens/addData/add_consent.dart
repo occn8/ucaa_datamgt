@@ -46,7 +46,9 @@ class _AddConsentState extends State<AddConsent> {
                   ),
                 ),
                 Text(
-                  widget.dataId == '' ? "Add Data" : "Edit Data",
+                  widget.dataId == ''
+                      ? "Add Consent Data"
+                      : "Update Consent Data",
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
@@ -66,15 +68,6 @@ class _AddConsentState extends State<AddConsent> {
                       ? ListView(
                           physics: const BouncingScrollPhysics(),
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: const Text(
-                                'Add Consent Data',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            ),
                             Form(
                               key: _formkey,
                               child: Container(
@@ -185,16 +178,6 @@ class _AddConsentState extends State<AddConsent> {
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 15),
-                                  child: const Text(
-                                    'Update Data',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
                                 Form(
                                   key: _formkey,
                                   child: Container(
@@ -308,42 +291,4 @@ class _AddConsentState extends State<AddConsent> {
     _dateController.dispose();
     super.dispose();
   }
-}
-
-buildTextFormField(BuildContext context, TextEditingController control,
-    String label, String hint,
-    {TextInputType type = TextInputType.text, int mxl = 1}) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: TextFormField(
-      controller: control,
-      textInputAction: TextInputAction.next,
-      style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
-      decoration: InputDecoration(
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(color: Colors.grey)),
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(color: Colors.green)),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        contentPadding: const EdgeInsets.all(15),
-        labelText: label,
-        labelStyle:
-            TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
-        hintText: hint,
-        hintStyle: const TextStyle(color: Colors.grey),
-      ),
-      keyboardType: type,
-      maxLines: mxl,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter $label';
-        }
-        return null;
-      },
-    ),
-  );
 }
