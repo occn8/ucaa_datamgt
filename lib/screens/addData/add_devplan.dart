@@ -52,7 +52,9 @@ class _AddDevPlanState extends State<AddDevPlan> {
                   ),
                 ),
                 Text(
-                  widget.dataId == '' ? "Add Data" : "Edit Data",
+                  widget.dataId == ''
+                      ? "Add Individual Dev Plan"
+                      : "Update Individual Dev Plan",
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
@@ -72,15 +74,6 @@ class _AddDevPlanState extends State<AddDevPlan> {
                       ? ListView(
                           physics: const BouncingScrollPhysics(),
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: const Text(
-                                'Add Individual Dev Plan Data',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            ),
                             Form(
                               key: _formkey,
                               child: Container(

@@ -68,7 +68,9 @@ class _AddMonitoringState extends State<AddMonitoring> {
                   ),
                 ),
                 Text(
-                  widget.dataId == '' ? "Add Data" : "Edit Data",
+                  widget.dataId == ''
+                      ? "Add Monitoring Tool Data"
+                      : "Edit Monitoring Tool Data",
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
@@ -88,15 +90,6 @@ class _AddMonitoringState extends State<AddMonitoring> {
                       ? ListView(
                           physics: const BouncingScrollPhysics(),
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: const Text(
-                                'Add Individual Dev Plan Data',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            ),
                             Form(
                               key: _formkey,
                               child: Container(
@@ -300,16 +293,6 @@ class _AddMonitoringState extends State<AddMonitoring> {
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 15),
-                                  child: const Text(
-                                    'Update Data',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
                                 Form(
                                   key: _formkey,
                                   child: Container(

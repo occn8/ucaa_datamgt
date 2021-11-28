@@ -59,7 +59,9 @@ class _AddSuccessState extends State<AddSuccess> {
                   ),
                 ),
                 Text(
-                  widget.dataId == '' ? "Add Story" : "Edit Story",
+                  widget.dataId == ''
+                      ? "Add Success Story"
+                      : "Update Success Story",
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
@@ -78,15 +80,6 @@ class _AddSuccessState extends State<AddSuccess> {
                       ? ListView(
                           physics: const BouncingScrollPhysics(),
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: const Text(
-                                'Add Success Story',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            ),
                             Form(
                               key: _formkey,
                               child: Container(
@@ -240,16 +233,6 @@ class _AddSuccessState extends State<AddSuccess> {
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 15),
-                                  child: const Text(
-                                    'Update Success Story',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
                                 Form(
                                   key: _formkey,
                                   child: Container(
@@ -397,25 +380,31 @@ class _AddSuccessState extends State<AddSuccess> {
         buildTextFormField(
             context, _groupNameController, 'Group Name', "group-nane"),
         buildTextFormField(context, _yrOfEncounterAndHowController,
-            'Year of first encounter with UCAA and how', "..."),
+            'Year of first encounter with UCAA and how', "...",
+            mxl: 5),
         buildTextFormField(context, _lifeBeforeEncounterController,
-            'Life before encounter with UCAA', "..."),
+            'Life before encounter with UCAA', "...",
+            mxl: 5),
         buildTextFormField(context, _capacityBuildingController,
-            'Capacity building/trainings provided by UCAA', "..."),
+            'Capacity building/trainings provided by UCAA', "...",
+            mxl: 5),
         buildTextFormField(
             context,
             _changesInLifeComparedToBeforeController,
             'Changes in your life right now compared to before the UCAA encounter',
-            ".."),
+            "..",
+            mxl: 5),
         buildTextFormField(
             context,
             _otherInfluencesThatChangedLifeController,
             'Other influences beside UCAA that changed your life(own effort/gov./other Ngos)',
-            "..."),
-        buildTextFormField(
-            context, _futurePlanController, 'Future Plan', "..."),
+            "...",
+            mxl: 5),
+        buildTextFormField(context, _futurePlanController, 'Future Plan', "...",
+            mxl: 5),
         buildTextFormField(context, _otherCommentsController,
-            'Any Other comments on your story', "..."),
+            'Any Other comments on your story', "...",
+            mxl: 5),
       ],
     );
   }

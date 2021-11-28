@@ -4,7 +4,7 @@ buildTextFormField(BuildContext context, TextEditingController control,
     String label, String hint,
     {TextInputType type = TextInputType.text, int mxl = 1}) {
   return Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
     child: TextFormField(
       controller: control,
       textInputAction: TextInputAction.next,
@@ -42,7 +42,7 @@ buildTextFormField2(BuildContext context, TextEditingController control,
     String label, String hint,
     {TextInputType type = TextInputType.number, int mxl = 1}) {
   return Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
     child: TextFormField(
       controller: control,
       textInputAction: TextInputAction.next,

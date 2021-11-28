@@ -52,7 +52,7 @@ class _AddReachState extends State<AddReach> {
                   ),
                 ),
                 Text(
-                  widget.dataId == '' ? "Add Data" : "Edit Data",
+                  widget.dataId == '' ? "Add Reach Data" : "Update Reach Data",
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
@@ -72,15 +72,6 @@ class _AddReachState extends State<AddReach> {
                       ? ListView(
                           physics: const BouncingScrollPhysics(),
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: const Text(
-                                'Add Reach Data',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            ),
                             Form(
                               key: _formkey,
                               child: Container(
@@ -221,16 +212,6 @@ class _AddReachState extends State<AddReach> {
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 15),
-                                  child: const Text(
-                                    'Update Reach Data',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
                                 Form(
                                   key: _formkey,
                                   child: Container(

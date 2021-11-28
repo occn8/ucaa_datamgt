@@ -55,7 +55,7 @@ class _AddShgState extends State<AddShg> {
                   ),
                 ),
                 Text(
-                  widget.dataId == '' ? "Add Data" : "Edit Data",
+                  widget.dataId == '' ? "Add SHG Data" : "Update SHG Data",
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w500),
                 ),
@@ -75,15 +75,6 @@ class _AddShgState extends State<AddShg> {
                       ? ListView(
                           physics: const BouncingScrollPhysics(),
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: const Text(
-                                'Add SHG Data',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            ),
                             Form(
                               key: _formkey,
                               child: Container(
@@ -236,16 +227,6 @@ class _AddShgState extends State<AddShg> {
                             return ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 15),
-                                  child: const Text(
-                                    'Update SHG Data',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
                                 Form(
                                   key: _formkey,
                                   child: Container(
@@ -319,7 +300,7 @@ class _AddShgState extends State<AddShg> {
                                                   Navigator.pop(context);
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(buildSnackBar(
-                                                          "Product Updated successfully"));
+                                                          "Data Updated successfully"));
                                                 } else {
                                                   setState(() {
                                                     isUploading = false;
