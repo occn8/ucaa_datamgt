@@ -325,6 +325,7 @@ class _AddDevPlanState extends State<AddDevPlan> {
             'Date of making the plan', "21/2/2021"),
         buildTextFormField(context, _nameController, 'Name of Member', "name"),
         buildTextFormField(context, _grpNameController, 'Group Name', ""),
+        buildTextFormField(context, _districtController, 'District', ""),
         buildTextFormField(context, _subCountyController, 'Sub-County', ""),
         buildTextFormField(context, _parishController, 'Parish', ""),
         buildTextFormField(context, _villageController, 'Village', ""),

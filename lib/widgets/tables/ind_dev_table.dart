@@ -1,55 +1,55 @@
 import 'package:ucaa_datamgt/index.dart';
 
-const kREACHDataColumns = <DataColumn>[
-  DataColumn(label: Text('VSLA-Name')),
-  DataColumn(label: Text('Attendance')),
-  DataColumn(label: Text('location')),
-  DataColumn(label: Text('Members')),
-  DataColumn(label: Text('Total-savings')),
-  DataColumn(label: Text('VSLA-Capital')),
-  DataColumn(label: Text('Loan-taken')),
-  DataColumn(label: Text('Total-welfare')),
-  DataColumn(label: Text('Welfare-Loaned')),
-  DataColumn(label: Text('Members-loaned')),
-  DataColumn(label: Text('loan-repay')),
+const kIndDevColumns = <DataColumn>[
+  DataColumn(label: Text('Planning date')),
+  DataColumn(label: Text('Name')),
+  DataColumn(label: Text('Group Name')),
+  DataColumn(label: Text('District')),
+  DataColumn(label: Text('Sub-County')),
+  DataColumn(label: Text('Parish')),
+  DataColumn(label: Text('Village')),
+  DataColumn(label: Text('Needs')),
+  DataColumn(label: Text('Actions to be taken')),
+  DataColumn(label: Text('Name of Staff')),
+  DataColumn(label: Text('Date')),
   DataColumn(label: Text('')),
   DataColumn(label: Text('')),
 ];
 
-final List<REACHdataModel> reachDataRows = <REACHdataModel>[];
+final List<IndDevPlanModel> indDevDataRows = <IndDevPlanModel>[];
 
-class REACHDataScr extends DataTableSource {
+class IndDevScr extends DataTableSource {
   // int _selectedCount = 0;
 
   @override
   DataRow? getRow(int index) {
     assert(index >= 0);
-    if (index >= reachDataRows.length) return null;
-    final REACHdataModel reachdata = reachDataRows[index];
+    if (index >= indDevDataRows.length) return null;
+    final IndDevPlanModel indDevdata = indDevDataRows[index];
     return DataRow.byIndex(
       index: index,
       cells: <DataCell>[
-        DataCell(Text(reachdata.vslaName)),
-        DataCell(Text(reachdata.perAttendence.toString())),
-        DataCell(Text(reachdata.location)),
-        DataCell(Text(reachdata.numMembers.toString())),
-        DataCell(Text(reachdata.totalSavings.toString())),
-        DataCell(Text(reachdata.vslaCapital.toString())),
-        DataCell(Text(reachdata.loanTaken.toString())),
-        DataCell(Text(reachdata.totalWelfare.toString())),
-        DataCell(Text(reachdata.welfareLoanedOut.toString())),
-        DataCell(Text(reachdata.membersAccessedLoans.toString())),
-        DataCell(Text(reachdata.loanRepayment.toString())),
+        DataCell(Text(indDevdata.dataMakingPlan)),
+        DataCell(Text(indDevdata.name)),
+        DataCell(Text(indDevdata.grpName)),
+        DataCell(Text(indDevdata.district)),
+        DataCell(Text(indDevdata.subCounty)),
+        DataCell(Text(indDevdata.parish)),
+        DataCell(Text(indDevdata.village)),
+        DataCell(Text(indDevdata.needs)),
+        DataCell(Text(indDevdata.actionsTaken)),
+        DataCell(Text(indDevdata.staff)),
+        DataCell(Text(indDevdata.date)),
         (usrrole == 'Admin' || usrrole == 'Editor')
             ? DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {
-                Get.to(() => AddReach(dataId: reachdata.id));
+                Get.to(() => AddDevPlan(dataId: indDevdata.id));
               })
             : const DataCell(Text('')),
         (usrrole == 'Admin' || usrrole == 'Editor')
             ? DataCell(const Icon(Icons.delete, color: Colors.redAccent),
                 onTap: () {
                 CloudDatabase.deleteData(
-                    docId: reachdata.id, col: 'reachtable');
+                    docId: indDevdata.id, col: 'devplantable');
               })
             : const DataCell(Text('')),
       ],
@@ -60,7 +60,7 @@ class REACHDataScr extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => reachDataRows.length;
+  int get rowCount => indDevDataRows.length;
 
   @override
   int get selectedRowCount => 0;
