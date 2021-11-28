@@ -572,10 +572,32 @@ class _AddMonitoringState extends State<AddMonitoring> {
   @override
   void dispose() {
     _collectorNameController.dispose();
-    _numMembersController.dispose();
-    _grpNameController.dispose();
     _titleController.dispose();
+    _dateController.dispose();
+    _grpNameController.dispose();
+    _numMembersController.dispose();
     _numMaleController.dispose();
+    _numFemaleController.dispose();
+    _subCountyController.dispose();
+    _parishController.dispose();
+    _villageController.dispose();
+    _reportQuarterController.dispose();
+    _monthController.dispose();
+    _totalSavingsController.dispose();
+    _loanAmtGivenOutController.dispose();
+    _loanRepaymentAmtController.dispose();
+    _totalSocialFundController.dispose();
+    _remarksController.dispose();
+    _numMemeberWithIGAController.dispose();
+    _numMembersIGAcollapsedController.dispose();
+    _numMembersIGAmaitainedController.dispose();
+    _numMembersNewIGAController.dispose();
+    _anyIGAyesORnoController.dispose();
+    _ifYesWhichIGAController.dispose();
+    _summaryOFArchievementsController.dispose();
+    _challengesController.dispose();
+    _solutionsController.dispose();
+    _grpActionPlanController.dispose();
     super.dispose();
   }
 }

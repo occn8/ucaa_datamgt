@@ -394,10 +394,16 @@ class _AddStaffTrackState extends State<AddStaffTrack> {
   @override
   void dispose() {
     _projectController.dispose();
-    _titleController.dispose();
-    _staffNameController.dispose();
     _areaOfOpController.dispose();
+    _staffNameController.dispose();
+    _titleController.dispose();
+    _dateController.dispose();
     _monthUnderReviewController.dispose();
+    _yearController.dispose();
+    _grpNameController.dispose();
+    _lessonsLearntController.dispose();
+    _challengesFacedController.dispose();
+    _possibleSolutionController.dispose();
     super.dispose();
   }
 }

@@ -461,11 +461,23 @@ class _AddSuccessState extends State<AddSuccess> {
   @override
   void dispose() {
     _nameController.dispose();
-    _dateController.dispose();
-    _ageController.dispose();
-    _parishController.dispose();
     _maritalStatusController.dispose();
+    _numChildrenController.dispose();
+    _dateController.dispose();
     _sexController.dispose();
+    _ageController.dispose();
+    _districtController.dispose();
+    _subCountyController.dispose();
+    _parishController.dispose();
+    _villageController.dispose();
+    _groupNameController.dispose();
+    _yrOfEncounterAndHowController.dispose();
+    _lifeBeforeEncounterController.dispose();
+    _capacityBuildingController.dispose();
+    _changesInLifeComparedToBeforeController.dispose();
+    _otherInfluencesThatChangedLifeController.dispose();
+    _futurePlanController.dispose();
+    _otherCommentsController.dispose();
     super.dispose();
   }
 }

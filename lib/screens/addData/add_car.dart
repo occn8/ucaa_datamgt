@@ -465,11 +465,22 @@ class _AddCaRState extends State<AddCaR> {
   @override
   void dispose() {
     _groupNameController.dispose();
-    _gdFormedController.dispose();
-    _segMaleController.dispose();
-    _parishController.dispose();
     _subCountyController.dispose();
+    _parishController.dispose();
+    _gdFormedController.dispose();
     _numMembersController.dispose();
+    _segMaleController.dispose();
+    _segFemaleController.dispose();
+    _timesSharedOutController.dispose();
+    _shareValueController.dispose();
+    _numChildrenController.dispose();
+    _amntHighestSaverController.dispose();
+    _amntSavedController.dispose();
+    _amntSocialFundController.dispose();
+    _amntLoansTakenController.dispose();
+    _numLoansAccessedController.dispose();
+    _loanRepaymentController.dispose();
+    _amntLoansWrittenoffController.dispose();
     super.dispose();
   }
 }

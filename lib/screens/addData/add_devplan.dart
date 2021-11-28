@@ -381,10 +381,16 @@ class _AddDevPlanState extends State<AddDevPlan> {
   @override
   void dispose() {
     _dataMakingPlanController.dispose();
-    _districtController.dispose();
-    _grpNameController.dispose();
     _nameController.dispose();
+    _grpNameController.dispose();
+    _districtController.dispose();
     _subCountyController.dispose();
+    _parishController.dispose();
+    _villageController.dispose();
+    _needsController.dispose();
+    _actionsTakenController.dispose();
+    _staffController.dispose();
+    _dateController.dispose();
     super.dispose();
   }
 }

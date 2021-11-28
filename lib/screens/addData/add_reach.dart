@@ -411,11 +411,16 @@ class _AddReachState extends State<AddReach> {
   @override
   void dispose() {
     _vslaNameController.dispose();
-    _totalSavingsController.dispose();
-    _vslaCapitalController.dispose();
-    _locationController.dispose();
     _perAttendenceController.dispose();
+    _locationController.dispose();
+    _totalSavingsController.dispose();
     _numMembersController.dispose();
+    _vslaCapitalController.dispose();
+    _loanTakenController.dispose();
+    _totalWelfareController.dispose();
+    _welfareLoanedOutController.dispose();
+    _membersAccessedLoansController.dispose();
+    _loanRepaymentController.dispose();
     super.dispose();
   }
 }

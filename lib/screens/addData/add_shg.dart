@@ -436,11 +436,19 @@ class _AddShgState extends State<AddShg> {
   @override
   void dispose() {
     _shgNameController.dispose();
-    _numMemberController.dispose();
-    _wkSavingsController.dispose();
-    _shgFormedController.dispose();
     _locationController.dispose();
+    _shgFormedController.dispose();
+    _numMemberController.dispose();
     _perAttendanceWkController.dispose();
+    _numChildrenController.dispose();
+    _wkSavingsController.dispose();
+    _wkSavingPerMemberController.dispose();
+    _totalSavingController.dispose();
+    _shgFundsController.dispose();
+    _amountLoanTakenController.dispose();
+    _numLoansAccessedController.dispose();
+    _loanRepaymentController.dispose();
+    _loanSavingRatioController.dispose();
     super.dispose();
   }
 }
