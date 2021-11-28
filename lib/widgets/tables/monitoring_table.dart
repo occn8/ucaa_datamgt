@@ -1,55 +1,83 @@
 import 'package:ucaa_datamgt/index.dart';
 
-const kREACHDataColumns = <DataColumn>[
-  DataColumn(label: Text('VSLA-Name')),
-  DataColumn(label: Text('Attendance')),
-  DataColumn(label: Text('location')),
-  DataColumn(label: Text('Members')),
-  DataColumn(label: Text('Total-savings')),
-  DataColumn(label: Text('VSLA-Capital')),
-  DataColumn(label: Text('Loan-taken')),
-  DataColumn(label: Text('Total-welfare')),
-  DataColumn(label: Text('Welfare-Loaned')),
-  DataColumn(label: Text('Members-loaned')),
-  DataColumn(label: Text('loan-repay')),
+const kMonitorDataColumns = <DataColumn>[
+  DataColumn(label: Text('Name of Collector')),
+  DataColumn(label: Text('Title')),
+  DataColumn(label: Text('Group Name')),
+  DataColumn(label: Text('Total Members')),
+  DataColumn(label: Text('Male')),
+  DataColumn(label: Text('Female')),
+  DataColumn(label: Text('Sub-County')),
+  DataColumn(label: Text('Parish')),
+  DataColumn(label: Text('Village')),
+  DataColumn(label: Text('Reporting Quarter')),
+  DataColumn(label: Text('Month')),
+  DataColumn(label: Text('Total Savings')),
+  DataColumn(label: Text('Loan amount given out')),
+  DataColumn(label: Text('Loan repayment amount')),
+  DataColumn(label: Text('Total Social fund')),
+  DataColumn(label: Text('Members with IGAs')),
+  DataColumn(label: Text('Members who started IGAs')),
+  DataColumn(label: Text('Members-IGAs collapsed')),
+  DataColumn(label: Text('Members-IGAs maitained')),
+  DataColumn(label: Text('Any IGAs')),
+  DataColumn(label: Text('Summary-achievements')),
+  DataColumn(label: Text('Challenges')),
+  DataColumn(label: Text('solutions')),
+  DataColumn(label: Text('Action Plan')),
+  DataColumn(label: Text('Remarks')),
   DataColumn(label: Text('')),
   DataColumn(label: Text('')),
 ];
 
-final List<REACHdataModel> reachDataRows = <REACHdataModel>[];
+final List<MonitorToolModel> monitoringDataRows = <MonitorToolModel>[];
 
-class REACHDataScr extends DataTableSource {
+class MonitorDataScr extends DataTableSource {
   // int _selectedCount = 0;
 
   @override
   DataRow? getRow(int index) {
     assert(index >= 0);
-    if (index >= reachDataRows.length) return null;
-    final REACHdataModel reachdata = reachDataRows[index];
+    if (index >= monitoringDataRows.length) return null;
+    final MonitorToolModel monitoringdata = monitoringDataRows[index];
     return DataRow.byIndex(
       index: index,
       cells: <DataCell>[
-        DataCell(Text(reachdata.vslaName)),
-        DataCell(Text(reachdata.perAttendence.toString())),
-        DataCell(Text(reachdata.location)),
-        DataCell(Text(reachdata.numMembers.toString())),
-        DataCell(Text(reachdata.totalSavings.toString())),
-        DataCell(Text(reachdata.vslaCapital.toString())),
-        DataCell(Text(reachdata.loanTaken.toString())),
-        DataCell(Text(reachdata.totalWelfare.toString())),
-        DataCell(Text(reachdata.welfareLoanedOut.toString())),
-        DataCell(Text(reachdata.membersAccessedLoans.toString())),
-        DataCell(Text(reachdata.loanRepayment.toString())),
+        DataCell(Text(monitoringdata.collectorName)),
+        DataCell(Text(monitoringdata.title)),
+        DataCell(Text(monitoringdata.grpName)),
+        DataCell(Text(monitoringdata.numMembers.toString())),
+        DataCell(Text(monitoringdata.numMale.toString())),
+        DataCell(Text(monitoringdata.numFemale.toString())),
+        DataCell(Text(monitoringdata.subCounty)),
+        DataCell(Text(monitoringdata.parish)),
+        DataCell(Text(monitoringdata.village)),
+        DataCell(Text(monitoringdata.reportQuarter)),
+        DataCell(Text(monitoringdata.month)),
+        DataCell(Text(monitoringdata.totalSavings.toString())),
+        DataCell(Text(monitoringdata.loanAmtGivenOut.toString())),
+        DataCell(Text(monitoringdata.loanRepaymentAmt.toString())),
+        DataCell(Text(monitoringdata.totalSocialFund.toString())),
+        DataCell(Text(monitoringdata.numMemeberWithIGA.toString())),
+        DataCell(Text(monitoringdata.numMembersNewIGA.toString())),
+        DataCell(Text(monitoringdata.numMembersIGAcollapsed.toString())),
+        DataCell(Text(monitoringdata.numMembersIGAmaitained.toString())),
+        DataCell(Text(monitoringdata.anyIGAyesORno)),
+        DataCell(Text(monitoringdata.summaryOFArchievements)),
+        DataCell(Text(monitoringdata.challenges)),
+        DataCell(Text(monitoringdata.solutions)),
+        DataCell(Text(monitoringdata.grpActionPlan)),
+        DataCell(Text(monitoringdata.remarks)),
         (usrrole == 'Admin' || usrrole == 'Editor')
             ? DataCell(const Icon(Icons.edit, color: Colors.green), onTap: () {
-                Get.to(() => AddReach(dataId: reachdata.id));
+                Get.to(() => AddMonitoring(dataId: monitoringdata.id));
               })
             : const DataCell(Text('')),
         (usrrole == 'Admin' || usrrole == 'Editor')
             ? DataCell(const Icon(Icons.delete, color: Colors.redAccent),
                 onTap: () {
                 CloudDatabase.deleteData(
-                    docId: reachdata.id, col: 'reachtable');
+                    docId: monitoringdata.id, col: 'monitortable');
               })
             : const DataCell(Text('')),
       ],
@@ -60,7 +88,7 @@ class REACHDataScr extends DataTableSource {
   bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => reachDataRows.length;
+  int get rowCount => monitoringDataRows.length;
 
   @override
   int get selectedRowCount => 0;
