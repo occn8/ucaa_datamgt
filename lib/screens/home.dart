@@ -4,6 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:ucaa_datamgt/auth_status.dart';
 import 'package:ucaa_datamgt/index.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:ucaa_datamgt/widgets/tables/consent_table.dart';
+import 'package:ucaa_datamgt/widgets/tables/ind_dev_table.dart';
+import 'package:ucaa_datamgt/widgets/tables/monitoring_table.dart';
+import 'package:ucaa_datamgt/widgets/tables/staff_track_table.dart';
+import 'package:ucaa_datamgt/widgets/tables/success_table.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -531,43 +536,93 @@ class _HomeState extends State<Home> {
 }
 
 Future getDocs() async {
-  // QuerySnapshot querySnapshot =
-  //     await FirebaseFirestore.instance.collection("cartable").get();
-  // List docs = querySnapshot.docs;
-  // carDataRows.clear();
-  // for (var doc in docs) {
-  //   var cmodel = CaRDataModel(
-  //       '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
-  //   cmodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
-  //   carDataRows.add(cmodel);
-  // }
-  // QuerySnapshot querySnapshot2 =
-  //     await FirebaseFirestore.instance.collection("reachtable").get();
-  // List docs2 = querySnapshot2.docs;
-  // reachDataRows.clear();
-  // for (var doc in docs2) {
-  //   var rmodel = REACHdataModel('', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '');
-  //   rmodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
-  //   reachDataRows.add(rmodel);
-  // }
-  // QuerySnapshot querySnapshot3 =
-  //     await FirebaseFirestore.instance.collection("shgtable").get();
-  // List docs3 = querySnapshot3.docs;
-  // shgDataRows.clear();
-  // for (var doc in docs3) {
-  //   var smodel =
-  //       SHGdataModel('', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '');
-  //   smodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
-  //   shgDataRows.add(smodel);
-  // }
-  // QuerySnapshot querySnapshot4 =
-  //     await FirebaseFirestore.instance.collection("widtable").get();
-  // List docs4 = querySnapshot4.docs;
-  // widDataRows.clear();
-  // for (var doc in docs4) {
-  //   var wmodel = WIDdataModel(
-  //       '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
-  //   wmodel.fromMap(doc.id, doc.date()! as Map<String, dynamic>);
-  //   widDataRows.add(wmodel);
-  // }
+  QuerySnapshot querySnapshot =
+      await FirebaseFirestore.instance.collection("cartable").get();
+  List docs = querySnapshot.docs;
+  carDataRows.clear();
+  for (var doc in docs) {
+    var cmodel = CaRDataModel(
+        '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
+    cmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+    carDataRows.add(cmodel);
+  }
+  QuerySnapshot querySnapshot2 =
+      await FirebaseFirestore.instance.collection("reachtable").get();
+  List docs2 = querySnapshot2.docs;
+  reachDataRows.clear();
+  for (var doc in docs2) {
+    var rmodel = REACHdataModel('', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '');
+    rmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+    reachDataRows.add(rmodel);
+  }
+  QuerySnapshot querySnapshot3 =
+      await FirebaseFirestore.instance.collection("shgtable").get();
+  List docs3 = querySnapshot3.docs;
+  shgDataRows.clear();
+  for (var doc in docs3) {
+    var smodel =
+        SHGdataModel('', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '');
+    smodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+    shgDataRows.add(smodel);
+  }
+  QuerySnapshot querySnapshot4 =
+      await FirebaseFirestore.instance.collection("widtable").get();
+  List docs4 = querySnapshot4.docs;
+  widDataRows.clear();
+  for (var doc in docs4) {
+    var wmodel = WIDdataModel(
+        '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '');
+    wmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+    widDataRows.add(wmodel);
+  }
+
+  QuerySnapshot querySnapshot5 =
+      await FirebaseFirestore.instance.collection("consenttable").get();
+  List docs5 = querySnapshot5.docs;
+  consentRows.clear();
+  for (var doc in docs5) {
+    var comodel = ConsentModel('', '', '', '', '', '', '', '');
+    comodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+    consentRows.add(comodel);
+  }
+  QuerySnapshot querySnapshot6 =
+      await FirebaseFirestore.instance.collection("devplantable").get();
+  List docs6 = querySnapshot6.docs;
+  indDevDataRows.clear();
+  for (var doc in docs6) {
+    var idpmodel =
+        IndDevPlanModel('', '', '', '', '', '', '', '', '', '', '', '', '', '');
+    idpmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+    indDevDataRows.add(idpmodel);
+  }
+  QuerySnapshot querySnapshot7 =
+      await FirebaseFirestore.instance.collection("monitortable").get();
+  List docs7 = querySnapshot7.docs;
+  monitoringDataRows.clear();
+  for (var doc in docs7) {
+    var momodel = MonitorToolModel('', '', '', '', '', '', '', '', '', 0, 0, '',
+        '', 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', 0, 0, '');
+    momodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+    monitoringDataRows.add(momodel);
+  }
+  QuerySnapshot querySnapshot8 =
+      await FirebaseFirestore.instance.collection("stafftracktable").get();
+  List docs8 = querySnapshot8.docs;
+  stafftrackDataRows.clear();
+  for (var doc in docs8) {
+    var stmodel = StaffGrpTrackToolModel(
+        '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+    stmodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+    stafftrackDataRows.add(stmodel);
+  }
+  QuerySnapshot querySnapshot9 =
+      await FirebaseFirestore.instance.collection("successstory").get();
+  List docs9 = querySnapshot9.docs;
+  successDataRows.clear();
+  for (var doc in docs9) {
+    var sumodel = SuccessStoryModel('', '', '', 0, '', '', '', '', '', '', '',
+        '', '', 0, '', '', '', '', '', '', '');
+    sumodel.fromMap(doc.id, doc.data()! as Map<String, dynamic>);
+    successDataRows.add(sumodel);
+  }
 }

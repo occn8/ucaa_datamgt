@@ -1,5 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ucaa_datamgt/index.dart';
+import 'package:ucaa_datamgt/widgets/tables/consent_table.dart';
+import 'package:ucaa_datamgt/widgets/tables/ind_dev_table.dart';
+import 'package:ucaa_datamgt/widgets/tables/monitoring_table.dart';
+import 'package:ucaa_datamgt/widgets/tables/staff_track_table.dart';
+import 'package:ucaa_datamgt/widgets/tables/success_table.dart';
 
 class DataView extends StatefulWidget {
   const DataView({
@@ -65,7 +70,20 @@ class _DataViewState extends State<DataView> {
                                 ? 'reachtable'
                                 : widget.tableHeader == 'SHG'
                                     ? 'shgtable'
-                                    : 'widtable')
+                                    : widget.tableHeader == 'Consent'
+                                        ? 'consenttable'
+                                        : widget.tableHeader == 'IndDevPlan'
+                                            ? 'devplantable'
+                                            : widget.tableHeader ==
+                                                    'MonitorTool'
+                                                ? 'monitortable'
+                                                : widget.tableHeader ==
+                                                        'StaffGrpTrackTool'
+                                                    ? 'stafftracktable'
+                                                    : widget.tableHeader ==
+                                                            'SuccessStory'
+                                                        ? 'successstory'
+                                                        : 'widtable')
                         .snapshots(),
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -129,14 +147,40 @@ class _DataViewState extends State<DataView> {
                                   ? kREACHDataColumns
                                   : widget.tableHeader == 'SHG'
                                       ? kSHGDataColumns
-                                      : kWIDDataColumns,
+                                      : widget.tableHeader == 'Consent'
+                                          ? kConsentDataColumns
+                                          : widget.tableHeader == 'IndDevPlan'
+                                              ? kIndDevColumns
+                                              : widget.tableHeader ==
+                                                      'MonitorTool'
+                                                  ? kMonitorDataColumns
+                                                  : widget.tableHeader ==
+                                                          'StaffGrpTrackTool'
+                                                      ? kStaffTDataColumns
+                                                      : widget.tableHeader ==
+                                                              'SuccessStory'
+                                                          ? kSuccessColumns
+                                                          : kWIDDataColumns,
                           source: widget.tableHeader == 'CaR'
                               ? CaRDataScr()
                               : widget.tableHeader == 'REACH'
                                   ? REACHDataScr()
                                   : widget.tableHeader == 'SHG'
                                       ? SHGDataScr()
-                                      : WIDDataScr(),
+                                      : widget.tableHeader == 'Consent'
+                                          ? ConsentScr()
+                                          : widget.tableHeader == 'IndDevPlan'
+                                              ? IndDevScr()
+                                              : widget.tableHeader ==
+                                                      'MonitorTool'
+                                                  ? MonitorDataScr()
+                                                  : widget.tableHeader ==
+                                                          'StaffGrpTrackTool'
+                                                      ? StaffTrackDataScr()
+                                                      : widget.tableHeader ==
+                                                              'SuccessStory'
+                                                          ? SuccessScr()
+                                                          : WIDDataScr(),
                         ),
                       );
                     },

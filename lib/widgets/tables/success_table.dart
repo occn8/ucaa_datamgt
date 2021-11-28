@@ -1,6 +1,6 @@
 import 'package:ucaa_datamgt/index.dart';
 
-const kREACHDataColumns = <DataColumn>[
+const kSuccessColumns = <DataColumn>[
   DataColumn(label: Text('Name')),
   DataColumn(label: Text('Marital-Status')),
   DataColumn(label: Text('Number of Children')),
@@ -25,7 +25,7 @@ const kREACHDataColumns = <DataColumn>[
 
 final List<SuccessStoryModel> successDataRows = <SuccessStoryModel>[];
 
-class REACHDataScr extends DataTableSource {
+class SuccessScr extends DataTableSource {
   // int _selectedCount = 0;
 
   @override
