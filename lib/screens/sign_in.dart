@@ -61,119 +61,125 @@ class _SignInState extends State<SignIn> {
                                     fontSize: 16, fontWeight: FontWeight.w400),
                               ),
                               const SizedBox(height: 45),
-                              TextFormField(
-                                controller: _emailController,
-                                style: TextStyle(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodyText2!
-                                        .color),
-                                cursorColor: Colors.green,
-                                textInputAction: TextInputAction.next,
-                                decoration: InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      borderSide:
-                                          const BorderSide(color: Colors.grey)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      borderSide: const BorderSide(
-                                          color: Colors.green)),
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      borderSide:
-                                          const BorderSide(color: Colors.grey)),
-                                  // contentPadding: EdgeInsets.all(15),
-                                  labelText: ' Email',
-                                  labelStyle: TextStyle(
+                              Container(
+                                width: kIsWeb ? 400 : null,
+                                child: TextFormField(
+                                  controller: _emailController,
+                                  style: TextStyle(
                                       color: Theme.of(context)
                                           .textTheme
                                           .bodyText2!
                                           .color),
-                                  hintText: 'johndoe@gmail.com',
-                                  hintStyle:
-                                      const TextStyle(color: Colors.grey),
-                                  prefixIcon: Icon(
-                                    Icons.email_outlined,
-                                    color: Theme.of(context).primaryColor,
+                                  cursorColor: Colors.green,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: const BorderSide(
+                                            color: Colors.grey)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: const BorderSide(
+                                            color: Colors.green)),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: const BorderSide(
+                                            color: Colors.grey)),
+                                    // contentPadding: EdgeInsets.all(15),
+                                    labelText: ' Email',
+                                    labelStyle: TextStyle(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2!
+                                            .color),
+                                    hintText: 'johndoe@gmail.com',
+                                    hintStyle:
+                                        const TextStyle(color: Colors.grey),
+                                    prefixIcon: Icon(
+                                      Icons.email_outlined,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    suffixIcon: _emailController.text.isEmpty
+                                        ? Container(width: 0)
+                                        : IconButton(
+                                            icon: const Icon(Icons.close,
+                                                color: Colors.grey),
+                                            onPressed: () =>
+                                                _emailController.clear(),
+                                          ),
                                   ),
-                                  suffixIcon: _emailController.text.isEmpty
-                                      ? Container(width: 0)
-                                      : IconButton(
-                                          icon: const Icon(Icons.close,
-                                              color: Colors.grey),
-                                          onPressed: () =>
-                                              _emailController.clear(),
-                                        ),
+                                  autofillHints: const [AutofillHints.email],
+                                  keyboardType: TextInputType.emailAddress,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter Email';
+                                    }
+                                    if (!RegExp(
+                                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                        .hasMatch(value)) {
+                                      return 'Please enter correct email';
+                                    }
+                                    return null;
+                                  },
                                 ),
-                                autofillHints: const [AutofillHints.email],
-                                keyboardType: TextInputType.emailAddress,
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter Email';
-                                  }
-                                  if (!RegExp(
-                                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                      .hasMatch(value)) {
-                                    return 'Please enter correct email';
-                                  }
-                                  return null;
-                                },
                               ),
                               const SizedBox(height: 15),
-                              TextFormField(
-                                controller: _passController,
-                                obscureText: !_showPassword,
-                                style: TextStyle(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodyText2!
-                                        .color),
-                                cursorColor: Colors.green,
-                                textInputAction: TextInputAction.done,
-                                decoration: InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      borderSide:
-                                          const BorderSide(color: Colors.grey)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      borderSide: const BorderSide(
-                                          color: Colors.green)),
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      borderSide:
-                                          const BorderSide(color: Colors.grey)),
-                                  prefixIcon: Icon(
-                                    Icons.security_outlined,
-                                    color: Theme.of(context).primaryColor,
-                                  ),
-                                  suffixIcon: IconButton(
-                                    icon: _showPassword
-                                        ? const Icon(Icons.visibility_off,
-                                            color: Colors.grey)
-                                        : const Icon(Icons.visibility,
-                                            color: Colors.grey),
-                                    onPressed: () {
-                                      setState(() {
-                                        _showPassword = !_showPassword;
-                                      });
-                                    },
-                                  ),
-                                  labelText: ' PassWord',
-                                  labelStyle: TextStyle(
+                              Container(
+                                width: kIsWeb ? 400 : null,
+                                child: TextFormField(
+                                  controller: _passController,
+                                  obscureText: !_showPassword,
+                                  style: TextStyle(
                                       color: Theme.of(context)
                                           .textTheme
                                           .bodyText2!
                                           .color),
+                                  cursorColor: Colors.green,
+                                  textInputAction: TextInputAction.done,
+                                  decoration: InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: const BorderSide(
+                                            color: Colors.grey)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: const BorderSide(
+                                            color: Colors.green)),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: const BorderSide(
+                                            color: Colors.grey)),
+                                    prefixIcon: Icon(
+                                      Icons.security_outlined,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    suffixIcon: IconButton(
+                                      icon: _showPassword
+                                          ? const Icon(Icons.visibility_off,
+                                              color: Colors.grey)
+                                          : const Icon(Icons.visibility,
+                                              color: Colors.grey),
+                                      onPressed: () {
+                                        setState(() {
+                                          _showPassword = !_showPassword;
+                                        });
+                                      },
+                                    ),
+                                    labelText: ' PassWord',
+                                    labelStyle: TextStyle(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2!
+                                            .color),
+                                  ),
+                                  keyboardType: TextInputType.visiblePassword,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter password';
+                                    }
+                                    return null;
+                                  },
                                 ),
-                                keyboardType: TextInputType.visiblePassword,
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter password';
-                                  }
-                                  return null;
-                                },
                               ),
                               const SizedBox(height: 30),
                               isLoading != true

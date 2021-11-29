@@ -183,7 +183,7 @@ class _HomeState extends State<Home> {
                 color: Colors.amber,
               ),
               Expanded(
-                child: Column(
+                child: ListView(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

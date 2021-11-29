@@ -3,7 +3,8 @@ import 'package:ucaa_datamgt/index.dart';
 buildTextFormField(BuildContext context, TextEditingController control,
     String label, String hint,
     {TextInputType type = TextInputType.text, int mxl = 1}) {
-  return Padding(
+  return Container(
+    width: kIsWeb ? 600 : null,
     padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
     child: TextFormField(
       controller: control,
@@ -41,7 +42,8 @@ buildTextFormField(BuildContext context, TextEditingController control,
 buildTextFormField2(BuildContext context, TextEditingController control,
     String label, String hint,
     {TextInputType type = TextInputType.number, int mxl = 1}) {
-  return Padding(
+  return Container(
+    width: kIsWeb ? 600 : null,
     padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
     child: TextFormField(
       controller: control,
