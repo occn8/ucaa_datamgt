@@ -1,14 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
-import 'package:ucaa_datamgt/auth_status.dart';
 import 'package:ucaa_datamgt/index.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:ucaa_datamgt/widgets/tables/consent_table.dart';
-import 'package:ucaa_datamgt/widgets/tables/ind_dev_table.dart';
-import 'package:ucaa_datamgt/widgets/tables/monitoring_table.dart';
-import 'package:ucaa_datamgt/widgets/tables/staff_track_table.dart';
-import 'package:ucaa_datamgt/widgets/tables/success_table.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -412,7 +405,7 @@ class _HomeState extends State<Home> {
                   const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
               child: Text.rich(
                 TextSpan(
-                  text: 'Hello,\n $usrrole',
+                  text: 'Hello,\n',
                   style: const TextStyle(fontSize: 18),
                   children: <TextSpan>[
                     TextSpan(
@@ -467,6 +460,7 @@ class _HomeState extends State<Home> {
         child: Container(
           padding: const EdgeInsets.all(8),
           height: 100,
+          width: kIsWeb ? 400 : null,
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(15),

@@ -1,10 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ucaa_datamgt/index.dart';
-import 'package:ucaa_datamgt/widgets/tables/consent_table.dart';
-import 'package:ucaa_datamgt/widgets/tables/ind_dev_table.dart';
-import 'package:ucaa_datamgt/widgets/tables/monitoring_table.dart';
-import 'package:ucaa_datamgt/widgets/tables/staff_track_table.dart';
-import 'package:ucaa_datamgt/widgets/tables/success_table.dart';
 
 class DataView extends StatefulWidget {
   const DataView({
@@ -105,8 +100,17 @@ class _DataViewState extends State<DataView> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const [
+                              children: [
                                 SizedBox(height: 10),
+                                Center(
+                                  child: Container(
+                                    padding: const EdgeInsets.all(30),
+                                    height: 350,
+                                    child: Image(
+                                        image:
+                                            AssetImage('assets/no_data.png')),
+                                  ),
+                                ),
                                 Text(
                                   'No Data here!',
                                   style: TextStyle(fontSize: 18),

@@ -1,10 +1,13 @@
 export 'package:flutter/material.dart';
+export 'package:flutter/foundation.dart';
+export 'package:flutter/services.dart';
 export 'package:get/get.dart';
 export 'package:provider/provider.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 
 export 'package:ucaa_datamgt/main.dart';
 export 'package:ucaa_datamgt/responsive.dart';
+export 'package:ucaa_datamgt/auth_status.dart';
 
 export 'package:ucaa_datamgt/screens/home.dart';
 export 'package:ucaa_datamgt/screens/sign_in.dart';
@@ -37,10 +40,16 @@ export 'package:ucaa_datamgt/models/success_stroy_model.dart';
 export 'package:ucaa_datamgt/widgets/custom_drawer.dart';
 export 'package:ucaa_datamgt/widgets/snackbar.dart';
 export 'package:ucaa_datamgt/widgets/custom_textfield.dart';
+
 export 'package:ucaa_datamgt/widgets/tables/car_table.dart';
 export 'package:ucaa_datamgt/widgets/tables/reach_table.dart';
 export 'package:ucaa_datamgt/widgets/tables/shg_table.dart';
 export 'package:ucaa_datamgt/widgets/tables/wid_table.dart';
+export 'package:ucaa_datamgt/widgets/tables/consent_table.dart';
+export 'package:ucaa_datamgt/widgets/tables/ind_dev_table.dart';
+export 'package:ucaa_datamgt/widgets/tables/monitoring_table.dart';
+export 'package:ucaa_datamgt/widgets/tables/staff_track_table.dart';
+export 'package:ucaa_datamgt/widgets/tables/success_table.dart';
 
 export 'package:ucaa_datamgt/utils/auth.dart';
 export 'package:ucaa_datamgt/utils/cloud.dart';

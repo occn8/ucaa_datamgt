@@ -203,7 +203,7 @@ class _SignInState extends State<SignIn> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          Lander()));
+                                                          const Home()));
                                             } else {
                                               setState(() {
                                                 isLoading = false;
