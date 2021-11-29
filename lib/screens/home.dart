@@ -51,7 +51,8 @@ class _HomeState extends State<Home> {
           ),
         ),
         // drawer: const CustomDrawer(),
-        floatingActionButton: (usrrole == 'Admin' || usrrole == 'Editor')
+        floatingActionButton: !kIsWeb &&
+                (usrrole == 'Admin' || usrrole == 'Editor')
             ? SpeedDial(
                 animatedIcon: AnimatedIcons.list_view,
                 overlayColor: Theme.of(context).backgroundColor,
@@ -180,7 +181,45 @@ class _HomeState extends State<Home> {
               Container(
                 width: 280,
                 height: double.infinity,
-                color: Colors.amber,
+                color: Theme.of(context).cardColor,
+                child: Column(
+                  children: [
+                    Center(
+                      child: Container(
+                        padding: const EdgeInsets.all(30),
+                        height: 150,
+                        child: Image(image: AssetImage('assets/icon.png')),
+                      ),
+                    ),
+                    tileBuilder('Add CaR data', () {
+                      Get.to(() => const AddCaR(dataId: ''));
+                    }),
+                    tileBuilder('Add Reach data', () {
+                      Get.to(() => const AddReach(dataId: ''));
+                    }),
+                    tileBuilder('Add SHG data', () {
+                      Get.to(() => const AddShg(dataId: ''));
+                    }),
+                    tileBuilder('Add WID data', () {
+                      Get.to(() => const AddWid(dataId: ''));
+                    }),
+                    tileBuilder('Add Dev Plan', () {
+                      Get.to(() => const AddDevPlan(dataId: ''));
+                    }),
+                    tileBuilder('Add Monitoring Tool', () {
+                      Get.to(() => const AddMonitoring(dataId: ''));
+                    }),
+                    tileBuilder('Add Staff Tracking', () {
+                      Get.to(() => const AddStaffTrack(dataId: ''));
+                    }),
+                    tileBuilder('Add Success Story', () {
+                      Get.to(() => const AddSuccess(dataId: ''));
+                    }),
+                    tileBuilder('Add Consent', () {
+                      Get.to(() => const AddConsent(dataId: ''));
+                    }),
+                  ],
+                ),
               ),
               Expanded(
                 child: ListView(
@@ -293,20 +332,25 @@ class _HomeState extends State<Home> {
                     tableLinks(context, 'WID Data', widDataRows.length, () {
                       Get.to(() => const DataView(tableHeader: 'WID'));
                     }),
-                    tableLinks(context, 'UCAA Consent Data', 0, () {
+                    tableLinks(context, 'UCAA Consent Data', consentRows.length,
+                        () {
                       Get.to(() => const DataView(tableHeader: 'Consent'));
                     }),
-                    tableLinks(context, 'Individual Development Plan', 0, () {
+                    tableLinks(context, 'Individual Development Plan',
+                        indDevDataRows.length, () {
                       Get.to(() => const DataView(tableHeader: 'IndDevPlan'));
                     }),
-                    tableLinks(context, 'Monitoring Tool for Groups', 0, () {
+                    tableLinks(context, 'Monitoring Tool for Groups',
+                        monitoringDataRows.length, () {
                       Get.to(() => const DataView(tableHeader: 'MonitorTool'));
                     }),
-                    tableLinks(context, 'Staff Group Tracking Tool', 0, () {
+                    tableLinks(context, 'Staff Group Tracking Tool',
+                        stafftrackDataRows.length, () {
                       Get.to(() =>
                           const DataView(tableHeader: 'StaffGrpTrackTool'));
                     }),
-                    tableLinks(context, 'Success Stories', 0, () {
+                    tableLinks(
+                        context, 'Success Stories', successDataRows.length, () {
                       Get.to(() => const DataView(tableHeader: 'SuccessStory'));
                     }),
                   ],
@@ -316,6 +360,18 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
+    );
+  }
+
+  ListTile tileBuilder(String title, VoidCallback func) {
+    return ListTile(
+      leading: Icon(Icons.add, color: Theme.of(context).primaryColor),
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+      tileColor: Theme.of(context).primaryColor,
+      onTap: func,
     );
   }
 
@@ -429,19 +485,24 @@ class _HomeState extends State<Home> {
             tableLinks(context, 'WID Data', widDataRows.length, () {
               Get.to(() => const DataView(tableHeader: 'WID'));
             }),
-            tableLinks(context, 'UCAA Consent Data', 0, () {
+            tableLinks(context, 'UCAA Consent Data', consentRows.length, () {
               Get.to(() => const DataView(tableHeader: 'Consent'));
             }),
-            tableLinks(context, 'Individual Development Plan', 0, () {
+            tableLinks(
+                context, 'Individual Development Plan', indDevDataRows.length,
+                () {
               Get.to(() => const DataView(tableHeader: 'IndDevPlan'));
             }),
-            tableLinks(context, 'Monitoring Tool for Groups', 0, () {
+            tableLinks(context, 'Monitoring Tool for Groups',
+                monitoringDataRows.length, () {
               Get.to(() => const DataView(tableHeader: 'MonitorTool'));
             }),
-            tableLinks(context, 'Staff Group Tracking Tool', 0, () {
+            tableLinks(
+                context, 'Staff Group Tracking Tool', stafftrackDataRows.length,
+                () {
               Get.to(() => const DataView(tableHeader: 'StaffGrpTrackTool'));
             }),
-            tableLinks(context, 'Success Stories', 0, () {
+            tableLinks(context, 'Success Stories', successDataRows.length, () {
               Get.to(() => const DataView(tableHeader: 'SuccessStory'));
             }),
           ],
