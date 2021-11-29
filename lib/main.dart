@@ -5,7 +5,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await DesktopWindow.setMinWindowSize(const Size(600, 800));
   await Firebase.initializeApp();
-  if (!kIsWeb)
+  if (!kIsWeb) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.white,
       statusBarBrightness: Brightness.dark,
@@ -14,6 +14,9 @@ Future<void> main() async {
       systemNavigationBarIconBrightness: Brightness.dark,
       systemNavigationBarDividerColor: Colors.white,
     ));
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  }
   runApp(const MyApp());
 }
 

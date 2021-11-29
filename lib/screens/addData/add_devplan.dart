@@ -55,8 +55,9 @@ class _AddDevPlanState extends State<AddDevPlan> {
                   widget.dataId == ''
                       ? "Add Individual Dev Plan"
                       : "Update Individual Dev Plan",
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      fontSize: !kIsWeb ? 18 : 20,
+                      fontWeight: !kIsWeb ? FontWeight.w600 : FontWeight.bold),
                 ),
                 const SizedBox(width: 10)
               ],

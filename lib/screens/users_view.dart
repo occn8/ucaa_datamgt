@@ -96,33 +96,36 @@ class _UserViewState extends State<UserView> {
                               snapshot.data!.docs[index].id,
                               snapshot.data!.docs[index].data()
                                   as Map<String, dynamic>);
-                          return Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            child: ListTile(
+                          return Container(
+                            width: RespWidget.isLarge(context) ? 200 : 600,
+                            child: Card(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)),
-                              leading: Icon(Icons.person,
-                                  color: Theme.of(context).primaryColor),
-                              title: Text(user.email,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1!
-                                      .copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16)),
-                              subtitle: Text('Role: ' + user.role),
-                              trailing: user.id !=
-                                      'PhPhu4ZFYCYOR9UZGFtm9xM8ivy2'
-                                  ? IconButton(
-                                      onPressed: () {
-                                        roleDialog(context, user.id);
-                                      },
-                                      icon: Icon(
-                                        Icons.edit,
-                                        color: Theme.of(context).primaryColor,
-                                      ))
-                                  : null,
+                              child: ListTile(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                leading: Icon(Icons.person,
+                                    color: Theme.of(context).primaryColor),
+                                title: Text(user.email,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1!
+                                        .copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16)),
+                                subtitle: Text('Role: ' + user.role),
+                                trailing: user.id !=
+                                        'PhPhu4ZFYCYOR9UZGFtm9xM8ivy2'
+                                    ? IconButton(
+                                        onPressed: () {
+                                          roleDialog(context, user.id);
+                                        },
+                                        icon: Icon(
+                                          Icons.edit,
+                                          color: Theme.of(context).primaryColor,
+                                        ))
+                                    : null,
+                              ),
                             ),
                           );
                         },

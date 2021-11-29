@@ -55,8 +55,9 @@ class _AddStaffTrackState extends State<AddStaffTrack> {
                   widget.dataId == ''
                       ? "Add Staff GRP Tracking Tools"
                       : "Edit Staff GRP Tracking Tools",
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      fontSize: !kIsWeb ? 18 : 20,
+                      fontWeight: !kIsWeb ? FontWeight.w600 : FontWeight.bold),
                 ),
                 const SizedBox(width: 10)
               ],

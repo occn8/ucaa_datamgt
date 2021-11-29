@@ -71,8 +71,9 @@ class _AddMonitoringState extends State<AddMonitoring> {
                   widget.dataId == ''
                       ? "Add Monitoring Tool Data"
                       : "Edit Monitoring Tool Data",
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      fontSize: !kIsWeb ? 18 : 20,
+                      fontWeight: !kIsWeb ? FontWeight.w600 : FontWeight.bold),
                 ),
                 const SizedBox(width: 10)
               ],

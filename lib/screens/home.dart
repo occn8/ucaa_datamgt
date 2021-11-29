@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
           ),
         ),
         // drawer: const CustomDrawer(),
-        floatingActionButton: !kIsWeb &&
+        floatingActionButton: RespWidget.isSmall(context) &&
                 (usrrole == 'Admin' || usrrole == 'Editor')
             ? SpeedDial(
                 animatedIcon: AnimatedIcons.list_view,
@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
                 overlayOpacity: 0.8,
                 spacing: 15,
                 backgroundColor: Theme.of(context).primaryColor,
-                childrenButtonSize: 60,
+                childrenButtonSize: kIsWeb ? 50 : 60,
                 children: [
                     usrrole == 'Admin'
                         ? SpeedDialChild(
@@ -182,7 +182,7 @@ class _HomeState extends State<Home> {
                 width: 280,
                 height: double.infinity,
                 color: Theme.of(context).cardColor,
-                child: Column(
+                child: ListView(
                   children: [
                     Center(
                       child: Container(
@@ -218,6 +218,9 @@ class _HomeState extends State<Home> {
                     tileBuilder('Add Consent', () {
                       Get.to(() => const AddConsent(dataId: ''));
                     }),
+                    tileBuilder('Users', () {
+                      Get.to(() => const UserView());
+                    }, icon: Icons.people),
                   ],
                 ),
               ),
@@ -363,9 +366,10 @@ class _HomeState extends State<Home> {
     );
   }
 
-  ListTile tileBuilder(String title, VoidCallback func) {
+  ListTile tileBuilder(String title, VoidCallback func,
+      {IconData icon = Icons.add}) {
     return ListTile(
-      leading: Icon(Icons.add, color: Theme.of(context).primaryColor),
+      leading: Icon(icon, color: Theme.of(context).primaryColor),
       title: Text(
         title,
         style: Theme.of(context).textTheme.bodyText1,

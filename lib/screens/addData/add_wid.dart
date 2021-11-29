@@ -57,8 +57,9 @@ class _AddWidState extends State<AddWid> {
                 ),
                 Text(
                   widget.dataId == '' ? "Add WID Data" : "Update WID Data",
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      fontSize: !kIsWeb ? 18 : 20,
+                      fontWeight: !kIsWeb ? FontWeight.w600 : FontWeight.bold),
                 ),
                 const SizedBox(width: 10)
               ],

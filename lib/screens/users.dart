@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:ucaa_datamgt/index.dart';
 
 class AddUser extends StatefulWidget {
@@ -54,8 +55,10 @@ class _AddUserState extends State<AddUser> {
                   ),
                 ),
                 const Text(
-                  'Add New User Account',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  'Create User Account',
+                  style: TextStyle(
+                      fontSize: !kIsWeb ? 18 : 20,
+                      fontWeight: !kIsWeb ? FontWeight.w600 : FontWeight.bold),
                 ),
                 const SizedBox(width: 10)
               ],
@@ -83,202 +86,216 @@ class _AddUserState extends State<AddUser> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'Create User Account',
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.w800),
-                            ),
                             const SizedBox(height: 50),
-                            TextFormField(
-                              controller: _emailController,
-                              cursorColor: const Color(0xffffb300),
-                              decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.grey)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.green)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.grey)),
-                                // contentPadding: EdgeInsets.all(15),
-                                labelText: ' Email',
-                                labelStyle: const TextStyle(color: Colors.grey),
-                                hintText: 'johndoe@gmail.com',
-                                hintStyle: const TextStyle(color: Colors.grey),
-                                prefixIcon: Icon(
-                                  Icons.email_outlined,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                suffixIcon: _emailController.text.isEmpty
-                                    ? Container(width: 0)
-                                    : IconButton(
-                                        icon: const Icon(
-                                          Icons.close,
-                                          color: Colors.grey,
+                            Container(
+                              width: kIsWeb ? 400 : null,
+                              child: TextFormField(
+                                controller: _emailController,
+                                cursorColor: const Color(0xffffb300),
+                                decoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide:
+                                          const BorderSide(color: Colors.grey)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide: const BorderSide(
+                                          color: Colors.green)),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide:
+                                          const BorderSide(color: Colors.grey)),
+                                  // contentPadding: EdgeInsets.all(15),
+                                  labelText: ' Email',
+                                  labelStyle:
+                                      const TextStyle(color: Colors.grey),
+                                  hintText: 'johndoe@gmail.com',
+                                  hintStyle:
+                                      const TextStyle(color: Colors.grey),
+                                  prefixIcon: Icon(
+                                    Icons.email_outlined,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  suffixIcon: _emailController.text.isEmpty
+                                      ? Container(width: 0)
+                                      : IconButton(
+                                          icon: const Icon(
+                                            Icons.close,
+                                            color: Colors.grey,
+                                          ),
+                                          onPressed: () =>
+                                              _emailController.clear(),
                                         ),
-                                        onPressed: () =>
-                                            _emailController.clear(),
-                                      ),
+                                ),
+                                autofillHints: const [AutofillHints.email],
+                                keyboardType: TextInputType.emailAddress,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter Email';
+                                  }
+                                  if (!RegExp(
+                                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      .hasMatch(value)) {
+                                    return 'Please enter correct email';
+                                  }
+                                  return null;
+                                },
                               ),
-                              autofillHints: const [AutofillHints.email],
-                              keyboardType: TextInputType.emailAddress,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter Email';
-                                }
-                                if (!RegExp(
-                                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                    .hasMatch(value)) {
-                                  return 'Please enter correct email';
-                                }
-                                return null;
-                              },
-                            ),
-                            const SizedBox(height: 15),
-                            TextFormField(
-                              controller: _userNameController,
-                              cursorColor: const Color(0xffffb300),
-                              decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.grey)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.green)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.grey)),
-                                // contentPadding: EdgeInsets.all(15),
-                                labelText: ' UserName',
-                                labelStyle: const TextStyle(color: Colors.grey),
-                                hintText: 'ochenHillary',
-                                hintStyle: const TextStyle(color: Colors.grey),
-                                prefixIcon: Icon(
-                                  Icons.person,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                suffixIcon: _userNameController.text.isEmpty
-                                    ? Container(width: 0)
-                                    : IconButton(
-                                        icon: const Icon(
-                                          Icons.close,
-                                          color: Colors.grey,
-                                        ),
-                                        onPressed: () =>
-                                            _userNameController.clear(),
-                                      ),
-                              ),
-                              keyboardType: TextInputType.text,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter UserName';
-                                }
-                                return null;
-                              },
-                            ),
-                            const SizedBox(height: 15),
-                            TextFormField(
-                              controller: _passController,
-                              obscureText: !_showPassword,
-                              cursorColor: const Color(0xffffb300),
-                              decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.grey)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.green)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.grey)),
-                                prefixIcon: Icon(
-                                  Icons.security_outlined,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: ' PassWord',
-                                labelStyle: const TextStyle(color: Colors.grey),
-                                suffixIcon: IconButton(
-                                  icon: _showPassword
-                                      ? const Icon(Icons.visibility_off,
-                                          color: Colors.grey)
-                                      : const Icon(Icons.visibility,
-                                          color: Colors.grey),
-                                  onPressed: () {
-                                    setState(() {
-                                      _showPassword = !_showPassword;
-                                    });
-                                  },
-                                ),
-                              ),
-                              keyboardType: TextInputType.visiblePassword,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter password';
-                                }
-                                return null;
-                              },
-                            ),
-                            const SizedBox(height: 15),
-                            TextFormField(
-                              controller: _pass2Controller,
-                              obscureText: !_showPassword2,
-                              cursorColor: const Color(0xffffb300),
-                              decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.grey)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.green)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    borderSide:
-                                        const BorderSide(color: Colors.grey)),
-                                prefixIcon: Icon(
-                                  Icons.security_outlined,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                labelText: 'Retype PassWord',
-                                labelStyle: const TextStyle(color: Colors.grey),
-                                suffixIcon: IconButton(
-                                  icon: _showPassword2
-                                      ? const Icon(Icons.visibility_off,
-                                          color: Colors.grey)
-                                      : const Icon(Icons.visibility,
-                                          color: Colors.grey),
-                                  onPressed: () {
-                                    setState(() {
-                                      _showPassword2 = !_showPassword2;
-                                    });
-                                  },
-                                ),
-                              ),
-                              keyboardType: TextInputType.visiblePassword,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter password';
-                                }
-                                if (value != _passController.text) {
-                                  return 'Passwords don\'t match';
-                                }
-                                return null;
-                              },
                             ),
                             const SizedBox(height: 15),
                             Container(
+                              width: kIsWeb ? 400 : null,
+                              child: TextFormField(
+                                controller: _userNameController,
+                                cursorColor: const Color(0xffffb300),
+                                decoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide:
+                                          const BorderSide(color: Colors.grey)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide: const BorderSide(
+                                          color: Colors.green)),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide:
+                                          const BorderSide(color: Colors.grey)),
+                                  // contentPadding: EdgeInsets.all(15),
+                                  labelText: ' UserName',
+                                  labelStyle:
+                                      const TextStyle(color: Colors.grey),
+                                  hintText: 'ochenHillary',
+                                  hintStyle:
+                                      const TextStyle(color: Colors.grey),
+                                  prefixIcon: Icon(
+                                    Icons.person,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  suffixIcon: _userNameController.text.isEmpty
+                                      ? Container(width: 0)
+                                      : IconButton(
+                                          icon: const Icon(
+                                            Icons.close,
+                                            color: Colors.grey,
+                                          ),
+                                          onPressed: () =>
+                                              _userNameController.clear(),
+                                        ),
+                                ),
+                                keyboardType: TextInputType.text,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter UserName';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            Container(
+                              width: kIsWeb ? 400 : null,
+                              child: TextFormField(
+                                controller: _passController,
+                                obscureText: !_showPassword,
+                                cursorColor: const Color(0xffffb300),
+                                decoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide:
+                                          const BorderSide(color: Colors.grey)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide: const BorderSide(
+                                          color: Colors.green)),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide:
+                                          const BorderSide(color: Colors.grey)),
+                                  prefixIcon: Icon(
+                                    Icons.security_outlined,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  labelText: ' PassWord',
+                                  labelStyle:
+                                      const TextStyle(color: Colors.grey),
+                                  suffixIcon: IconButton(
+                                    icon: _showPassword
+                                        ? const Icon(Icons.visibility_off,
+                                            color: Colors.grey)
+                                        : const Icon(Icons.visibility,
+                                            color: Colors.grey),
+                                    onPressed: () {
+                                      setState(() {
+                                        _showPassword = !_showPassword;
+                                      });
+                                    },
+                                  ),
+                                ),
+                                keyboardType: TextInputType.visiblePassword,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter password';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            Container(
+                              width: kIsWeb ? 400 : null,
+                              child: TextFormField(
+                                controller: _pass2Controller,
+                                obscureText: !_showPassword2,
+                                cursorColor: const Color(0xffffb300),
+                                decoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide:
+                                          const BorderSide(color: Colors.grey)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide: const BorderSide(
+                                          color: Colors.green)),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      borderSide:
+                                          const BorderSide(color: Colors.grey)),
+                                  prefixIcon: Icon(
+                                    Icons.security_outlined,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  labelText: 'Retype PassWord',
+                                  labelStyle:
+                                      const TextStyle(color: Colors.grey),
+                                  suffixIcon: IconButton(
+                                    icon: _showPassword2
+                                        ? const Icon(Icons.visibility_off,
+                                            color: Colors.grey)
+                                        : const Icon(Icons.visibility,
+                                            color: Colors.grey),
+                                    onPressed: () {
+                                      setState(() {
+                                        _showPassword2 = !_showPassword2;
+                                      });
+                                    },
+                                  ),
+                                ),
+                                keyboardType: TextInputType.visiblePassword,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter password';
+                                  }
+                                  if (value != _passController.text) {
+                                    return 'Passwords don\'t match';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            Container(
+                              width: kIsWeb ? 400 : null,
                               padding: const EdgeInsets.all(8),
                               child: DropdownButtonFormField(
                                 value: _role,

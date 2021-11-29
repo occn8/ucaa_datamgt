@@ -59,8 +59,9 @@ class _AddCaRState extends State<AddCaR> {
                 ),
                 Text(
                   widget.dataId == '' ? "Add CaR Data" : "Update CaR Data",
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      fontSize: !kIsWeb ? 18 : 20,
+                      fontWeight: !kIsWeb ? FontWeight.w600 : FontWeight.bold),
                 ),
                 const SizedBox(width: 10)
               ],

@@ -62,8 +62,9 @@ class _AddSuccessState extends State<AddSuccess> {
                   widget.dataId == ''
                       ? "Add Success Story"
                       : "Update Success Story",
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      fontSize: !kIsWeb ? 18 : 20,
+                      fontWeight: !kIsWeb ? FontWeight.w600 : FontWeight.bold),
                 ),
                 const SizedBox(width: 10)
               ],

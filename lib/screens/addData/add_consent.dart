@@ -49,8 +49,9 @@ class _AddConsentState extends State<AddConsent> {
                   widget.dataId == ''
                       ? "Add Consent Data"
                       : "Update Consent Data",
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      fontSize: !kIsWeb ? 18 : 20,
+                      fontWeight: !kIsWeb ? FontWeight.w600 : FontWeight.bold),
                 ),
                 const SizedBox(width: 10)
               ],

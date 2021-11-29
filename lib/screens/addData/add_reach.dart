@@ -53,8 +53,9 @@ class _AddReachState extends State<AddReach> {
                 ),
                 Text(
                   widget.dataId == '' ? "Add Reach Data" : "Update Reach Data",
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      fontSize: !kIsWeb ? 18 : 20,
+                      fontWeight: !kIsWeb ? FontWeight.w600 : FontWeight.bold),
                 ),
                 const SizedBox(width: 10)
               ],
